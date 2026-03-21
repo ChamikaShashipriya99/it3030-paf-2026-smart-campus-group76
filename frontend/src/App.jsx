@@ -10,6 +10,7 @@ import BookResource from './pages/BookResource';
 import ManageBookings from './pages/ManageBookings';
 import ReportIssue from './pages/ReportIssue';
 import TechnicianDashboard from './pages/TechnicianDashboard';
+import TicketDetails from './pages/TicketDetails';
 import Navbar from './components/Navbar';
 
 const PrivateRoute = ({ children }) => {
@@ -55,6 +56,11 @@ function App() {
                     <Route path="/report/:id" element={
                         <PrivateRoute>
                             <ReportIssue />
+                        </PrivateRoute>
+                    } />
+                    <Route path="/ticket/:id" element={
+                        <PrivateRoute>
+                            <TicketDetails />
                         </PrivateRoute>
                     } />
                     <Route path="/technician/desk" element={

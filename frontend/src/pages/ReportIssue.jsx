@@ -11,6 +11,7 @@ const ReportIssue = () => {
     const { showNotification } = useContext(NotificationContext);
     const [resource, setResource] = useState(null);
     const [formData, setFormData] = useState({ category: 'IT_EQUIPMENT', priority: 'MEDIUM', description: '' });
+    const [files, setFiles] = useState([]);
 
     useEffect(() => {
         api.get(`/resources/${id}`).then(res => setResource(res.data)).catch(err => console.error(err));
@@ -19,14 +20,27 @@ const ReportIssue = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await api.post('/tickets', {
+            if (files.length > 3) {
+                showNotification('Maximum 3 attachments allowed.', 'error');
+                return;
+            }
+
+            const res = await api.post('/tickets', {
                 creatorId: user.id,
                 resourceId: Number(id),
                 category: formData.category,
                 priority: formData.priority,
                 description: formData.description
             });
-            showNotification('Incident Ticket submitted successfully! IT Support has been notified.', 'success');
+            const ticketId = res.data.id;
+
+            for (const file of files) {
+                const fd = new FormData();
+                fd.append('file', file);
+                await api.post(`/tickets/${ticketId}/attachments`, fd, { headers: { 'Content-Type': 'multipart/form-data' } });
+            }
+
+            showNotification('Incident Ticket and attachments submitted successfully!', 'success');
             navigate('/dashboard');
         } catch (err) {
             showNotification(err.response?.data?.message || 'Failed to submit ticket.', 'error');
@@ -65,6 +79,12 @@ const ReportIssue = () => {
                     <textarea required rows="4" value={formData.description} placeholder="Describe exactly what is broken..."
                               onChange={e => setFormData({...formData, description: e.target.value})} 
                               style={{ width: '100%', padding: '10px', marginTop: '8px', border: '1px solid #ccc', borderRadius: '6px' }} />
+                </div>
+                <div>
+                    <label style={{fontWeight: 'bold'}}>Evidence Attachments (Optional, max 3)</label>
+                    <input type="file" multiple accept="image/*" onChange={e => setFiles(Array.from(e.target.files))}
+                           style={{ width: '100%', padding: '10px', marginTop: '8px', border: '1px solid #ccc', borderRadius: '6px' }} />
+                    <small style={{color: '#666', marginTop: '4px', display: 'block'}}>{files.length} file(s) selected</small>
                 </div>
                 <button type="submit" style={{ padding: '12px', background: '#e74c3c', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontSize: '16px', fontWeight: 'bold' }}>
                     Submit Incident Ticket

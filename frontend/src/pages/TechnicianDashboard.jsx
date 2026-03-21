@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import api from '../api/axiosConfig';
 import { AuthContext } from '../context/AuthContext';
 import { NotificationContext } from '../context/NotificationContext';
 
 const TechnicianDashboard = () => {
+    const navigate = useNavigate();
     const { user } = useContext(AuthContext);
     const { showNotification } = useContext(NotificationContext);
     const [tickets, setTickets] = useState([]);
@@ -72,8 +74,9 @@ const TechnicianDashboard = () => {
                                 </td>
                                 <td style={{ padding: '15px' }}>{t.technician ? t.technician.email : <i style={{color: '#999'}}>Unassigned</i>}</td>
                                 <td style={{ padding: '15px' }}>
+                                    <button onClick={() => navigate(`/ticket/${t.id}`)} style={{ background: '#f39c12', color: 'white', padding: '6px 12px', border: 'none', borderRadius: '4px', cursor: 'pointer', marginRight: '5px' }}>View Details</button>
                                     {t.status === 'OPEN' && (
-                                        <button onClick={() => assignToMe(t.id)} style={{ background: '#1da1f2', color: 'white', padding: '6px 12px', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Claim</button>
+                                        <button onClick={() => assignToMe(t.id)} style={{ background: '#1da1f2', color: 'white', padding: '6px 12px', border: 'none', borderRadius: '4px', cursor: 'pointer', marginRight: '5px' }}>Claim</button>
                                     )}
                                     {t.status === 'IN_PROGRESS' && t.technician?.id === user.id && (
                                         <button onClick={() => resolveTicket(t.id)} style={{ background: '#2ecc71', color: 'white', padding: '6px 12px', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Mark Resolved</button>
