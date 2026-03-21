@@ -39,7 +39,7 @@ public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
             user = new User();
             user.setEmail(email);
             user.setName(name);
-            user.setRole(Role.USER); // Default signup role
+            user.setRole(Role.ROLE_USER); // Default signup role
             userRepository.save(user);
         }
 

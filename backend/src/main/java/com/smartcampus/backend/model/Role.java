@@ -1,7 +1,7 @@
 package com.smartcampus.backend.model;
 
 public enum Role {
-    USER,
-    ADMIN,
-    TECHNICIAN
+    ROLE_USER,
+    ROLE_ADMIN,
+    ROLE_TECHNICIAN
 }

@@ -41,7 +41,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 if (userOpt.isPresent()) {
                     User dbUser = userOpt.get();
                     UserDetails userDetails = new org.springframework.security.core.userdetails.User(
-                            email, "", Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + dbUser.getRole().name())));
+                            email, "", Collections.singletonList(new SimpleGrantedAuthority(dbUser.getRole().name())));
 
                     UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                             userDetails, null, userDetails.getAuthorities());
