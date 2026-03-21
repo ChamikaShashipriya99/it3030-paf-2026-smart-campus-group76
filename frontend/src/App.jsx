@@ -9,6 +9,7 @@ import BookResource from './pages/BookResource';
 import ManageBookings from './pages/ManageBookings';
 import ReportIssue from './pages/ReportIssue';
 import TechnicianDashboard from './pages/TechnicianDashboard';
+import Navbar from './components/Navbar';
 
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
@@ -22,8 +23,10 @@ function App() {
     return (
         <AuthProvider>
             <Router>
-                <Routes>
-                    <Route path="/login" element={<Login />} />
+                <Navbar />
+                <div style={{ minHeight: 'calc(100vh - 70px)', paddingBottom: '40px' }}>
+                    <Routes>
+                        <Route path="/login" element={<Login />} />
                     <Route path="/login/success" element={<LoginSuccess />} />
                     
                     {/* Secure Route */}
@@ -60,7 +63,8 @@ function App() {
                     
                     {/* Default Route */}
                     <Route path="/" element={<Navigate to="/dashboard" />} />
-                </Routes>
+                    </Routes>
+                </div>
             </Router>
         </AuthProvider>
     );
