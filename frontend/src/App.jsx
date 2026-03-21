@@ -11,6 +11,7 @@ import ManageBookings from './pages/ManageBookings';
 import ReportIssue from './pages/ReportIssue';
 import TechnicianDashboard from './pages/TechnicianDashboard';
 import TicketDetails from './pages/TicketDetails';
+import Notifications from './pages/Notifications';
 import Navbar from './components/Navbar';
 
 const PrivateRoute = ({ children }) => {

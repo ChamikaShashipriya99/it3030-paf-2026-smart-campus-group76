@@ -31,6 +31,9 @@ public class TicketService {
     @Autowired
     private TicketAttachmentRepository attachmentRepository;
 
+    @Autowired
+    private NotificationService notificationService;
+
     public Ticket getTicketById(Long id) {
         return ticketRepository.findById(id).orElseThrow(() -> new RuntimeException("Ticket not found"));
     }
@@ -71,6 +74,11 @@ public class TicketService {
         tech.setId(technicianId);
         ticket.setTechnician(tech);
         ticket.setStatus(TicketStatus.IN_PROGRESS);
+        
+        if (ticket.getCreator() != null) {
+            notificationService.createNotification(ticket.getCreator().getId(), "Your ticket #" + ticket.getId() + " has been picked up by a technician.", "INFO");
+        }
+        
         return ticketRepository.save(ticket);
     }
 
@@ -80,6 +88,11 @@ public class TicketService {
         if (resolutionNotes != null) {
             ticket.setResolutionNotes(resolutionNotes);
         }
+        
+        if (ticket.getCreator() != null) {
+            notificationService.createNotification(ticket.getCreator().getId(), "Ticket #" + ticket.getId() + " status updated to " + status + ". Notes: " + (resolutionNotes != null ? resolutionNotes : "None"), "SUCCESS");
+        }
+        
         return ticketRepository.save(ticket);
     }
 
@@ -92,7 +105,16 @@ public class TicketService {
         comment.setTicket(ticket);
         comment.setUser(user);
         comment.setContent(content);
-        return commentRepository.save(comment);
+        TicketComment saved = commentRepository.save(comment);
+
+        // Notify appropriate party
+        if (ticket.getCreator() != null && !ticket.getCreator().getId().equals(userId)) {
+            notificationService.createNotification(ticket.getCreator().getId(), "New comment on your ticket #" + ticket.getId(), "INFO");
+        } else if (ticket.getTechnician() != null && !ticket.getTechnician().getId().equals(userId)) {
+            notificationService.createNotification(ticket.getTechnician().getId(), "User commented on assigned ticket #" + ticket.getId(), "WARNING");
+        }
+
+        return saved;
     }
     
     public List<TicketComment> getComments(Long ticketId) {
