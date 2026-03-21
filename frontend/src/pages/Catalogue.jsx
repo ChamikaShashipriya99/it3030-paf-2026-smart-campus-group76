@@ -59,13 +59,21 @@ const Catalogue = () => {
                             <p style={{ margin: '8px 0' }}><strong>Location:</strong> {res.location}</p>
                             <p style={{ margin: '8px 0' }}><strong>Availability:</strong> {res.availabilityWindows}</p>
                             
-                            <div style={{ marginTop: '15px' }}>
+                            <div style={{ marginTop: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <span style={{
                                     backgroundColor: res.status === 'ACTIVE' ? '#2ecc71' : '#e74c3c',
                                     color: 'white', padding: '6px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: 'bold'
                                 }}>
                                     {res.status === 'ACTIVE' ? 'AVAILABLE' : 'OUT OF SERVICE'}
                                 </span>
+                                {res.status === 'ACTIVE' && (
+                                    <button 
+                                        onClick={() => window.location.href=`/book/${res.id}`} 
+                                        style={{ padding: '6px 12px', background: '#1da1f2', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}
+                                    >
+                                        Book Now
+                                    </button>
+                                )}
                             </div>
                         </div>
                     ))}

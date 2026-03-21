@@ -15,13 +15,22 @@ const Dashboard = () => {
                 <p><strong>Assigned Role:</strong> {user?.role}</p>
             </div>
             
-            <div style={{ marginTop: '30px', display: 'flex', gap: '15px' }}>
+            <div style={{ marginTop: '30px', display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
                 <Link to="/catalogue" style={{
                     padding: '10px 20px', textDecoration: 'none',
                     backgroundColor: '#1da1f2', color: 'white', border: 'none', borderRadius: '5px', fontWeight: 'bold'
                 }}>
                     Browse Resource Catalogue
                 </Link>
+
+                {user?.role === 'ROLE_ADMIN' && (
+                    <Link to="/admin/bookings" style={{
+                        padding: '10px 20px', textDecoration: 'none',
+                        backgroundColor: '#ff9800', color: 'white', border: 'none', borderRadius: '5px', fontWeight: 'bold'
+                    }}>
+                        Admin: Manage Bookings
+                    </Link>
+                )}
                 
                 <button 
                     onClick={logout}
