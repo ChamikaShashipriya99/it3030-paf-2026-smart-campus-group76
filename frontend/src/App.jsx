@@ -5,6 +5,10 @@ import Login from './pages/Login';
 import LoginSuccess from './pages/LoginSuccess';
 import Dashboard from './pages/Dashboard';
 import Catalogue from './pages/Catalogue';
+import BookResource from './pages/BookResource';
+import ManageBookings from './pages/ManageBookings';
+import ReportIssue from './pages/ReportIssue';
+import TechnicianDashboard from './pages/TechnicianDashboard';
 
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
@@ -31,6 +35,26 @@ function App() {
                     <Route path="/catalogue" element={
                         <PrivateRoute>
                             <Catalogue />
+                        </PrivateRoute>
+                    } />
+                    <Route path="/book/:id" element={
+                        <PrivateRoute>
+                            <BookResource />
+                        </PrivateRoute>
+                    } />
+                    <Route path="/admin/bookings" element={
+                        <PrivateRoute>
+                            <ManageBookings />
+                        </PrivateRoute>
+                    } />
+                    <Route path="/report/:id" element={
+                        <PrivateRoute>
+                            <ReportIssue />
+                        </PrivateRoute>
+                    } />
+                    <Route path="/technician/desk" element={
+                        <PrivateRoute>
+                            <TechnicianDashboard />
                         </PrivateRoute>
                     } />
                     

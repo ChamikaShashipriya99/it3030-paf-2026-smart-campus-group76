@@ -67,12 +67,20 @@ const Catalogue = () => {
                                     {res.status === 'ACTIVE' ? 'AVAILABLE' : 'OUT OF SERVICE'}
                                 </span>
                                 {res.status === 'ACTIVE' && (
-                                    <button 
-                                        onClick={() => window.location.href=`/book/${res.id}`} 
-                                        style={{ padding: '6px 12px', background: '#1da1f2', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}
-                                    >
-                                        Book Now
-                                    </button>
+                                    <div style={{display: 'flex', gap: '8px'}}>
+                                        <button 
+                                            onClick={() => window.location.href=`/book/${res.id}`} 
+                                            style={{ padding: '6px 12px', background: '#1da1f2', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}
+                                        >
+                                            Book Now
+                                        </button>
+                                        <button 
+                                            onClick={() => window.location.href=`/report/${res.id}`} 
+                                            style={{ padding: '6px 12px', background: '#e74c3c', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}
+                                        >
+                                            Report Issue
+                                        </button>
+                                    </div>
                                 )}
                             </div>
                         </div>

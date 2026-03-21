@@ -31,6 +31,15 @@ const Dashboard = () => {
                         Admin: Manage Bookings
                     </Link>
                 )}
+
+                {(user?.role === 'ROLE_TECHNICIAN' || user?.role === 'ROLE_ADMIN') && (
+                    <Link to="/technician/desk" style={{
+                        padding: '10px 20px', textDecoration: 'none',
+                        backgroundColor: '#9b59b6', color: 'white', border: 'none', borderRadius: '5px', fontWeight: 'bold'
+                    }}>
+                        Service Desk (Tickets)
+                    </Link>
+                )}
                 
                 <button 
                     onClick={logout}
