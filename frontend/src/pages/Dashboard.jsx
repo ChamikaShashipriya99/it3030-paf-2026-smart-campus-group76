@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
     const { user, logout } = useContext(AuthContext);
@@ -14,15 +15,24 @@ const Dashboard = () => {
                 <p><strong>Assigned Role:</strong> {user?.role}</p>
             </div>
             
-            <button 
-                onClick={logout}
-                style={{
-                    padding: '10px 20px', marginTop: '30px', cursor: 'pointer',
-                    backgroundColor: '#d9534f', color: 'white', border: 'none', borderRadius: '5px'
-                }}
-            >
-                Logout securely
-            </button>
+            <div style={{ marginTop: '30px', display: 'flex', gap: '15px' }}>
+                <Link to="/catalogue" style={{
+                    padding: '10px 20px', textDecoration: 'none',
+                    backgroundColor: '#1da1f2', color: 'white', border: 'none', borderRadius: '5px', fontWeight: 'bold'
+                }}>
+                    Browse Resource Catalogue
+                </Link>
+                
+                <button 
+                    onClick={logout}
+                    style={{
+                        padding: '10px 20px', cursor: 'pointer',
+                        backgroundColor: '#d9534f', color: 'white', border: 'none', borderRadius: '5px'
+                    }}
+                >
+                    Logout securely
+                </button>
+            </div>
         </div>
     );
 };
