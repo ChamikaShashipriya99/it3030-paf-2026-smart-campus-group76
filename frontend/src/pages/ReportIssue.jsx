@@ -10,7 +10,7 @@ const ReportIssue = () => {
     const { user } = useContext(AuthContext);
     const { showNotification } = useContext(NotificationContext);
     const [resource, setResource] = useState(null);
-    const [formData, setFormData] = useState({ category: 'IT_EQUIPMENT', priority: 'MEDIUM', description: '' });
+    const [formData, setFormData] = useState({ category: 'IT_EQUIPMENT', priority: 'MEDIUM', description: '', contactDetails: '' });
     const [files, setFiles] = useState([]);
 
     useEffect(() => {
@@ -30,7 +30,8 @@ const ReportIssue = () => {
                 resourceId: Number(id),
                 category: formData.category,
                 priority: formData.priority,
-                description: formData.description
+                description: formData.description,
+                contactDetails: formData.contactDetails
             });
             const ticketId = res.data.id;
 
@@ -79,6 +80,12 @@ const ReportIssue = () => {
                     <textarea required rows="4" value={formData.description} placeholder="Describe exactly what is broken..."
                               onChange={e => setFormData({...formData, description: e.target.value})} 
                               style={{ width: '100%', padding: '10px', marginTop: '8px', border: '1px solid #ccc', borderRadius: '6px' }} />
+                </div>
+                <div>
+                    <label style={{fontWeight: 'bold'}}>Preferred Contact Details (Email/Phone)</label>
+                    <input required type="text" value={formData.contactDetails} placeholder="e.g. john@university.edu or 0771234567"
+                           onChange={e => setFormData({...formData, contactDetails: e.target.value})} 
+                           style={{ width: '100%', padding: '10px', marginTop: '8px', border: '1px solid #ccc', borderRadius: '6px' }} />
                 </div>
                 <div>
                     <label style={{fontWeight: 'bold'}}>Evidence Attachments (Optional, max 3)</label>

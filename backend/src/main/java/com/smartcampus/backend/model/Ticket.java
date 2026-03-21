@@ -32,6 +32,9 @@ public class Ticket {
     @Column(nullable = false)
     private String priority; // "LOW", "MEDIUM", "HIGH"
 
+    @Column(nullable = false, length = 200)
+    private String contactDetails;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private TicketStatus status;
@@ -57,6 +60,8 @@ public class Ticket {
     public void setDescription(String description) { this.description = description; }
     public String getPriority() { return priority; }
     public void setPriority(String priority) { this.priority = priority; }
+    public String getContactDetails() { return contactDetails; }
+    public void setContactDetails(String contactDetails) { this.contactDetails = contactDetails; }
     public TicketStatus getStatus() { return status; }
     public void setStatus(TicketStatus status) { this.status = status; }
     public String getResolutionNotes() { return resolutionNotes; }

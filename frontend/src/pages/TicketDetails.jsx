@@ -63,6 +63,34 @@ const TicketDetails = () => {
             </div>
             
             <p><strong>Description:</strong><br/>{ticket.description}</p>
+            <p><strong>Contact Details:</strong> {ticket.contactDetails}</p>
+            {ticket.resolutionNotes && <p><strong>Resolution/Notes:</strong> <span style={{color: '#d35400'}}>{ticket.resolutionNotes}</span></p>}
+
+            {user.role !== 'ROLE_USER' && (
+                <div style={{marginTop: '20px', padding: '15px', background: '#fcf3cf', borderRadius: '8px'}}>
+                    <label><strong>Technician Actions - Override Status: </strong> </label>
+                    <select value={ticket.status} onChange={async (e) => {
+                        const newStatus = e.target.value;
+                        let notes = ticket.resolutionNotes || '';
+                        if (newStatus === 'REJECTED' || newStatus === 'CLOSED' || newStatus === 'RESOLVED') {
+                            const res = prompt(`Enter ${newStatus.toLowerCase()} notes/reason:`, notes);
+                            if (res === null) return;
+                            notes = res;
+                        }
+                        try {
+                            await api.put(`/tickets/${ticket.id}/status`, { status: newStatus, resolutionNotes: notes });
+                            fetchData();
+                            showNotification(`Ticket successfully marked as ${newStatus}`, 'success');
+                        } catch (err) { showNotification('Status Update Failed', 'error'); }
+                    }} style={{padding: '6px 10px', borderRadius: '4px', border: '1px solid #f39c12', fontWeight: 'bold'}}>
+                        <option value="OPEN">OPEN</option>
+                        <option value="IN_PROGRESS">IN_PROGRESS</option>
+                        <option value="RESOLVED">RESOLVED</option>
+                        <option value="CLOSED">CLOSED</option>
+                        <option value="REJECTED">REJECTED</option>
+                    </select>
+                </div>
+            )}
             
             {attachments.length > 0 && (
                 <div style={{marginTop: '30px'}}>

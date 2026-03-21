@@ -21,6 +21,9 @@ public class BookingService {
     @Autowired
     private ResourceService resourceService;
 
+    @Autowired
+    private NotificationService notificationService;
+
     public List<Booking> getUserBookings(Long userId) {
         return bookingRepository.findByUserId(userId);
     }
@@ -70,6 +73,17 @@ public class BookingService {
         if (status == BookingStatus.REJECTED && reason != null) {
             booking.setRejectionReason(reason);
         }
-        return bookingRepository.save(booking);
+        
+        Booking saved = bookingRepository.save(booking);
+
+        if (status == BookingStatus.APPROVED || status == BookingStatus.REJECTED) {
+            String msg = "Your booking for " + booking.getResource().getName() + " was " + status + ".";
+            if (status == BookingStatus.REJECTED && reason != null) {
+                msg += " Reason: " + reason;
+            }
+            notificationService.createNotification(booking.getUser().getId(), msg, status == BookingStatus.APPROVED ? "SUCCESS" : "WARNING");
+        }
+
+        return saved;
     }
 }

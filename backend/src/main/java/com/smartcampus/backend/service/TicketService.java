@@ -50,7 +50,7 @@ public class TicketService {
         return ticketRepository.findByTechnicianId(technicianId);
     }
 
-    public Ticket createTicket(Long creatorId, Long resourceId, String category, String description, String priority) {
+    public Ticket createTicket(Long creatorId, Long resourceId, String category, String description, String priority, String contactDetails) {
         Resource resource = resourceService.getResourceById(resourceId);
         Ticket ticket = new Ticket();
         
@@ -62,6 +62,7 @@ public class TicketService {
         ticket.setCategory(category);
         ticket.setDescription(description);
         ticket.setPriority(priority);
+        ticket.setContactDetails(contactDetails);
         ticket.setStatus(TicketStatus.OPEN);
         ticket.setCreatedAt(LocalDateTime.now());
         

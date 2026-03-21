@@ -50,8 +50,9 @@ public class TicketController {
             String category = (String) payload.get("category");
             String description = (String) payload.get("description");
             String priority = (String) payload.get("priority");
+            String contactDetails = (String) payload.get("contactDetails");
 
-            Ticket ticket = ticketService.createTicket(creatorId, resourceId, category, description, priority);
+            Ticket ticket = ticketService.createTicket(creatorId, resourceId, category, description, priority, contactDetails);
             return ResponseEntity.ok(ticket);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));
