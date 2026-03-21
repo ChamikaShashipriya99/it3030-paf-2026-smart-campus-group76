@@ -2,11 +2,13 @@ import React, { useState, useContext, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../api/axiosConfig';
 import { AuthContext } from '../context/AuthContext';
+import { NotificationContext } from '../context/NotificationContext';
 
 const ReportIssue = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const { user } = useContext(AuthContext);
+    const { showNotification } = useContext(NotificationContext);
     const [resource, setResource] = useState(null);
     const [formData, setFormData] = useState({ category: 'IT_EQUIPMENT', priority: 'MEDIUM', description: '' });
 
@@ -24,10 +26,10 @@ const ReportIssue = () => {
                 priority: formData.priority,
                 description: formData.description
             });
-            alert('Incident Ticket submitted successfully! IT Support has been notified.');
+            showNotification('Incident Ticket submitted successfully! IT Support has been notified.', 'success');
             navigate('/dashboard');
         } catch (err) {
-            alert(err.response?.data?.message || 'Failed to submit ticket.');
+            showNotification(err.response?.data?.message || 'Failed to submit ticket.', 'error');
         }
     };
 

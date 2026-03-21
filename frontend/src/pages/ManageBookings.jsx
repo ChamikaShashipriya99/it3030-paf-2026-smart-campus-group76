@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import api from '../api/axiosConfig';
+import { NotificationContext } from '../context/NotificationContext';
 
 const ManageBookings = () => {
     const [bookings, setBookings] = useState([]);
+    const { showNotification } = useContext(NotificationContext);
     
     const fetchBookings = () => {
         api.get('/bookings').then(res => setBookings(res.data)).catch(err => console.error(err));
@@ -16,9 +18,9 @@ const ManageBookings = () => {
         try {
             await api.put(`/bookings/${id}/status`, { status: newStatus, rejectionReason: reason });
             fetchBookings(); // Refresh grid
-            alert(`Booking successfully marked as ${newStatus}`);
+            showNotification(`Booking successfully marked as ${newStatus}`, 'success');
         } catch (err) {
-            alert(err.response?.data?.message || 'Failed to update booking status due to conflicts.');
+            showNotification(err.response?.data?.message || 'Failed to update booking status due to conflicts.', 'error');
         }
     };
 

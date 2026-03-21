@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import api from '../api/axiosConfig';
 import { AuthContext } from '../context/AuthContext';
+import { NotificationContext } from '../context/NotificationContext';
 
 const TechnicianDashboard = () => {
     const { user } = useContext(AuthContext);
+    const { showNotification } = useContext(NotificationContext);
     const [tickets, setTickets] = useState([]);
 
     const fetchTickets = () => {
@@ -18,7 +20,8 @@ const TechnicianDashboard = () => {
         try {
             await api.put(`/tickets/${ticketId}/assign/${user.id}`);
             fetchTickets();
-        } catch (err) { alert('Assignment Failed'); }
+            showNotification('Ticket successfully claimed for review.', 'success');
+        } catch (err) { showNotification('Assignment Failed', 'error'); }
     };
 
     const resolveTicket = async (ticketId) => {
@@ -27,7 +30,8 @@ const TechnicianDashboard = () => {
             try {
                 await api.put(`/tickets/${ticketId}/status`, { status: 'RESOLVED', resolutionNotes: notes });
                 fetchTickets();
-            } catch (err) { alert('Resolution Update Failed'); }
+                showNotification('Ticket marked as resolved!', 'success');
+            } catch (err) { showNotification('Resolution Update Failed', 'error'); }
         }
     };
 

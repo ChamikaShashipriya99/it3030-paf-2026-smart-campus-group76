@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, AuthContext } from './context/AuthContext';
+import { NotificationProvider } from './context/NotificationContext';
 import Login from './pages/Login';
 import LoginSuccess from './pages/LoginSuccess';
 import Dashboard from './pages/Dashboard';
@@ -22,9 +23,10 @@ const PrivateRoute = ({ children }) => {
 function App() {
     return (
         <AuthProvider>
-            <Router>
-                <Navbar />
-                <div style={{ minHeight: 'calc(100vh - 70px)', paddingBottom: '40px' }}>
+            <NotificationProvider>
+                <Router>
+                    <Navbar />
+                    <div style={{ minHeight: 'calc(100vh - 70px)', paddingBottom: '40px' }}>
                     <Routes>
                         <Route path="/login" element={<Login />} />
                     <Route path="/login/success" element={<LoginSuccess />} />
@@ -61,11 +63,12 @@ function App() {
                         </PrivateRoute>
                     } />
                     
-                    {/* Default Route */}
-                    <Route path="/" element={<Navigate to="/dashboard" />} />
-                    </Routes>
-                </div>
-            </Router>
+                        {/* Default Route */}
+                        <Route path="/" element={<Navigate to="/dashboard" />} />
+                        </Routes>
+                    </div>
+                </Router>
+            </NotificationProvider>
         </AuthProvider>
     );
 }
