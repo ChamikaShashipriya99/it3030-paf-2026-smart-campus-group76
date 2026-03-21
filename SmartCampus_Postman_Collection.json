@@ -1,0 +1,125 @@
+{
+  "info": {
+    "name": "Smart Campus REST API - IT3030",
+    "description": "Comprehensive Postman Collection demonstrating endpoints for Facilities, Bookings, Tickets, and Notifications.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Resources (Module A)",
+      "item": [
+        {
+          "name": "Get All Resources",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/resources"
+          }
+        },
+        {
+          "name": "Create Resource",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Main Hall\",\n  \"type\": \"LECTURE_HALL\",\n  \"capacity\": 300,\n  \"location\": \"Block A\"\n}"
+            },
+            "url": "http://localhost:8080/api/resources"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Bookings (Module B)",
+      "item": [
+        {
+          "name": "Get User Bookings",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/bookings/user/1"
+          }
+        },
+        {
+          "name": "Create Booking",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 1,\n  \"resourceId\": 1,\n  \"startTime\": \"2026-05-10T10:00:00\",\n  \"endTime\": \"2026-05-10T12:00:00\",\n  \"purpose\": \"Annual Meeting\"\n}"
+            },
+            "url": "http://localhost:8080/api/bookings"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tickets & Attachments (Module C)",
+      "item": [
+        {
+          "name": "Create Ticket",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"creatorId\": 1,\n  \"resourceId\": 1,\n  \"category\": \"IT_EQUIPMENT\",\n  \"priority\": \"HIGH\",\n  \"description\": \"Projector is broken\",\n  \"contactDetails\": \"user@uni.edu\"\n}"
+            },
+            "url": "http://localhost:8080/api/tickets"
+          }
+        },
+        {
+          "name": "Update Ticket Status",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"RESOLVED\",\n  \"resolutionNotes\": \"Replaced bulb\"\n}"
+            },
+            "url": "http://localhost:8080/api/tickets/1/status"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Notifications (Module D)",
+      "item": [
+        {
+          "name": "Get Notifications Inbox",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/notifications/user/1"
+          }
+        },
+        {
+          "name": "Mark Read",
+          "request": {
+            "method": "PUT",
+            "url": "http://localhost:8080/api/notifications/1/read"
+          }
+        }
+      ]
+    }
+  ]
+}
