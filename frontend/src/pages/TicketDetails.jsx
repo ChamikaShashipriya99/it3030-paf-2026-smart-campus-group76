@@ -53,23 +53,57 @@ const TicketDetails = () => {
     if (!ticket) return <div style={{padding: '50px'}}>Loading...</div>;
 
     return (
-        <div style={{ maxWidth: '800px', margin: '40px auto', padding: '30px', background: '#fff', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
-            <button onClick={() => navigate(-1)} style={{background: 'none', border: 'none', cursor: 'pointer', color: '#1da1f2', fontWeight: 'bold', fontSize: '15px'}}>← Back</button>
-            <h2 style={{marginTop: '20px'}}>Ticket #{ticket.id}: {ticket.category} Issue</h2>
-            <div style={{display: 'flex', gap: '20px', marginBottom: '20px'}}>
-                <span style={{padding: '6px 12px', background: '#ecf0f1', borderRadius: '4px'}}>Status: <strong>{ticket.status}</strong></span>
-                <span style={{padding: '6px 12px', background: '#ecf0f1', borderRadius: '4px'}}>Priority: <strong>{ticket.priority}</strong></span>
-                <span style={{padding: '6px 12px', background: '#ecf0f1', borderRadius: '4px'}}>Resource: <strong>{ticket.resource?.name}</strong></span>
-            </div>
+        <div style={{ maxWidth: '900px', margin: '40px auto', padding: '0 20px' }}>
+            <button 
+                onClick={() => navigate(-1)} 
+                style={{ 
+                    background: 'transparent', border: 'none', color: 'var(--text-muted)', 
+                    cursor: 'pointer', fontWeight: 'bold', marginBottom: '25px', 
+                    display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px' 
+                }}
+            >
+                &larr; Back to Details
+            </button>
             
-            <p><strong>Description:</strong><br/>{ticket.description}</p>
-            <p><strong>Contact Details:</strong> {ticket.contactDetails}</p>
-            {ticket.resolutionNotes && <p><strong>Resolution/Notes:</strong> <span style={{color: '#d35400'}}>{ticket.resolutionNotes}</span></p>}
+            <div className="premium-card" style={{ padding: '0', overflow: 'hidden' }}>
+                <div style={{ background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)', padding: '40px', color: 'white' }}>
+                    <div style={{ fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '10px', opacity: 0.8 }}>Ticket Details</div>
+                    <h2 style={{ margin: 0, fontSize: '32px', letterSpacing: '-1px' }}>#{ticket.id}: {ticket.category} Issue</h2>
+                    <div style={{ display: 'flex', gap: '20px', marginTop: '20px', fontSize: '14px', opacity: 0.9 }}>
+                        <span style={{ padding: '6px 16px', background: 'rgba(255,255,255,0.15)', borderRadius: '20px' }}>Status: <strong>{ticket.status}</strong></span>
+                        <span style={{ padding: '6px 16px', background: 'rgba(255,255,255,0.15)', borderRadius: '20px' }}>Priority: <strong>{ticket.priority}</strong></span>
+                    </div>
+                </div>
+
+                <div style={{ padding: '40px' }}>
+                    <div style={{ background: 'rgba(255,255,255,0.02)', padding: '25px', borderRadius: '16px', border: '1px solid var(--border)', marginBottom: '30px' }}>
+                        <h4 style={{ margin: '0 0 15px 0', color: 'var(--primary)', fontSize: '14px', textTransform: 'uppercase' }}>Description & Information</h4>
+                        <p style={{ margin: '0 0 20px 0', lineHeight: 1.6, color: 'var(--text)' }}>{ticket.description}</p>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
+                            <span style={{ color: 'var(--text-muted)' }}>📍 Resource: <strong style={{color: 'var(--text)'}}>{ticket.resource?.name}</strong></span>
+                            <span style={{ color: 'var(--text-muted)' }}>📞 Contact: <strong style={{color: 'var(--text)'}}>{ticket.contactDetails}</strong></span>
+                        </div>
+                    </div>
+
+                    {ticket.resolutionNotes && (
+                        <div style={{ padding: '20px', background: 'rgba(34, 197, 94, 0.05)', border: '1px solid rgba(34, 197, 94, 0.2)', borderRadius: '16px', marginBottom: '30px' }}>
+                            <h4 style={{ margin: '0 0 10px 0', color: '#22c55e', fontSize: '13px', textTransform: 'uppercase' }}>Resolution Notes</h4>
+                            <p style={{ margin: 0, color: '#22c55e', fontWeight: '500' }}>{ticket.resolutionNotes}</p>
+                        </div>
+                    )}
 
             {user.role !== 'ROLE_USER' && (
-                <div style={{marginTop: '20px', padding: '15px', background: '#fcf3cf', borderRadius: '8px'}}>
-                    <label><strong>Technician Actions - Override Status: </strong> </label>
-                    <select value={ticket.status} onChange={async (e) => {
+                <div style={{
+                    marginTop: '20px', padding: '25px', 
+                    background: 'rgba(59, 130, 246, 0.03)', 
+                    borderRadius: '16px', border: '1px solid rgba(59, 130, 246, 0.2)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                    gap: '20px'
+                }}>
+                    <label style={{ fontSize: '14px', fontWeight: '600', color: 'var(--text-muted)' }}>
+                        🛠️ <span style={{color: 'var(--primary)'}}>Technician Control</span> • Override Status
+                    </label>
+                    <select value={ticket.status} className="premium-input" style={{ width: 'auto', padding: '8px 40px 8px 15px', margin: 0 }} onChange={async (e) => {
                         const newStatus = e.target.value;
                         let notes = ticket.resolutionNotes || '';
                         if (newStatus === 'REJECTED' || newStatus === 'CLOSED' || newStatus === 'RESOLVED') {
@@ -82,7 +116,7 @@ const TicketDetails = () => {
                             fetchData();
                             showNotification(`Ticket successfully marked as ${newStatus}`, 'success');
                         } catch (err) { showNotification('Status Update Failed', 'error'); }
-                    }} style={{padding: '6px 10px', borderRadius: '4px', border: '1px solid #f39c12', fontWeight: 'bold'}}>
+                    }}>
                         <option value="OPEN">OPEN</option>
                         <option value="IN_PROGRESS">IN_PROGRESS</option>
                         <option value="RESOLVED">RESOLVED</option>
@@ -93,45 +127,78 @@ const TicketDetails = () => {
             )}
             
             {attachments.length > 0 && (
-                <div style={{marginTop: '30px'}}>
-                    <h4>Attachments (Evidence)</h4>
-                    <div style={{display: 'flex', gap: '15px', flexWrap: 'wrap', padding: '15px', background: '#f8f9fa', borderRadius: '8px'}}>
+                <div style={{marginTop: '40px', paddingTop: '30px', borderTop: '1px solid var(--border)'}}>
+                    <h4 style={{ margin: '0 0 20px 0', fontSize: '18px', color: 'var(--text)' }}>Attachments (Evidence)</h4>
+                    <div style={{
+                        display: 'flex', gap: '20px', flexWrap: 'wrap', 
+                        padding: '25px', background: 'rgba(255,255,255,0.01)', 
+                        borderRadius: '16px', border: '1px solid var(--border)'
+                    }}>
                         {attachments.map(att => (
-                            <div key={att.id} style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                                <img src={`data:${att.contentType};base64,${att.data}`} alt="evidence" style={{maxWidth: '200px', borderRadius: '8px', border: '1px solid #ccc', boxShadow: '0 2px 5px rgba(0,0,0,0.1)'}} />
+                            <div key={att.id} style={{ 
+                                position: 'relative', 
+                                transition: 'transform 0.2s', 
+                                cursor: 'pointer' 
+                            }} 
+                            onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.02)'}
+                            onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}>
+                                <img 
+                                    src={`data:${att.contentType};base64,${att.data}`} 
+                                    alt="evidence" 
+                                    style={{
+                                        maxWidth: '220px', borderRadius: '12px', 
+                                        border: '1px solid var(--border)', 
+                                        boxShadow: '0 10px 25px rgba(0,0,0,0.3)'
+                                    }} 
+                                />
                             </div>
                         ))}
                     </div>
                 </div>
             )}
-
-            <hr style={{margin: '40px 0', borderTop: '1px solid #eee'}} />
             
-            <h3>Comments / Updates</h3>
-            <div style={{display: 'flex', flexDirection: 'column', gap: '15px', marginBottom: '30px'}}>
-                {comments.length === 0 ? <p style={{color: '#999'}}>No comments yet.</p> : comments.map(c => (
-                    <div key={c.id} style={{padding: '15px', background: c.user?.id === user.id ? '#eaf2f8' : '#f8f9fa', borderRadius: '8px', border: '1px solid #e1e8ed'}}>
-                        <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '8px'}}>
-                            <strong>{c.user?.name || 'User'} <span style={{fontSize: '11px', color: '#777', fontWeight: 'normal'}}>({c.user?.role.replace('ROLE_', '')})</span></strong>
-                            <span style={{fontSize: '12px', color: '#666'}}>{new Date(c.createdAt).toLocaleString()}</span>
+                    <div style={{ borderTop: '1px solid var(--border)', paddingTop: '40px' }}>
+                        <h3 style={{ margin: '0 0 25px 0', fontSize: '20px', letterSpacing: '-0.5px' }}>Comments & Updates</h3>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '40px' }}>
+                            {comments.length === 0 ? (
+                                <p style={{ color: 'var(--text-muted)', textAlign: 'center', padding: '30px', background: 'rgba(255,255,255,0.01)', borderRadius: '16px', border: '1px dashed var(--border)' }}>No comments yet.</p>
+                            ) : comments.map(c => (
+                                <div key={c.id} style={{ padding: '20px', background: c.user?.id === user.id ? 'rgba(59, 130, 246, 0.05)' : 'rgba(255,255,255,0.02)', borderRadius: '16px', border: '1px solid var(--border)' }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', alignItems: 'center' }}>
+                                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                                            <div style={{width: '32px', height: '32px', background: '#3b82f6', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', fontWeight: 'bold'}}>
+                                                {c.user?.name?.charAt(0) || 'U'}
+                                            </div>
+                                            <strong>{c.user?.name || 'User'} <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: 'normal', textTransform: 'uppercase', marginLeft: '5px' }}>({c.user?.role.replace('ROLE_', '')})</span></strong>
+                                        </div>
+                                        <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{new Date(c.createdAt).toLocaleString()}</span>
+                                    </div>
+                                    <p style={{ margin: '0 0 15px 0', whiteSpace: 'pre-wrap', lineHeight: 1.5 }}>{c.content}</p>
+                                    {c.user?.id === user.id && (
+                                        <button onClick={() => handleDeleteComment(c.id)} style={{ fontSize: '12px', color: '#ef4444', background: 'none', border: 'none', padding: 0, cursor: 'pointer', fontWeight: 'bold', opacity: 0.8 }}>
+                                            &times; Delete Comment
+                                        </button>
+                                    )}
+                                </div>
+                            ))}
                         </div>
-                        <p style={{margin: '0 0 10px 0', whiteSpace: 'pre-wrap'}}>{c.content}</p>
-                        {c.user?.id === user.id && (
-                            <button onClick={() => handleDeleteComment(c.id)} style={{fontSize: '12px', color: '#e74c3c', background: 'none', border: 'none', padding: 0, cursor: 'pointer', fontWeight: 'bold'}}>
-                                Delete
-                            </button>
-                        )}
-                    </div>
-                ))}
-            </div>
 
-            <form onSubmit={handleAddComment} style={{display: 'flex', flexDirection: 'column', gap: '10px'}}>
-                <textarea rows="3" required placeholder="Add a comment or update..." value={newComment} onChange={e => setNewComment(e.target.value)}
-                    style={{padding: '12px', borderRadius: '6px', border: '1px solid #ccc', resize: 'vertical'}}/>
-                <button type="submit" style={{alignSelf: 'flex-start', padding: '10px 20px', background: '#2ecc71', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold'}}>
-                    Post Comment
-                </button>
-            </form>
+                        <form onSubmit={handleAddComment} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                            <textarea rows="4" required placeholder="Add a comment or update..." value={newComment} 
+                                onChange={e => setNewComment(e.target.value)}
+                                className="premium-input"
+                                style={{ resize: 'vertical' }} />
+                            <button type="submit" style={{ 
+                                alignSelf: 'flex-start', padding: '12px 30px', background: 'var(--primary)', 
+                                color: 'white', border: 'none', borderRadius: '12px', cursor: 'pointer', 
+                                fontWeight: '700', fontSize: '14px', transition: 'all 0.2s' 
+                            }}>
+                                Post Comment
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

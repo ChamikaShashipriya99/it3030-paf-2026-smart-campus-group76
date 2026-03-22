@@ -34,7 +34,7 @@ Powerful tools for managing campus resources and maintenance.
 
 ---
 
-## 🛠️ Portfolios & Modules
+## 🛠️ Modules
 
 ### Module A: Facilities & Assets Catalogue
 *   **View Toggle**: Users can choose their preferred browsing experience (List vs Grid).
@@ -87,5 +87,5 @@ We have implemented several "Optional Innovations" to secure maximum marks:
 
 ---
 
-> [!NOTE]  
-> This project was developed with a focus on **Security**, **Scalability**, and **User Experience**. All forms are protected against invalid data entry and unauthorized access.
+**Student Name**: Kumarathunga R C S  
+**IT Number**: IT23257054  

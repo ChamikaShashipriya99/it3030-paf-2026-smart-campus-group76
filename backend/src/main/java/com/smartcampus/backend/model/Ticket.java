@@ -41,6 +41,7 @@ public class Ticket {
     @Column(nullable = false, length = 200)
     private String contactDetails;
 
+    @NotNull(message = "Status is required")
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private TicketStatus status;

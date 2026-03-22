@@ -33,6 +33,7 @@ public class Booking {
     @Column(nullable = false)
     private String purpose;
 
+    @NotNull(message = "Status is required")
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private BookingStatus status;
