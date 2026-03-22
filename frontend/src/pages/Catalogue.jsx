@@ -111,29 +111,97 @@ const Catalogue = () => {
             </div>
 
             {showAddForm && (
-                <form onSubmit={handleAdd} style={{ background: '#f8f9fa', padding: '20px', borderRadius: '8px', marginBottom: '20px', border: '1px solid #ddd' }}>
-                    <h3 style={{marginTop: 0}}>{isEditing ? 'Edit Resource' : 'Create New Resource'}</h3>
-                    <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
-                        <input required placeholder="Name (e.g. Hall A)" value={newRes.name} onChange={e => setNewRes({...newRes, name: e.target.value})} style={{padding: '8px'}} />
-                        <select value={newRes.type} onChange={e => setNewRes({...newRes, type: e.target.value})} style={{padding: '8px'}}>
-                            <option value="LECTURE_HALL">Lecture Hall</option>
-                            <option value="LAB">Laboratory</option>
-                            <option value="MEETING_ROOM">Meeting Room</option>
-                            <option value="EQUIPMENT">Equipment</option>
-                        </select>
-                        <input required type="number" placeholder="Capacity" value={newRes.capacity} onChange={e => setNewRes({...newRes, capacity: parseInt(e.target.value) || 0})} style={{padding: '8px', width: '100px'}} />
-                        <input required placeholder="Location" value={newRes.location} onChange={e => setNewRes({...newRes, location: e.target.value})} style={{padding: '8px'}} />
-                        <select value={newRes.status} onChange={e => setNewRes({...newRes, status: e.target.value})} style={{padding: '8px'}}>
-                            <option value="ACTIVE">ACTIVE</option>
-                            <option value="MAINTENANCE">MAINTENANCE</option>
-                            <option value="INACTIVE">INACTIVE</option>
-                        </select>
-                        <input required type="time" placeholder="Start Time" value={newRes.startTime} onChange={e => setNewRes({...newRes, startTime: e.target.value})} style={{padding: '8px'}} />
-                        <input required type="time" placeholder="End Time" value={newRes.endTime} onChange={e => setNewRes({...newRes, endTime: e.target.value})} style={{padding: '8px'}} />
-                        <input type="file" accept="image/*" onChange={e => setResImage(e.target.files[0])} style={{padding: '8px', border: '1px solid #ccc', borderRadius: '4px'}} />
-                        <button type="submit" style={{ padding: '8px 20px', background: '#1da1f2', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>Save / Upload</button>
+                <div className="premium-card" style={{ padding: '40px', marginBottom: '40px', background: 'white' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
+                        <h3 style={{ margin: 0, fontSize: '24px', color: 'var(--text-main)' }}>
+                            {isEditing ? '⚒️ Edit Resource' : '✨ Create New Resource'}
+                        </h3>
+                        <button onClick={() => setShowAddForm(false)} style={{ background: 'transparent', border: 'none', fontSize: '20px', cursor: 'pointer', color: 'var(--text-muted)' }}>&times;</button>
                     </div>
-                </form>
+
+                    <form onSubmit={handleAdd} style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '20px' }}>
+                            <div>
+                                <label className="form-label">Facility Name</label>
+                                <input required placeholder="e.g. Lecture Hall A-101" value={newRes.name} 
+                                    className="premium-input"
+                                    onChange={e => setNewRes({...newRes, name: e.target.value})} />
+                            </div>
+                            <div>
+                                <label className="form-label">Category</label>
+                                <select value={newRes.type} className="premium-input"
+                                        onChange={e => setNewRes({...newRes, type: e.target.value})}>
+                                    <option value="LECTURE_HALL">Lecture Hall</option>
+                                    <option value="LAB">Laboratory</option>
+                                    <option value="MEETING_ROOM">Meeting Room</option>
+                                    <option value="EQUIPMENT">Equipment</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div className="form-grid">
+                            <div>
+                                <label className="form-label">Location / Building</label>
+                                <input required placeholder="e.g. New Building, 3rd Floor" value={newRes.location} 
+                                    className="premium-input"
+                                    onChange={e => setNewRes({...newRes, location: e.target.value})} />
+                            </div>
+                            <div>
+                                <label className="form-label">Capacity (Pax)</label>
+                                <input required type="number" value={newRes.capacity} 
+                                    className="premium-input"
+                                    onChange={e => setNewRes({...newRes, capacity: parseInt(e.target.value) || 0})} />
+                            </div>
+                            <div>
+                                <label className="form-label">Operational Status</label>
+                                <select value={newRes.status} className="premium-input"
+                                        onChange={e => setNewRes({...newRes, status: e.target.value})}>
+                                    <option value="ACTIVE">ACTIVE</option>
+                                    <option value="MAINTENANCE">MAINTENANCE</option>
+                                    <option value="INACTIVE">INACTIVE</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div className="form-grid" style={{ background: '#f8fafc', padding: '20px', borderRadius: '16px' }}>
+                            <div>
+                                <label className="form-label">Daily Available From</label>
+                                <input required type="time" value={newRes.startTime} 
+                                    className="premium-input"
+                                    onChange={e => setNewRes({...newRes, startTime: e.target.value})} />
+                            </div>
+                            <div>
+                                <label className="form-label">Daily Available Until</label>
+                                <input required type="time" value={newRes.endTime} 
+                                    className="premium-input"
+                                    onChange={e => setNewRes({...newRes, endTime: e.target.value})} />
+                            </div>
+                            <div>
+                                <label className="form-label">Featured Image</label>
+                                <input type="file" accept="image/*" 
+                                    onChange={e => setResImage(e.target.files[0])} 
+                                    style={{ fontSize: '12px' }} />
+                            </div>
+                        </div>
+
+                        <div style={{ display: 'flex', gap: '15px', marginTop: '10px' }}>
+                            <button type="submit" style={{ 
+                                flex: 2, padding: '16px', background: 'var(--primary)', color: 'white', 
+                                border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '15px', 
+                                fontWeight: '700', boxShadow: '0 10px 15px -3px rgba(59, 130, 246, 0.3)'
+                            }}>
+                                {isEditing ? 'Update Resource Details' : 'Publish New Resource'}
+                            </button>
+                            <button type="button" onClick={() => setShowAddForm(false)} style={{ 
+                                flex: 1, padding: '16px', background: '#f1f5f9', color: '#64748b', 
+                                border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '15px', 
+                                fontWeight: '700' 
+                            }}>
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
             )}
 
             {loading ? (

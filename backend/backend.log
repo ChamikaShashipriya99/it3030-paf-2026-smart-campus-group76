@@ -28533,3 +28533,4647 @@ Caused by: java.sql.SQLException: Field 'password' doesn't have a default value
         n1_0.user_id=? 
     order by
         n1_0.created_at desc
+2026-03-22T15:04:44.290+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:04:44.297+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:04:44.304+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:04:44.306+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:04:44.306+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:04:44.313+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:04:50.268+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:04:50.272+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:04:50.278+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:04:50.282+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:04:50.282+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:04:54.267+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:04:54.272+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:04:54.279+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:04:54.282+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:04:54.284+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:04:54.288+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:05:04.261+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:05:04.268+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:05:04.272+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:05:04.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:05:04.276+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:05:04.277+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:05:14.268+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:05:14.272+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:05:14.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:05:14.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:05:14.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:05:14.282+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:05:18.265+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:05:18.268+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:05:18.273+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:05:18.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:05:18.276+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:05:24.276+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:05:24.276+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:05:24.282+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:05:24.286+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:05:24.288+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:05:24.289+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:05:34.276+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:05:34.276+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:05:34.286+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:05:34.290+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:05:34.290+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:05:34.290+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:05:44.044+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:05:44.047+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:05:44.049+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:05:44.052+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:05:44.052+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:05:44.056+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:05:46.564+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:05:46.576+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:05:46.585+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:05:46.586+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:05:46.593+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:05:46.609+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:05:46.622+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:05:46.626+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:05:46.626+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:05:46.631+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:05:46.642+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:05:46.657+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:05:46.660+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:05:46.662+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:05:46.665+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:05:49.936+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:05:49.937+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/tickets/user/3
+2026-03-22T15:05:49.940+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/tickets/user/3
+2026-03-22T15:05:49.948+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:05:49.948+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/tickets/user/3
+2026-03-22T15:05:49.958+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:05:49.958+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:05:49.962+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:05:49.963+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:05:49.964+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/tickets/user/3
+2026-03-22T15:05:49.966+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.category,
+        t1_0.contact_details,
+        t1_0.created_at,
+        t1_0.creator_id,
+        t1_0.description,
+        t1_0.priority,
+        t1_0.resolution_notes,
+        t1_0.resource_id,
+        t1_0.status,
+        t1_0.technician_id 
+    from
+        tickets t1_0 
+    where
+        t1_0.creator_id=?
+2026-03-22T15:05:49.968+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:05:49.969+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:05:49.971+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type 
+    from
+        resources r1_0 
+    where
+        r1_0.id=?
+2026-03-22T15:05:49.979+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:05:49.983+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/tickets/user/3
+2026-03-22T15:05:49.988+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:05:49.991+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/tickets/user/3
+2026-03-22T15:05:49.992+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.category,
+        t1_0.contact_details,
+        t1_0.created_at,
+        t1_0.creator_id,
+        t1_0.description,
+        t1_0.priority,
+        t1_0.resolution_notes,
+        t1_0.resource_id,
+        t1_0.status,
+        t1_0.technician_id 
+    from
+        tickets t1_0 
+    where
+        t1_0.creator_id=?
+2026-03-22T15:05:49.995+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:05:49.997+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type 
+    from
+        resources r1_0 
+    where
+        r1_0.id=?
+2026-03-22T15:05:50.002+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:05:57.280+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:05:57.280+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/tickets/1
+2026-03-22T15:05:57.280+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/tickets/1
+2026-03-22T15:05:57.286+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:05:57.286+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/tickets/1
+2026-03-22T15:05:57.294+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:05:57.294+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:05:57.294+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/tickets/1
+2026-03-22T15:05:57.294+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:05:57.294+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:05:57.294+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.category,
+        t1_0.contact_details,
+        t1_0.created_at,
+        t1_0.creator_id,
+        c1_0.id,
+        c1_0.email,
+        c1_0.name,
+        c1_0.role,
+        t1_0.description,
+        t1_0.priority,
+        t1_0.resolution_notes,
+        t1_0.resource_id,
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type,
+        t1_0.status,
+        t2_0.id,
+        t2_0.email,
+        t2_0.name,
+        t2_0.role 
+    from
+        tickets t1_0 
+    join
+        users c1_0 
+            on c1_0.id=t1_0.creator_id 
+    join
+        resources r1_0 
+            on r1_0.id=t1_0.resource_id 
+    left join
+        users t2_0 
+            on t2_0.id=t1_0.technician_id 
+    where
+        t1_0.id=?
+2026-03-22T15:05:57.304+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:05:57.319+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/tickets/1
+2026-03-22T15:05:57.325+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/tickets/1/comments
+2026-03-22T15:05:57.325+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:05:57.325+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/tickets/1
+2026-03-22T15:05:57.325+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/tickets/1/comments
+2026-03-22T15:05:57.332+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.category,
+        t1_0.contact_details,
+        t1_0.created_at,
+        t1_0.creator_id,
+        c1_0.id,
+        c1_0.email,
+        c1_0.name,
+        c1_0.role,
+        t1_0.description,
+        t1_0.priority,
+        t1_0.resolution_notes,
+        t1_0.resource_id,
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type,
+        t1_0.status,
+        t2_0.id,
+        t2_0.email,
+        t2_0.name,
+        t2_0.role 
+    from
+        tickets t1_0 
+    join
+        users c1_0 
+            on c1_0.id=t1_0.creator_id 
+    join
+        resources r1_0 
+            on r1_0.id=t1_0.resource_id 
+    left join
+        users t2_0 
+            on t2_0.id=t1_0.technician_id 
+    where
+        t1_0.id=?
+2026-03-22T15:05:57.339+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:05:57.342+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/tickets/1/comments
+2026-03-22T15:05:57.343+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        tc1_0.id,
+        tc1_0.content,
+        tc1_0.created_at,
+        tc1_0.ticket_id,
+        tc1_0.user_id 
+    from
+        ticket_comment tc1_0 
+    where
+        tc1_0.ticket_id=? 
+    order by
+        tc1_0.created_at
+2026-03-22T15:05:57.347+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.category,
+        t1_0.contact_details,
+        t1_0.created_at,
+        t1_0.creator_id,
+        c1_0.id,
+        c1_0.email,
+        c1_0.name,
+        c1_0.role,
+        t1_0.description,
+        t1_0.priority,
+        t1_0.resolution_notes,
+        t1_0.resource_id,
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type,
+        t1_0.status,
+        t2_0.id,
+        t2_0.email,
+        t2_0.name,
+        t2_0.role 
+    from
+        tickets t1_0 
+    join
+        users c1_0 
+            on c1_0.id=t1_0.creator_id 
+    join
+        resources r1_0 
+            on r1_0.id=t1_0.resource_id 
+    left join
+        users t2_0 
+            on t2_0.id=t1_0.technician_id 
+    where
+        t1_0.id=?
+2026-03-22T15:05:57.354+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:05:57.359+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/tickets/1/comments
+2026-03-22T15:05:57.362+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/tickets/1/attachments
+2026-03-22T15:05:57.365+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:05:57.365+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/tickets/1/attachments
+2026-03-22T15:05:57.367+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/tickets/1/comments
+2026-03-22T15:05:57.369+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        tc1_0.id,
+        tc1_0.content,
+        tc1_0.created_at,
+        tc1_0.ticket_id,
+        tc1_0.user_id 
+    from
+        ticket_comment tc1_0 
+    where
+        tc1_0.ticket_id=? 
+    order by
+        tc1_0.created_at
+2026-03-22T15:05:57.369+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:05:57.373+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.category,
+        t1_0.contact_details,
+        t1_0.created_at,
+        t1_0.creator_id,
+        c1_0.id,
+        c1_0.email,
+        c1_0.name,
+        c1_0.role,
+        t1_0.description,
+        t1_0.priority,
+        t1_0.resolution_notes,
+        t1_0.resource_id,
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type,
+        t1_0.status,
+        t2_0.id,
+        t2_0.email,
+        t2_0.name,
+        t2_0.role 
+    from
+        tickets t1_0 
+    join
+        users c1_0 
+            on c1_0.id=t1_0.creator_id 
+    join
+        resources r1_0 
+            on r1_0.id=t1_0.resource_id 
+    left join
+        users t2_0 
+            on t2_0.id=t1_0.technician_id 
+    where
+        t1_0.id=?
+2026-03-22T15:05:57.373+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/tickets/1/attachments
+2026-03-22T15:05:57.374+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        ta1_0.id,
+        ta1_0.content_type,
+        ta1_0.data,
+        ta1_0.file_name,
+        ta1_0.ticket_id 
+    from
+        ticket_attachment ta1_0 
+    where
+        ta1_0.ticket_id=?
+2026-03-22T15:05:57.379+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:05:57.385+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/tickets/1/attachments
+2026-03-22T15:05:57.391+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:05:57.391+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/tickets/1/attachments
+2026-03-22T15:05:57.391+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        ta1_0.id,
+        ta1_0.content_type,
+        ta1_0.data,
+        ta1_0.file_name,
+        ta1_0.ticket_id 
+    from
+        ticket_attachment ta1_0 
+    where
+        ta1_0.ticket_id=?
+2026-03-22T15:06:02.310+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:06:02.310+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/tickets/user/3
+2026-03-22T15:06:02.310+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/tickets/user/3
+2026-03-22T15:06:02.317+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/tickets/user/3
+2026-03-22T15:06:02.318+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:06:02.326+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:02.327+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:02.328+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:06:02.328+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/tickets/user/3
+2026-03-22T15:06:02.330+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:06:02.330+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.category,
+        t1_0.contact_details,
+        t1_0.created_at,
+        t1_0.creator_id,
+        t1_0.description,
+        t1_0.priority,
+        t1_0.resolution_notes,
+        t1_0.resource_id,
+        t1_0.status,
+        t1_0.technician_id 
+    from
+        tickets t1_0 
+    where
+        t1_0.creator_id=?
+2026-03-22T15:06:02.333+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:06:02.333+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:06:02.335+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type 
+    from
+        resources r1_0 
+    where
+        r1_0.id=?
+2026-03-22T15:06:02.340+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:06:02.343+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/tickets/user/3
+2026-03-22T15:06:02.356+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:02.358+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/tickets/user/3
+2026-03-22T15:06:02.362+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        t1_0.id,
+        t1_0.category,
+        t1_0.contact_details,
+        t1_0.created_at,
+        t1_0.creator_id,
+        t1_0.description,
+        t1_0.priority,
+        t1_0.resolution_notes,
+        t1_0.resource_id,
+        t1_0.status,
+        t1_0.technician_id 
+    from
+        tickets t1_0 
+    where
+        t1_0.creator_id=?
+2026-03-22T15:06:02.362+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:06:02.367+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type 
+    from
+        resources r1_0 
+    where
+        r1_0.id=?
+2026-03-22T15:06:02.372+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:06:05.802+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:06:05.808+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:06:05.815+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:05.818+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:06:05.820+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:06:10.271+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:06:10.276+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:10.276+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:06:10.276+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:06:12.309+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:06:12.312+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:06:12.315+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:12.319+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:06:12.320+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:06:12.322+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:06:12.782+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:06:12.785+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources
+2026-03-22T15:06:12.785+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources
+2026-03-22T15:06:12.793+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/resources
+2026-03-22T15:06:12.796+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:12.803+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:06:12.803+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:12.805+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:06:12.807+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/resources
+2026-03-22T15:06:12.810+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:06:12.814+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type 
+    from
+        resources r1_0
+2026-03-22T15:06:12.854+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/resources
+2026-03-22T15:06:12.859+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:12.861+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/resources
+2026-03-22T15:06:12.865+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type 
+    from
+        resources r1_0
+2026-03-22T15:06:16.892+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/auth/me
+2026-03-22T15:06:16.892+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/auth/me
+2026-03-22T15:06:16.892+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+2026-03-22T15:06:16.901+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:16.904+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+2026-03-22T15:06:16.904+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:16.904+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+2026-03-22T15:06:16.912+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:16.919+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+2026-03-22T15:06:16.920+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:16.926+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources/4
+2026-03-22T15:06:16.926+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:06:16.926+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources/4
+2026-03-22T15:06:16.926+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/resources/4
+2026-03-22T15:06:16.932+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:16.934+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:06:16.934+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:16.935+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:06:16.936+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/resources/4
+2026-03-22T15:06:16.937+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:06:16.938+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type 
+    from
+        resources r1_0 
+    where
+        r1_0.id=?
+2026-03-22T15:06:16.939+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:06:16.944+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:16.945+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:06:16.946+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:06:16.948+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:06:16.980+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/resources/4
+2026-03-22T15:06:16.985+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:16.989+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/resources/4
+2026-03-22T15:06:16.989+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type 
+    from
+        resources r1_0 
+    where
+        r1_0.id=?
+2026-03-22T15:06:18.519+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+2026-03-22T15:06:18.525+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:18.527+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+2026-03-22T15:06:18.527+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:18.533+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+2026-03-22T15:06:18.541+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:18.543+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+2026-03-22T15:06:18.544+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:18.548+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:06:18.548+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources
+2026-03-22T15:06:18.548+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources
+2026-03-22T15:06:18.551+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/resources
+2026-03-22T15:06:18.551+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:06:18.557+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:18.557+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:18.559+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:06:18.559+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/resources
+2026-03-22T15:06:18.559+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:06:18.563+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:06:18.563+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type 
+    from
+        resources r1_0
+2026-03-22T15:06:18.566+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:06:18.573+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:18.575+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:06:18.575+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:06:18.580+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:06:18.598+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/resources
+2026-03-22T15:06:18.605+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:18.605+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/resources
+2026-03-22T15:06:18.612+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type 
+    from
+        resources r1_0
+2026-03-22T15:06:20.274+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:06:20.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:06:20.285+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:20.289+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:06:20.290+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:06:29.267+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:06:29.271+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:06:29.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:29.277+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:06:29.278+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:06:29.280+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:06:30.268+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:06:30.269+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:06:30.273+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:30.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:06:30.276+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:06:39.267+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:06:39.268+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:06:39.272+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:39.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:06:39.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:06:39.278+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:06:40.268+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:06:40.271+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:06:40.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:40.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:06:40.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:06:47.643+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/auth/me
+2026-03-22T15:06:47.644+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/auth/me
+2026-03-22T15:06:47.646+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+2026-03-22T15:06:47.651+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:47.654+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+2026-03-22T15:06:47.655+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:47.658+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+2026-03-22T15:06:47.662+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:47.664+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+2026-03-22T15:06:47.666+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:47.671+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:06:47.672+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources/4
+2026-03-22T15:06:47.672+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources/4
+2026-03-22T15:06:47.675+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:06:47.675+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/resources/4
+2026-03-22T15:06:47.680+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:47.680+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:47.683+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/resources/4
+2026-03-22T15:06:47.683+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:06:47.684+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:06:47.686+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type 
+    from
+        resources r1_0 
+    where
+        r1_0.id=?
+2026-03-22T15:06:47.687+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:06:47.691+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:06:47.696+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:47.699+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:06:47.699+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:06:47.705+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:06:47.718+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/resources/4
+2026-03-22T15:06:47.723+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:47.725+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/resources/4
+2026-03-22T15:06:47.729+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type 
+    from
+        resources r1_0 
+    where
+        r1_0.id=?
+2026-03-22T15:06:50.276+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:06:50.280+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:06:50.285+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:50.288+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:06:50.289+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:06:57.679+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:06:57.681+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:06:57.689+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:06:57.691+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:06:57.691+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:06:57.694+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:07:00.268+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:07:00.272+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:07:00.276+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:07:00.279+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:07:00.279+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:07:07.687+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:07:07.689+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:07:07.689+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:07:07.693+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:07:07.693+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:07:07.693+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:07:18.264+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:07:18.266+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:07:18.268+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:07:18.271+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:07:18.274+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:07:18.277+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:07:18.277+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:07:18.279+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:07:18.279+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:07:18.282+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:07:18.289+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:07:27.677+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:07:27.677+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:07:27.682+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:07:27.682+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:07:27.687+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:07:27.689+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:07:34.547+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/auth/me
+2026-03-22T15:07:34.547+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/auth/me
+2026-03-22T15:07:34.554+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+2026-03-22T15:07:34.560+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:07:34.563+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+2026-03-22T15:07:34.563+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:07:34.566+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+2026-03-22T15:07:34.576+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:07:34.580+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+2026-03-22T15:07:34.580+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:07:34.604+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:07:34.604+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources
+2026-03-22T15:07:34.606+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources
+2026-03-22T15:07:34.611+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:07:34.614+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/resources
+2026-03-22T15:07:34.614+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:07:34.623+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:07:34.623+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:07:34.628+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/resources
+2026-03-22T15:07:34.629+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:07:34.631+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:07:34.634+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type 
+    from
+        resources r1_0
+2026-03-22T15:07:34.634+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:07:34.642+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:07:34.650+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:07:34.652+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:07:34.652+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:07:34.654+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:07:34.669+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/resources
+2026-03-22T15:07:34.675+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:07:34.675+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/resources
+2026-03-22T15:07:34.681+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type 
+    from
+        resources r1_0
+2026-03-22T15:07:42.725+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/auth/me
+2026-03-22T15:07:42.725+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/auth/me
+2026-03-22T15:07:42.732+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+2026-03-22T15:07:42.735+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:07:42.738+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+2026-03-22T15:07:42.738+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:07:42.740+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+2026-03-22T15:07:42.740+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:07:42.740+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+2026-03-22T15:07:42.740+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:07:42.740+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:07:42.750+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources/4
+2026-03-22T15:07:42.750+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources/4
+2026-03-22T15:07:42.750+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:07:42.750+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/resources/4
+2026-03-22T15:07:42.756+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:07:42.756+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:07:42.758+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/resources/4
+2026-03-22T15:07:42.758+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:07:42.759+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:07:42.760+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type 
+    from
+        resources r1_0 
+    where
+        r1_0.id=?
+2026-03-22T15:07:42.760+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:07:42.764+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:07:42.768+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:07:42.771+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:07:42.771+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:07:42.773+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:07:42.781+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/resources/4
+2026-03-22T15:07:42.788+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:07:42.790+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/resources/4
+2026-03-22T15:07:42.794+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type 
+    from
+        resources r1_0 
+    where
+        r1_0.id=?
+2026-03-22T15:07:47.284+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:07:47.286+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:07:47.289+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:07:47.291+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:07:47.291+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:07:50.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:07:50.282+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:07:50.282+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:07:50.282+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:07:52.981+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:07:52.992+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:07:52.993+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:07:52.993+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:07:53.006+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:07:53.011+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:08:00.272+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:08:00.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:08:00.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:08:00.281+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:08:00.281+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:08:03.276+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:08:03.282+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:08:03.282+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:08:03.288+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:08:03.289+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:08:03.289+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:08:10.272+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:08:10.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:08:10.277+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:08:10.282+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:08:10.282+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:08:13.262+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:08:13.262+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:08:13.268+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:08:13.270+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:08:13.271+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:08:13.272+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:08:20.272+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:08:20.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:08:20.281+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:08:20.284+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:08:20.284+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:08:23.272+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:08:23.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:08:23.278+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:08:23.284+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:08:23.289+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:08:23.289+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:08:30.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:08:30.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:08:30.282+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:08:30.285+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:08:30.285+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:08:33.271+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:08:33.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:08:33.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:08:33.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:08:33.282+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:08:33.283+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:08:40.272+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:08:40.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:08:40.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:08:40.282+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:08:40.284+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:08:43.267+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:08:43.268+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:08:43.272+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:08:43.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:08:43.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:08:43.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:08:53.268+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:08:53.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:08:53.282+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:08:53.286+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:08:53.287+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:08:53.289+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:09:03.278+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:09:03.282+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:09:03.287+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:09:03.289+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:09:03.289+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:09:03.289+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:09:13.267+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:09:13.271+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:09:13.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:09:13.276+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:09:13.279+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:09:13.279+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:09:18.262+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:09:18.268+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:09:18.273+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:09:18.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:09:18.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:10:18.281+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:10:18.289+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:10:18.290+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:10:18.290+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:10:18.295+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:10:18.295+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:10:18.295+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:10:18.295+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:10:18.295+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:10:18.295+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:10:18.295+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:11:18.268+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:11:18.270+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:11:18.270+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:11:18.272+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:11:18.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:11:18.277+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:11:18.277+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:11:18.277+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:11:18.277+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:11:18.277+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:11:18.282+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:12:18.268+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:12:18.270+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:12:18.272+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:12:18.272+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:12:18.274+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:12:18.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:12:18.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:12:18.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:12:18.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:12:18.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:12:18.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:12:25.924+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:12:25.926+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:12:25.930+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:12:25.933+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:12:25.934+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:12:25.937+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:12:32.764+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:12:32.768+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:12:32.771+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:12:32.773+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:12:32.773+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:12:32.776+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:12:42.769+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:12:42.773+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:12:42.776+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:12:42.778+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:12:42.778+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:12:42.778+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:12:52.772+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:12:52.775+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:12:52.775+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:12:52.781+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:12:52.781+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:12:52.781+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:13:02.764+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:13:02.768+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:13:02.773+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:02.774+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:13:02.775+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:13:02.777+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:13:12.773+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:13:12.778+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:13:12.783+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:12.784+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:13:12.784+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:13:12.787+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:13:18.263+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:13:18.265+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:13:18.271+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:18.272+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:13:18.272+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:13:22.777+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:13:22.780+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:13:22.786+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:22.789+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:13:22.789+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:13:22.789+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:13:32.757+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:13:32.767+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:13:32.772+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:32.776+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:13:32.776+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:13:32.776+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:13:38.378+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:13:38.378+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources
+2026-03-22T15:13:38.378+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources
+2026-03-22T15:13:38.384+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:13:38.384+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/resources
+2026-03-22T15:13:38.388+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:38.389+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:38.389+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/resources
+2026-03-22T15:13:38.389+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:13:38.389+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:13:38.396+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:13:38.396+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type 
+    from
+        resources r1_0
+2026-03-22T15:13:38.432+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/resources
+2026-03-22T15:13:38.437+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:38.438+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/resources
+2026-03-22T15:13:38.444+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type 
+    from
+        resources r1_0
+2026-03-22T15:13:43.178+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/auth/me
+2026-03-22T15:13:43.178+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/auth/me
+2026-03-22T15:13:43.182+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+2026-03-22T15:13:43.186+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:43.189+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+2026-03-22T15:13:43.189+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:43.189+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+2026-03-22T15:13:43.198+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:43.198+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+2026-03-22T15:13:43.198+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:43.206+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:13:43.206+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources/4
+2026-03-22T15:13:43.206+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources/4
+2026-03-22T15:13:43.212+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/resources/4
+2026-03-22T15:13:43.212+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:43.214+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:13:43.214+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:13:43.214+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:43.217+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:13:43.217+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/resources/4
+2026-03-22T15:13:43.219+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type 
+    from
+        resources r1_0 
+    where
+        r1_0.id=?
+2026-03-22T15:13:43.232+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:13:43.238+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:43.240+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:13:43.240+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:13:43.244+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/resources/4
+2026-03-22T15:13:43.245+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:13:43.247+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:43.249+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/resources/4
+2026-03-22T15:13:43.249+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type 
+    from
+        resources r1_0 
+    where
+        r1_0.id=?
+2026-03-22T15:13:53.235+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:13:53.239+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:13:53.239+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:53.244+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:13:53.244+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:13:53.244+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:13:54.497+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/auth/me
+2026-03-22T15:13:54.497+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/auth/me
+2026-03-22T15:13:54.497+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+2026-03-22T15:13:54.505+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:54.508+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+2026-03-22T15:13:54.508+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:54.514+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+2026-03-22T15:13:54.518+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:54.521+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+2026-03-22T15:13:54.522+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:54.537+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:13:54.537+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources
+2026-03-22T15:13:54.538+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources
+2026-03-22T15:13:54.540+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/resources
+2026-03-22T15:13:54.540+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:54.542+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:13:54.542+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:13:54.542+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:54.545+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/resources
+2026-03-22T15:13:54.545+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:13:54.548+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type 
+    from
+        resources r1_0
+2026-03-22T15:13:54.548+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:13:54.552+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:54.554+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:13:54.554+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:13:54.557+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:13:54.575+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/resources
+2026-03-22T15:13:54.581+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:54.584+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/resources
+2026-03-22T15:13:54.587+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        r1_0.id,
+        r1_0.availability_windows,
+        r1_0.capacity,
+        r1_0.end_time,
+        r1_0.image,
+        r1_0.image_content_type,
+        r1_0.location,
+        r1_0.name,
+        r1_0.start_time,
+        r1_0.status,
+        r1_0.type 
+    from
+        resources r1_0
+2026-03-22T15:13:57.660+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:13:57.664+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:13:57.672+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:13:57.675+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:13:57.678+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:14:00.054+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:14:00.062+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:14:00.065+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:14:00.068+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:14:05.268+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:14:05.273+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:14:05.280+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:14:05.284+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:14:05.284+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:14:05.288+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:14:10.055+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:14:10.060+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:14:10.064+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:14:10.068+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:14:10.068+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:14:15.277+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:14:15.285+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:14:15.292+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:14:15.292+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:14:15.297+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:14:15.301+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:14:20.054+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:14:20.057+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:14:20.063+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:14:20.065+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:14:20.067+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:14:25.262+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:14:25.263+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:14:25.271+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:14:25.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:14:25.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:14:25.278+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:14:30.271+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:14:30.274+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:14:30.276+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:14:30.276+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:14:30.276+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:14:35.268+05:30 DEBUG 2900 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:14:35.272+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:14:35.278+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:14:35.279+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:14:35.282+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:14:35.285+05:30 DEBUG 2900 --- [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:14:40.268+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:14:40.273+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:14:40.278+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:14:40.282+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:14:40.282+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:14:45.263+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:14:45.268+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:14:45.273+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:14:45.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:14:45.276+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:14:45.276+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:14:50.263+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:14:50.268+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:14:50.272+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:14:50.277+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:14:50.277+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:14:55.272+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:14:55.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:14:55.281+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:14:55.282+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:14:55.282+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:14:55.285+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:15:00.272+05:30 DEBUG 2900 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:15:00.278+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:15:00.283+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:15:00.283+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:15:00.288+05:30 DEBUG 2900 --- [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:15:10.268+05:30 DEBUG 2900 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:15:10.272+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:15:10.276+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:15:10.278+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:15:10.278+05:30 DEBUG 2900 --- [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:15:18.270+05:30 DEBUG 2900 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/3
+2026-03-22T15:15:18.275+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/3
+2026-03-22T15:15:18.278+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:15:18.283+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/3
+2026-03-22T15:15:18.283+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc
+2026-03-22T15:15:18.289+05:30 DEBUG 2900 --- [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-03-22T15:15:20.276+05:30 DEBUG 2900 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/4
+2026-03-22T15:15:20.278+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/4
+2026-03-22T15:15:20.284+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.name,
+        u1_0.role 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-03-22T15:15:20.289+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/4
+2026-03-22T15:15:20.289+05:30 DEBUG 2900 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        n1_0.id,
+        n1_0.created_at,
+        n1_0.is_read,
+        n1_0.message,
+        n1_0.type,
+        n1_0.user_id 
+    from
+        notification n1_0 
+    where
+        n1_0.user_id=? 
+    order by
+        n1_0.created_at desc

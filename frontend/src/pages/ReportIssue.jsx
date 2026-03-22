@@ -48,58 +48,109 @@ const ReportIssue = () => {
         }
     };
 
-    if (!resource) return <div style={{textAlign: 'center', marginTop: '50px'}}>Loading...</div>;
+    if (!resource) return (
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '400px' }}>
+            <div className="skeleton" style={{ width: '400px', height: '300px', borderRadius: '20px' }} />
+        </div>
+    );
 
     return (
-        <div style={{ maxWidth: '600px', margin: '40px auto', padding: '30px', border: '1px solid #eee', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)', fontFamily: 'sans-serif' }}>
-            <h2 style={{marginTop: 0, color: '#e74c3c'}}>Report an Issue: {resource.name}</h2>
-            <p>Help us keep the campus running smoothly by reporting any damages or issues with this resource.</p>
+        <div style={{ maxWidth: '800px', margin: '40px auto', padding: '0 20px' }}>
+            <button 
+                onClick={() => navigate('/catalogue')}
+                style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontWeight: 'bold', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px' }}
+            >
+                &larr; Back to Catalogue
+            </button>
 
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '20px' }}>
-                <div>
-                    <label style={{fontWeight: 'bold'}}>Category</label>
-                    <select value={formData.category} onChange={e => setFormData({...formData, category: e.target.value})} 
-                            style={{ width: '100%', padding: '10px', marginTop: '8px', border: '1px solid #ccc', borderRadius: '6px' }}>
-                        <option value="IT_EQUIPMENT">IT / Technology</option>
-                        <option value="FURNITURE">Furniture / Hardware</option>
-                        <option value="PLUMBING">Plumbing / Leaks</option>
-                        <option value="OTHER">Other</option>
-                    </select>
+            <div className="premium-card" style={{ padding: '0', overflow: 'hidden' }}>
+                <div style={{ background: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)', padding: '40px', color: 'white' }}>
+                    <div style={{ fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '10px', opacity: 0.8 }}>Incident Reporting</div>
+                    <h2 style={{ margin: 0, fontSize: '32px', letterSpacing: '-1px' }}>{resource.name}</h2>
+                    <p style={{ margin: '15px 0 0 0', opacity: 0.9, fontSize: '14px', lineHeight: '1.5' }}>
+                        Help us keep the campus running smoothly by reporting any damages or issues with this resource.
+                    </p>
                 </div>
-                <div>
-                    <label style={{fontWeight: 'bold'}}>Priority Severity</label>
-                    <select value={formData.priority} onChange={e => setFormData({...formData, priority: e.target.value})} 
-                            style={{ width: '100%', padding: '10px', marginTop: '8px', border: '1px solid #ccc', borderRadius: '6px' }}>
-                        <option value="LOW">Low (Not urgent)</option>
-                        <option value="MEDIUM">Medium (Affects usage)</option>
-                        <option value="HIGH">High (Critical emergency)</option>
-                    </select>
+
+                <div style={{ padding: '40px' }}>
+                    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+                        <div className="form-grid">
+                            <div>
+                                <label className="form-label">Issue Category</label>
+                                <select value={formData.category} className="premium-input" 
+                                        onChange={e => setFormData({...formData, category: e.target.value})}>
+                                    <option value="IT_EQUIPMENT">IT / Technology</option>
+                                    <option value="FURNITURE">Furniture / Hardware</option>
+                                    <option value="PLUMBING">Plumbing / Leaks</option>
+                                    <option value="OTHER">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label className="form-label">Priority Severity</label>
+                                <select value={formData.priority} className="premium-input"
+                                        onChange={e => setFormData({...formData, priority: e.target.value})}>
+                                    <option value="LOW">Low (Not urgent)</option>
+                                    <option value="MEDIUM">Medium (Affects usage)</option>
+                                    <option value="HIGH">High (Critical emergency)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label className="form-label">Detailed Description</label>
+                            <textarea required rows="4" value={formData.description} className="premium-input"
+                                      placeholder="Please describe exactly what is broken or malfunctioning..."
+                                      onChange={e => setFormData({...formData, description: e.target.value})} />
+                        </div>
+
+                        <div>
+                            <label className="form-label">Preferred Contact Details</label>
+                            <input required type="text" value={formData.contactDetails} className="premium-input"
+                                   placeholder="e.g. john@university.edu or 0771234567"
+                                   onChange={e => setFormData({...formData, contactDetails: e.target.value})} />
+                        </div>
+
+                        <div>
+                            <label className="form-label">Evidence Attachments (Optional, max 3)</label>
+                            <div style={{ 
+                                position: 'relative', border: '2px dashed #e2e8f0', padding: '20px', 
+                                borderRadius: '16px', textAlign: 'center', transition: 'all 0.2s' 
+                            }}>
+                                <input type="file" multiple accept="image/*" onChange={e => setFiles(Array.from(e.target.files))}
+                                       style={{ position: 'absolute', inset: 0, opacity: 0, cursor: 'pointer' }} />
+                                <div style={{ color: 'var(--text-muted)', fontSize: '14px' }}>
+                                    {files.length > 0 ? (
+                                        <span style={{color: 'var(--primary)', fontWeight: 'bold'}}>{files.length} file(s) selected</span>
+                                    ) : (
+                                        'Click or drag images here to upload'
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style={{ display: 'flex', gap: '15px' }}>
+                            <button type="submit" style={{ 
+                                flex: 2, padding: '16px', background: '#ef4444', color: 'white', 
+                                border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', 
+                                fontWeight: '700', boxShadow: '0 10px 15px -3px rgba(239, 68, 68, 0.3)',
+                                transition: 'all 0.2s'
+                            }}
+                            onMouseOver={e => e.target.style.transform = 'translateY(-2px)'}
+                            onMouseOut={e => e.target.style.transform = 'translateY(0)'}
+                            >
+                                Submit Incident Ticket
+                            </button>
+                            <button type="button" onClick={() => navigate('/catalogue')} style={{ 
+                                flex: 1, padding: '16px', background: '#f1f5f9', color: '#64748b', 
+                                border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', 
+                                fontWeight: '700' 
+                            }}>
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
                 </div>
-                <div>
-                    <label style={{fontWeight: 'bold'}}>Detailed Description</label>
-                    <textarea required rows="4" value={formData.description} placeholder="Describe exactly what is broken..."
-                              onChange={e => setFormData({...formData, description: e.target.value})} 
-                              style={{ width: '100%', padding: '10px', marginTop: '8px', border: '1px solid #ccc', borderRadius: '6px' }} />
-                </div>
-                <div>
-                    <label style={{fontWeight: 'bold'}}>Preferred Contact Details (Email/Phone)</label>
-                    <input required type="text" value={formData.contactDetails} placeholder="e.g. john@university.edu or 0771234567"
-                           onChange={e => setFormData({...formData, contactDetails: e.target.value})} 
-                           style={{ width: '100%', padding: '10px', marginTop: '8px', border: '1px solid #ccc', borderRadius: '6px' }} />
-                </div>
-                <div>
-                    <label style={{fontWeight: 'bold'}}>Evidence Attachments (Optional, max 3)</label>
-                    <input type="file" multiple accept="image/*" onChange={e => setFiles(Array.from(e.target.files))}
-                           style={{ width: '100%', padding: '10px', marginTop: '8px', border: '1px solid #ccc', borderRadius: '6px' }} />
-                    <small style={{color: '#666', marginTop: '4px', display: 'block'}}>{files.length} file(s) selected</small>
-                </div>
-                <button type="submit" style={{ padding: '12px', background: '#e74c3c', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontSize: '16px', fontWeight: 'bold' }}>
-                    Submit Incident Ticket
-                </button>
-                <button type="button" onClick={() => navigate('/catalogue')} style={{ padding: '12px', background: '#e0e0e0', color: '#333', border: 'none', borderRadius: '6px', cursor: 'pointer', fontSize: '16px', fontWeight: 'bold' }}>
-                    Cancel
-                </button>
-            </form>
+            </div>
         </div>
     );
 };
