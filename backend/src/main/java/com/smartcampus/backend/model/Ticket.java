@@ -1,6 +1,8 @@
 package com.smartcampus.backend.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
@@ -23,15 +25,19 @@ public class Ticket {
     @JoinColumn(name = "technician_id")
     private User technician; // Optional until assigned
 
+    @NotBlank(message = "Category is required")
     @Column(nullable = false)
     private String category; // e.g. "FURNITURE", "IT_EQUIPMENT", "PLUMBING"
 
+    @NotBlank(message = "Description is required")
     @Column(nullable = false, length = 1000)
     private String description;
 
+    @NotBlank(message = "Priority is required")
     @Column(nullable = false)
     private String priority; // "LOW", "MEDIUM", "HIGH"
 
+    @NotBlank(message = "Contact details are required")
     @Column(nullable = false, length = 200)
     private String contactDetails;
 

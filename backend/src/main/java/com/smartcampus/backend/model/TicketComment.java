@@ -1,6 +1,7 @@
 package com.smartcampus.backend.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import java.time.LocalDateTime;
 
@@ -19,6 +20,7 @@ public class TicketComment {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @NotBlank(message = "Comment content cannot be empty")
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 

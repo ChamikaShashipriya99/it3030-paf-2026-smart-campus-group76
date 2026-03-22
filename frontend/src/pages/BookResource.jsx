@@ -20,6 +20,20 @@ const BookResource = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
+
+        const start = new Date(formData.startTime);
+        const end = new Date(formData.endTime);
+
+        if (end <= start) {
+            setError('End time must be after start time.');
+            return;
+        }
+
+        if (start < new Date()) {
+            setError('Cannot book in the past.');
+            return;
+        }
+
         try {
             await api.post('/bookings', {
                 userId: user.id,

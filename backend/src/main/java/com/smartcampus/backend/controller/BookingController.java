@@ -39,6 +39,13 @@ public class BookingController {
             LocalDateTime end = LocalDateTime.parse((String) payload.get("endTime"));
             String purpose = (String) payload.get("purpose");
 
+            if (purpose == null || purpose.isBlank()) {
+                return ResponseEntity.badRequest().body(Map.of("message", "Purpose of booking is required"));
+            }
+            if (end.isBefore(start) || end.isEqual(start)) {
+                return ResponseEntity.badRequest().body(Map.of("message", "End time must be after start time"));
+            }
+
             Booking booking = bookingService.createBookingRequest(userId, resourceId, start, end, purpose);
             return ResponseEntity.ok(booking);
         } catch (Exception e) {

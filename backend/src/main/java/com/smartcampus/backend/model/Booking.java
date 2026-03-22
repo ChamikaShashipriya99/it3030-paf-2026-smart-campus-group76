@@ -1,6 +1,8 @@
 package com.smartcampus.backend.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
@@ -19,12 +21,15 @@ public class Booking {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @NotNull(message = "Start time is required")
     @Column(nullable = false)
     private LocalDateTime startTime;
 
+    @NotNull(message = "End time is required")
     @Column(nullable = false)
     private LocalDateTime endTime;
 
+    @NotBlank(message = "Purpose is required")
     @Column(nullable = false)
     private String purpose;
 

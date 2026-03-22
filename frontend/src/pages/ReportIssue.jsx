@@ -19,6 +19,10 @@ const ReportIssue = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!formData.description.trim() || !formData.contactDetails.trim()) {
+            showNotification('Please fill in all required fields properly.', 'error');
+            return;
+        }
         try {
             if (files.length > 3) {
                 showNotification('Maximum 3 attachments allowed.', 'error');

@@ -52,6 +52,13 @@ public class TicketController {
             String priority = (String) payload.get("priority");
             String contactDetails = (String) payload.get("contactDetails");
 
+            if (description == null || description.isBlank()) {
+                return ResponseEntity.badRequest().body(Map.of("message", "Description is required"));
+            }
+            if (contactDetails == null || contactDetails.isBlank()) {
+                return ResponseEntity.badRequest().body(Map.of("message", "Contact details are required"));
+            }
+
             Ticket ticket = ticketService.createTicket(creatorId, resourceId, category, description, priority, contactDetails);
             return ResponseEntity.ok(ticket);
         } catch (Exception e) {
