@@ -164,7 +164,7 @@ const Catalogue = () => {
             </div>
 
             {showAddForm && (
-                <div className="premium-card" style={{ padding: '40px', marginBottom: '40px', background: 'white' }}>
+                <div className="premium-card" style={{ padding: '40px', marginBottom: '40px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
                         <h3 style={{ margin: 0, fontSize: '24px', color: 'var(--text-main)' }}>
                             {isEditing ? '⚒️ Edit Resource' : '✨ Create New Resource'}
@@ -216,7 +216,7 @@ const Catalogue = () => {
                             </div>
                         </div>
 
-                        <div className="form-grid" style={{ background: '#f8fafc', padding: '20px', borderRadius: '16px' }}>
+                        <div className="form-grid" style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '24px', borderRadius: '16px', border: '1px solid var(--border)' }}>
                             <div>
                                 <label className="form-label">Daily Available From</label>
                                 <input required type="time" value={newRes.startTime} 
@@ -233,21 +233,23 @@ const Catalogue = () => {
                                 <label className="form-label">Featured Image</label>
                                 <input type="file" accept="image/*" 
                                     onChange={e => setResImage(e.target.files[0])} 
-                                    style={{ fontSize: '12px' }} />
+                                    className="premium-input"
+                                    style={{ padding: '8px' }} />
                             </div>
                         </div>
 
                         <div style={{ display: 'flex', gap: '15px', marginTop: '10px' }}>
                             <button type="submit" style={{ 
                                 flex: 2, padding: '16px', background: 'var(--primary)', color: 'white', 
-                                border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '15px', 
-                                fontWeight: '700', boxShadow: '0 10px 15px -3px rgba(59, 130, 246, 0.3)'
+                                border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', 
+                                fontWeight: '700', boxShadow: '0 10px 15px -3px rgba(59, 130, 246, 0.3)',
+                                transition: 'all 0.2s'
                             }}>
                                 {isEditing ? 'Update Resource Details' : 'Publish New Resource'}
                             </button>
                             <button type="button" onClick={() => setShowAddForm(false)} style={{ 
-                                flex: 1, padding: '16px', background: '#f1f5f9', color: '#64748b', 
-                                border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '15px', 
+                                flex: 1, padding: '16px', background: 'rgba(255,255,255,0.05)', color: 'var(--text-muted)', 
+                                border: '1px solid var(--border)', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', 
                                 fontWeight: '700' 
                             }}>
                                 Cancel
