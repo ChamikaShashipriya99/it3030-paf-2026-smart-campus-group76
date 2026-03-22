@@ -44,14 +44,25 @@ public class ResourceService {
         return resourceRepository.save(r);
     }
     
-    public Resource updateResource(Long id, Resource updatedResource) {
+    public Resource updateResourceMultipart(Long id, String name, String type, int capacity, String location, String status, String startTime, String endTime, org.springframework.web.multipart.MultipartFile image) {
         Resource existing = getResourceById(id);
-        existing.setName(updatedResource.getName());
-        existing.setType(updatedResource.getType());
-        existing.setCapacity(updatedResource.getCapacity());
-        existing.setLocation(updatedResource.getLocation());
-        existing.setAvailabilityWindows(updatedResource.getAvailabilityWindows());
-        existing.setStatus(updatedResource.getStatus());
+        existing.setName(name);
+        existing.setType(type);
+        existing.setCapacity(capacity);
+        existing.setLocation(location);
+        existing.setStatus(status);
+        existing.setStartTime(startTime);
+        existing.setEndTime(endTime);
+        existing.setAvailabilityWindows("Daily " + startTime + " to " + endTime);
+
+        if (image != null && !image.isEmpty()) {
+            try {
+                existing.setImage(image.getBytes());
+                existing.setImageContentType(image.getContentType());
+            } catch (java.io.IOException e) {
+                throw new RuntimeException("Failed to store image", e);
+            }
+        }
         return resourceRepository.save(existing);
     }
     

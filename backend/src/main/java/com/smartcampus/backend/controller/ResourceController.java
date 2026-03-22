@@ -45,9 +45,18 @@ public class ResourceController {
         return ResponseEntity.ok(resourceService.createResource(name, type, capacity, location, status, startTime, endTime, image));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Resource> updateResource(@PathVariable Long id, @RequestBody Resource resource) {
-        return ResponseEntity.ok(resourceService.updateResource(id, resource));
+    @PutMapping(value = "/{id}", consumes = "multipart/form-data")
+    public ResponseEntity<Resource> updateResource(
+            @PathVariable Long id,
+            @RequestParam("name") String name,
+            @RequestParam("type") String type,
+            @RequestParam("capacity") int capacity,
+            @RequestParam("location") String location,
+            @RequestParam("status") String status,
+            @RequestParam(value = "startTime", required = false) String startTime,
+            @RequestParam(value = "endTime", required = false) String endTime,
+            @RequestParam(value = "image", required = false) org.springframework.web.multipart.MultipartFile image) {
+        return ResponseEntity.ok(resourceService.updateResourceMultipart(id, name, type, capacity, location, status, startTime, endTime, image));
     }
 
     @DeleteMapping("/{id}")

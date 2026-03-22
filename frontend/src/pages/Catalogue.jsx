@@ -8,6 +8,8 @@ const Catalogue = () => {
     const [typeFilter, setTypeFilter] = useState('');
     const [loading, setLoading] = useState(true);
     const [showAddForm, setShowAddForm] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
+    const [editId, setEditId] = useState(null);
     const [newRes, setNewRes] = useState({ name: '', type: 'LECTURE_HALL', capacity: 0, location: '', status: 'ACTIVE', startTime: '08:00', endTime: '18:00' });
     const [resImage, setResImage] = useState(null);
 
@@ -43,13 +45,38 @@ const Catalogue = () => {
                 formData.append('image', resImage);
             }
 
-            await api.post('/resources', formData, { headers: { 'Content-Type': 'multipart/form-data' } });
+            if (isEditing) {
+                await api.put(`/resources/${editId}`, formData, { headers: { 'Content-Type': 'multipart/form-data' } });
+                alert('Facility updated successfully!');
+            } else {
+                await api.post('/resources', formData, { headers: { 'Content-Type': 'multipart/form-data' } });
+                alert('Facility added successfully!');
+            }
+
             setShowAddForm(false);
+            setIsEditing(false);
+            setEditId(null);
             setNewRes({ name: '', type: 'LECTURE_HALL', capacity: 0, location: '', status: 'ACTIVE', startTime: '08:00', endTime: '18:00' });
             setResImage(null);
             fetchResources();
-            alert('Facility added successfully!');
-        } catch(err) { alert('Failed to add resource.'); }
+        } catch(err) { alert('Failed to save resource.'); }
+    };
+
+    const handleEditClick = (res) => {
+        setIsEditing(true);
+        setEditId(res.id);
+        setNewRes({ name: res.name, type: res.type, capacity: res.capacity, location: res.location, status: res.status, startTime: res.startTime || '08:00', endTime: res.endTime || '18:00' });
+        setShowAddForm(true);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const handleDeleteClick = async (id) => {
+        if(window.confirm("Are you sure you want to delete this resource?")) {
+            try {
+                await api.delete(`/resources/${id}`);
+                fetchResources();
+            } catch(e) { alert("Failed to delete resource"); }
+        }
     };
 
     return (
@@ -71,7 +98,10 @@ const Catalogue = () => {
                     <option value="EQUIPMENT">Equipment (Projectors, etc.)</option>
                 </select>
                 {user?.role === 'ROLE_ADMIN' && (
-                    <button onClick={() => setShowAddForm(!showAddForm)} style={{ float: 'right', padding: '8px 15px', background: '#2ecc71', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>
+                    <button onClick={() => {
+                        setShowAddForm(!showAddForm);
+                        if(showAddForm) { setIsEditing(false); setEditId(null); setNewRes({ name: '', type: 'LECTURE_HALL', capacity: 0, location: '', status: 'ACTIVE', startTime: '08:00', endTime: '18:00' }); }
+                    }} style={{ float: 'right', padding: '8px 15px', background: '#2ecc71', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>
                         {showAddForm ? 'Cancel' : '+ Add New Facility'}
                     </button>
                 )}
@@ -79,7 +109,7 @@ const Catalogue = () => {
 
             {showAddForm && (
                 <form onSubmit={handleAdd} style={{ background: '#f8f9fa', padding: '20px', borderRadius: '8px', marginBottom: '20px', border: '1px solid #ddd' }}>
-                    <h3 style={{marginTop: 0}}>Create New Resource</h3>
+                    <h3 style={{marginTop: 0}}>{isEditing ? 'Edit Resource' : 'Create New Resource'}</h3>
                     <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
                         <input required placeholder="Name (e.g. Hall A)" value={newRes.name} onChange={e => setNewRes({...newRes, name: e.target.value})} style={{padding: '8px'}} />
                         <select value={newRes.type} onChange={e => setNewRes({...newRes, type: e.target.value})} style={{padding: '8px'}}>
@@ -126,27 +156,27 @@ const Catalogue = () => {
                             
                             <div style={{ marginTop: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <span style={{
-                                    backgroundColor: res.status === 'ACTIVE' ? '#2ecc71' : '#e74c3c',
+                                    backgroundColor: res.status === 'ACTIVE' ? '#2ecc71' : res.status === 'INACTIVE' ? '#95a5a6' : '#e74c3c',
                                     color: 'white', padding: '6px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: 'bold'
                                 }}>
-                                    {res.status === 'ACTIVE' ? 'AVAILABLE' : 'OUT OF SERVICE'}
+                                    {res.status === 'ACTIVE' ? 'AVAILABLE' : res.status}
                                 </span>
-                                {res.status === 'ACTIVE' && (
-                                    <div style={{display: 'flex', gap: '8px'}}>
-                                        <button 
-                                            onClick={() => window.location.href=`/book/${res.id}`} 
-                                            style={{ padding: '6px 12px', background: '#1da1f2', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}
-                                        >
-                                            Book Now
-                                        </button>
-                                        <button 
-                                            onClick={() => window.location.href=`/report/${res.id}`} 
-                                            style={{ padding: '6px 12px', background: '#e74c3c', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}
-                                        >
-                                            Report Issue
-                                        </button>
-                                    </div>
-                                )}
+                                
+                                <div style={{display: 'flex', gap: '8px'}}>
+                                    {user?.role === 'ROLE_USER' && res.status === 'ACTIVE' && (
+                                        <>
+                                            <button onClick={() => window.location.href=`/book/${res.id}`} style={{ padding: '6px 12px', background: '#1da1f2', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>Book Now</button>
+                                            <button onClick={() => window.location.href=`/report/${res.id}`} style={{ padding: '6px 12px', background: '#e74c3c', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>Report Issue</button>
+                                        </>
+                                    )}
+
+                                    {user?.role === 'ROLE_ADMIN' && (
+                                        <>
+                                            <button onClick={() => handleEditClick(res)} style={{ padding: '6px 12px', background: '#f39c12', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>Edit</button>
+                                            <button onClick={() => handleDeleteClick(res.id)} style={{ padding: '6px 12px', background: '#c0392b', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>Delete</button>
+                                        </>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     ))}
