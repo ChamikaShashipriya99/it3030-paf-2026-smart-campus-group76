@@ -6,6 +6,7 @@ const Catalogue = () => {
     const { user } = useContext(AuthContext);
     const [resources, setResources] = useState([]);
     const [typeFilter, setTypeFilter] = useState('');
+    const [searchQuery, setSearchQuery] = useState('');
     const [loading, setLoading] = useState(true);
     const [viewMode, setViewMode] = useState('list'); // 'list' (horizontal) or 'grid' (vertical)
     const [showAddForm, setShowAddForm] = useState(false);
@@ -100,20 +101,33 @@ const Catalogue = () => {
                 gap: '20px',
                 flexWrap: 'wrap'
             }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                    <label style={{ fontWeight: '700', color: 'var(--text-main)', fontSize: '14px' }}>Filter:</label>
-                    <select 
-                        value={typeFilter} 
-                        onChange={(e) => setTypeFilter(e.target.value)}
-                        className="premium-input"
-                        style={{ padding: '8px 16px', width: '200px' }}
-                    >
-                        <option value="">All Categories</option>
-                        <option value="LECTURE_HALL">Lecture Halls</option>
-                        <option value="LAB">Laboratories</option>
-                        <option value="MEETING_ROOM">Meeting Rooms</option>
-                        <option value="EQUIPMENT">Equipment</option>
-                    </select>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flex: 1 }}>
+                    <div style={{ position: 'relative', flex: 1, maxWidth: '300px' }}>
+                        <span style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', opacity: 0.5 }}>🔍</span>
+                        <input 
+                            type="text" 
+                            placeholder="Search resources..." 
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="premium-input"
+                            style={{ padding: '8px 12px 8px 35px', width: '100%', fontSize: '14px' }}
+                        />
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <label style={{ fontWeight: '700', color: 'var(--text-main)', fontSize: '14px' }}>Filter:</label>
+                        <select 
+                            value={typeFilter} 
+                            onChange={(e) => setTypeFilter(e.target.value)}
+                            className="premium-input"
+                            style={{ padding: '8px 16px', width: '160px' }}
+                        >
+                            <option value="">All Categories</option>
+                            <option value="LECTURE_HALL">Lecture Halls</option>
+                            <option value="LAB">Laboratories</option>
+                            <option value="MEETING_ROOM">Meeting Rooms</option>
+                            <option value="EQUIPMENT">Equipment</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div style={{ display: 'flex', background: 'rgba(255,255,255,0.03)', padding: '4px', borderRadius: '12px', border: '1px solid var(--border)' }}>
@@ -272,7 +286,13 @@ const Catalogue = () => {
                     gridTemplateColumns: viewMode === 'grid' ? 'repeat(auto-fill, minmax(280px, 1fr))' : '1fr', 
                     gap: '24px' 
                 }}>
-                    {resources.map(res => (
+                    {resources.filter(res => {
+                        const matchesType = typeFilter === '' || res.type === typeFilter;
+                        const matchesSearch = res.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                              res.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                              res.type.toLowerCase().includes(searchQuery.toLowerCase());
+                        return matchesType && matchesSearch;
+                    }).map(res => (
                         <div key={res.id} className="premium-card" style={{
                             display: 'flex',
                             flexDirection: viewMode === 'grid' ? 'column' : 'row',
