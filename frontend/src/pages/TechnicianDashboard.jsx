@@ -53,17 +53,17 @@ const TechnicianDashboard = () => {
     const resolvedCount = tickets.filter(t => t.status === 'RESOLVED').length;
 
     const cardStyle = {
-        flex: 1, minWidth: '200px', background: 'white', padding: '25px', borderRadius: '16px',
-        boxShadow: '0 10px 30px rgba(0,0,0,0.03)', border: '1px solid #f0f0f0', display: 'flex', flexDirection: 'column',
+        flex: 1, minWidth: '200px', background: 'var(--surface)', padding: '25px', borderRadius: '24px',
+        boxShadow: 'var(--shadow-soft)', border: '1px solid var(--border)', display: 'flex', flexDirection: 'column',
         justifyContent: 'center', transition: 'transform 0.2s', position: 'relative', overflow: 'hidden'
     };
     
     return (
-        <div style={{ padding: '40px', maxWidth: '1200px', margin: '0 auto', fontFamily: '"Inter", -apple-system, sans-serif', backgroundColor: '#f8fafc', minHeight: 'calc(100vh - 70px)' }}>
+        <div style={{ padding: '40px', maxWidth: '1200px', margin: '0 auto', fontFamily: '"Inter", -apple-system, sans-serif', minHeight: 'calc(100vh - 70px)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
                 <div>
-                    <h2 style={{ fontSize: '28px', color: '#0f172a', margin: '0 0 8px 0', letterSpacing: '-0.5px' }}>IT & Maintenance Desk</h2>
-                    <p style={{ color: '#64748b', margin: 0, fontSize: '15px' }}>Triage, assign, and resolve campus service incidents.</p>
+                    <h2 style={{ fontSize: '28px', color: 'var(--text-main)', margin: '0 0 8px 0', letterSpacing: '-0.5px' }}>IT & Maintenance Desk</h2>
+                    <p style={{ color: 'var(--text-muted)', margin: 0, fontSize: '15px' }}>Triage, assign, and resolve campus service incidents.</p>
                 </div>
             </div>
 
@@ -71,25 +71,25 @@ const TechnicianDashboard = () => {
                 <div style={cardStyle}>
                     <div style={{ position: 'absolute', top: 0, left: 0, width: '4px', height: '100%', background: '#ef4444' }} />
                     <span style={{ fontSize: '14px', color: '#64748b', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px' }}>Open Incidents</span>
-                    <h3 style={{ fontSize: '36px', fontWeight: '800', margin: '10px 0 0 0', color: '#1a202c' }}>{openCount}</h3>
+                    <h3 style={{ fontSize: '36px', fontWeight: '800', margin: '10px 0 0 0', color: 'var(--text-main)' }}>{openCount}</h3>
                 </div>
                 <div style={cardStyle}>
                     <div style={{ position: 'absolute', top: 0, left: 0, width: '4px', height: '100%', background: '#f59e0b' }} />
                     <span style={{ fontSize: '14px', color: '#64748b', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px' }}>In Progress</span>
-                    <h3 style={{ fontSize: '36px', fontWeight: '800', margin: '10px 0 0 0', color: '#1a202c' }}>{progressCount}</h3>
+                    <h3 style={{ fontSize: '36px', fontWeight: '800', margin: '10px 0 0 0', color: 'var(--text-main)' }}>{progressCount}</h3>
                 </div>
                 <div style={cardStyle}>
                     <div style={{ position: 'absolute', top: 0, left: 0, width: '4px', height: '100%', background: '#10b981' }} />
                     <span style={{ fontSize: '14px', color: '#64748b', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px' }}>Resolved</span>
-                    <h3 style={{ fontSize: '36px', fontWeight: '800', margin: '10px 0 0 0', color: '#1a202c' }}>{resolvedCount}</h3>
+                    <h3 style={{ fontSize: '36px', fontWeight: '800', margin: '10px 0 0 0', color: 'var(--text-main)' }}>{resolvedCount}</h3>
                 </div>
             </div>
             
-            <div style={{ background: 'white', borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.04)', overflow: 'hidden', border: '1px solid #f1f5f9' }}>
+            <div style={{ background: 'var(--surface)', borderRadius: '24px', boxShadow: 'var(--shadow-soft)', overflow: 'hidden', border: '1px solid var(--border)' }}>
                 <div style={{ overflowX: 'auto' }}>
                     <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
                         <thead>
-                            <tr style={{ background: '#f8fafc', borderBottom: '2px solid #e2e8f0' }}>
+                            <tr style={{ background: 'rgba(255,255,255,0.02)', borderBottom: '1px solid var(--border)' }}>
                                 <th style={{ padding: '18px 24px', color: '#475569', fontSize: '13px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>ID</th>
                                 <th style={{ padding: '18px 24px', color: '#475569', fontSize: '13px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Incident Details</th>
                                 <th style={{ padding: '18px 24px', color: '#475569', fontSize: '13px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Priority</th>
@@ -119,28 +119,28 @@ const TechnicianDashboard = () => {
                                     </tr>
                                 ))
                             ) : tickets.map(t => (
-                                <tr key={t.id} style={{ borderBottom: '1px solid #f1f5f9', transition: 'background-color 0.2s', ':hover': { backgroundColor: '#f8fafc' } }}>
-                                    <td style={{ padding: '20px 24px', color: '#94a3b8', fontWeight: '500', fontSize: '14px' }}>#{t.id}</td>
+                                <tr key={t.id} style={{ borderBottom: '1px solid var(--border)', transition: 'background-color 0.2s' }}>
+                                    <td style={{ padding: '20px 24px', color: 'var(--text-muted)', fontWeight: '500', fontSize: '14px' }}>#{t.id}</td>
                                     <td style={{ padding: '20px 24px' }}>
-                                        <div style={{ fontWeight: '600', color: '#0f172a', fontSize: '15px' }}>{t.resource.name}</div>
-                                        <div style={{ color: '#64748b', fontSize: '13px', marginTop: '4px' }}>{t.category} — {t.description.substring(0, 30)}...</div>
+                                        <div style={{ fontWeight: '600', color: 'var(--text-main)', fontSize: '15px' }}>{t.resource.name}</div>
+                                        <div style={{ color: 'var(--text-muted)', fontSize: '13px', marginTop: '4px' }}>{t.category} — {t.description.substring(0, 30)}...</div>
                                     </td>
                                     <td style={{ padding: '20px 24px' }}>
-                                        <span style={{ color: t.priority === 'HIGH' ? '#dc2626' : t.priority === 'MEDIUM' ? '#d97706' : '#2563eb', fontWeight: '700', fontSize: '12px', background: t.priority === 'HIGH' ? '#fee2e2' : t.priority === 'MEDIUM' ? '#fef3c7' : '#dbeafe', padding: '4px 10px', borderRadius: '20px' }}>
+                                        <span style={{ color: t.priority === 'HIGH' ? '#dc2626' : t.priority === 'MEDIUM' ? '#f59e0b' : '#60a5fa', fontWeight: '700', fontSize: '11px', background: t.priority === 'HIGH' ? 'rgba(220, 38, 38, 0.1)' : t.priority === 'MEDIUM' ? 'rgba(245, 158, 11, 0.1)' : 'rgba(96, 165, 250, 0.1)', padding: '4px 10px', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.05)' }}>
                                             {t.priority}
                                         </span>
                                     </td>
                                     <td style={{ padding: '20px 24px' }}>
-                                        <span style={{ fontWeight: '700', fontSize: '12px', padding: '6px 12px', borderRadius: '30px', letterSpacing: '0.5px',
-                                            backgroundColor: t.status === 'RESOLVED' ? '#dcfce7' : t.status === 'OPEN' ? '#fee2e2' : '#fef3c7',
-                                            color: t.status === 'RESOLVED' ? '#166534' : t.status === 'OPEN' ? '#991b1b' : '#92400e',
-                                            border: `1px solid ${t.status === 'RESOLVED' ? '#bbf7d0' : t.status === 'OPEN' ? '#fecaca' : '#fde68a'}`
+                                        <span style={{ fontWeight: '700', fontSize: '11px', padding: '6px 12px', borderRadius: '30px', letterSpacing: '0.5px',
+                                            backgroundColor: t.status === 'RESOLVED' ? 'rgba(16, 185, 129, 0.1)' : t.status === 'OPEN' ? 'rgba(239, 68, 68, 0.1)' : 'rgba(245, 158, 11, 0.1)',
+                                            color: t.status === 'RESOLVED' ? '#10b981' : t.status === 'OPEN' ? '#ef4444' : '#f59e0b',
+                                            border: `1px solid ${t.status === 'RESOLVED' ? 'rgba(16, 185, 129, 0.2)' : t.status === 'OPEN' ? 'rgba(239, 68, 68, 0.2)' : 'rgba(245, 158, 11, 0.2)'}`
                                         }}>
                                             {t.status.replace('_', ' ')}
                                         </span>
                                     </td>
-                                    <td style={{ padding: '20px 24px', color: '#334155', fontSize: '14px' }}>
-                                        {t.technician ? t.technician.email.split('@')[0] : <span style={{color: '#94a3b8', fontStyle: 'italic'}}>Unassigned</span>}
+                                    <td style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '14px' }}>
+                                        {t.technician ? t.technician.email.split('@')[0] : <span style={{color: 'var(--text-muted)', fontStyle: 'italic', opacity: 0.6}}>Unassigned</span>}
                                     </td>
                                     <td style={{ padding: '20px 24px' }}>
                                         <div style={{ display: 'flex', gap: '8px' }}>

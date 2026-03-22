@@ -113,8 +113,9 @@ const ReportIssue = () => {
                         <div>
                             <label className="form-label">Evidence Attachments (Optional, max 3)</label>
                             <div style={{ 
-                                position: 'relative', border: '2px dashed #e2e8f0', padding: '20px', 
-                                borderRadius: '16px', textAlign: 'center', transition: 'all 0.2s' 
+                                position: 'relative', border: '2px dashed var(--border)', padding: '20px', 
+                                borderRadius: '16px', textAlign: 'center', transition: 'all 0.2s',
+                                background: 'rgba(255,255,255,0.02)'
                             }}>
                                 <input type="file" multiple accept="image/*" onChange={e => setFiles(Array.from(e.target.files))}
                                        style={{ position: 'absolute', inset: 0, opacity: 0, cursor: 'pointer' }} />
@@ -141,8 +142,8 @@ const ReportIssue = () => {
                                 Submit Incident Ticket
                             </button>
                             <button type="button" onClick={() => navigate('/catalogue')} style={{ 
-                                flex: 1, padding: '16px', background: '#f1f5f9', color: '#64748b', 
-                                border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', 
+                                flex: 1, padding: '16px', background: 'var(--surface)', color: 'var(--text-muted)', 
+                                border: '1px solid var(--border)', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', 
                                 fontWeight: '700' 
                             }}>
                                 Cancel

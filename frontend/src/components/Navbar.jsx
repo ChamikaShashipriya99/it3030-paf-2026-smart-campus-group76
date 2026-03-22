@@ -28,19 +28,19 @@ const Navbar = () => {
     }
 
     const navStyle = {
-        background: 'rgba(255, 255, 255, 0.8)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
+        background: 'rgba(15, 23, 42, 0.7)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
         padding: '12px 30px',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.3)',
+        boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+        border: '1px solid rgba(255, 255, 255, 0.05)',
         position: 'sticky',
         top: '15px',
         margin: '0 20px 20px 20px',
-        borderRadius: '20px',
+        borderRadius: '24px',
         zIndex: 1000,
         maxWidth: 'calc(100% - 40px)'
     };
@@ -49,7 +49,7 @@ const Navbar = () => {
         const isActive = location.pathname === path;
         return {
             textDecoration: 'none',
-            color: isActive ? '#3b82f6' : '#64748b',
+            color: isActive ? '#60a5fa' : '#94a3b8',
             fontWeight: '600',
             marginRight: '25px',
             fontSize: '14px',
@@ -58,8 +58,8 @@ const Navbar = () => {
             alignItems: 'center',
             padding: '8px 12px',
             borderRadius: '10px',
-            background: isActive ? 'rgba(59, 130, 246, 0.08)' : 'transparent',
-            boxShadow: isActive ? '0 0 0 1px rgba(59, 130, 246, 0.1)' : 'none'
+            background: isActive ? 'rgba(96, 165, 250, 0.1)' : 'transparent',
+            boxShadow: isActive ? '0 0 0 1px rgba(96, 165, 250, 0.15)' : 'none'
         };
     };
 
@@ -68,9 +68,9 @@ const Navbar = () => {
             <div style={{ display: 'flex', alignItems: 'center' }}>
                 <div 
                     onClick={() => navigate('/dashboard')}
-                    style={{ margin: 0, marginRight: '30px', color: '#0f172a', cursor: 'pointer', fontSize: '20px', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '10px', letterSpacing: '-0.5px' }}
+                    style={{ margin: 0, marginRight: '30px', color: '#f8fafc', cursor: 'pointer', fontSize: '20px', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '10px', letterSpacing: '-0.5px' }}
                 >
-                    <div style={{ background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)', width: '36px', height: '36px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)' }}>
+                    <div style={{ background: 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%)', width: '36px', height: '36px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(59, 130, 246, 0.4)' }}>
                         <span style={{fontSize: '20px', color: 'white'}}>🏫</span>
                     </div>
                     SmartCampus
@@ -92,22 +92,22 @@ const Navbar = () => {
                 <Link to="/notifications" style={{...linkStyle('/notifications'), position: 'relative', fontSize: '18px', marginRight: '15px', padding: '10px'}}>
                     <span style={{filter: unreadCount > 0 ? 'drop-shadow(0 0 5px rgba(239, 68, 68, 0.4))' : 'none'}}>🔔</span>
                     {unreadCount > 0 && (
-                        <span style={{ position: 'absolute', top: '4px', right: '4px', background: '#ef4444', color: 'white', fontSize: '9px', fontWeight: '900', padding: '1px 5px', borderRadius: '10px', boxShadow: '0 0 0 3px white' }}>
+                        <span style={{ position: 'absolute', top: '4px', right: '4px', background: '#ef4444', color: 'white', fontSize: '9px', fontWeight: '900', padding: '1px 5px', borderRadius: '10px', boxShadow: '0 0 0 3px var(--surface)' }}>
                             {unreadCount}
                         </span>
                     )}
                 </Link>
 
-                <div style={{ marginRight: '20px', height: '32px', width: '1px', background: '#e2e8f0', marginLeft: '5px' }} />
+                <div style={{ marginRight: '20px', height: '32px', width: '1px', background: 'var(--border)', marginLeft: '5px' }} />
 
                 <div style={{ marginRight: '15px', display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <div style={{ textAlign: 'right' }}>
-                        <div style={{ color: '#0f172a', fontWeight: '700', fontSize: '13px' }}>{user.name}</div>
-                        <div style={{ fontSize: '11px', fontWeight: '600', color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                        <div style={{ color: '#f8fafc', fontWeight: '700', fontSize: '13px' }}>{user.name}</div>
+                        <div style={{ fontSize: '11px', fontWeight: '600', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                             {user.role.replace('ROLE_', '')}
                         </div>
                     </div>
-                    <div style={{ width: '36px', height: '36px', borderRadius: '12px', background: 'linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', color: '#3b82f6', border: '1px solid #e2e8f0' }}>
+                    <div style={{ width: '36px', height: '36px', borderRadius: '12px', background: 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', color: '#60a5fa', border: '1px solid rgba(255,255,255,0.1)' }}>
                         {user.name.charAt(0)}
                     </div>
                 </div>
@@ -115,13 +115,12 @@ const Navbar = () => {
                 <button 
                     onClick={logout}
                     style={{
-                        padding: '10px 18px', backgroundColor: '#ffffff', color: '#ef4444', 
-                        border: '1px solid #fee2e2', borderRadius: '12px', cursor: 'pointer',
-                        fontWeight: '700', fontSize: '13px', transition: 'all 0.2s',
-                        boxShadow: '0 2px 5px rgba(239, 68, 68, 0.05)'
+                        padding: '10px 18px', backgroundColor: 'rgba(239, 68, 68, 0.1)', color: '#ef4444', 
+                        border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '12px', cursor: 'pointer',
+                        fontWeight: '700', fontSize: '13px', transition: 'all 0.2s'
                     }}
-                    onMouseOver={(e) => { e.target.style.backgroundColor = '#fef2f2'; e.target.style.transform = 'translateY(-1px)'; }}
-                    onMouseOut={(e) => { e.target.style.backgroundColor = '#ffffff'; e.target.style.transform = 'translateY(0)'; }}
+                    onMouseOver={(e) => { e.target.style.backgroundColor = 'rgba(239, 68, 68, 0.2)'; e.target.style.transform = 'translateY(-1px)'; }}
+                    onMouseOut={(e) => { e.target.style.backgroundColor = 'rgba(239, 68, 68, 0.1)'; e.target.style.transform = 'translateY(0)'; }}
                 >
                     Sign Out
                 </button>

@@ -15,22 +15,22 @@ const Dashboard = () => {
     }, [user]);
 
     return (
-        <div style={{ minHeight: 'calc(100vh - 70px)', background: 'linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%)', padding: '60px 20px', fontFamily: '"Inter", -apple-system, sans-serif' }}>
+        <div style={{ minHeight: 'calc(100vh - 70px)', padding: '60px 20px', fontFamily: '"Inter", -apple-system, sans-serif' }}>
             <div style={{ maxWidth: '900px', margin: '0 auto' }}>
                 
                 {/* Hero Profile Card */}
                 <div style={{
-                    background: 'rgba(255, 255, 255, 0.9)', backdropFilter: 'blur(10px)',
-                    padding: '40px', borderRadius: '24px', boxShadow: '0 20px 40px rgba(0,0,0,0.05)',
-                    border: '1px solid rgba(255,255,255,0.4)', position: 'relative', overflow: 'hidden'
+                    background: 'var(--glass-bg)', backdropFilter: 'blur(20px)',
+                    padding: '40px', borderRadius: '32px', boxShadow: 'var(--shadow-premium)',
+                    border: '1px solid var(--glass-border)', position: 'relative', overflow: 'hidden'
                 }}>
                     <div style={{position: 'absolute', top: '-50%', left: '-20%', width: '50%', height: '150%', background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, transparent 100%)', transform: 'rotate(-45deg)', zIndex: 0}} />
                     
                     <div style={{position: 'relative', zIndex: 1}}>
-                        <h1 style={{ fontSize: '36px', color: '#0f172a', margin: '0 0 10px 0', letterSpacing: '-1px' }}>
-                            Welcome back, <span style={{color: '#3b82f6'}}>{user?.name}</span>
+                        <h1 style={{ fontSize: '36px', color: 'var(--text-main)', margin: '0 0 10px 0', letterSpacing: '-1px' }}>
+                            Welcome back, <span style={{color: 'var(--primary)'}}>{user?.name}</span>
                         </h1>
-                        <p style={{ color: '#64748b', fontSize: '18px', margin: '0 0 30px 0' }}>Here's what's happening with your campus operations today.</p>
+                        <p style={{ color: 'var(--text-muted)', fontSize: '18px', margin: '0 0 30px 0' }}>Here's what's happening with your campus operations today.</p>
                         
                         <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -40,7 +40,7 @@ const Dashboard = () => {
                                     <div style={{color: '#1e293b', fontWeight: '500'}}>{user?.email}</div>
                                 </div>
                             </div>
-                            <div style={{ width: '1px', height: '40px', background: '#e2e8f0' }} />
+                            <div style={{ width: '1px', height: '40px', background: 'var(--border)' }} />
                             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                                 <div style={{width: '40px', height: '40px', borderRadius: '50%', background: '#dcfce7', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#16a34a', fontWeight: 'bold'}}>#</div>
                                 <div>
@@ -56,7 +56,7 @@ const Dashboard = () => {
                 </div>
                 
                 {/* Navigation Quick Actions */}
-                <h3 style={{ marginTop: '50px', color: '#334155', fontSize: '20px' }}>Quick Actions</h3>
+                <h3 style={{ marginTop: '50px', color: 'var(--text-main)', fontSize: '20px' }}>Quick Actions</h3>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', marginTop: '20px' }}>
                     <div onClick={() => navigate('/catalogue')} className="premium-card" style={{ padding: '30px', cursor: 'pointer', textAlign: 'center' }}>
                         <div style={{fontSize: '32px', marginBottom: '15px'}}>🏢</div>
@@ -85,8 +85,8 @@ const Dashboard = () => {
                     <div style={{ marginTop: '50px' }}>
                         <h3 style={{ color: '#334155', fontSize: '20px', marginBottom: '20px' }}>My Active Incidents</h3>
                         {myTickets.length === 0 ? (
-                            <div style={{ background: 'white', padding: '40px', borderRadius: '16px', textAlign: 'center', boxShadow: '0 4px 15px rgba(0,0,0,0.03)' }}>
-                                <p style={{color: '#94a3b8', margin: 0}}>You have a clean slate! No issues reported.</p>
+                            <div style={{ background: 'var(--glass-bg)', padding: '40px', borderRadius: '24px', border: '1px solid var(--glass-border)', textAlign: 'center' }}>
+                                <p style={{color: 'var(--text-muted)', margin: 0}}>You have a clean slate! No issues reported.</p>
                             </div>
                         ) : (
                             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '20px' }}>

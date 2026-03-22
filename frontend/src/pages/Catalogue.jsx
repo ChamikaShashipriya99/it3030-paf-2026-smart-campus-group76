@@ -84,10 +84,10 @@ const Catalogue = () => {
 
     return (
         <div style={{ padding: '40px', maxWidth: '1000px', margin: '0 auto', fontFamily: 'sans-serif' }}>
-            <h2>Facilities & Assets Catalogue</h2>
-            <p style={{ color: '#555' }}>Browse and filter available university resources.</p>
+            <h2 style={{ color: 'var(--text-main)' }}>Facilities & Assets Catalogue</h2>
+            <p style={{ color: 'var(--text-muted)' }}>Browse and filter available university resources.</p>
             
-            <div style={{ margin: '20px 0', padding: '15px', background: '#f0f4f8', borderRadius: '8px' }}>
+            <div style={{ margin: '20px 0', padding: '20px', background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: '20px' }}>
                 <label style={{ marginRight: '10px', fontWeight: 'bold' }}>Filter by Type:</label>
                 <select 
                     value={typeFilter} 

@@ -12,7 +12,7 @@ const Login = () => {
             display: 'flex', 
             alignItems: 'center', 
             justifyContent: 'center', 
-            background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
+            background: 'radial-gradient(circle at 50% 50%, #0f172a 0%, #020617 100%)',
             position: 'fixed',
             top: 0,
             left: 0,
@@ -29,12 +29,12 @@ const Login = () => {
                 width: '100%', 
                 maxWidth: '440px', 
                 padding: '50px', 
-                background: 'rgba(255, 255, 255, 0.7)', 
-                backdropFilter: 'blur(20px)',
-                WebkitBackdropFilter: 'blur(20px)',
+                background: 'rgba(15, 23, 42, 0.6)', 
+                backdropFilter: 'blur(30px)',
+                WebkitBackdropFilter: 'blur(30px)',
                 borderRadius: '32px', 
-                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.08)',
-                border: '1px solid rgba(255, 255, 255, 0.4)',
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+                border: '1px solid rgba(255, 255, 255, 0.05)',
                 textAlign: 'center',
                 position: 'relative',
                 zIndex: 1
@@ -54,10 +54,10 @@ const Login = () => {
                     🏫
                 </div>
                 
-                <h1 style={{ fontSize: '32px', color: '#0f172a', margin: '0 0 12px 0', letterSpacing: '-1px', fontWeight: '800' }}>
-                    Welcome to <span style={{color: '#3b82f6'}}>SmartCampus</span>
+                <h1 style={{ fontSize: '32px', color: '#f8fafc', margin: '0 0 12px 0', letterSpacing: '-1px', fontWeight: '800' }}>
+                    Welcome to <span style={{color: '#60a5fa'}}>SmartCampus</span>
                 </h1>
-                <p style={{ color: '#64748b', fontSize: '16px', margin: '0 0 40px 0', lineHeight: '1.6' }}>
+                <p style={{ color: '#94a3b8', fontSize: '16px', margin: '0 0 40px 0', lineHeight: '1.6' }}>
                     The unified operating hub for university facilities, incidents, and resource management.
                 </p>
 
@@ -68,9 +68,9 @@ const Login = () => {
                         padding: '16px 24px', 
                         fontSize: '16px', 
                         cursor: 'pointer',
-                        backgroundColor: '#ffffff', 
-                        color: '#0f172a', 
-                        border: '1px solid #e2e8f0', 
+                        backgroundColor: '#1e293b', 
+                        color: '#f8fafc', 
+                        border: '1px solid #334155', 
                         borderRadius: '16px', 
                         fontWeight: '700',
                         display: 'flex',
@@ -80,8 +80,8 @@ const Login = () => {
                         transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
                         boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)'
                     }}
-                    onMouseOver={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1)'; e.currentTarget.style.borderColor = '#3b82f6'; }}
-                    onMouseOut={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.05)'; e.currentTarget.style.borderColor = '#e2e8f0'; }}
+                    onMouseOver={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.4)'; e.currentTarget.style.borderColor = '#60a5fa'; }}
+                    onMouseOut={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.2)'; e.currentTarget.style.borderColor = '#334155'; }}
                 >
                     <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" style={{width: '20px', height: '20px'}} />
                     Continue with Google

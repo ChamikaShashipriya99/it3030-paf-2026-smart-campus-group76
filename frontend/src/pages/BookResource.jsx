@@ -63,7 +63,7 @@ const BookResource = () => {
 
                 <div style={{ padding: '40px' }}>
                     {error && (
-                        <div style={{ padding: '15px', backgroundColor: '#fef2f2', color: '#ef4444', borderRadius: '12px', marginBottom: '30px', border: '1px solid #fee2e2', fontSize: '14px', fontWeight: '600' }}>
+                        <div style={{ padding: '15px', backgroundColor: 'rgba(239, 68, 68, 0.1)', color: '#ef4444', borderRadius: '12px', marginBottom: '30px', border: '1px solid rgba(239, 68, 68, 0.2)', fontSize: '14px', fontWeight: '600' }}>
                             ⚠️ {error}
                         </div>
                     )}
@@ -105,8 +105,8 @@ const BookResource = () => {
                                 Confirm Booking Request
                             </button>
                             <button type="button" onClick={() => navigate('/catalogue')} style={{ 
-                                flex: 1, padding: '16px', background: '#f1f5f9', color: '#64748b', 
-                                border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', 
+                                flex: 1, padding: '16px', background: 'var(--surface)', color: 'var(--text-muted)', 
+                                border: '1px solid var(--border)', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', 
                                 fontWeight: '700' 
                             }}>
                                 Cancel
