@@ -3,6 +3,7 @@ package com.smartcampus.backend.service;
 import com.smartcampus.backend.model.Booking;
 import com.smartcampus.backend.model.BookingStatus;
 import com.smartcampus.backend.model.Resource;
+import com.smartcampus.backend.model.Role;
 import com.smartcampus.backend.model.User;
 import com.smartcampus.backend.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +55,12 @@ public class BookingService {
         booking.setPurpose(purpose);
         booking.setStatus(BookingStatus.PENDING);
         
-        return bookingRepository.save(booking);
+        Booking saved = bookingRepository.save(booking);
+        
+        // Notify Admins
+        notificationService.notifyUsersByRole(Role.ROLE_ADMIN, "New booking request for " + resource.getName() + " by " + userId, "INFO");
+        
+        return saved;
     }
 
     public Booking updateBookingStatus(Long bookingId, BookingStatus status, String reason) {

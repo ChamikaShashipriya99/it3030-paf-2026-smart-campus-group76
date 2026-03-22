@@ -8,13 +8,29 @@ const Navbar = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [unreadCount, setUnreadCount] = useState(0);
+    const prevCountRef = React.useRef(0);
+
+    const playPing = () => {
+        try {
+            const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
+            audio.volume = 0.5;
+            audio.play();
+        } catch (e) { console.error("Sound failed", e); }
+    };
 
     useEffect(() => {
         if (!user) return;
         const fetchNotifs = () => {
             api.get(`/notifications/user/${user.id}`).then(res => {
                 const unread = res.data.filter(n => !n.read).length;
+                
+                // Play sound if count increased (for Staff/Admin)
+                if (unread > prevCountRef.current && (user.role === 'ROLE_ADMIN' || user.role === 'ROLE_TECHNICIAN')) {
+                    playPing();
+                }
+                
                 setUnreadCount(unread);
+                prevCountRef.current = unread;
             }).catch(() => {});
         };
         fetchNotifs();

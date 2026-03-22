@@ -2,8 +2,8 @@ package com.smartcampus.backend.service;
 
 import com.smartcampus.backend.model.Resource;
 import com.smartcampus.backend.model.Ticket;
+import com.smartcampus.backend.model.Role;
 import com.smartcampus.backend.model.TicketStatus;
-import com.smartcampus.backend.model.User;
 import com.smartcampus.backend.model.User;
 import com.smartcampus.backend.model.TicketComment;
 import com.smartcampus.backend.model.TicketAttachment;
@@ -66,7 +66,13 @@ public class TicketService {
         ticket.setStatus(TicketStatus.OPEN);
         ticket.setCreatedAt(LocalDateTime.now());
         
-        return ticketRepository.save(ticket);
+        Ticket saved = ticketRepository.save(ticket);
+        
+        // Notify Admins and Technicians
+        notificationService.notifyUsersByRole(Role.ROLE_ADMIN, "New issue reported: " + category + " for " + resource.getName(), "WARNING");
+        notificationService.notifyUsersByRole(Role.ROLE_TECHNICIAN, "New " + category + " ticket available at " + resource.getName(), "INFO");
+        
+        return saved;
     }
 
     public Ticket assignTechnician(Long ticketId, Long technicianId) {

@@ -1,8 +1,10 @@
 package com.smartcampus.backend.service;
 
 import com.smartcampus.backend.model.Notification;
+import com.smartcampus.backend.model.Role;
 import com.smartcampus.backend.model.User;
 import com.smartcampus.backend.repository.NotificationRepository;
+import com.smartcampus.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,16 @@ import java.util.List;
 public class NotificationService {
     @Autowired
     private NotificationRepository repository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    public void notifyUsersByRole(Role role, String message, String type) {
+        List<User> users = userRepository.findByRole(role);
+        for (User user : users) {
+            createNotification(user.getId(), message, type);
+        }
+    }
 
     public Notification createNotification(Long userId, String message, String type) {
         User user = new User();
