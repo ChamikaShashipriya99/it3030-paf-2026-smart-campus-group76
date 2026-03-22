@@ -7,6 +7,7 @@ const Catalogue = () => {
     const [resources, setResources] = useState([]);
     const [typeFilter, setTypeFilter] = useState('');
     const [loading, setLoading] = useState(true);
+    const [viewMode, setViewMode] = useState('list'); // 'list' (horizontal) or 'grid' (vertical)
     const [showAddForm, setShowAddForm] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [editId, setEditId] = useState(null);
@@ -87,25 +88,63 @@ const Catalogue = () => {
             <h2 style={{ color: 'var(--text-main)' }}>Facilities & Assets Catalogue</h2>
             <p style={{ color: 'var(--text-muted)' }}>Browse and filter available university resources.</p>
             
-            <div style={{ margin: '20px 0', padding: '20px', background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: '20px' }}>
-                <label style={{ marginRight: '10px', fontWeight: 'bold' }}>Filter by Type:</label>
-                <select 
-                    value={typeFilter} 
-                    onChange={(e) => setTypeFilter(e.target.value)}
-                    style={{ padding: '8px 12px', borderRadius: '4px', border: '1px solid #ccc' }}
-                >
-                    <option value="">All Categories</option>
-                    <option value="LECTURE_HALL">Lecture Halls</option>
-                    <option value="LAB">Laboratories</option>
-                    <option value="MEETING_ROOM">Meeting Rooms</option>
-                    <option value="EQUIPMENT">Equipment (Projectors, etc.)</option>
-                </select>
+            <div style={{ 
+                margin: '20px 0', 
+                padding: '20px', 
+                background: 'var(--surface)', 
+                border: '1px solid var(--border)', 
+                borderRadius: '24px',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                gap: '20px',
+                flexWrap: 'wrap'
+            }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                    <label style={{ fontWeight: '700', color: 'var(--text-main)', fontSize: '14px' }}>Filter:</label>
+                    <select 
+                        value={typeFilter} 
+                        onChange={(e) => setTypeFilter(e.target.value)}
+                        className="premium-input"
+                        style={{ padding: '8px 16px', width: '200px' }}
+                    >
+                        <option value="">All Categories</option>
+                        <option value="LECTURE_HALL">Lecture Halls</option>
+                        <option value="LAB">Laboratories</option>
+                        <option value="MEETING_ROOM">Meeting Rooms</option>
+                        <option value="EQUIPMENT">Equipment</option>
+                    </select>
+                </div>
+
+                <div style={{ display: 'flex', background: 'rgba(255,255,255,0.03)', padding: '4px', borderRadius: '12px', border: '1px solid var(--border)' }}>
+                    <button 
+                        onClick={() => setViewMode('list')}
+                        style={{ 
+                            padding: '8px 16px', border: 'none', borderRadius: '8px', cursor: 'pointer', fontSize: '12px', fontWeight: '700',
+                            background: viewMode === 'list' ? 'var(--primary)' : 'transparent',
+                            color: viewMode === 'list' ? 'white' : 'var(--text-muted)',
+                            transition: 'all 0.2s'
+                        }}>
+                        Horizontal
+                    </button>
+                    <button 
+                        onClick={() => setViewMode('grid')}
+                        style={{ 
+                            padding: '8px 16px', border: 'none', borderRadius: '8px', cursor: 'pointer', fontSize: '12px', fontWeight: '700',
+                            background: viewMode === 'grid' ? 'var(--primary)' : 'transparent',
+                            color: viewMode === 'grid' ? 'white' : 'var(--text-muted)',
+                            transition: 'all 0.2s'
+                        }}>
+                        Grid
+                    </button>
+                </div>
+
                 {user?.role === 'ROLE_ADMIN' && (
                     <button onClick={() => {
                         setShowAddForm(!showAddForm);
                         if(showAddForm) { setIsEditing(false); setEditId(null); setNewRes({ name: '', type: 'LECTURE_HALL', capacity: 0, location: '', status: 'ACTIVE', startTime: '08:00', endTime: '18:00' }); }
-                    }} style={{ float: 'right', padding: '8px 15px', background: '#2ecc71', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>
-                        {showAddForm ? 'Cancel' : '+ Add New Facility'}
+                    }} style={{ padding: '10px 20px', background: 'var(--primary)', color: 'white', border: 'none', borderRadius: '12px', cursor: 'pointer', fontWeight: 'bold', fontSize: '14px', boxShadow: '0 4px 12px rgba(59, 130, 246, 0.2)' }}>
+                        {showAddForm ? 'Cancel' : '+ New Facility'}
                     </button>
                 )}
             </div>
@@ -205,98 +244,125 @@ const Catalogue = () => {
             )}
 
             {loading ? (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <div style={{ 
+                    display: 'grid', 
+                    gridTemplateColumns: viewMode === 'grid' ? 'repeat(auto-fill, minmax(280px, 1fr))' : '1fr', 
+                    gap: '20px' 
+                }}>
                     {Array.from({ length: 4 }).map((_, i) => (
-                        <div key={i} className="premium-card" style={{ display: 'flex', flexDirection: 'row', gap: '24px', padding: '16px', minHeight: '200px' }}>
-                            <div className="skeleton" style={{ flex: '0 0 180px', height: '168px', borderRadius: '12px' }}></div>
+                        <div key={i} className="premium-card" style={{ 
+                            display: 'flex', 
+                            flexDirection: viewMode === 'grid' ? 'column' : 'row', 
+                            gap: '20px', 
+                            padding: '16px', 
+                            minHeight: viewMode === 'grid' ? '300px' : '200px' 
+                        }}>
+                            <div className="skeleton" style={{ flex: viewMode === 'grid' ? '0 0 160px' : '0 0 180px', height: viewMode === 'grid' ? '160px' : '168px', borderRadius: '12px' }}></div>
                             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                                <div>
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '15px' }}>
-                                        <div className="skeleton" style={{ width: '40%', height: '24px', borderRadius: '4px' }}></div>
-                                        <div className="skeleton" style={{ width: '80px', height: '24px', borderRadius: '20px' }}></div>
-                                    </div>
-                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px 20px' }}>
-                                        <div className="skeleton" style={{ width: '80%', height: '14px', borderRadius: '4px' }}></div>
-                                        <div className="skeleton" style={{ width: '70%', height: '14px', borderRadius: '4px' }}></div>
-                                        <div className="skeleton" style={{ width: '90%', height: '14px', borderRadius: '4px' }}></div>
-                                        <div className="skeleton" style={{ width: '60%', height: '14px', borderRadius: '4px' }}></div>
-                                    </div>
-                                </div>
-                                <div style={{ display: 'flex', gap: '10px', paddingTop: '15px' }}>
-                                    <div className="skeleton" style={{ flex: 1, height: '36px', borderRadius: '10px' }}></div>
-                                    <div className="skeleton" style={{ flex: 1, height: '36px', borderRadius: '10px' }}></div>
-                                </div>
+                                <div className="skeleton" style={{ width: '60%', height: '24px', marginBottom: '15px' }}></div>
+                                <div className="skeleton" style={{ width: '90%', height: '40px', borderRadius: '8px' }}></div>
+                                <div className="skeleton" style={{ width: '100%', height: '36px', marginTop: '15px', borderRadius: '10px' }}></div>
                             </div>
                         </div>
                     ))}
                 </div>
             ) : (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <div style={{ 
+                    display: 'grid', 
+                    gridTemplateColumns: viewMode === 'grid' ? 'repeat(auto-fill, minmax(280px, 1fr))' : '1fr', 
+                    gap: '24px' 
+                }}>
                     {resources.map(res => (
                         <div key={res.id} className="premium-card" style={{
                             display: 'flex',
-                            flexDirection: 'row',
-                            gap: '24px',
+                            flexDirection: viewMode === 'grid' ? 'column' : 'row',
+                            gap: '20px',
                             padding: '16px',
-                            minHeight: '200px',
+                            minHeight: viewMode === 'grid' ? '380px' : '200px',
                             alignItems: 'stretch',
-                            overflow: 'hidden'
+                            overflow: 'hidden',
+                            position: 'relative'
                         }}>
                             {res.image && (
-                                <div style={{ flex: '0 0 180px', height: 'auto', minHeight: '160px', overflow: 'hidden', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
+                                <div style={{ 
+                                    flex: viewMode === 'grid' ? '0 0 160px' : '0 0 180px', 
+                                    height: viewMode === 'grid' ? '160px' : 'auto', 
+                                    overflow: 'hidden', 
+                                    borderRadius: '12px', 
+                                    boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+                                    position: 'relative'
+                                }}>
                                     <img src={`data:${res.imageContentType};base64,${res.image}`} alt={res.name} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s' }} className="zoom-hover" />
+                                    {viewMode === 'grid' && (
+                                        <div style={{
+                                            position: 'absolute', top: '10px', right: '10px',
+                                            backgroundColor: res.status === 'ACTIVE' ? 'rgba(16, 185, 129, 0.9)' : res.status === 'INACTIVE' ? 'rgba(148, 163, 184, 0.9)' : 'rgba(239, 68, 68, 0.9)',
+                                            color: 'white',
+                                            padding: '4px 8px', borderRadius: '8px', fontSize: '9px', fontWeight: 'bold', textTransform: 'uppercase',
+                                            backdropFilter: 'blur(4px)', boxShadow: '0 2px 8px rgba(0,0,0,0.2)'
+                                        }}>
+                                            {res.status === 'ACTIVE' ? 'AVAILABLE' : res.status.replace('_', ' ')}
+                                        </div>
+                                    )}
                                 </div>
                             )}
                             
                             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                                 <div>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
-                                        <h3 style={{ margin: '0', color: 'var(--text-main)', fontSize: '20px', letterSpacing: '-0.5px' }}>{res.name}</h3>
-                                        <span style={{
-                                            backgroundColor: res.status === 'ACTIVE' ? '#dcfce7' : res.status === 'INACTIVE' ? '#f1f5f9' : '#fee2e2',
-                                            color: res.status === 'ACTIVE' ? '#166534' : res.status === 'INACTIVE' ? '#475569' : '#991b1b',
-                                            border: `1px solid ${res.status === 'ACTIVE' ? '#bbf7d0' : res.status === 'INACTIVE' ? '#e2e8f0' : '#fecaca'}`,
-                                            padding: '4px 10px', borderRadius: '20px', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase'
-                                        }}>
-                                            {res.status === 'ACTIVE' ? 'AVAILABLE' : res.status.replace('_', ' ')}
-                                        </span>
+                                        <h3 style={{ margin: '0', color: 'var(--text-main)', fontSize: viewMode === 'grid' ? '18px' : '20px', letterSpacing: '-0.5px' }}>{res.name}</h3>
+                                        {viewMode === 'list' && (
+                                            <span style={{
+                                                backgroundColor: res.status === 'ACTIVE' ? 'rgba(16, 185, 129, 0.1)' : res.status === 'INACTIVE' ? 'rgba(148, 163, 184, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+                                                color: res.status === 'ACTIVE' ? '#10b981' : res.status === 'INACTIVE' ? '#94a3b8' : '#ef4444',
+                                                border: `1px solid rgba(255,255,255,0.05)`,
+                                                padding: '4px 10px', borderRadius: '20px', fontSize: '10px', fontWeight: 'bold', textTransform: 'uppercase'
+                                            }}>
+                                                {res.status === 'ACTIVE' ? 'AVAILABLE' : res.status.replace('_', ' ')}
+                                            </span>
+                                        )}
                                     </div>
                                     
-                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px 20px', marginBottom: '15px' }}>
-                                        <div style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
-                                            <strong style={{color:'#1e293b'}}>Type:</strong> {res.type.replace('_', ' ')}
+                                    <div style={{ 
+                                        display: 'grid', 
+                                        gridTemplateColumns: viewMode === 'grid' ? '1fr' : '1fr 1fr', 
+                                        gap: viewMode === 'grid' ? '6px' : '8px 20px', 
+                                        marginBottom: '15px' 
+                                    }}>
+                                        <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>
+                                            <span style={{opacity: 0.6}}>Type:</span> {res.type.replace('_', ' ')}
                                         </div>
-                                        <div style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
-                                            <strong style={{color:'#1e293b'}}>Capacity:</strong> {res.capacity} pax
+                                        <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>
+                                            <span style={{opacity: 0.6}}>Capacity:</span> {res.capacity} pax
                                         </div>
-                                        <div style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
-                                            <strong style={{color:'#1e293b'}}>Location:</strong> {res.location}
+                                        <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>
+                                            <span style={{opacity: 0.6}}>Location:</span> {res.location}
                                         </div>
-                                        <div style={{ fontSize: '13px', color: 'var(--text-muted)' }}>
-                                            <strong style={{color:'#1e293b'}}>Hours:</strong> {res.startTime || '08:00'} - {res.endTime || '18:00'}
+                                        <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>
+                                            <span style={{opacity: 0.6}}>Hours:</span> {res.startTime || '08:00'} - {res.endTime || '18:00'}
                                         </div>
                                     </div>
                                 </div>
                                 
-                                <div style={{ display: 'flex', gap: '10px', borderTop: '1px solid #f1f5f9', paddingTop: '12px' }}>
+                                <div style={{ display: 'flex', gap: '8px', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '12px' }}>
                                     {user?.role === 'ROLE_USER' && res.status === 'ACTIVE' && (
                                         <>
-                                            <button onClick={() => window.location.href=`/book/${res.id}`} style={{ flex: 1, padding: '10px', background: 'var(--primary)', color: 'white', border: 'none', borderRadius: '10px', cursor: 'pointer', fontWeight: '700', fontSize: '13px', boxShadow: '0 4px 12px rgba(59, 130, 246, 0.2)' }}>Book Booking</button>
-                                            <button onClick={() => window.location.href=`/report/${res.id}`} style={{ flex: 1, padding: '10px', background: 'white', color: '#ef4444', border: '1px solid #fee2e2', borderRadius: '10px', cursor: 'pointer', fontWeight: '700', fontSize: '13px' }}>Report Issue</button>
+                                            <button onClick={() => window.location.href=`/book/${res.id}`} style={{ flex: 1, padding: '10px', background: 'var(--primary)', color: 'white', border: 'none', borderRadius: '10px', cursor: 'pointer', fontWeight: '700', fontSize: '12px' }}>Book Now</button>
+                                            <button onClick={() => window.location.href=`/report/${res.id}`} style={{ padding: '10px', background: 'rgba(239, 68, 68, 0.05)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.1)', borderRadius: '10px', cursor: 'pointer', fontWeight: '700', fontSize: '12px' }}>Report</button>
                                         </>
                                     )}
 
                                     {user?.role === 'ROLE_ADMIN' && (
                                         <>
-                                            <button onClick={() => handleEditClick(res)} style={{ flex: 1, padding: '10px', background: '#f59e0b', color: 'white', border: 'none', borderRadius: '10px', cursor: 'pointer', fontWeight: 'bold', fontSize: '13px', boxShadow: '0 4px 12px rgba(245, 158, 11, 0.2)' }}>Modify</button>
-                                            <button onClick={() => handleDeleteClick(res.id)} style={{ flex: 1, padding: '10px', background: 'white', color: '#ef4444', border: '1px solid #fee2e2', borderRadius: '10px', cursor: 'pointer', fontWeight: 'bold', fontSize: '13px' }}>Remove</button>
+                                            <button onClick={() => handleEditClick(res)} style={{ flex: 1, padding: '10px', background: 'rgba(245, 158, 11, 0.1)', color: '#f59e0b', border: '1px solid rgba(245, 158, 11, 0.2)', borderRadius: '10px', cursor: 'pointer', fontWeight: 'bold', fontSize: '12px' }}>Edit</button>
+                                            <button onClick={() => handleDeleteClick(res.id)} style={{ padding: '10px', background: 'rgba(239, 68, 68, 0.05)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.1)', borderRadius: '10px', cursor: 'pointer', fontWeight: 'bold', fontSize: '12px' }}>Delete</button>
                                         </>
                                     )}
                                 </div>
                             </div>
                         </div>
                     ))}
-                    {resources.length === 0 && <p style={{ gridColumn: '1 / -1', textAlign: 'center', color: '#888' }}>No resources match your filters.</p>}
+                    {resources.length === 0 && <p style={{ gridColumn: '1 / -1', textAlign: 'center', color: 'var(--text-muted)', paddingTop: '40px' }}>No resources match your filters.</p>}
                 </div>
             )}
         </div>
