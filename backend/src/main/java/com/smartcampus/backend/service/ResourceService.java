@@ -22,8 +22,26 @@ public class ResourceService {
                 .orElseThrow(() -> new RuntimeException("Resource not found"));
     }
 
-    public Resource createResource(Resource resource) {
-        return resourceRepository.save(resource);
+    public Resource createResource(String name, String type, int capacity, String location, String status, String startTime, String endTime, org.springframework.web.multipart.MultipartFile image) {
+        Resource r = new Resource();
+        r.setName(name);
+        r.setType(type);
+        r.setCapacity(capacity);
+        r.setLocation(location);
+        r.setStatus(status);
+        r.setStartTime(startTime);
+        r.setEndTime(endTime);
+        r.setAvailabilityWindows("Daily " + startTime + " to " + endTime);
+        
+        if (image != null && !image.isEmpty()) {
+            try {
+                r.setImage(image.getBytes());
+                r.setImageContentType(image.getContentType());
+            } catch (java.io.IOException e) {
+                throw new RuntimeException("Failed to store image", e);
+            }
+        }
+        return resourceRepository.save(r);
     }
     
     public Resource updateResource(Long id, Resource updatedResource) {

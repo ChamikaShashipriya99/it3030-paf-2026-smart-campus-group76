@@ -22,6 +22,15 @@ public class Resource {
 
     private String availabilityWindows;
 
+    @Lob
+    @Column(columnDefinition = "LONGBLOB")
+    private byte[] image;
+
+    private String imageContentType;
+
+    private String startTime;
+    private String endTime;
+
     @Column(nullable = false)
     private String status;
 
@@ -73,10 +82,15 @@ public class Resource {
     public void setAvailabilityWindows(String availabilityWindows) {
         this.availabilityWindows = availabilityWindows;
     }
-    public String getStatus() {
-        return status;
-    }
-    public void setStatus(String status) {
-        this.status = status;
-    }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
+
+    public byte[] getImage() { return image; }
+    public void setImage(byte[] image) { this.image = image; }
+    public String getImageContentType() { return imageContentType; }
+    public void setImageContentType(String imageContentType) { this.imageContentType = imageContentType; }
+    public String getStartTime() { return startTime; }
+    public void setStartTime(String startTime) { this.startTime = startTime; }
+    public String getEndTime() { return endTime; }
+    public void setEndTime(String endTime) { this.endTime = endTime; }
 }
