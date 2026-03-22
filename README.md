@@ -1,43 +1,91 @@
-# Smart Campus Operations Hub
+# Smart Campus Operations Hub 🏫✨
 
-## Assignment 2026 - Programming Applications and Frameworks (IT3030)
+A premium, state-of-the-art university facility management system built for the **IT3030 PAF Assignment (2026)**. This platform features a modern **Dark Gradient Vibe** with glassmorphism, real-time notifications, and advanced resource tracking.
 
-This repository contains the complete production-inspired web platform for the Smart Campus Operations Hub, developed as part of the IT3030 Assignment.
+![Login Page](docs/images/login-page.png)
 
-### 🌟 Core Modules Implemented
-- **Module A: Facilities & Assets Catalogue** - Maintain and search active university resources.
-- **Module B: Booking Management** - Users can request bookings with conflict-free overlap checking, and Admins can approve/reject workflows. 
-- **Module C: Maintenance & Incident Ticketing** - Users can report issues, upload up to 3 image attachments as evidence, and Technicians can claim/resolve the tickets. Complete with an interactive comment thread.
-- **Module D: Notifications** - A persistent internal DB notification Inbox with unread counters to alert users of ticket status changes, new comments, or booking outcomes.
-- **Module E: Authentication** - Implements strict JWT token-based state, integrated with Google OAuth 2.0 Sign-In, utilizing robust `USER`, `TECHNICIAN`, and `ADMIN` roles.
+## 🌟 Key Highlights
+*   **Premium Aesthetics**: Custom-built with a deep-sea dark theme, radial gradients, and fluid micro-animations.
+*   **Dynamic Catalogue**: Switch between **Premium Horizontal List** and **Modern Grid** views with real-time search.
+*   **Robust Validation**: Multi-layer JSR-303 (Backend) and Smart Logic (Frontend) validation for all inputs.
+*   **Role-Based Access**: Specialized dashboards for Students/Staff, Admins, and Technicians.
 
-### 🛠 Tech Stack
-- **Backend:** Java, Spring Boot 3, Spring Data JPA, Spring Security, MySQL
-- **Frontend:** React.js 18, Vite, React Router DOM, Axios
-- **Version Control & CI:** Git, GitHub Actions
+---
 
-## 🚀 Setup Instructions
+## 📸 Visual Tour
 
-### 1. Database Initialization
-1. Ensure your local **MySQL server** is running.
-2. Open your MySQL client and run:  
-   `CREATE DATABASE smartcampus;`
-3. The application will automatically construct the required schema via Hibernate upon startup.
-4. *Note:* Default credentials in `application.properties` are set as `root` with no password. Change these if your local setup differs.
+### User Experience
+Explore the campus easily with our intuitive user interface.
 
-### 2. Running the Backend (Spring Boot REST API)
-1. Open a terminal and navigate to the `backend` directory.
-2. Execute the Maven wrapper command:  
-   `mvn spring-boot:run`
-3. The API will start functioning on port `8080`.
+| Dashboard | Catalogue | Notifications |
+| :--- | :--- | :--- |
+| ![User Dashboard](docs/images/user-dashaboard.png) | ![User Catalogue](docs/images/user-catalogue-page.png) | ![User Notifications](docs/images/user-notification-page.png) |
 
-### 3. Running the Frontend (React Client)
-1. Open a new terminal and navigate to the `frontend` directory.
-2. Install the necessary Node.js dependencies:  
-   `npm install`
-3. Start the Vite development server:  
-   `npm run dev`
-4. The web UI will be accessible locally at `http://localhost:5173`.
+### Admin & Staff Experience
+Powerful tools for managing campus resources and maintenance.
 
-### 4. Demonstrating Authentication
-The system uses Google OAuth2. Ensure you have an active network connection. Role elevations (e.g., standard users becoming `ROLE_ADMIN` or `ROLE_TECHNICIAN`) are governed via internal database checks managed by the system upon the first login.
+| Admin Dashboard | Resource Management | Booking Control |
+| :--- | :--- | :--- |
+| ![Admin Dashboard](docs/images/admin-dashboard.png) | ![Admin Catalogue](docs/images/admin-catalogue-page.png) | ![Booking Management](docs/images/admin-manageBooking-page.png) |
+
+> [!TIP]
+> **Technician View**: Our Service Desk allows for rapid incident resolution.
+> ![Service Desk](docs/images/admin-serviceDesk-page.png)
+
+---
+
+## 🛠️ Portfolios & Modules
+
+### Module A: Facilities & Assets Catalogue
+*   **View Toggle**: Users can choose their preferred browsing experience (List vs Grid).
+*   **Real-time Search**: Filter by name, location, or type instantly.
+*   **Status Tracking**: Live visibility of `ACTIVE`, `MAINTENANCE`, and `INACTIVE` resources.
+
+### Module B: Booking Management
+*   **Seamless Requests**: High-contrast forms with date-collision protection.
+*   **Admin Approval Workflow**: Managers can approve/reject with custom reasons.
+
+### Module C: Maintenance & Incident Ticketing
+*   **Multi-Image Upload**: Report issues with up to 3 evidence attachments.
+*   **Technician Workflow**: Dedicated terminal for picking up and resolving tickets.
+
+---
+
+## 🚀 Acceptable Innovation (Bonus Points)
+We have implemented several "Optional Innovations" to secure maximum marks:
+1.  **Usage Analytics Ready**: Backend structured to track resource popularity.
+2.  **SLA Tracking**: Tickets track time-to-resolution for performance reporting.
+3.  **Premium UX**: Integration of **Skeleton Loaders** for a seamless data-fetching experience.
+
+---
+
+## 💻 Tech Stack
+*   **Frontend**: React 18, Vite, Vanilla CSS (Premium Tokens).
+*   **Backend**: Spring Boot 3.4, Spring Security (OAuth2 + JWT), Jakarta Validation.
+*   **Database**: MySQL.
+*   **Design**: Glassmorphism, CSS Variables, Modern Typography.
+
+---
+
+## 🏁 Getting Started
+
+### Prerequisites
+*   Java 25+
+*   Node.js 18+
+*   MySQL 8.0+
+
+### Installation
+1.  **Clone the Repository**
+2.  **Backend Setup**: 
+    *   Configure `application.yml` with your database and Google OAuth credentials.
+    *   Run `com.smartcampus.backend.BackendApplication`.
+3.  **Frontend Setup**:
+    *   Navigate to `/frontend`.
+    *   `npm install`
+    *   `npm run dev`
+4.  **Access**: Open `http://localhost:5173`.
+
+---
+
+> [!NOTE]  
+> This project was developed with a focus on **Security**, **Scalability**, and **User Experience**. All forms are protected against invalid data entry and unauthorized access.
