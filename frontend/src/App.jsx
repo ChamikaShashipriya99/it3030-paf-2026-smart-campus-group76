@@ -69,6 +69,11 @@ function App() {
                             <TechnicianDashboard />
                         </PrivateRoute>
                     } />
+                    <Route path="/notifications" element={
+                        <PrivateRoute>
+                            <Notifications />
+                        </PrivateRoute>
+                    } />
                     
                         {/* Default Route */}
                         <Route path="/" element={<Navigate to="/dashboard" />} />
