@@ -53,7 +53,7 @@ Powerful tools for managing campus resources and maintenance triage.
 ## 💻 Tech Stack
 *   **Frontend**: React 18, Vite, Vanilla CSS (Premium Design System).
 *   **Backend**: Spring Boot 3.4, Spring Security, MongoDB.
-*   **Architecture**: Layered Service Architecture with RESTful best practices.
+*   **Architecture**: Layered Service Architecture with RESTful best practices. [Review Detailed Diagrams here](docs/ARCHITECTURE.md).
 
 ---
 
