@@ -11,7 +11,7 @@ A premium, state-of-the-art university facility management system built for the 
 *   **Role-Based Access**: specialized dashboards for Students, Admins, and Engineering Technicians.
 
 ---
-![Login Page Preview](docs/images/LoginPage.png)
+![Login Page Preview](docs/images/login-page.png)
 
 ## 📸 Visual Tour
 
