@@ -63,4 +63,13 @@ public class BookingController {
             return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));
         }
     }
+
+    @PostMapping("/{id}/checkin")
+    public ResponseEntity<?> checkIn(@PathVariable String id) {
+        try {
+            return ResponseEntity.ok(bookingService.checkInBooking(id));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));
+        }
+    }
 }

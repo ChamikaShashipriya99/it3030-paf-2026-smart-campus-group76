@@ -10,19 +10,44 @@ import {
     CalendarCheck,
     Wrench,
     AlertCircle,
-    CheckCircle2
+    CheckCircle2,
+    TrendingUp,
+    Clock,
+    Activity,
+    Target
 } from 'lucide-react';
 
 const Dashboard = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const [myTickets, setMyTickets] = useState([]);
+    const [allTickets, setAllTickets] = useState([]);
 
     useEffect(() => {
         if (user && user.role === 'ROLE_USER') {
             api.get(`/tickets/user/${user.id}`).then(res => setMyTickets(res.data)).catch(err => console.error(err));
         }
+        if (user && (user.role === 'ROLE_ADMIN' || user.role === 'ROLE_TECHNICIAN')) {
+            api.get('/tickets').then(res => setAllTickets(res.data)).catch(err => console.error(err));
+        }
     }, [user]);
+
+    const calculateSLA = () => {
+        const resolved = allTickets.filter(t => t.resolvedAt);
+        if (resolved.length === 0) return { avg: "0h", rate: "0%" };
+
+        let totalHrs = 0;
+        resolved.forEach(t => {
+            const diff = new Date(t.resolvedAt) - new Date(t.createdAt);
+            totalHrs += (diff / (1000 * 60 * 60));
+        });
+
+        const avg = (totalHrs / resolved.length).toFixed(1);
+        const rate = ((resolved.length / allTickets.length) * 100).toFixed(0);
+        return { avg: `${avg}h`, rate: `${rate}%` };
+    };
+
+    const sla = calculateSLA();
 
     const cardStyle = {
         background: 'var(--glass-bg)',
@@ -82,9 +107,45 @@ const Dashboard = () => {
                 </div>
             </div>
 
+            {/* Innovation: SLA Analytics for Staff */}
+            {(user.role === 'ROLE_ADMIN' || user.role === 'ROLE_TECHNICIAN') && (
+                <div style={{ marginBottom: '60px' }}>
+                    <div className="page-header">
+                        <h3 className="page-title">Operational Analytics</h3>
+                        <p className="page-subtitle">Real-time Service Level Agreement (SLA) performance monitoring.</p>
+                    </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '25px' }}>
+                        <div className="premium-card" style={{ padding: '30px', background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)', color: 'white', border: 'none' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
+                                <span style={{ fontSize: '12px', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1px', color: '#94a3b8' }}>Avg Resolution (MTTR)</span>
+                                <Clock size={20} color="#3b82f6" />
+                            </div>
+                            <div style={{ fontSize: '38px', fontWeight: '900', letterSpacing: '-1.5px' }}>{sla.avg}</div>
+                            <div style={{ marginTop: '10px', fontSize: '12px', color: '#475569' }}>Historical ticket lifecycle average.</div>
+                        </div>
+                        <div className="premium-card" style={{ padding: '30px', border: '1px solid #E2E8F0' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
+                                <span style={{ fontSize: '12px', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1px', color: '#64748b' }}>Closing efficiency</span>
+                                <Target size={20} color="#10b981" />
+                            </div>
+                            <div style={{ fontSize: '38px', fontWeight: '900', letterSpacing: '-1.5px', color: '#0f172a' }}>{sla.rate}</div>
+                            <div style={{ marginTop: '10px', fontSize: '12px', color: '#94a3b8' }}>Processed vs. Active Requests.</div>
+                        </div>
+                        <div className="premium-card" style={{ padding: '30px', border: '1px solid #E2E8F0' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
+                                <span style={{ fontSize: '12px', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1px', color: '#64748b' }}>Active Incidents</span>
+                                <Activity size={20} color="#ef4444" />
+                            </div>
+                            <div style={{ fontSize: '38px', fontWeight: '900', letterSpacing: '-1.5px', color: '#0f172a' }}>{allTickets.filter(t => t.status !== 'CLOSED' && t.status !== 'RESOLVED').length}</div>
+                            <div style={{ marginTop: '10px', fontSize: '12px', color: '#94a3b8' }}>Live issues requiring triage.</div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {/* Navigation Quick Actions */}
             <div className="page-header" style={{ marginTop: '60px' }}>
-                <h3 className="page-title">Quick Actions</h3>
+                <h3 className="page-title">Campus Hub Navigation</h3>
                 <p className="page-subtitle">Access your most frequent destination in one click.</p>
             </div>
 
@@ -106,9 +167,9 @@ const Dashboard = () => {
                             <CalendarCheck size={30} />
                         </div>
                         <h4 style={{ margin: '0 0 10px 0', color: 'var(--text-main)', fontSize: '20px', fontWeight: '800' }}>My Reservations</h4>
-                        <p style={{ margin: 0, fontSize: '14px', color: 'var(--text-muted)', lineHeight: '1.6' }}>Track the status of your current and upcoming facility booking requests.</p>
+                        <p style={{ margin: 0, fontSize: '14px', color: 'var(--text-muted)', lineHeight: '1.6' }}>Track the status of your current and upcoming facility booking requests. (QR Enabled)</p>
                         <div style={{ marginTop: '25px', display: 'flex', alignItems: 'center', color: '#8B5CF6', fontWeight: 'bold', fontSize: '13px', gap: '5px' }}>
-                            View Status <ChevronRight size={16} />
+                            View Pass <ChevronRight size={16} />
                         </div>
                     </div>
                 )}
@@ -127,6 +188,7 @@ const Dashboard = () => {
                 )}
             </div>
 
+            {/* My Tickets Section */}
             {user?.role === 'ROLE_USER' && (
                 <div style={{ marginTop: '80px' }}>
                     <div className="page-header">

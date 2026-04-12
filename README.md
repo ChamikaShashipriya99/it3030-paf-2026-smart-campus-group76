@@ -30,6 +30,20 @@ Powerful tools for managing campus resources and maintenance triage.
 
 ---
 
+## 🚀 Optional Innovations (Bonus Marks)
+
+### I. QR Secured Facility Check-in
+*   **Encrypted Passwords**: Unified QR tokens generated for every approved reservation.
+*   **Security Protocol**: Staff can scan/simulate check-ins to verify physical occupancy in real-time.
+*   **Status Lifecycle**: Bookings transition from `APPROVED` to `CHECKED_IN` upon successful scan.
+
+### II. Advanced SLA Analytics Engine
+*   **Predictive Maintenance**: Real-time tracking of **Mean Time To Resolution (MTTR)**.
+*   **Efficiency Metrics**: Automatic calculation of "Closing Rate" and "Triage Volume" on the Admin Dashboard.
+*   **Temporal Logging**: Backend-level timestamping for `Ticket` finalization events.
+
+---
+
 ## 🛠️ Modules (PAF Requirements)
 
 ### Module A: Facilities & Assets Catalogue

@@ -96,6 +96,9 @@ public class TicketService {
     public Ticket updateTicketStatus(String ticketId, TicketStatus status, String resolutionNotes) {
         Ticket ticket = ticketRepository.findById(ticketId).orElseThrow(() -> new RuntimeException("Ticket not found"));
         ticket.setStatus(status);
+        if (status == TicketStatus.RESOLVED || status == TicketStatus.CLOSED) {
+            ticket.setResolvedAt(LocalDateTime.now());
+        }
         if (resolutionNotes != null) {
             ticket.setResolutionNotes(resolutionNotes);
         }

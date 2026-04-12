@@ -11,7 +11,9 @@ import {
     ArrowRight,
     Search,
     Filter,
-    FileText
+    FileText,
+    QrCode,
+    Scan
 } from 'lucide-react';
 
 const ManageBookings = () => {
@@ -46,12 +48,24 @@ const ManageBookings = () => {
         }
     };
 
+    const handleCheckIn = async () => {
+        const bid = prompt("Enter Booking ID to Check-in (Simulation):");
+        if (!bid) return;
+        try {
+            await api.post(`/bookings/${bid}/checkin`);
+            showNotification("Successful QR Check-in", "success");
+            fetchBookings();
+        } catch (e) {
+            showNotification(e.response?.data?.message || "Check-in Failed", "error");
+        }
+    };
+
     const pendingCount = bookings.filter(b => b.status === 'PENDING').length;
     const approvedCount = bookings.filter(b => b.status === 'APPROVED').length;
-    const rejectedCount = bookings.filter(b => b.status === 'REJECTED').length;
+    const checkedInCount = bookings.filter(b => b.status === 'CHECKED_IN').length;
 
     const statsCardStyle = {
-        flex: 1, minWidth: '240px', background: 'var(--surface)', padding: '30px', borderRadius: '24px',
+        flex: 1, minWidth: '220px', background: 'var(--surface)', padding: '30px', borderRadius: '24px',
         boxShadow: 'var(--shadow-soft)', border: '1px solid var(--border)', display: 'flex', flexDirection: 'column',
         position: 'relative', overflow: 'hidden'
     };
@@ -63,8 +77,13 @@ const ManageBookings = () => {
                     <h2 className="page-title">Booking Management</h2>
                     <p className="page-subtitle">Administrative oversight for all university facility reservations.</p>
                 </div>
-                <div style={{ background: 'rgba(59, 130, 246, 0.1)', color: 'var(--primary)', padding: '10px 20px', borderRadius: '14px', fontSize: '13px', fontWeight: '800', border: '1px solid rgba(59, 130, 246, 0.2)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <ShieldCheck size={16} /> Admin Authority
+                <div style={{ display: 'flex', gap: '15px' }}>
+                    <button onClick={handleCheckIn} style={{ background: '#000', color: 'white', padding: '12px 24px', borderRadius: '14px', fontSize: '14px', fontWeight: '900', border: 'none', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', boxShadow: '0 8px 16px rgba(0,0,0,0.1)' }}>
+                        <Scan size={18} /> Simulate QR Scan
+                    </button>
+                    <div style={{ background: 'rgba(59, 130, 246, 0.1)', color: 'var(--primary)', padding: '12px 24px', borderRadius: '14px', fontSize: '13px', fontWeight: '800', border: '1px solid rgba(59, 130, 246, 0.2)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <ShieldCheck size={16} /> Admin Authority
+                    </div>
                 </div>
             </div>
 
@@ -72,7 +91,7 @@ const ManageBookings = () => {
                 <div style={statsCardStyle}>
                     <div style={{ position: 'absolute', top: 0, left: 0, width: '4px', height: '100%', background: 'var(--primary)' }} />
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                        <span style={{ fontSize: '13px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Awaiting Action</span>
+                        <span style={{ fontSize: '13px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Awaiting</span>
                         <Clock size={20} color="var(--primary)" />
                     </div>
                     <h3 style={{ fontSize: '36px', fontWeight: '900', margin: '15px 0 0 0', color: 'var(--text-main)', letterSpacing: '-1px' }}>{pendingCount}</h3>
@@ -80,18 +99,18 @@ const ManageBookings = () => {
                 <div style={statsCardStyle}>
                     <div style={{ position: 'absolute', top: 0, left: 0, width: '4px', height: '100%', background: '#10b981' }} />
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                        <span style={{ fontSize: '13px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Total Approved</span>
+                        <span style={{ fontSize: '13px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Approved</span>
                         <CheckCircle2 size={20} color="#10b981" />
                     </div>
                     <h3 style={{ fontSize: '36px', fontWeight: '900', margin: '15px 0 0 0', color: 'var(--text-main)', letterSpacing: '-1px' }}>{approvedCount}</h3>
                 </div>
                 <div style={statsCardStyle}>
-                    <div style={{ position: 'absolute', top: 0, left: 0, width: '4px', height: '100%', background: '#ef4444' }} />
+                    <div style={{ position: 'absolute', top: 0, left: 0, width: '4px', height: '100%', background: '#2563EB' }} />
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                        <span style={{ fontSize: '13px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Total Rejected</span>
-                        <XCircle size={20} color="#ef4444" />
+                        <span style={{ fontSize: '13px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Checked-In</span>
+                        <QrCode size={20} color="#2563EB" />
                     </div>
-                    <h3 style={{ fontSize: '36px', fontWeight: '900', margin: '15px 0 0 0', color: 'var(--text-main)', letterSpacing: '-1px' }}>{rejectedCount}</h3>
+                    <h3 style={{ fontSize: '36px', fontWeight: '900', margin: '15px 0 0 0', color: 'var(--text-main)', letterSpacing: '-1px' }}>{checkedInCount}</h3>
                 </div>
             </div>
 
@@ -161,12 +180,12 @@ const ManageBookings = () => {
                                         ) : (
                                             <span style={{
                                                 fontWeight: '800', fontSize: '11px', padding: '6px 14px', borderRadius: '30px', letterSpacing: '0.5px',
-                                                backgroundColor: b.status === 'APPROVED' ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)',
-                                                color: b.status === 'APPROVED' ? '#10b981' : '#ef4444',
-                                                border: `1px solid ${b.status === 'APPROVED' ? 'rgba(16, 185, 129, 0.2)' : 'rgba(239, 68, 68, 0.2)'}`,
+                                                backgroundColor: b.status === 'APPROVED' ? 'rgba(16, 185, 129, 0.1)' : b.status === 'CHECKED_IN' ? 'rgba(37, 99, 235, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+                                                color: b.status === 'APPROVED' ? '#10b981' : b.status === 'CHECKED_IN' ? '#2563EB' : '#ef4444',
+                                                border: `1px solid ${b.status === 'APPROVED' ? 'rgba(16, 185, 129, 0.2)' : b.status === 'CHECKED_IN' ? 'rgba(37,99,235,0.2)' : 'rgba(239, 68, 68, 0.2)'}`,
                                                 textTransform: 'uppercase'
                                             }}>
-                                                {b.status}
+                                                {b.status.replace('_', ' ')}
                                             </span>
                                         )}
                                     </td>
