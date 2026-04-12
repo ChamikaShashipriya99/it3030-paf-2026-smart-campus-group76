@@ -75,7 +75,7 @@ const Navbar = () => {
             transition: 'all 0.2s',
             padding: '10px 16px',
             borderRadius: '12px',
-            background: isActive ? 'rgba(96, 165, 250, 0.1)' : 'transparent'
+            background: isActive ? 'rgba(37, 99, 235, 0.08)' : 'transparent'
         };
     };
 

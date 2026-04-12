@@ -15,7 +15,7 @@ const Login = () => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            background: 'radial-gradient(circle at 50% 50%, #0f172a 0%, #020617 100%)',
+            background: 'radial-gradient(circle at 50% 50%, #F9FAFB 0%, #F3F4F6 100%)',
             position: 'fixed',
             top: 0,
             left: 0,
@@ -31,83 +31,81 @@ const Login = () => {
                     position: 'fixed',
                     top: '40px',
                     left: '40px',
-                    background: 'rgba(255,255,255,0.03)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                    color: '#94a3b8',
-                    padding: '12px 20px',
+                    background: '#FFFFFF',
+                    border: '1px solid #E5E7EB',
+                    color: '#4B5563',
+                    padding: '12px 24px',
                     borderRadius: '16px',
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '10px',
                     fontSize: '14px',
-                    fontWeight: '700',
+                    fontWeight: '800',
                     transition: 'all 0.2s',
                     zIndex: 2100,
-                    backdropFilter: 'blur(10px)'
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
                 }}
-                onMouseOver={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; e.currentTarget.style.color = 'white'; e.currentTarget.style.transform = 'translateX(-5px)'; }}
-                onMouseOut={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; e.currentTarget.style.color = '#94a3b8'; e.currentTarget.style.transform = 'translateX(0)'; }}
+                onMouseOver={e => { e.currentTarget.style.background = '#F9FAFB'; e.currentTarget.style.color = '#2563EB'; e.currentTarget.style.transform = 'translateX(-5px)'; }}
+                onMouseOut={e => { e.currentTarget.style.background = '#FFFFFF'; e.currentTarget.style.color = '#4B5563'; e.currentTarget.style.transform = 'translateX(0)'; }}
             >
                 <ArrowLeft size={18} /> Back to Home
             </button>
+
             {/* Background Decorations */}
-            <div style={{ position: 'absolute', top: '10%', left: '10%', width: '300px', height: '300px', background: 'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%)', borderRadius: '50%', zIndex: 0 }} />
-            <div style={{ position: 'absolute', bottom: '10%', right: '10%', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%)', borderRadius: '50%', zIndex: 0 }} />
+            <div style={{ position: 'absolute', top: '10%', left: '10%', width: '300px', height: '300px', background: 'radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%)', borderRadius: '50%', zIndex: 0 }} />
+            <div style={{ position: 'absolute', bottom: '10%', right: '10%', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(129, 140, 248, 0.05) 0%, transparent 70%)', borderRadius: '50%', zIndex: 0 }} />
 
             <div style={{
                 width: '100%',
-                maxWidth: '440px',
-                padding: '50px',
-                background: 'rgba(15, 23, 42, 0.6)',
-                backdropFilter: 'blur(30px)',
-                WebkitBackdropFilter: 'blur(30px)',
-                borderRadius: '32px',
-                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
-                border: '1px solid rgba(255, 255, 255, 0.05)',
+                maxWidth: '460px',
+                padding: '60px',
+                background: '#FFFFFF',
+                borderRadius: '40px',
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.08)',
+                border: '1px solid #F3F4F6',
                 textAlign: 'center',
                 position: 'relative',
                 zIndex: 1
             }}>
+                <img src="/SmartCampus.png" alt="SmartCampus Logo" style={{ height: '70px', width: 'auto', marginBottom: '40px' }} />
 
-                <img src="/SmartCampus.png" alt="SmartCampus Logo" style={{ height: '60px', width: 'auto', marginBottom: '30px' }} />
-
-                <h1 style={{ fontSize: '32px', color: '#f8fafc', margin: '0 0 12px 0', letterSpacing: '-1px', fontWeight: '800' }}>
-                    Welcome to SmartCampus
+                <h1 style={{ fontSize: '36px', color: '#111827', margin: '0 0 15px 0', letterSpacing: '-2px', fontWeight: '900' }}>
+                    Welcome Back
                 </h1>
-                <p style={{ color: '#94a3b8', fontSize: '16px', margin: '0 0 40px 0', lineHeight: '1.6' }}>
-                    The unified operating hub for university facilities, incidents, and resource management.
+                <p style={{ color: '#4B5563', fontSize: '17px', margin: '0 0 45px 0', lineHeight: '1.6', fontWeight: '500' }}>
+                    Access the unified operating hub for university facilities and resources.
                 </p>
 
                 <button
                     onClick={handleGoogleLogin}
                     style={{
                         width: '100%',
-                        padding: '16px 24px',
+                        padding: '18px 24px',
                         fontSize: '16px',
                         cursor: 'pointer',
-                        backgroundColor: '#1e293b',
-                        color: '#f8fafc',
-                        border: '1px solid #334155',
-                        borderRadius: '16px',
-                        fontWeight: '700',
+                        backgroundColor: '#FFFFFF',
+                        color: '#111827',
+                        border: '1px solid #E5E7EB',
+                        borderRadius: '20px',
+                        fontWeight: '800',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        gap: '12px',
+                        gap: '15px',
                         transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
                         boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)'
                     }}
-                    onMouseOver={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.4)'; e.currentTarget.style.borderColor = '#60a5fa'; }}
-                    onMouseOut={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.2)'; e.currentTarget.style.borderColor = '#334155'; }}
+                    onMouseOver={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1)'; e.currentTarget.style.borderColor = '#2563EB'; }}
+                    onMouseOut={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.05)'; e.currentTarget.style.borderColor = '#E5E7EB'; }}
                 >
-                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" style={{ width: '20px', height: '20px' }} />
-                    Continue with Google
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" style={{ width: '22px', height: '22px' }} />
+                    Sign in with Google
                 </button>
 
-                <div style={{ marginTop: '30px', borderTop: '1px solid rgba(226, 232, 240, 0.5)', paddingTop: '20px' }}>
-                    <p style={{ fontSize: '12px', color: '#94a3b8', margin: 0 }}>
-                        Internal Access Only &bull; University of Smart Campus
+                <div style={{ marginTop: '45px', borderTop: '1px solid #F3F4F6', paddingTop: '30px' }}>
+                    <p style={{ fontSize: '13px', color: '#9CA3AF', margin: 0, fontWeight: '600', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                        Internal Access Only &bull; SLIIT
                     </p>
                 </div>
             </div>
