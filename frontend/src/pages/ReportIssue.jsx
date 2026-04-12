@@ -3,6 +3,16 @@ import { useParams, useNavigate } from 'react-router-dom';
 import api from '../api/axiosConfig';
 import { AuthContext } from '../context/AuthContext';
 import { NotificationContext } from '../context/NotificationContext';
+import {
+    AlertTriangle,
+    ArrowLeft,
+    Briefcase,
+    Phone,
+    Upload,
+    FileImage,
+    CheckCircle2,
+    ShieldAlert
+} from 'lucide-react';
 
 const ReportIssue = () => {
     const { id } = useParams();
@@ -53,31 +63,31 @@ const ReportIssue = () => {
     };
 
     if (!resource) return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '400px' }}>
-            <div className="skeleton" style={{ width: '400px', height: '300px', borderRadius: '20px' }} />
+        <div className="container" style={{ padding: '100px 0', textAlign: 'center' }}>
+            <div className="skeleton" style={{ width: '100%', maxWidth: '800px', height: '400px', borderRadius: '32px', margin: '0 auto' }} />
         </div>
     );
 
     return (
-        <div style={{ maxWidth: '800px', margin: '40px auto', padding: '0 20px' }}>
+        <div className="container" style={{ padding: '60px 0' }}>
             <button
                 onClick={() => navigate('/catalogue')}
-                style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontWeight: 'bold', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px' }}
+                style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontWeight: '800', marginBottom: '30px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px' }}
             >
-                &larr; Back to Catalogue
+                <ArrowLeft size={16} /> Return to Catalogue
             </button>
 
-            <div className="premium-card" style={{ padding: '0', overflow: 'hidden' }}>
-                <div style={{ background: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)', padding: '40px', color: 'white', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '20px' }}>
+            <div className="premium-card" style={{ padding: '0', overflow: 'hidden', maxWidth: '1000px', margin: '0 auto' }}>
+                <div style={{ background: 'linear-gradient(135deg, #ef4444 0%, #b91c1c 100%)', padding: '60px', color: 'white', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '40px' }}>
                     <div style={{ flex: 1 }}>
-                        <div style={{ fontSize: '10px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '10px', opacity: 0.8 }}>Incident Reporting</div>
-                        <h2 style={{ margin: 0, fontSize: '32px', letterSpacing: '-1px' }}>{resource.name}</h2>
-                        <p style={{ margin: '15px 0 0 0', opacity: 0.9, fontSize: '14px', lineHeight: '1.5' }}>
-                            Help us keep the campus running smoothly by reporting any damages or issues with this resource.
+                        <div style={{ fontSize: '12px', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '2.5px', marginBottom: '15px', opacity: 0.8 }}>Technical Support &bull; Incident Triage</div>
+                        <h2 style={{ margin: 0, fontSize: '42px', letterSpacing: '-1.5px', fontWeight: '900' }}>{resource.name}</h2>
+                        <p style={{ margin: '20px 0 0 0', opacity: 0.9, fontSize: '16px', lineHeight: '1.6', maxWidth: '600px' }}>
+                            Report malfunctions or infrastructure damages. Our maintenance crew will prioritize this ticket based on the severity described.
                         </p>
                     </div>
                     {resource.image && (
-                        <div style={{ width: '120px', height: '120px', borderRadius: '20px', overflow: 'hidden', boxShadow: '0 10px 25px rgba(0,0,0,0.2)', border: '4px solid rgba(255,255,255,0.1)' }}>
+                        <div style={{ width: '180px', height: '180px', borderRadius: '24px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.3)', border: '4px solid rgba(255,255,255,0.2)', flexShrink: 0 }}>
                             <img
                                 src={`data:${resource.imageContentType};base64,${resource.image}`}
                                 alt={resource.name}
@@ -87,85 +97,99 @@ const ReportIssue = () => {
                     )}
                 </div>
 
-                <div style={{ padding: '40px' }}>
-                    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+                <div style={{ padding: '60px' }}>
+                    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
                         <div className="form-grid">
-                            <div>
-                                <label className="form-label">Issue Category</label>
-                                <select value={formData.category} className="premium-input"
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                                <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                    <Briefcase size={16} color="#ef4444" /> Service Category
+                                </label>
+                                <select value={formData.category} className="premium-input" style={{ padding: '16px' }}
                                     onChange={e => setFormData({ ...formData, category: e.target.value })}>
-                                    <option value="IT_EQUIPMENT">IT / Technology</option>
+                                    <option value="IT_EQUIPMENT">IT / Digital Technology</option>
                                     <option value="FURNITURE">Furniture / Hardware</option>
-                                    <option value="PLUMBING">Plumbing / Leaks</option>
-                                    <option value="OTHER">Other</option>
+                                    <option value="PLUMBING">Plumbing / Infrastructure</option>
+                                    <option value="OTHER">General Maintenance</option>
                                 </select>
                             </div>
-                            <div>
-                                <label className="form-label">Priority Severity</label>
-                                <select value={formData.priority} className="premium-input"
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                                <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                    <ShieldAlert size={16} color="#ef4444" /> Severity Level
+                                </label>
+                                <select value={formData.priority} className="premium-input" style={{ padding: '16px' }}
                                     onChange={e => setFormData({ ...formData, priority: e.target.value })}>
-                                    <option value="LOW">Low (Not urgent)</option>
-                                    <option value="MEDIUM">Medium (Affects usage)</option>
-                                    <option value="HIGH">High (Critical emergency)</option>
+                                    <option value="LOW">Low (Not blocking usage)</option>
+                                    <option value="MEDIUM">Medium (Affects session quality)</option>
+                                    <option value="HIGH">High (Critical failure / Safety risk)</option>
                                 </select>
                             </div>
                         </div>
 
-                        <div>
-                            <label className="form-label">Detailed Description</label>
-                            <textarea required rows="4" value={formData.description} className="premium-input"
-                                placeholder="Please describe exactly what is broken or malfunctioning..."
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                            <label className="form-label">Evidence & Observations</label>
+                            <textarea required rows="5" value={formData.description} className="premium-input"
+                                style={{ padding: '20px', lineHeight: '1.6' }}
+                                placeholder="Detail the malfunction. Specifically mention what happened and any error codes visible..."
                                 onChange={e => setFormData({ ...formData, description: e.target.value })} />
                         </div>
 
-                        <div>
-                            <label className="form-label">Preferred Contact Details</label>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                            <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                <Phone size={16} color="#ef4444" /> Requester Correspondence
+                            </label>
                             <input required type="text" value={formData.contactDetails} className="premium-input"
-                                placeholder="e.g. john@university.edu or 0771234567"
+                                style={{ padding: '16px' }}
+                                placeholder="University email or internal extension number..."
                                 onChange={e => setFormData({ ...formData, contactDetails: e.target.value })} />
                         </div>
 
-                        <div>
-                            <label className="form-label">Evidence Attachments (Optional, max 3)</label>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                            <label className="form-label">Multimedia Evidence (Max 3)</label>
                             <div style={{
-                                position: 'relative', border: '2px dashed var(--border)', padding: '20px',
-                                borderRadius: '16px', textAlign: 'center', transition: 'all 0.2s',
+                                position: 'relative', border: '2px dashed var(--border)', padding: '40px',
+                                borderRadius: '24px', textAlign: 'center', transition: 'all 0.2s',
                                 background: 'rgba(255,255,255,0.02)'
-                            }}>
+                            }} onMouseOver={e => e.currentTarget.style.borderColor = 'var(--primary)'} onMouseOut={e => e.currentTarget.style.borderColor = 'var(--border)'}>
                                 <input type="file" multiple accept="image/*" onChange={e => setFiles(Array.from(e.target.files))}
-                                    style={{ position: 'absolute', inset: 0, opacity: 0, cursor: 'pointer' }} />
-                                <div style={{ color: 'var(--text-muted)', fontSize: '14px' }}>
+                                    style={{ position: 'absolute', inset: 0, opacity: 0, cursor: 'pointer', zIndex: 10 }} />
+                                <Upload size={32} color="var(--text-muted)" style={{ marginBottom: '15px', opacity: 0.5 }} />
+                                <div style={{ color: 'var(--text-muted)', fontSize: '15px' }}>
                                     {files.length > 0 ? (
-                                        <span style={{ color: 'var(--primary)', fontWeight: 'bold' }}>{files.length} file(s) selected</span>
+                                        <div style={{ color: 'var(--primary)', fontWeight: '900', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                                            <FileImage size={18} /> {files.length} evidence files attached
+                                        </div>
                                     ) : (
-                                        'Click or drag images here to upload'
+                                        'Click or drag scene photos here for the technician'
                                     )}
                                 </div>
                             </div>
                         </div>
 
-                        <div style={{ display: 'flex', gap: '15px' }}>
+                        <div style={{ display: 'flex', gap: '20px', marginTop: '10px' }}>
                             <button type="submit" style={{
-                                flex: 2, padding: '16px', background: '#ef4444', color: 'white',
-                                border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '16px',
-                                fontWeight: '700', boxShadow: '0 10px 15px -3px rgba(239, 68, 68, 0.3)',
-                                transition: 'all 0.2s'
+                                flex: 2, padding: '20px', background: '#ef4444', color: 'white',
+                                border: 'none', borderRadius: '16px', cursor: 'pointer', fontSize: '16px',
+                                fontWeight: '900', boxShadow: '0 12px 24px rgba(239, 68, 68, 0.3)',
+                                transition: 'all 0.2s', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px'
                             }}
                                 onMouseOver={e => e.target.style.transform = 'translateY(-2px)'}
                                 onMouseOut={e => e.target.style.transform = 'translateY(0)'}
                             >
-                                Submit Incident Ticket
+                                <AlertTriangle size={20} /> Deploy Maintenance Request
                             </button>
                             <button type="button" onClick={() => navigate('/catalogue')} style={{
-                                flex: 1, padding: '16px', background: 'var(--surface)', color: 'var(--text-muted)',
-                                border: '1px solid var(--border)', borderRadius: '14px', cursor: 'pointer', fontSize: '16px',
-                                fontWeight: '700'
+                                flex: 1, padding: '20px', background: 'rgba(255,255,255,0.02)', color: 'var(--text-muted)',
+                                border: '1px solid var(--border)', borderRadius: '16px', cursor: 'pointer', fontSize: '16px',
+                                fontWeight: '800'
                             }}>
-                                Cancel
+                                Discard
                             </button>
                         </div>
                     </form>
                 </div>
+            </div>
+            <div style={{ textAlign: 'center', marginTop: '40px', color: 'var(--text-muted)', fontSize: '13px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                <CheckCircle2 size={14} /> Tickets are routed to the nearest available technician automatically.
             </div>
         </div>
     );

@@ -3,13 +3,27 @@ import { useParams, useNavigate } from 'react-router-dom';
 import api from '../api/axiosConfig';
 import { AuthContext } from '../context/AuthContext';
 import { NotificationContext } from '../context/NotificationContext';
+import {
+    ArrowLeft,
+    MessageSquare,
+    Paperclip,
+    Clock,
+    ShieldCheck,
+    MapPin,
+    User,
+    Send,
+    Trash2,
+    CheckCircle2,
+    Wrench,
+    AlertCircle
+} from 'lucide-react';
 
 const TicketDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const { user } = useContext(AuthContext);
     const { showNotification } = useContext(NotificationContext);
-    
+
     const [ticket, setTicket] = useState(null);
     const [comments, setComments] = useState([]);
     const [attachments, setAttachments] = useState([]);
@@ -23,7 +37,7 @@ const TicketDetails = () => {
             setComments(cRes.data);
             const aRes = await api.get(`/tickets/${id}/attachments`);
             setAttachments(aRes.data);
-        } catch(err) {
+        } catch (err) {
             showNotification('Error loading ticket details', 'error');
         }
     }, [id, showNotification]);
@@ -38,7 +52,7 @@ const TicketDetails = () => {
             setNewComment('');
             fetchData();
             showNotification('Comment posted', 'success');
-        } catch(e) { showNotification('Failed to post comment', 'error'); }
+        } catch (e) { showNotification('Failed to post comment', 'error'); }
     };
 
     const handleDeleteComment = async (cid) => {
@@ -47,153 +61,209 @@ const TicketDetails = () => {
             await api.delete(`/tickets/comments/${cid}/user/${user.id}`);
             fetchData();
             showNotification('Comment deleted', 'success');
-        } catch(e) { showNotification('Failed to delete comment', 'error'); }
+        } catch (e) { showNotification('Failed to delete comment', 'error'); }
     };
 
-    if (!ticket) return <div style={{padding: '50px'}}>Loading...</div>;
+    if (!ticket) return (
+        <div className="container" style={{ padding: '100px 0', textAlign: 'center' }}>
+            <div className="skeleton" style={{ width: '100%', maxWidth: '900px', height: '500px', borderRadius: '32px', margin: '0 auto' }} />
+        </div>
+    );
 
     return (
-        <div style={{ maxWidth: '900px', margin: '40px auto', padding: '0 20px' }}>
-            <button 
-                onClick={() => navigate(-1)} 
-                style={{ 
-                    background: 'transparent', border: 'none', color: 'var(--text-muted)', 
-                    cursor: 'pointer', fontWeight: 'bold', marginBottom: '25px', 
-                    display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px' 
+        <div className="container" style={{ padding: '60px 0' }}>
+            <button
+                onClick={() => navigate(-1)}
+                style={{
+                    background: 'transparent', border: 'none', color: 'var(--text-muted)',
+                    cursor: 'pointer', fontWeight: '800', marginBottom: '30px',
+                    display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px'
                 }}
             >
-                &larr; Back to Details
+                <ArrowLeft size={16} /> Return to Queue
             </button>
-            
-            <div className="premium-card" style={{ padding: '0', overflow: 'hidden' }}>
-                <div style={{ background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)', padding: '40px', color: 'white' }}>
-                    <div style={{ fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '10px', opacity: 0.8 }}>Ticket Details</div>
-                    <h2 style={{ margin: 0, fontSize: '32px', letterSpacing: '-1px' }}>#{ticket.id}: {ticket.category} Issue</h2>
-                    <div style={{ display: 'flex', gap: '20px', marginTop: '20px', fontSize: '14px', opacity: 0.9 }}>
-                        <span style={{ padding: '6px 16px', background: 'rgba(255,255,255,0.15)', borderRadius: '20px' }}>Status: <strong>{ticket.status}</strong></span>
-                        <span style={{ padding: '6px 16px', background: 'rgba(255,255,255,0.15)', borderRadius: '20px' }}>Priority: <strong>{ticket.priority}</strong></span>
+
+            <div className="premium-card" style={{ padding: '0', overflow: 'hidden', maxWidth: '1000px', margin: '0 auto' }}>
+                <div style={{ background: 'linear-gradient(135deg, #3b82f6 0%, #1e4ed8 100%)', padding: '60px', color: 'white' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                        <div>
+                            <div style={{ fontSize: '12px', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '2.5px', marginBottom: '15px', opacity: 0.8 }}>Incident Registry &bull; Core Diagnostics</div>
+                            <h2 style={{ margin: 0, fontSize: '42px', letterSpacing: '-1.5px', fontWeight: '900' }}>#{ticket.id.substring(0, 8)}: {ticket.category.replace('_', ' ')}</h2>
+                            <div style={{ display: 'flex', gap: '20px', marginTop: '30px', flexWrap: 'wrap' }}>
+                                <span style={{ padding: '8px 20px', background: 'rgba(255,255,255,0.15)', borderRadius: '12px', backdropFilter: 'blur(10px)', fontSize: '13px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                                    {ticket.status.replace('_', ' ')}
+                                </span>
+                                <span style={{ padding: '8px 20px', background: 'rgba(255,255,255,0.15)', borderRadius: '12px', backdropFilter: 'blur(10px)', fontSize: '13px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                                    {ticket.priority} Priority
+                                </span>
+                            </div>
+                        </div>
+                        <div style={{ width: '60px', height: '60px', borderRadius: '16px', background: 'rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <Wrench size={30} />
+                        </div>
                     </div>
                 </div>
 
-                <div style={{ padding: '40px' }}>
-                    <div style={{ background: 'rgba(255,255,255,0.02)', padding: '25px', borderRadius: '16px', border: '1px solid var(--border)', marginBottom: '30px' }}>
-                        <h4 style={{ margin: '0 0 15px 0', color: 'var(--primary)', fontSize: '14px', textTransform: 'uppercase' }}>Description & Information</h4>
-                        <p style={{ margin: '0 0 20px 0', lineHeight: 1.6, color: 'var(--text)' }}>{ticket.description}</p>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
-                            <span style={{ color: 'var(--text-muted)' }}>📍 Resource: <strong style={{color: 'var(--text)'}}>{ticket.resource?.name}</strong></span>
-                            <span style={{ color: 'var(--text-muted)' }}>📞 Contact: <strong style={{color: 'var(--text)'}}>{ticket.contactDetails}</strong></span>
+                <div style={{ padding: '60px' }}>
+                    <div style={{ background: 'rgba(255,255,255,0.01)', padding: '40px', borderRadius: '24px', border: '1px solid var(--border)', marginBottom: '50px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
+                            <AlertCircle size={18} color="var(--primary)" />
+                            <h4 style={{ margin: 0, color: 'var(--text-main)', fontSize: '14px', textTransform: 'uppercase', fontWeight: '900', letterSpacing: '1px' }}>Issue Description</h4>
+                        </div>
+                        <p style={{ margin: '0 0 30px 0', lineHeight: 1.8, color: 'var(--text-main)', fontSize: '16px' }}>{ticket.description}</p>
+
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '25px', paddingTop: '30px', borderTop: '1px solid var(--border)' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                                <div style={{ width: '32px', height: '32px', borderRadius: '10px', background: 'var(--border)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><MapPin size={16} /></div>
+                                <div>
+                                    <div style={{ fontSize: '11px', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: '800' }}>Asset Location</div>
+                                    <div style={{ fontSize: '15px', color: 'var(--text-main)', fontWeight: '700' }}>{ticket.resource?.name}</div>
+                                </div>
+                            </div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                                <div style={{ width: '32px', height: '32px', borderRadius: '10px', background: 'var(--border)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><User size={16} /></div>
+                                <div>
+                                    <div style={{ fontSize: '11px', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: '800' }}>Contact Reference</div>
+                                    <div style={{ fontSize: '15px', color: 'var(--text-main)', fontWeight: '700' }}>{ticket.contactDetails}</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     {ticket.resolutionNotes && (
-                        <div style={{ padding: '20px', background: 'rgba(34, 197, 94, 0.05)', border: '1px solid rgba(34, 197, 94, 0.2)', borderRadius: '16px', marginBottom: '30px' }}>
-                            <h4 style={{ margin: '0 0 10px 0', color: '#22c55e', fontSize: '13px', textTransform: 'uppercase' }}>Resolution Notes</h4>
-                            <p style={{ margin: 0, color: '#22c55e', fontWeight: '500' }}>{ticket.resolutionNotes}</p>
+                        <div style={{ padding: '30px', background: 'rgba(16, 185, 129, 0.05)', border: '1px solid rgba(16, 185, 129, 0.1)', borderRadius: '24px', marginBottom: '50px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '15px' }}>
+                                <CheckCircle2 size={18} color="#10b981" />
+                                <h4 style={{ margin: 0, color: '#10b981', fontSize: '13px', textTransform: 'uppercase', fontWeight: '900', letterSpacing: '1px' }}>Diagnostic Resolution</h4>
+                            </div>
+                            <p style={{ margin: 0, color: '#10b981', fontWeight: '600', fontSize: '16px', lineHeight: '1.6' }}>{ticket.resolutionNotes}</p>
                         </div>
                     )}
 
-            {user.role !== 'ROLE_USER' && (
-                <div style={{
-                    marginTop: '20px', padding: '25px', 
-                    background: 'rgba(59, 130, 246, 0.03)', 
-                    borderRadius: '16px', border: '1px solid rgba(59, 130, 246, 0.2)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                    gap: '20px'
-                }}>
-                    <label style={{ fontSize: '14px', fontWeight: '600', color: 'var(--text-muted)' }}>
-                        🛠️ <span style={{color: 'var(--primary)'}}>Technician Control</span> • Override Status
-                    </label>
-                    <select value={ticket.status} className="premium-input" style={{ width: 'auto', padding: '8px 40px 8px 15px', margin: 0 }} onChange={async (e) => {
-                        const newStatus = e.target.value;
-                        let notes = ticket.resolutionNotes || '';
-                        if (newStatus === 'REJECTED' || newStatus === 'CLOSED' || newStatus === 'RESOLVED') {
-                            const res = prompt(`Enter ${newStatus.toLowerCase()} notes/reason:`, notes);
-                            if (res === null) return;
-                            notes = res;
-                        }
-                        try {
-                            await api.put(`/tickets/${ticket.id}/status`, { status: newStatus, resolutionNotes: notes });
-                            fetchData();
-                            showNotification(`Ticket successfully marked as ${newStatus}`, 'success');
-                        } catch (err) { showNotification('Status Update Failed', 'error'); }
-                    }}>
-                        <option value="OPEN">OPEN</option>
-                        <option value="IN_PROGRESS">IN_PROGRESS</option>
-                        <option value="RESOLVED">RESOLVED</option>
-                        <option value="CLOSED">CLOSED</option>
-                        <option value="REJECTED">REJECTED</option>
-                    </select>
-                </div>
-            )}
-            
-            {attachments.length > 0 && (
-                <div style={{marginTop: '40px', paddingTop: '30px', borderTop: '1px solid var(--border)'}}>
-                    <h4 style={{ margin: '0 0 20px 0', fontSize: '18px', color: 'var(--text)' }}>Attachments (Evidence)</h4>
-                    <div style={{
-                        display: 'flex', gap: '20px', flexWrap: 'wrap', 
-                        padding: '25px', background: 'rgba(255,255,255,0.01)', 
-                        borderRadius: '16px', border: '1px solid var(--border)'
-                    }}>
-                        {attachments.map(att => (
-                            <div key={att.id} style={{ 
-                                position: 'relative', 
-                                transition: 'transform 0.2s', 
-                                cursor: 'pointer' 
-                            }} 
-                            onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.02)'}
-                            onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}>
-                                <img 
-                                    src={`data:${att.contentType};base64,${att.data}`} 
-                                    alt="evidence" 
-                                    style={{
-                                        maxWidth: '220px', borderRadius: '12px', 
-                                        border: '1px solid var(--border)', 
-                                        boxShadow: '0 10px 25px rgba(0,0,0,0.3)'
-                                    }} 
-                                />
+                    {user.role !== 'ROLE_USER' && (
+                        <div style={{
+                            marginBottom: '50px', padding: '30px',
+                            background: 'rgba(59, 130, 246, 0.03)',
+                            borderRadius: '24px', border: '1px solid rgba(59, 130, 246, 0.1)',
+                            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                            flexWrap: 'wrap', gap: '25px'
+                        }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                                <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'var(--primary)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><ShieldCheck size={20} /></div>
+                                <div>
+                                    <div style={{ fontSize: '14px', fontWeight: '900', color: 'var(--text-main)' }}>Engineering Override</div>
+                                    <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>Update ticket lifecycle state manually.</div>
+                                </div>
                             </div>
-                        ))}
-                    </div>
-                </div>
-            )}
-            
-                    <div style={{ borderTop: '1px solid var(--border)', paddingTop: '40px' }}>
-                        <h3 style={{ margin: '0 0 25px 0', fontSize: '20px', letterSpacing: '-0.5px' }}>Comments & Updates</h3>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '40px' }}>
+                            <select value={ticket.status} className="premium-input" style={{ width: '220px', padding: '12px 20px', margin: 0, fontWeight: '800' }} onChange={async (e) => {
+                                const newStatus = e.target.value;
+                                let notes = ticket.resolutionNotes || '';
+                                if (newStatus === 'REJECTED' || newStatus === 'CLOSED' || newStatus === 'RESOLVED') {
+                                    const res = prompt(`Enter ${newStatus.toLowerCase()} notes/reason:`, notes);
+                                    if (res === null) return;
+                                    notes = res;
+                                }
+                                try {
+                                    await api.put(`/tickets/${ticket.id}/status`, { status: newStatus, resolutionNotes: notes });
+                                    fetchData();
+                                    showNotification(`Ticket successfully marked as ${newStatus}`, 'success');
+                                } catch (err) { showNotification('Status Update Failed', 'error'); }
+                            }}>
+                                <option value="OPEN">Queue: OPEN</option>
+                                <option value="IN_PROGRESS">Active: IN PROGRESS</option>
+                                <option value="RESOLVED">Actioned: RESOLVED</option>
+                                <option value="CLOSED">Finalized: CLOSED</option>
+                                <option value="REJECTED">Decision: REJECTED</option>
+                            </select>
+                        </div>
+                    )}
+
+                    {attachments.length > 0 && (
+                        <div style={{ marginBottom: '60px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '25px' }}>
+                                <Paperclip size={18} color="var(--primary)" />
+                                <h3 style={{ margin: 0, fontSize: '18px', fontWeight: '900', letterSpacing: '-0.5px' }}>Visual Evidence Repository</h3>
+                            </div>
+                            <div style={{
+                                display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '20px'
+                            }}>
+                                {attachments.map(att => (
+                                    <div key={att.id} style={{
+                                        position: 'relative', overflow: 'hidden', borderRadius: '20px', border: '1px solid var(--border)', transition: 'all 0.3s'
+                                    }}
+                                        onMouseOver={e => e.currentTarget.style.transform = 'translateY(-5px)'}
+                                        onMouseOut={e => e.currentTarget.style.transform = 'translateY(0)'}>
+                                        <img
+                                            src={`data:${att.contentType};base64,${att.data}`}
+                                            alt="evidence"
+                                            style={{ width: '100%', height: '180px', objectFit: 'cover' }}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    <div style={{ borderTop: '1px solid var(--border)', paddingTop: '50px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '30px' }}>
+                            <MessageSquare size={18} color="var(--primary)" />
+                            <h3 style={{ margin: 0, fontSize: '20px', fontWeight: '900', letterSpacing: '-0.5px' }}>Engineering Chain of Custody</h3>
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '25px', marginBottom: '50px' }}>
                             {comments.length === 0 ? (
-                                <p style={{ color: 'var(--text-muted)', textAlign: 'center', padding: '30px', background: 'rgba(255,255,255,0.01)', borderRadius: '16px', border: '1px dashed var(--border)' }}>No comments yet.</p>
+                                <div style={{ textAlign: 'center', padding: '60px', background: 'rgba(255,255,255,0.01)', borderRadius: '24px', border: '1px dashed var(--border)', color: 'var(--text-muted)' }}>
+                                    <MessageSquare size={32} opacity={0.1} style={{ marginBottom: '15px' }} />
+                                    <p style={{ margin: 0, fontWeight: '700' }}>Waiting for correspondence.</p>
+                                </div>
                             ) : comments.map(c => (
-                                <div key={c.id} style={{ padding: '20px', background: c.user?.id === user.id ? 'rgba(59, 130, 246, 0.05)' : 'rgba(255,255,255,0.02)', borderRadius: '16px', border: '1px solid var(--border)' }}>
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', alignItems: 'center' }}>
-                                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
-                                            <div style={{width: '32px', height: '32px', background: '#3b82f6', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', fontWeight: 'bold'}}>
+                                <div key={c.id} style={{
+                                    padding: '24px 30px',
+                                    background: c.user?.id === user.id ? 'rgba(59, 130, 246, 0.05)' : 'rgba(255,255,255,0.02)',
+                                    borderRadius: '24px',
+                                    border: `1px solid ${c.user?.id === user.id ? 'rgba(59, 130, 246, 0.1)' : 'var(--border)'}`,
+                                    position: 'relative'
+                                }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '15px', alignItems: 'center' }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                                            <div style={{ width: '36px', height: '36px', background: 'var(--border)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: '900', color: 'var(--primary)' }}>
                                                 {c.user?.name?.charAt(0) || 'U'}
                                             </div>
-                                            <strong>{c.user?.name || 'User'} <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: 'normal', textTransform: 'uppercase', marginLeft: '5px' }}>({c.user?.role.replace('ROLE_', '')})</span></strong>
+                                            <div>
+                                                <div style={{ fontWeight: '900', color: 'var(--text-main)', fontSize: '14px' }}>{c.user?.name}</div>
+                                                <div style={{ fontSize: '10px', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px' }}>{c.user?.role.replace('ROLE_', '')} &bull; Verification Level 1</div>
+                                            </div>
                                         </div>
-                                        <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{new Date(c.createdAt).toLocaleString()}</span>
+                                        <div style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                            <Clock size={12} /> {new Date(c.createdAt).toLocaleDateString()} — {new Date(c.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                        </div>
                                     </div>
-                                    <p style={{ margin: '0 0 15px 0', whiteSpace: 'pre-wrap', lineHeight: 1.5 }}>{c.content}</p>
+                                    <p style={{ margin: '0 0 20px 0', whiteSpace: 'pre-wrap', lineHeight: 1.7, fontSize: '15px', color: 'var(--text-main)', fontWeight: '500' }}>{c.content}</p>
                                     {c.user?.id === user.id && (
-                                        <button onClick={() => handleDeleteComment(c.id)} style={{ fontSize: '12px', color: '#ef4444', background: 'none', border: 'none', padding: 0, cursor: 'pointer', fontWeight: 'bold', opacity: 0.8 }}>
-                                            &times; Delete Comment
+                                        <button onClick={() => handleDeleteComment(c.id)} style={{ padding: '8px 12px', fontSize: '11px', color: '#ef4444', background: 'rgba(239, 68, 68, 0.05)', border: 'none', borderRadius: '8px', cursor: 'pointer', fontWeight: '900', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                            <Trash2 size={12} /> Erase Record
                                         </button>
                                     )}
                                 </div>
                             ))}
                         </div>
 
-                        <form onSubmit={handleAddComment} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-                            <textarea rows="4" required placeholder="Add a comment or update..." value={newComment} 
+                        <form onSubmit={handleAddComment} style={{ position: 'relative' }}>
+                            <textarea rows="4" required placeholder="Append engineering notes or user comments..." value={newComment}
                                 onChange={e => setNewComment(e.target.value)}
                                 className="premium-input"
-                                style={{ resize: 'vertical' }} />
-                            <button type="submit" style={{ 
-                                alignSelf: 'flex-start', padding: '12px 30px', background: 'var(--primary)', 
-                                color: 'white', border: 'none', borderRadius: '12px', cursor: 'pointer', 
-                                fontWeight: '700', fontSize: '14px', transition: 'all 0.2s' 
-                            }}>
-                                Post Comment
+                                style={{ padding: '25px', paddingRight: '150px', resize: 'vertical', minHeight: '120px' }} />
+                            <button type="submit" style={{
+                                position: 'absolute', bottom: '20px', right: '20px',
+                                padding: '12px 24px', background: 'var(--primary)',
+                                color: 'white', border: 'none', borderRadius: '12px', cursor: 'pointer',
+                                fontWeight: '900', fontSize: '14px', transition: 'all 0.2s',
+                                display: 'flex', alignItems: 'center', gap: '8px',
+                                boxShadow: '0 8px 16px rgba(59, 130, 246, 0.3)'
+                            }}
+                                onMouseOver={e => e.target.style.transform = 'translateY(-2px)'}
+                                onMouseOut={e => e.target.style.transform = 'translateY(0)'}
+                            >
+                                <Send size={16} /> Transmit
                             </button>
                         </form>
                     </div>

@@ -14,6 +14,8 @@ import {
     Users,
     AlertTriangle,
     CheckCircle2,
+    Building2,
+    Settings,
     CalendarPlus
 } from 'lucide-react';
 
