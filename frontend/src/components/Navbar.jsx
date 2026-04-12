@@ -94,7 +94,9 @@ const Navbar = () => {
 
                 <Link to="/dashboard" style={linkStyle('/dashboard')}>Dashboard</Link>
                 <Link to="/catalogue" style={linkStyle('/catalogue')}>Facilities & Assets</Link>
-                <Link to="/my-bookings" style={linkStyle('/my-bookings')}>My Bookings</Link>
+                {user.role === 'ROLE_USER' && (
+                    <Link to="/my-bookings" style={linkStyle('/my-bookings')}>My Bookings</Link>
+                )}
 
                 {user.role === 'ROLE_ADMIN' && (
                     <Link to="/admin/bookings" style={linkStyle('/admin/bookings')}>Manage Bookings</Link>
