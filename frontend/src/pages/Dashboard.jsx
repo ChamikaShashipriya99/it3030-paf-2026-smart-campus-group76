@@ -107,19 +107,19 @@ const Dashboard = () => {
                         </div>
                         <h4 style={{ margin: '0 0 10px 0', color: 'var(--text-main)', fontSize: '20px', fontWeight: '800' }}>My Reservations</h4>
                         <p style={{ margin: 0, fontSize: '14px', color: 'var(--text-muted)', lineHeight: '1.6' }}>Track the status of your current and upcoming facility booking requests.</p>
-                        <div style={{ marginTop: '25px', display: 'flex', alignItems: 'center', color: '#a78bfa', fontWeight: 'bold', fontSize: '13px', gap: '5px' }}>
+                        <div style={{ marginTop: '25px', display: 'flex', alignItems: 'center', color: '#8B5CF6', fontWeight: 'bold', fontSize: '13px', gap: '5px' }}>
                             View Status <ChevronRight size={16} />
                         </div>
                     </div>
                 )}
 
                 {(user?.role === 'ROLE_TECHNICIAN' || user?.role === 'ROLE_ADMIN') && (
-                    <div onClick={() => navigate('/technician/desk')} className="premium-card" style={{ padding: '35px', cursor: 'pointer', background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)' }}>
+                    <div onClick={() => navigate('/technician/desk')} className="premium-card" style={{ padding: '35px', cursor: 'pointer' }}>
                         <div style={{ width: '60px', height: '60px', borderRadius: '18px', background: 'rgba(16, 185, 129, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '25px', color: '#10b981' }}>
                             <Wrench size={30} />
                         </div>
-                        <h4 style={{ margin: '0 0 10px 0', color: 'white', fontSize: '20px', fontWeight: '800' }}>Service Desk</h4>
-                        <p style={{ margin: 0, fontSize: '14px', color: '#94a3b8', lineHeight: '1.6' }}>Manage incident tickets and resolve infrastructure issues on campus.</p>
+                        <h4 style={{ margin: '0 0 10px 0', color: 'var(--text-main)', fontSize: '20px', fontWeight: '800' }}>Service Desk</h4>
+                        <p style={{ margin: 0, fontSize: '14px', color: 'var(--text-muted)', lineHeight: '1.6' }}>Manage incident tickets and resolve infrastructure issues on campus.</p>
                         <div style={{ marginTop: '25px', display: 'flex', alignItems: 'center', color: '#10b981', fontWeight: 'bold', fontSize: '13px', gap: '5px' }}>
                             Open Desk <ChevronRight size={16} />
                         </div>
@@ -159,7 +159,7 @@ const Dashboard = () => {
                                         </span>
                                     </div>
                                     <p style={{ fontSize: '14px', color: 'var(--text-muted)', margin: '0 0 25px 0', lineHeight: '1.6' }}>{t.description.substring(0, 80)}...</p>
-                                    <button onClick={() => navigate(`/ticket/${t.id}`)} style={{ width: '100%', background: 'rgba(255,255,255,0.03)', color: 'var(--primary)', border: '1px solid var(--border)', padding: '12px', borderRadius: '14px', cursor: 'pointer', fontSize: '13px', fontWeight: '800', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', transition: 'all 0.2s' }} onMouseOver={e => { e.target.style.background = 'rgba(255,255,255,0.05)'; e.target.style.transform = 'translateY(-1px)'; }} onMouseOut={e => { e.target.style.background = 'rgba(255,255,255,0.03)'; e.target.style.transform = 'translateY(0)'; }}>
+                                    <button onClick={() => navigate(`/ticket/${t.id}`)} style={{ width: '100%', background: 'rgba(0,0,0,0.02)', color: 'var(--primary)', border: '1px solid var(--border)', padding: '12px', borderRadius: '14px', cursor: 'pointer', fontSize: '13px', fontWeight: '800', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', transition: 'all 0.2s' }} onMouseOver={e => { e.currentTarget.style.background = 'rgba(0,0,0,0.04)'; e.currentTarget.style.transform = 'translateY(-1px)'; }} onMouseOut={e => { e.currentTarget.style.background = 'rgba(0,0,0,0.02)'; e.currentTarget.style.transform = 'translateY(0)'; }}>
                                         Details & Timeline <ChevronRight size={14} />
                                     </button>
                                 </div>
