@@ -13,6 +13,7 @@ import TechnicianDashboard from './pages/TechnicianDashboard';
 import TicketDetails from './pages/TicketDetails';
 import Notifications from './pages/Notifications';
 import MyBookings from './pages/MyBookings';
+import LandingPage from './pages/LandingPage';
 import Navbar from './components/Navbar';
 
 const PrivateRoute = ({ children }) => {
@@ -81,8 +82,11 @@ function App() {
                                 </PrivateRoute>
                             } />
 
-                            {/* Default Route */}
-                            <Route path="/" element={<Navigate to="/dashboard" />} />
+                            {/* Open Route */}
+                            <Route path="/" element={<LandingPage />} />
+
+                            {/* Default Fallback */}
+                            <Route path="*" element={<Navigate to="/" />} />
                         </Routes>
                     </div>
                 </Router>

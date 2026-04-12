@@ -45,7 +45,7 @@ const Navbar = () => {
         return () => clearInterval(intv);
     }, [user, location.pathname]);
 
-    if (!user || location.pathname === '/login' || location.pathname.startsWith('/oauth2')) {
+    if (!user || location.pathname === '/' || location.pathname === '/login' || location.pathname.startsWith('/oauth2')) {
         return null;
     }
 
