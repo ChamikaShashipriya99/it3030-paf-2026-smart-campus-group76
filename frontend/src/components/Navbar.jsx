@@ -23,15 +23,15 @@ const Navbar = () => {
         const fetchNotifs = () => {
             api.get(`/notifications/user/${user.id}`).then(res => {
                 const unread = res.data.filter(n => !n.read).length;
-                
+
                 // Play sound if count increased (for Staff/Admin)
                 if (unread > prevCountRef.current && (user.role === 'ROLE_ADMIN' || user.role === 'ROLE_TECHNICIAN')) {
                     playPing();
                 }
-                
+
                 setUnreadCount(unread);
                 prevCountRef.current = unread;
-            }).catch(() => {});
+            }).catch(() => { });
         };
         fetchNotifs();
         const intv = setInterval(fetchNotifs, 10000); // Poll every 10s
@@ -82,31 +82,32 @@ const Navbar = () => {
     return (
         <nav style={navStyle}>
             <div style={{ display: 'flex', alignItems: 'center' }}>
-                <div 
+                <div
                     onClick={() => navigate('/dashboard')}
                     style={{ margin: 0, marginRight: '30px', color: '#f8fafc', cursor: 'pointer', fontSize: '20px', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '10px', letterSpacing: '-0.5px' }}
                 >
                     <div style={{ background: 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%)', width: '36px', height: '36px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(59, 130, 246, 0.4)' }}>
-                        <span style={{fontSize: '20px', color: 'white'}}>🏫</span>
+                        <span style={{ fontSize: '20px', color: 'white' }}>🏫</span>
                     </div>
                     SmartCampus
                 </div>
-                
+
                 <Link to="/dashboard" style={linkStyle('/dashboard')}>Dashboard</Link>
                 <Link to="/catalogue" style={linkStyle('/catalogue')}>Facilities & Assets</Link>
-                
+                <Link to="/my-bookings" style={linkStyle('/my-bookings')}>My Bookings</Link>
+
                 {user.role === 'ROLE_ADMIN' && (
                     <Link to="/admin/bookings" style={linkStyle('/admin/bookings')}>Manage Bookings</Link>
                 )}
-                
+
                 {(user.role === 'ROLE_TECHNICIAN' || user.role === 'ROLE_ADMIN') && (
                     <Link to="/technician/desk" style={linkStyle('/technician/desk')}>Service Desk</Link>
                 )}
             </div>
-            
+
             <div style={{ display: 'flex', alignItems: 'center' }}>
-                <Link to="/notifications" style={{...linkStyle('/notifications'), position: 'relative', fontSize: '18px', marginRight: '15px', padding: '10px'}}>
-                    <span style={{filter: unreadCount > 0 ? 'drop-shadow(0 0 5px rgba(239, 68, 68, 0.4))' : 'none'}}>🔔</span>
+                <Link to="/notifications" style={{ ...linkStyle('/notifications'), position: 'relative', fontSize: '18px', marginRight: '15px', padding: '10px' }}>
+                    <span style={{ filter: unreadCount > 0 ? 'drop-shadow(0 0 5px rgba(239, 68, 68, 0.4))' : 'none' }}>🔔</span>
                     {unreadCount > 0 && (
                         <span style={{ position: 'absolute', top: '4px', right: '4px', background: '#ef4444', color: 'white', fontSize: '9px', fontWeight: '900', padding: '1px 5px', borderRadius: '10px', boxShadow: '0 0 0 3px var(--surface)' }}>
                             {unreadCount}
@@ -127,11 +128,11 @@ const Navbar = () => {
                         {user.name.charAt(0)}
                     </div>
                 </div>
-                
-                <button 
+
+                <button
                     onClick={logout}
                     style={{
-                        padding: '10px 18px', backgroundColor: 'rgba(239, 68, 68, 0.1)', color: '#ef4444', 
+                        padding: '10px 18px', backgroundColor: 'rgba(239, 68, 68, 0.1)', color: '#ef4444',
                         border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '12px', cursor: 'pointer',
                         fontWeight: '700', fontSize: '13px', transition: 'all 0.2s'
                     }}
