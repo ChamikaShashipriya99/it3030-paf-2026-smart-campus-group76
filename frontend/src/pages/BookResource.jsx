@@ -12,7 +12,11 @@ import {
     ArrowLeft,
     AlertCircle,
     CheckCircle2,
-    CalendarPlus
+    CalendarPlus,
+    Building2,
+    Info,
+    Shield,
+    ArrowRight
 } from 'lucide-react';
 
 const BookResource = () => {
@@ -67,105 +71,172 @@ const BookResource = () => {
     );
 
     return (
-        <div className="container" style={{ padding: '60px 0' }}>
+        <div className="container" style={{ padding: '40px 0 100px 0' }}>
+            {/* Minimal Back Button */}
             <button
                 onClick={() => navigate('/catalogue')}
-                style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontWeight: '800', marginBottom: '30px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px' }}
+                style={{
+                    background: '#FFFFFF',
+                    border: '1px solid #E5E7EB',
+                    color: '#6B7280',
+                    padding: '10px 20px',
+                    borderRadius: '14px',
+                    cursor: 'pointer',
+                    fontWeight: '800',
+                    marginBottom: '30px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px',
+                    fontSize: '13px',
+                    boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
+                    transition: 'all 0.2s'
+                }}
+                onMouseOver={e => { e.currentTarget.style.background = '#F9FAFB'; e.currentTarget.style.color = '#2563EB'; }}
+                onMouseOut={e => { e.currentTarget.style.background = '#FFFFFF'; e.currentTarget.style.color = '#6B7280'; }}
             >
-                <ArrowLeft size={16} /> Return to Catalogue
+                <ArrowLeft size={16} /> Catalogue
             </button>
 
-            <div className="premium-card" style={{ padding: '0', overflow: 'hidden', maxWidth: '1000px', margin: '0 auto' }}>
-                <div style={{ background: 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)', padding: '60px', color: 'white', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '40px' }}>
-                    <div style={{ flex: 1 }}>
-                        <div style={{ fontSize: '12px', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '2.5px', marginBottom: '15px', opacity: 0.8 }}>System Registry &bull; Reservation</div>
-                        <h2 style={{ margin: 0, fontSize: '42px', letterSpacing: '-1.5px', fontWeight: '900' }}>{resource.name}</h2>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', marginTop: '30px' }}>
-                            <span style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', background: 'rgba(255,255,255,0.1)', padding: '8px 16px', borderRadius: '12px', backdropFilter: 'blur(10px)' }}>
-                                <MapPin size={16} /> {resource.location}
-                            </span>
-                            <span style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', background: 'rgba(255,255,255,0.1)', padding: '8px 16px', borderRadius: '12px', backdropFilter: 'blur(10px)' }}>
-                                <Users size={16} /> {resource.capacity} Pax
-                            </span>
-                            <span style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', background: 'rgba(255,255,255,0.1)', padding: '8px 16px', borderRadius: '12px', backdropFilter: 'blur(10px)' }}>
-                                <Tag size={16} /> {resource.type.replace('_', ' ')}
-                            </span>
-                        </div>
-                    </div>
-                    {resource.image && (
-                        <div style={{ width: '180px', height: '180px', borderRadius: '24px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.3)', border: '4px solid rgba(255,255,255,0.2)', flexShrink: 0 }}>
-                            <img
-                                src={`data:${resource.imageContentType};base64,${resource.image}`}
-                                alt={resource.name}
-                                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                            />
-                        </div>
-                    )}
-                </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: '30px', alignItems: 'start' }}>
+                {/* Main Action Area */}
+                <div className="premium-card" style={{ padding: '50px', position: 'relative', overflow: 'hidden' }}>
+                    <div style={{ position: 'absolute', top: 0, left: 0, width: '4px', height: '100%', background: 'var(--primary)' }} />
 
-                <div style={{ padding: '60px' }}>
+                    <div style={{ marginBottom: '45px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--primary)', fontWeight: '900', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '15px' }}>
+                            <CalendarPlus size={16} /> Reservation Entry
+                        </div>
+                        <h1 style={{ margin: 0, fontSize: '36px', fontWeight: '900', letterSpacing: '-1.5px' }}>Secure Your Space</h1>
+                        <p style={{ color: 'var(--text-muted)', fontSize: '16px', marginTop: '10px' }}>Provide the schedule and intent to initiate the booking process.</p>
+                    </div>
+
                     {error && (
-                        <div style={{ padding: '20px', backgroundColor: 'rgba(239, 68, 68, 0.05)', color: '#ef4444', borderRadius: '16px', marginBottom: '40px', border: '1px solid rgba(239, 68, 68, 0.1)', fontSize: '15px', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                        <div style={{ padding: '20px', background: '#FEF2F2', color: '#EF4444', borderRadius: '20px', marginBottom: '40px', border: '1px solid #FEE2E2', fontSize: '15px', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '12px' }}>
                             <AlertCircle size={20} /> {error}
                         </div>
                     )}
 
-                    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
-                        <div className="form-grid">
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                                <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '35px' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                                <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#111827' }}>
                                     <Clock size={16} color="var(--primary)" /> Commencing From
                                 </label>
-                                <input type="datetime-local" required value={formData.startTime}
+                                <input
+                                    type="datetime-local"
+                                    required
+                                    value={formData.startTime}
                                     className="premium-input"
-                                    style={{ padding: '16px' }}
-                                    onChange={e => setFormData({ ...formData, startTime: e.target.value })} />
+                                    onChange={e => setFormData({ ...formData, startTime: e.target.value })}
+                                />
                             </div>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                                <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                                <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#111827' }}>
                                     <Clock size={16} color="var(--primary)" /> Concluding At
                                 </label>
-                                <input type="datetime-local" required value={formData.endTime}
+                                <input
+                                    type="datetime-local"
+                                    required
+                                    value={formData.endTime}
                                     className="premium-input"
-                                    style={{ padding: '16px' }}
-                                    onChange={e => setFormData({ ...formData, endTime: e.target.value })} />
+                                    onChange={e => setFormData({ ...formData, endTime: e.target.value })}
+                                />
                             </div>
                         </div>
 
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                            <label className="form-label">Context / Intent of Usage</label>
-                            <textarea required rows="5" value={formData.purpose}
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                            <label className="form-label" style={{ color: '#111827' }}>Context / Intent of Usage</label>
+                            <textarea
+                                required
+                                rows="6"
+                                value={formData.purpose}
                                 className="premium-input"
-                                style={{ padding: '20px', lineHeight: '1.6' }}
-                                placeholder="Describe the activities or session objectives planned for this facility..."
-                                onChange={e => setFormData({ ...formData, purpose: e.target.value })} />
+                                style={{ lineHeight: '1.7' }}
+                                placeholder="State the objectives or activities planned for this session..."
+                                onChange={e => setFormData({ ...formData, purpose: e.target.value })}
+                            />
                         </div>
 
-                        <div style={{ display: 'flex', gap: '20px', marginTop: '10px' }}>
+                        <div style={{ display: 'flex', gap: '20px', paddingTop: '10px' }}>
                             <button type="submit" style={{
-                                flex: 2, padding: '20px', background: 'var(--primary)', color: 'white',
-                                border: 'none', borderRadius: '16px', cursor: 'pointer', fontSize: '16px',
-                                fontWeight: '900', boxShadow: '0 12px 24px rgba(59, 130, 246, 0.3)',
-                                transition: 'all 0.2s', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px'
+                                flex: 1, padding: '20px', background: 'var(--primary)', color: 'white',
+                                border: 'none', borderRadius: '20px', cursor: 'pointer', fontSize: '18px',
+                                fontWeight: '900', boxShadow: '0 15px 30px rgba(37, 99, 235, 0.2)',
+                                transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px'
                             }}
-                                onMouseOver={e => e.target.style.transform = 'translateY(-2px)'}
-                                onMouseOut={e => e.target.style.transform = 'translateY(0)'}
+                                onMouseOver={e => e.currentTarget.style.transform = 'translateY(-4px)'}
+                                onMouseOut={e => e.currentTarget.style.transform = 'translateY(0)'}
                             >
-                                <CalendarPlus size={20} /> Initialize Reservation
-                            </button>
-                            <button type="button" onClick={() => navigate('/catalogue')} style={{
-                                flex: 1, padding: '20px', background: 'rgba(255,255,255,0.02)', color: 'var(--text-muted)',
-                                border: '1px solid var(--border)', borderRadius: '16px', cursor: 'pointer', fontSize: '16px',
-                                fontWeight: '800'
-                            }}>
-                                Abort
+                                Submit Request <ArrowRight size={20} />
                             </button>
                         </div>
                     </form>
                 </div>
+
+                {/* Sticky Side Information */}
+                <div style={{ position: 'sticky', top: '110px' }}>
+                    <div className="premium-card" style={{ padding: '0', overflow: 'hidden' }}>
+                        {resource.image && (
+                            <div style={{ width: '100%', height: '240px', position: 'relative' }}>
+                                <img
+                                    src={`data:${resource.imageContentType};base64,${resource.image}`}
+                                    alt={resource.name}
+                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                />
+                                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '20px', background: 'linear-gradient(transparent, rgba(0,0,0,0.8))', color: 'white' }}>
+                                    <div style={{ fontSize: '11px', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '2px', opacity: 0.8 }}>Identity Code</div>
+                                    <div style={{ fontSize: '24px', fontWeight: '900' }}>{resource.name}</div>
+                                </div>
+                            </div>
+                        )}
+
+                        <div style={{ padding: '30px' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                                    <div style={{ width: '40px', height: '40px', background: 'rgba(37, 99, 235, 0.05)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)' }}>
+                                        <MapPin size={18} />
+                                    </div>
+                                    <div>
+                                        <div style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase' }}>Location</div>
+                                        <div style={{ fontSize: '15px', fontWeight: '700', color: '#111827' }}>{resource.location}</div>
+                                    </div>
+                                </div>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                                    <div style={{ width: '40px', height: '40px', background: 'rgba(16, 185, 129, 0.05)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10B981' }}>
+                                        <Users size={18} />
+                                    </div>
+                                    <div>
+                                        <div style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase' }}>Capacity</div>
+                                        <div style={{ fontSize: '15px', fontWeight: '700', color: '#111827' }}>{resource.capacity} Pax</div>
+                                    </div>
+                                </div>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                                    <div style={{ width: '40px', height: '40px', background: 'rgba(139, 92, 246, 0.05)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#8B5CF6' }}>
+                                        <Tag size={18} />
+                                    </div>
+                                    <div>
+                                        <div style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase' }}>Classification</div>
+                                        <div style={{ fontSize: '15px', fontWeight: '700', color: '#111827' }}>{resource.type.replace('_', ' ')}</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style={{ marginTop: '30px', padding: '20px', background: '#F9FAFB', borderRadius: '16px', border: '1px solid #F3F4F6' }}>
+                                <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                                    <Shield size={16} color="var(--primary)" style={{ marginTop: '2px' }} />
+                                    <p style={{ margin: 0, fontSize: '13px', color: 'var(--text-muted)', lineHeight: '1.5' }}>
+                                        <strong>Resource Guard:</strong> Your booking is subject to administrative approval and university usage policies.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div style={{ textAlign: 'center', marginTop: '40px', color: 'var(--text-muted)', fontSize: '13px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-                <CheckCircle2 size={14} /> Requests are processed according to university resource policy.
+
+            <div style={{ textAlign: 'center', marginTop: '50px', color: 'var(--text-muted)', fontSize: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+                <CheckCircle2 size={16} color="#10B981" /> System verified and ready for reservation cycle.
             </div>
         </div>
     );
