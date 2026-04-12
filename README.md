@@ -1,89 +1,79 @@
 # Smart Campus Operations Hub 🏫✨
 
-A premium, state-of-the-art university facility management system built for the **IT3030 PAF Assignment (2026)**. This platform features a modern **Dark Gradient Vibe** with glassmorphism, real-time notifications, and advanced resource tracking.
+A premium, state-of-the-art university facility management system built for the **IT3030 PAF Assignment (2026)**. This platform features a high-fidelity **Pristine Tech (Light)** theme, real-time notifications, and advanced resource tracking.
 
-![Login Page](docs/images/login-page.png)
+![Dashboard Preview](docs/images/user-dashaboard.png)
 
 ## 🌟 Key Highlights
-*   **Premium Aesthetics**: Custom-built with a deep-sea dark theme, radial gradients, and fluid micro-animations.
-*   **Dynamic Catalogue**: Switch between **Premium Horizontal List** and **Modern Grid** views with real-time search.
-*   **Robust Validation**: Multi-layer JSR-303 (Backend) and Smart Logic (Frontend) validation for all inputs.
-*   **Role-Based Access**: Specialized dashboards for Students/Staff, Admins, and Technicians.
+*   **Pristine Tech Aesthetics**: Custom-built with a clean light palette, soft multi-layered shadows, and minimalist geometric typography.
+*   **Dynamic Catalogue**: Switch between **Premium Horizontal List** and **Modern Grid** views with real-time fuzzy search.
+*   **Advanced Ticket Lifecycle**: Complete incident management from reporting with attachments to resolution by technicians.
+*   **Role-Based Access**: specialized dashboards for Students, Admins, and Engineering Technicians.
 
 ---
 
 ## 📸 Visual Tour
 
-### User Experience
-Explore the campus easily with our intuitive user interface.
+### Enterprise Navigation
+Clean, sticky navigation optimized for high-density campus operations.
 
 | Dashboard | Catalogue | Notifications |
 | :--- | :--- | :--- |
 | ![User Dashboard](docs/images/user-dashaboard.png) | ![User Catalogue](docs/images/user-catalogue-page.png) | ![User Notifications](docs/images/user-notification-page.png) |
 
-### Admin & Staff Experience
-Powerful tools for managing campus resources and maintenance.
+### Administrative Control
+Powerful tools for managing campus resources and maintenance triage.
 
-| Admin Dashboard | Resource Management | Booking Control |
+| Admin Dashboard | Asset Control | Service Desk |
 | :--- | :--- | :--- |
-| ![Admin Dashboard](docs/images/admin-dashboard.png) | ![Admin Catalogue](docs/images/admin-catalogue-page.png) | ![Booking Management](docs/images/admin-manageBooking-page.png) |
-
-> [!TIP]
-> **Technician View**: Our Service Desk allows for rapid incident resolution.
-> ![Service Desk](docs/images/admin-serviceDesk-page.png)
+| ![Admin Dashboard](docs/images/admin-dashboard.png) | ![Admin Catalogue](docs/images/admin-catalogue-page.png) | ![Service Desk](docs/images/admin-serviceDesk-page.png) |
 
 ---
 
-## 🛠️ Modules
+## 🛠️ Modules (PAF Requirements)
 
 ### Module A: Facilities & Assets Catalogue
-*   **View Toggle**: Users can choose their preferred browsing experience (List vs Grid).
-*   **Real-time Search**: Filter by name, location, or type instantly.
-*   **Status Tracking**: Live visibility of `ACTIVE`, `MAINTENANCE`, and `INACTIVE` resources.
+*   **Metadata Integration**: Tracks capacity, location, and maintenance status (`ACTIVE`, `OUT_OF_SERVICE`).
+*   **Smart Filtering**: Instant search capabilities to locate specific campus hardware or rooms.
 
 ### Module B: Booking Management
-*   **Seamless Requests**: High-contrast forms with date-collision protection.
-*   **Admin Approval Workflow**: Managers can approve/reject with custom reasons.
+*   **Conflict Prevention**: Backend logic automatically detects and prevents overlapping booking requests.
+*   **Reasoned Workflow**: Admins can approve or reject requests with custom feedback.
 
 ### Module C: Maintenance & Incident Ticketing
-*   **Multi-Image Upload**: Report issues with up to 3 evidence attachments.
-*   **Technician Workflow**: Dedicated terminal for picking up and resolving tickets.
+*   **Visual Evidence**: Support for up to 3 image attachments per incident.
+*   **Comment Chain**: Full correspondence history with **Ownership-based Edit/Delete** capabilities.
 
----
-
-## 🚀 Acceptable Innovation (Bonus Points)
-We have implemented several "Optional Innovations" to secure maximum marks:
-1.  **Usage Analytics Ready**: Backend structured to track resource popularity.
-2.  **SLA Tracking**: Tickets track time-to-resolution for performance reporting.
-3.  **Premium UX**: Integration of **Skeleton Loaders** for a seamless data-fetching experience.
+### Module D & E: Core Infrastructure
+*   **Notification Engine**: Real-time alerts for booking updates and ticket changes.
+*   **Secure Auth**: Integration with **Google OAuth 2.0** for seamless campus single sign-on.
 
 ---
 
 ## 💻 Tech Stack
-*   **Frontend**: React 18, Vite, Vanilla CSS (Premium Tokens).
-*   **Backend**: Spring Boot 3.4, Spring Security (OAuth2 + JWT), Jakarta Validation.
-*   **Database**: MySQL.
-*   **Design**: Glassmorphism, CSS Variables, Modern Typography.
+*   **Frontend**: React 18, Vite, Vanilla CSS (Premium Design System).
+*   **Backend**: Spring Boot 3.4, Spring Security, MongoDB.
+*   **Architecture**: Layered Service Architecture with RESTful best practices.
 
 ---
 
-## 🏁 Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
-*   Java 25+
+*   Java 21+
 *   Node.js 18+
-*   MySQL 8.0+
+*   MongoDB Instance (Local or Atlas)
 
 ### Installation
 1.  **Clone the Repository**
 2.  **Backend Setup**: 
-    *   Configure `application.yml` with your database and Google OAuth credentials.
-    *   Run `com.smartcampus.backend.BackendApplication`.
+    *   Set up your `application.yml` with MongoDB URI and Google Client ID/Secret.
+    *   Run `BackendApplication.java`.
 3.  **Frontend Setup**:
-    *   Navigate to `/frontend`.
+    *   `cd frontend`
     *   `npm install`
     *   `npm run dev`
-4.  **Access**: Open `http://localhost:5173`.
+4.  **Access**: Navigate to `http://localhost:5173`.
 
 ---
 

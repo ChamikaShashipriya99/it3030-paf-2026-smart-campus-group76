@@ -36,7 +36,7 @@ public class TicketController {
     public ResponseEntity<List<Ticket>> getUserTickets(@PathVariable String userId) {
         return ResponseEntity.ok(ticketService.getTicketsByCreator(userId));
     }
-    
+
     @GetMapping("/technician/{techId}")
     public ResponseEntity<List<Ticket>> getTechnicianTickets(@PathVariable String techId) {
         return ResponseEntity.ok(ticketService.getTicketsByTechnician(techId));
@@ -59,7 +59,8 @@ public class TicketController {
                 return ResponseEntity.badRequest().body(Map.of("message", "Contact details are required"));
             }
 
-            Ticket ticket = ticketService.createTicket(creatorId, resourceId, category, description, priority, contactDetails);
+            Ticket ticket = ticketService.createTicket(creatorId, resourceId, category, description, priority,
+                    contactDetails);
             return ResponseEntity.ok(ticket);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));
@@ -101,7 +102,7 @@ public class TicketController {
     public ResponseEntity<?> getComments(@PathVariable String id) {
         return ResponseEntity.ok(ticketService.getComments(id));
     }
-    
+
     @DeleteMapping("/comments/{commentId}/user/{userId}")
     public ResponseEntity<?> deleteComment(@PathVariable String commentId, @PathVariable String userId) {
         try {
@@ -112,8 +113,20 @@ public class TicketController {
         }
     }
 
+    @PutMapping("/comments/{commentId}/user/{userId}")
+    public ResponseEntity<?> updateComment(@PathVariable String commentId, @PathVariable String userId,
+            @RequestBody Map<String, String> payload) {
+        try {
+            String content = payload.get("content");
+            return ResponseEntity.ok(ticketService.updateComment(commentId, userId, content));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));
+        }
+    }
+
     @PostMapping("/{id}/attachments")
-    public ResponseEntity<?> uploadAttachment(@PathVariable String id, @RequestParam("file") org.springframework.web.multipart.MultipartFile file) {
+    public ResponseEntity<?> uploadAttachment(@PathVariable String id,
+            @RequestParam("file") org.springframework.web.multipart.MultipartFile file) {
         try {
             return ResponseEntity.ok(ticketService.uploadAttachment(id, file));
         } catch (Exception e) {

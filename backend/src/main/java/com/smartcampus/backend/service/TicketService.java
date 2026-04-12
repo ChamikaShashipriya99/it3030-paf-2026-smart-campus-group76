@@ -45,18 +45,19 @@ public class TicketService {
     public List<Ticket> getTicketsByCreator(String userId) {
         return ticketRepository.findByCreatorId(userId);
     }
-    
+
     public List<Ticket> getTicketsByTechnician(String technicianId) {
         return ticketRepository.findByTechnicianId(technicianId);
     }
 
-    public Ticket createTicket(String creatorId, String resourceId, String category, String description, String priority, String contactDetails) {
+    public Ticket createTicket(String creatorId, String resourceId, String category, String description,
+            String priority, String contactDetails) {
         Resource resource = resourceService.getResourceById(resourceId);
         Ticket ticket = new Ticket();
-        
+
         User creator = new User();
         creator.setId(creatorId);
-        
+
         ticket.setCreator(creator);
         ticket.setResource(resource);
         ticket.setCategory(category);
@@ -65,13 +66,15 @@ public class TicketService {
         ticket.setContactDetails(contactDetails);
         ticket.setStatus(TicketStatus.OPEN);
         ticket.setCreatedAt(LocalDateTime.now());
-        
+
         Ticket saved = ticketRepository.save(ticket);
-        
+
         // Notify Admins and Technicians
-        notificationService.notifyUsersByRole(Role.ROLE_ADMIN, "New issue reported: " + category + " for " + resource.getName(), "WARNING");
-        notificationService.notifyUsersByRole(Role.ROLE_TECHNICIAN, "New " + category + " ticket available at " + resource.getName(), "INFO");
-        
+        notificationService.notifyUsersByRole(Role.ROLE_ADMIN,
+                "New issue reported: " + category + " for " + resource.getName(), "WARNING");
+        notificationService.notifyUsersByRole(Role.ROLE_TECHNICIAN,
+                "New " + category + " ticket available at " + resource.getName(), "INFO");
+
         return saved;
     }
 
@@ -81,11 +84,12 @@ public class TicketService {
         tech.setId(technicianId);
         ticket.setTechnician(tech);
         ticket.setStatus(TicketStatus.IN_PROGRESS);
-        
+
         if (ticket.getCreator() != null) {
-            notificationService.createNotification(ticket.getCreator().getId(), "Your ticket #" + ticket.getId() + " has been picked up by a technician.", "INFO");
+            notificationService.createNotification(ticket.getCreator().getId(),
+                    "Your ticket #" + ticket.getId() + " has been picked up by a technician.", "INFO");
         }
-        
+
         return ticketRepository.save(ticket);
     }
 
@@ -95,11 +99,14 @@ public class TicketService {
         if (resolutionNotes != null) {
             ticket.setResolutionNotes(resolutionNotes);
         }
-        
+
         if (ticket.getCreator() != null) {
-            notificationService.createNotification(ticket.getCreator().getId(), "Ticket #" + ticket.getId() + " status updated to " + status + ". Notes: " + (resolutionNotes != null ? resolutionNotes : "None"), "SUCCESS");
+            notificationService.createNotification(ticket.getCreator().getId(),
+                    "Ticket #" + ticket.getId() + " status updated to " + status + ". Notes: "
+                            + (resolutionNotes != null ? resolutionNotes : "None"),
+                    "SUCCESS");
         }
-        
+
         return ticketRepository.save(ticket);
     }
 
@@ -107,7 +114,7 @@ public class TicketService {
         Ticket ticket = ticketRepository.findById(ticketId).orElseThrow(() -> new RuntimeException("Ticket not found"));
         User user = new User();
         user.setId(userId);
-        
+
         TicketComment comment = new TicketComment();
         comment.setTicket(ticket);
         comment.setUser(user);
@@ -116,43 +123,57 @@ public class TicketService {
 
         // Notify appropriate party
         if (ticket.getCreator() != null && !ticket.getCreator().getId().equals(userId)) {
-            notificationService.createNotification(ticket.getCreator().getId(), "New comment on your ticket #" + ticket.getId(), "INFO");
+            notificationService.createNotification(ticket.getCreator().getId(),
+                    "New comment on your ticket #" + ticket.getId(), "INFO");
         } else if (ticket.getTechnician() != null && !ticket.getTechnician().getId().equals(userId)) {
-            notificationService.createNotification(ticket.getTechnician().getId(), "User commented on assigned ticket #" + ticket.getId(), "WARNING");
+            notificationService.createNotification(ticket.getTechnician().getId(),
+                    "User commented on assigned ticket #" + ticket.getId(), "WARNING");
         }
 
         return saved;
     }
-    
+
     public List<TicketComment> getComments(String ticketId) {
         return commentRepository.findByTicketIdOrderByCreatedAtAsc(ticketId);
     }
-    
+
     public void deleteComment(String commentId, String userId) {
-        TicketComment comment = commentRepository.findById(commentId).orElseThrow(() -> new RuntimeException("Comment not found"));
+        TicketComment comment = commentRepository.findById(commentId)
+                .orElseThrow(() -> new RuntimeException("Comment not found"));
         if (!comment.getUser().getId().equals(userId)) {
             throw new RuntimeException("Unauthorized: You can only delete your own comments.");
         }
         commentRepository.delete(comment);
     }
-    
-    public TicketAttachment uploadAttachment(String ticketId, org.springframework.web.multipart.MultipartFile file) throws java.io.IOException {
+
+    public TicketComment updateComment(String commentId, String userId, String content) {
+        TicketComment comment = commentRepository.findById(commentId)
+                .orElseThrow(() -> new RuntimeException("Comment not found"));
+        if (!comment.getUser().getId().equals(userId)) {
+            throw new RuntimeException("Unauthorized: You can only edit your own comments.");
+        }
+        comment.setContent(content);
+        return commentRepository.save(comment);
+    }
+
+    public TicketAttachment uploadAttachment(String ticketId, org.springframework.web.multipart.MultipartFile file)
+            throws java.io.IOException {
         Ticket ticket = ticketRepository.findById(ticketId).orElseThrow(() -> new RuntimeException("Ticket not found"));
-        
+
         List<TicketAttachment> existing = attachmentRepository.findByTicketId(ticketId);
         if (existing.size() >= 3) {
             throw new RuntimeException("Maximum 3 attachments allowed per ticket.");
         }
-        
+
         TicketAttachment attachment = new TicketAttachment();
         attachment.setTicket(ticket);
         attachment.setFileName(org.springframework.util.StringUtils.cleanPath(file.getOriginalFilename()));
         attachment.setContentType(file.getContentType());
         attachment.setData(file.getBytes());
-        
+
         return attachmentRepository.save(attachment);
     }
-    
+
     public List<TicketAttachment> getAttachments(String ticketId) {
         return attachmentRepository.findByTicketId(ticketId);
     }
