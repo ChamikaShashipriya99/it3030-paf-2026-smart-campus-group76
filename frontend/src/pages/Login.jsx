@@ -22,7 +22,7 @@ const Login = () => {
             right: 0,
             bottom: 0,
             zIndex: 2000,
-            fontFamily: '"Inter", sans-serif'
+            fontFamily: '"League Spartan", sans-serif'
         }}>
             {/* Back Button Outside the Box */}
             <button

@@ -24,7 +24,7 @@ const LandingPage = () => {
             minHeight: '100vh',
             background: '#020617',
             color: '#f8fafc',
-            fontFamily: '"Inter", -apple-system, sans-serif',
+            fontFamily: '"League Spartan", sans-serif',
             overflowX: 'hidden'
         }}>
             {/* Navigation Backdrop */}
