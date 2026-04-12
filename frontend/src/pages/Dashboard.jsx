@@ -115,13 +115,13 @@ const Dashboard = () => {
                         <p className="page-subtitle">Real-time Service Level Agreement (SLA) performance monitoring.</p>
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '25px' }}>
-                        <div className="premium-card" style={{ padding: '30px', background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)', color: 'white', border: 'none' }}>
+                        <div className="premium-card" style={{ padding: '30px', border: '1px solid #E2E8F0' }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
-                                <span style={{ fontSize: '12px', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1px', color: '#94a3b8' }}>Avg Resolution (MTTR)</span>
+                                <span style={{ fontSize: '12px', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1px', color: '#64748b' }}>Avg Resolution (MTTR)</span>
                                 <Clock size={20} color="#3b82f6" />
                             </div>
-                            <div style={{ fontSize: '38px', fontWeight: '900', letterSpacing: '-1.5px' }}>{sla.avg}</div>
-                            <div style={{ marginTop: '10px', fontSize: '12px', color: '#475569' }}>Historical ticket lifecycle average.</div>
+                            <div style={{ fontSize: '38px', fontWeight: '900', letterSpacing: '-1.5px', color: '#0f172a' }}>{sla.avg}</div>
+                            <div style={{ marginTop: '10px', fontSize: '12px', color: '#94a3b8' }}>Historical ticket lifecycle average.</div>
                         </div>
                         <div className="premium-card" style={{ padding: '30px', border: '1px solid #E2E8F0' }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
