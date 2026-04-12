@@ -30,7 +30,7 @@ public class ResourceController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Resource> getResourceById(@PathVariable Long id) {
+    public ResponseEntity<Resource> getResourceById(@PathVariable String id) {
         return ResponseEntity.ok(resourceService.getResourceById(id));
     }
 
@@ -53,7 +53,7 @@ public class ResourceController {
 
     @PutMapping(value = "/{id}", consumes = "multipart/form-data")
     public ResponseEntity<Resource> updateResource(
-            @PathVariable Long id,
+            @PathVariable String id,
             @RequestParam("name") String name,
             @RequestParam("type") String type,
             @RequestParam("capacity") int capacity,
@@ -66,7 +66,7 @@ public class ResourceController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteResource(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteResource(@PathVariable String id) {
         resourceService.deleteResource(id);
         return ResponseEntity.ok().build();
     }

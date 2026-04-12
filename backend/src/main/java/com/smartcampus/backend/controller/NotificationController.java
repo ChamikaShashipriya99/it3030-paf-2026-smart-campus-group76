@@ -17,18 +17,18 @@ public class NotificationController {
     private NotificationService service;
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Notification>> getUserNotifications(@PathVariable Long userId) {
+    public ResponseEntity<List<Notification>> getUserNotifications(@PathVariable String userId) {
         return ResponseEntity.ok(service.getUserNotifications(userId));
     }
 
     @PutMapping("/{id}/read")
-    public ResponseEntity<?> markAsRead(@PathVariable Long id) {
+    public ResponseEntity<?> markAsRead(@PathVariable String id) {
         service.markAsRead(id);
         return ResponseEntity.ok().build();
     }
     
     @PostMapping("/send")
-    public ResponseEntity<?> sendNotification(@RequestParam Long userId, @RequestParam String message, @RequestParam String type) {
+    public ResponseEntity<?> sendNotification(@RequestParam String userId, @RequestParam String message, @RequestParam String type) {
         return ResponseEntity.ok(service.createNotification(userId, message, type));
     }
 }

@@ -17,7 +17,7 @@ public class ResourceService {
         return resourceRepository.findAll();
     }
     
-    public Resource getResourceById(Long id) {
+    public Resource getResourceById(String id) {
         return resourceRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Resource not found"));
     }
@@ -44,7 +44,7 @@ public class ResourceService {
         return resourceRepository.save(r);
     }
     
-    public Resource updateResourceMultipart(Long id, String name, String type, int capacity, String location, String status, String startTime, String endTime, org.springframework.web.multipart.MultipartFile image) {
+    public Resource updateResourceMultipart(String id, String name, String type, int capacity, String location, String status, String startTime, String endTime, org.springframework.web.multipart.MultipartFile image) {
         Resource existing = getResourceById(id);
         existing.setName(name);
         existing.setType(type);
@@ -66,7 +66,7 @@ public class ResourceService {
         return resourceRepository.save(existing);
     }
     
-    public void deleteResource(Long id) {
+    public void deleteResource(String id) {
         resourceRepository.deleteById(id);
     }
 

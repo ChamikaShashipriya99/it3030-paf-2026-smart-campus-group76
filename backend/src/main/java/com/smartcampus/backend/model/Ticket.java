@@ -1,60 +1,52 @@
 package com.smartcampus.backend.model;
 
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "tickets")
+@Document(collection = "tickets")
 public class Ticket {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "resource_id", nullable = false)
+    @DBRef
+    @NotNull
     private Resource resource;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "creator_id", nullable = false)
+    @DBRef
+    @NotNull
     private User creator;
 
-    @ManyToOne
-    @JoinColumn(name = "technician_id")
+    @DBRef
     private User technician; // Optional until assigned
 
     @NotBlank(message = "Category is required")
-    @Column(nullable = false)
     private String category; // e.g. "FURNITURE", "IT_EQUIPMENT", "PLUMBING"
 
     @NotBlank(message = "Description is required")
-    @Column(nullable = false, length = 1000)
     private String description;
 
     @NotBlank(message = "Priority is required")
-    @Column(nullable = false)
     private String priority; // "LOW", "MEDIUM", "HIGH"
 
     @NotBlank(message = "Contact details are required")
-    @Column(nullable = false, length = 200)
     private String contactDetails;
 
     @NotNull(message = "Status is required")
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private TicketStatus status;
 
     private String resolutionNotes;
 
-    @Column(nullable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
     public Ticket() {}
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
     public Resource getResource() { return resource; }
     public void setResource(Resource resource) { this.resource = resource; }
     public User getCreator() { return creator; }

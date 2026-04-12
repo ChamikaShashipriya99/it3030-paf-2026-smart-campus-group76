@@ -1,49 +1,44 @@
 package com.smartcampus.backend.model;
 
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "bookings")
+@Document(collection = "bookings")
 public class Booking {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "resource_id", nullable = false)
+    @DBRef
+    @NotNull
     private Resource resource;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
+    @DBRef
+    @NotNull
     private User user;
 
     @NotNull(message = "Start time is required")
-    @Column(nullable = false)
     private LocalDateTime startTime;
 
     @NotNull(message = "End time is required")
-    @Column(nullable = false)
     private LocalDateTime endTime;
 
     @NotBlank(message = "Purpose is required")
-    @Column(nullable = false)
     private String purpose;
 
     @NotNull(message = "Status is required")
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private BookingStatus status;
 
     private String rejectionReason;
 
     public Booking() {}
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
     public Resource getResource() { return resource; }
     public void setResource(Resource resource) { this.resource = resource; }
     public User getUser() { return user; }

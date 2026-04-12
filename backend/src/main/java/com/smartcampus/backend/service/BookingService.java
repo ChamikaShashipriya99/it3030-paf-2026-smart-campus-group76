@@ -25,7 +25,7 @@ public class BookingService {
     @Autowired
     private NotificationService notificationService;
 
-    public List<Booking> getUserBookings(Long userId) {
+    public List<Booking> getUserBookings(String userId) {
         return bookingRepository.findByUserId(userId);
     }
     
@@ -34,7 +34,7 @@ public class BookingService {
     }
 
     @Transactional
-    public Booking createBookingRequest(Long userId, Long resourceId, LocalDateTime start, LocalDateTime end, String purpose) {
+    public Booking createBookingRequest(String userId, String resourceId, LocalDateTime start, LocalDateTime end, String purpose) {
         // Validation for overlap against existing APPROVED bookings
         List<Booking> overlapping = bookingRepository.findByResourceIdAndStatusAndStartTimeLessThanAndEndTimeGreaterThan(
                 resourceId, BookingStatus.APPROVED, end, start);
@@ -63,7 +63,7 @@ public class BookingService {
         return saved;
     }
 
-    public Booking updateBookingStatus(Long bookingId, BookingStatus status, String reason) {
+    public Booking updateBookingStatus(String bookingId, BookingStatus status, String reason) {
         Booking booking = bookingRepository.findById(bookingId).orElseThrow(() -> new RuntimeException("Booking not found"));
         
         // Final sanity check when approving to prevent race conditions

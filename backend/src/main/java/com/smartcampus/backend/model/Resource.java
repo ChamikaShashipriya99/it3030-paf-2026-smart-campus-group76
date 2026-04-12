@@ -1,23 +1,20 @@
 package com.smartcampus.backend.model;
 
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
-@Entity
-@Table(name = "resources")
+@Document(collection = "resources")
 public class Resource {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     @NotBlank(message = "Resource name is required")
-    @Column(nullable = false)
     private String name;
 
     @NotBlank(message = "Resource type is required")
-    @Column(nullable = false)
     private String type;
 
     @Min(value = 0, message = "Capacity must be at least 0")
@@ -28,8 +25,6 @@ public class Resource {
 
     private String availabilityWindows;
 
-    @Lob
-    @Column(columnDefinition = "LONGBLOB")
     private byte[] image;
 
     private String imageContentType;
@@ -37,7 +32,6 @@ public class Resource {
     private String startTime;
     private String endTime;
 
-    @Column(nullable = false)
     private String status;
 
     public Resource() {
@@ -52,10 +46,10 @@ public class Resource {
         this.status = status;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
     public String getName() {

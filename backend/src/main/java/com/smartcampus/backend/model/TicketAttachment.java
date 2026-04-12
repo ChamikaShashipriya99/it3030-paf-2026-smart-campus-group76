@@ -1,24 +1,22 @@
 package com.smartcampus.backend.model;
 
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
 
-@Entity
+@Document(collection = "ticket_attachments")
 @Data
 public class TicketAttachment {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ticket_id", nullable = false)
+    @DBRef
     private Ticket ticket;
 
     private String fileName;
     
     private String contentType;
 
-    @Lob
-    @Column(columnDefinition = "LONGBLOB")
     private byte[] data;
 }

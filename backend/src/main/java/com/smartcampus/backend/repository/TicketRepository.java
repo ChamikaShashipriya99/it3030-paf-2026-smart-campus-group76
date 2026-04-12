@@ -1,13 +1,16 @@
 package com.smartcampus.backend.repository;
 
 import com.smartcampus.backend.model.Ticket;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.smartcampus.backend.model.TicketStatus;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface TicketRepository extends JpaRepository<Ticket, Long> {
-    List<Ticket> findByCreatorId(Long creatorId);
-    List<Ticket> findByTechnicianId(Long technicianId);
+public interface TicketRepository extends MongoRepository<Ticket, String> {
+    List<Ticket> findByCreatorIdOrderByCreatedAtDesc(String creatorId);
+    List<Ticket> findByCreatorId(String creatorId);
+    List<Ticket> findByTechnicianId(String technicianId);
+    List<Ticket> findByStatus(TicketStatus status);
 }

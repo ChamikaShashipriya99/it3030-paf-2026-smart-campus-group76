@@ -1,9 +1,12 @@
 package com.smartcampus.backend.repository;
 
 import com.smartcampus.backend.model.TicketAttachment;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
-public interface TicketAttachmentRepository extends JpaRepository<TicketAttachment, Long> {
-    List<TicketAttachment> findByTicketId(Long ticketId);
+@Repository
+public interface TicketAttachmentRepository extends MongoRepository<TicketAttachment, String> {
+    List<TicketAttachment> findByTicketId(String ticketId);
 }

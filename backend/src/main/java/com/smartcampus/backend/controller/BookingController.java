@@ -25,15 +25,15 @@ public class BookingController {
     }
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Booking>> getUserBookings(@PathVariable Long userId) {
+    public ResponseEntity<List<Booking>> getUserBookings(@PathVariable String userId) {
         return ResponseEntity.ok(bookingService.getUserBookings(userId));
     }
 
     @PostMapping
     public ResponseEntity<?> createBooking(@RequestBody Map<String, Object> payload) {
         try {
-            Long userId = ((Number) payload.get("userId")).longValue();
-            Long resourceId = ((Number) payload.get("resourceId")).longValue();
+            String userId = (String) payload.get("userId");
+            String resourceId = (String) payload.get("resourceId");
             LocalDateTime start = LocalDateTime.parse((String) payload.get("startTime"));
             LocalDateTime end = LocalDateTime.parse((String) payload.get("endTime"));
             String purpose = (String) payload.get("purpose");
@@ -53,7 +53,7 @@ public class BookingController {
     }
 
     @PutMapping("/{id}/status")
-    public ResponseEntity<?> updateStatus(@PathVariable Long id, @RequestBody Map<String, String> payload) {
+    public ResponseEntity<?> updateStatus(@PathVariable String id, @RequestBody Map<String, String> payload) {
         try {
             BookingStatus status = BookingStatus.valueOf(payload.get("status"));
             String reason = payload.get("rejectionReason");

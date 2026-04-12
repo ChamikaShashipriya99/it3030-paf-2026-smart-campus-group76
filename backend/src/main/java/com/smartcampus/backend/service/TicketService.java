@@ -34,7 +34,7 @@ public class TicketService {
     @Autowired
     private NotificationService notificationService;
 
-    public Ticket getTicketById(Long id) {
+    public Ticket getTicketById(String id) {
         return ticketRepository.findById(id).orElseThrow(() -> new RuntimeException("Ticket not found"));
     }
 
@@ -42,15 +42,15 @@ public class TicketService {
         return ticketRepository.findAll();
     }
 
-    public List<Ticket> getTicketsByCreator(Long userId) {
+    public List<Ticket> getTicketsByCreator(String userId) {
         return ticketRepository.findByCreatorId(userId);
     }
     
-    public List<Ticket> getTicketsByTechnician(Long technicianId) {
+    public List<Ticket> getTicketsByTechnician(String technicianId) {
         return ticketRepository.findByTechnicianId(technicianId);
     }
 
-    public Ticket createTicket(Long creatorId, Long resourceId, String category, String description, String priority, String contactDetails) {
+    public Ticket createTicket(String creatorId, String resourceId, String category, String description, String priority, String contactDetails) {
         Resource resource = resourceService.getResourceById(resourceId);
         Ticket ticket = new Ticket();
         
@@ -75,7 +75,7 @@ public class TicketService {
         return saved;
     }
 
-    public Ticket assignTechnician(Long ticketId, Long technicianId) {
+    public Ticket assignTechnician(String ticketId, String technicianId) {
         Ticket ticket = ticketRepository.findById(ticketId).orElseThrow(() -> new RuntimeException("Ticket not found"));
         User tech = new User();
         tech.setId(technicianId);
@@ -89,7 +89,7 @@ public class TicketService {
         return ticketRepository.save(ticket);
     }
 
-    public Ticket updateTicketStatus(Long ticketId, TicketStatus status, String resolutionNotes) {
+    public Ticket updateTicketStatus(String ticketId, TicketStatus status, String resolutionNotes) {
         Ticket ticket = ticketRepository.findById(ticketId).orElseThrow(() -> new RuntimeException("Ticket not found"));
         ticket.setStatus(status);
         if (resolutionNotes != null) {
@@ -103,7 +103,7 @@ public class TicketService {
         return ticketRepository.save(ticket);
     }
 
-    public TicketComment addComment(Long ticketId, Long userId, String content) {
+    public TicketComment addComment(String ticketId, String userId, String content) {
         Ticket ticket = ticketRepository.findById(ticketId).orElseThrow(() -> new RuntimeException("Ticket not found"));
         User user = new User();
         user.setId(userId);
@@ -124,11 +124,11 @@ public class TicketService {
         return saved;
     }
     
-    public List<TicketComment> getComments(Long ticketId) {
+    public List<TicketComment> getComments(String ticketId) {
         return commentRepository.findByTicketIdOrderByCreatedAtAsc(ticketId);
     }
     
-    public void deleteComment(Long commentId, Long userId) {
+    public void deleteComment(String commentId, String userId) {
         TicketComment comment = commentRepository.findById(commentId).orElseThrow(() -> new RuntimeException("Comment not found"));
         if (!comment.getUser().getId().equals(userId)) {
             throw new RuntimeException("Unauthorized: You can only delete your own comments.");
@@ -136,7 +136,7 @@ public class TicketService {
         commentRepository.delete(comment);
     }
     
-    public TicketAttachment uploadAttachment(Long ticketId, org.springframework.web.multipart.MultipartFile file) throws java.io.IOException {
+    public TicketAttachment uploadAttachment(String ticketId, org.springframework.web.multipart.MultipartFile file) throws java.io.IOException {
         Ticket ticket = ticketRepository.findById(ticketId).orElseThrow(() -> new RuntimeException("Ticket not found"));
         
         List<TicketAttachment> existing = attachmentRepository.findByTicketId(ticketId);
@@ -153,7 +153,7 @@ public class TicketService {
         return attachmentRepository.save(attachment);
     }
     
-    public List<TicketAttachment> getAttachments(Long ticketId) {
+    public List<TicketAttachment> getAttachments(String ticketId) {
         return attachmentRepository.findByTicketId(ticketId);
     }
 }

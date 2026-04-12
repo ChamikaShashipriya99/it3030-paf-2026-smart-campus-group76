@@ -1,27 +1,25 @@
 package com.smartcampus.backend.model;
 
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import java.time.LocalDateTime;
 
-@Entity
+@Document(collection = "ticket_comments")
 @Data
 public class TicketComment {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ticket_id", nullable = false)
+    @DBRef
     private Ticket ticket;
 
-    @ManyToOne(fetch = FetchType.LAZY) // Need to know who wrote it
-    @JoinColumn(name = "user_id", nullable = false)
+    @DBRef
     private User user;
 
     @NotBlank(message = "Comment content cannot be empty")
-    @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
     private LocalDateTime createdAt = LocalDateTime.now();

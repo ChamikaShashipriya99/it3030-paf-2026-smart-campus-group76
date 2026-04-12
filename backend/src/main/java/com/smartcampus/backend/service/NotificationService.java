@@ -25,7 +25,7 @@ public class NotificationService {
         }
     }
 
-    public Notification createNotification(Long userId, String message, String type) {
+    public Notification createNotification(String userId, String message, String type) {
         User user = new User();
         user.setId(userId);
         
@@ -36,11 +36,11 @@ public class NotificationService {
         return repository.save(notif);
     }
 
-    public List<Notification> getUserNotifications(Long userId) {
+    public List<Notification> getUserNotifications(String userId) {
         return repository.findByUserIdOrderByCreatedAtDesc(userId);
     }
 
-    public void markAsRead(Long notificationId) {
+    public void markAsRead(String notificationId) {
         Notification notif = repository.findById(notificationId).orElseThrow(() -> new RuntimeException("Notification not found"));
         notif.setRead(true);
         repository.save(notif);
