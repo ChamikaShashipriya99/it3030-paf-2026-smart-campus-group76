@@ -1,10 +1,20 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import api from '../api/axiosConfig';
+import {
+    Mail,
+    ShieldCheck,
+    ChevronRight,
+    Building2,
+    CalendarCheck,
+    Wrench,
+    AlertCircle,
+    CheckCircle2
+} from 'lucide-react';
 
 const Dashboard = () => {
-    const { user, logout } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const [myTickets, setMyTickets] = useState([]);
 
@@ -14,99 +24,150 @@ const Dashboard = () => {
         }
     }, [user]);
 
+    const cardStyle = {
+        background: 'var(--glass-bg)',
+        backdropFilter: 'blur(20px)',
+        padding: '40px',
+        borderRadius: '32px',
+        boxShadow: 'var(--shadow-premium)',
+        border: '1px solid var(--glass-border)',
+        position: 'relative',
+        overflow: 'hidden',
+        marginBottom: '40px'
+    };
+
     return (
-        <div style={{ minHeight: 'calc(100vh - 70px)', padding: '60px 20px', fontFamily: '"Inter", -apple-system, sans-serif' }}>
-            <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-                
-                {/* Hero Profile Card */}
-                <div style={{
-                    background: 'var(--glass-bg)', backdropFilter: 'blur(20px)',
-                    padding: '40px', borderRadius: '32px', boxShadow: 'var(--shadow-premium)',
-                    border: '1px solid var(--glass-border)', position: 'relative', overflow: 'hidden'
-                }}>
-                    <div style={{position: 'absolute', top: '-50%', left: '-20%', width: '50%', height: '150%', background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, transparent 100%)', transform: 'rotate(-45deg)', zIndex: 0}} />
-                    
-                    <div style={{position: 'relative', zIndex: 1}}>
-                        <h1 style={{ fontSize: '36px', color: 'var(--text-main)', margin: '0 0 10px 0', letterSpacing: '-1px' }}>
-                            Welcome back, <span style={{color: 'var(--primary)'}}>{user?.name}</span>
-                        </h1>
-                        <p style={{ color: 'var(--text-muted)', fontSize: '18px', margin: '0 0 30px 0' }}>Here's what's happening with your campus operations today.</p>
-                        
-                        <div style={{ display: 'flex', gap: '30px', alignItems: 'center' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                                <div style={{width: '40px', height: '40px', borderRadius: '50%', background: '#e0e7ff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#4f46e5', fontWeight: 'bold'}}>@</div>
-                                <div>
-                                    <div style={{fontSize: '12px', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 'bold'}}>Email</div>
-                                    <div style={{color: '#1e293b', fontWeight: '500'}}>{user?.email}</div>
-                                </div>
+        <div className="container" style={{ padding: '60px 0' }}>
+            {/* Hero Profile Card */}
+            <div style={cardStyle}>
+                <div style={{ position: 'absolute', top: '-50%', left: '-20%', width: '50%', height: '150%', background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, transparent 100%)', transform: 'rotate(-45deg)', zIndex: 0 }} />
+
+                <div style={{ position: 'relative', zIndex: 1 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                        <div>
+                            <h1 style={{ fontSize: '42px', color: 'var(--text-main)', margin: '0 0 10px 0', letterSpacing: '-2px', fontWeight: '800' }}>
+                                Welcome back, <span style={{ color: 'var(--primary)' }}>{user?.name}</span>
+                            </h1>
+                            <p style={{ color: 'var(--text-muted)', fontSize: '18px', margin: '0 0 35px 0', fontWeight: '500' }}>
+                                Oversee and interact with your campus services efficiently.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style={{ display: 'flex', gap: '40px', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                            <div style={{ width: '48px', height: '48px', borderRadius: '16px', background: 'rgba(96, 165, 250, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)' }}>
+                                <Mail size={22} />
                             </div>
-                            <div style={{ width: '1px', height: '40px', background: 'var(--border)' }} />
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                                <div style={{width: '40px', height: '40px', borderRadius: '50%', background: '#dcfce7', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#16a34a', fontWeight: 'bold'}}>#</div>
-                                <div>
-                                    <div style={{fontSize: '12px', color: '#94a3b8', textTransform: 'uppercase', fontWeight: 'bold'}}>Security Role</div>
-                                    <div style={{color: '#1e293b', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '6px'}}>
-                                        {user?.role.replace('ROLE_', '')}
-                                        {user?.role === 'ROLE_ADMIN' && <span style={{fontSize: '12px'}}>🛡️</span>}
-                                    </div>
+                            <div>
+                                <div style={{ fontSize: '11px', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: '800', letterSpacing: '1px' }}>Verified Email</div>
+                                <div style={{ color: 'var(--text-main)', fontWeight: '600', fontSize: '15px' }}>{user?.email}</div>
+                            </div>
+                        </div>
+
+                        <div style={{ width: '1px', height: '40px', background: 'var(--border)' }} />
+
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                            <div style={{ width: '48px', height: '48px', borderRadius: '16px', background: 'rgba(16, 185, 129, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10b981' }}>
+                                <ShieldCheck size={22} />
+                            </div>
+                            <div>
+                                <div style={{ fontSize: '11px', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: '800', letterSpacing: '1px' }}>Access Level</div>
+                                <div style={{ color: 'var(--text-main)', fontWeight: '600', fontSize: '15px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                    {user?.role.replace('ROLE_', '')}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                {/* Navigation Quick Actions */}
-                <h3 style={{ marginTop: '50px', color: 'var(--text-main)', fontSize: '20px' }}>Quick Actions</h3>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', marginTop: '20px' }}>
-                    <div onClick={() => navigate('/catalogue')} className="premium-card" style={{ padding: '30px', cursor: 'pointer', textAlign: 'center' }}>
-                        <div style={{fontSize: '32px', marginBottom: '15px'}}>🏢</div>
-                        <h4 style={{margin: '0 0 8px 0', color: 'var(--text-main)', fontSize: '18px'}}>Facilities Catalogue</h4>
-                        <p style={{margin: 0, fontSize: '13px', color: 'var(--text-muted)' }}>Browse and book university assets.</p>
+            </div>
+
+            {/* Navigation Quick Actions */}
+            <div className="page-header" style={{ marginTop: '60px' }}>
+                <h3 className="page-title">Quick Actions</h3>
+                <p className="page-subtitle">Access your most frequent destination in one click.</p>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '25px' }}>
+                <div onClick={() => navigate('/catalogue')} className="premium-card" style={{ padding: '35px', cursor: 'pointer', position: 'relative' }}>
+                    <div style={{ width: '60px', height: '60px', borderRadius: '18px', background: 'rgba(96, 165, 250, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '25px', color: 'var(--primary)' }}>
+                        <Building2 size={30} />
                     </div>
-
-                    {user?.role === 'ROLE_ADMIN' && (
-                        <div onClick={() => navigate('/admin/bookings')} className="premium-card" style={{ background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)', padding: '30px', cursor: 'pointer', color: 'white' }}>
-                            <div style={{fontSize: '32px', marginBottom: '15px'}}>📅</div>
-                            <h4 style={{margin: '0 0 8px 0', color: 'white', fontSize: '18px'}}>Manage Bookings</h4>
-                            <p style={{margin: 0, fontSize: '13px', color: '#bfdbfe'}}>Review pending requests globally.</p>
-                        </div>
-                    )}
-
-                    {(user?.role === 'ROLE_TECHNICIAN' || user?.role === 'ROLE_ADMIN') && (
-                        <div onClick={() => navigate('/technician/desk')} className="premium-card" style={{ background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)', padding: '30px', cursor: 'pointer', color: 'white' }}>
-                            <div style={{fontSize: '32px', marginBottom: '15px'}}>🛠️</div>
-                            <h4 style={{margin: '0 0 8px 0', color: 'white', fontSize: '18px'}}>Service Desk</h4>
-                            <p style={{margin: 0, fontSize: '13px', color: '#ddd6fe'}}>Resolve maintenance tickets.</p>
-                        </div>
-                    )}
+                    <h4 style={{ margin: '0 0 10px 0', color: 'var(--text-main)', fontSize: '20px', fontWeight: '800' }}>Facilities Catalogue</h4>
+                    <p style={{ margin: 0, fontSize: '14px', color: 'var(--text-muted)', lineHeight: '1.6' }}>Explore, filter, and book smart university assets such as labs and lecture halls.</p>
+                    <div style={{ marginTop: '25px', display: 'flex', alignItems: 'center', color: 'var(--primary)', fontWeight: 'bold', fontSize: '13px', gap: '5px' }}>
+                        Browse Assets <ChevronRight size={16} />
+                    </div>
                 </div>
 
                 {user?.role === 'ROLE_USER' && (
-                    <div style={{ marginTop: '50px' }}>
-                        <h3 style={{ color: '#334155', fontSize: '20px', marginBottom: '20px' }}>My Active Incidents</h3>
-                        {myTickets.length === 0 ? (
-                            <div style={{ background: 'var(--glass-bg)', padding: '40px', borderRadius: '24px', border: '1px solid var(--glass-border)', textAlign: 'center' }}>
-                                <p style={{color: 'var(--text-muted)', margin: 0}}>You have a clean slate! No issues reported.</p>
-                            </div>
-                        ) : (
-                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '20px' }}>
-                                {myTickets.map(t => (
-                                    <div key={t.id} className="premium-card" style={{ padding: '24px' }}>
-                                        <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '12px'}}>
-                                            <strong style={{color: 'var(--text-main)', fontSize: '16px'}}>{t.category}</strong>
-                                            <span style={{ fontSize: '11px', padding: '4px 10px', borderRadius: '20px', background: t.status === 'RESOLVED' ? '#dcfce7' : '#fee2e2', color: t.status === 'RESOLVED' ? '#16a34a' : '#ef4444', fontWeight: 'bold', textTransform: 'uppercase' }}>{t.status}</span>
-                                        </div>
-                                        <p style={{fontSize: '14px', color: 'var(--text-muted)', margin: '0 0 20px 0', lineHeight: '1.5'}}>{t.description.substring(0, 60)}...</p>
-                                        <button onClick={() => navigate(`/ticket/${t.id}`)} style={{ width: '100%', background: '#f8fafc', color: 'var(--primary)', border: '1px solid var(--border)', padding: '10px 15px', borderRadius: '12px', cursor: 'pointer', fontSize: '13px', fontWeight: 'bold', transition: 'background 0.2s' }} onMouseOver={e => e.target.style.background = '#f1f5f9'} onMouseOut={e => e.target.style.background = '#f8fafc'}>
-                                            Track Progress &rarr;
-                                        </button>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
+                    <div onClick={() => navigate('/my-bookings')} className="premium-card" style={{ padding: '35px', cursor: 'pointer' }}>
+                        <div style={{ width: '60px', height: '60px', borderRadius: '18px', background: 'rgba(139, 92, 246, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '25px', color: '#a78bfa' }}>
+                            <CalendarCheck size={30} />
+                        </div>
+                        <h4 style={{ margin: '0 0 10px 0', color: 'var(--text-main)', fontSize: '20px', fontWeight: '800' }}>My Reservations</h4>
+                        <p style={{ margin: 0, fontSize: '14px', color: 'var(--text-muted)', lineHeight: '1.6' }}>Track the status of your current and upcoming facility booking requests.</p>
+                        <div style={{ marginTop: '25px', display: 'flex', alignItems: 'center', color: '#a78bfa', fontWeight: 'bold', fontSize: '13px', gap: '5px' }}>
+                            View Status <ChevronRight size={16} />
+                        </div>
+                    </div>
+                )}
+
+                {(user?.role === 'ROLE_TECHNICIAN' || user?.role === 'ROLE_ADMIN') && (
+                    <div onClick={() => navigate('/technician/desk')} className="premium-card" style={{ padding: '35px', cursor: 'pointer', background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%)' }}>
+                        <div style={{ width: '60px', height: '60px', borderRadius: '18px', background: 'rgba(16, 185, 129, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '25px', color: '#10b981' }}>
+                            <Wrench size={30} />
+                        </div>
+                        <h4 style={{ margin: '0 0 10px 0', color: 'white', fontSize: '20px', fontWeight: '800' }}>Service Desk</h4>
+                        <p style={{ margin: 0, fontSize: '14px', color: '#94a3b8', lineHeight: '1.6' }}>Manage incident tickets and resolve infrastructure issues on campus.</p>
+                        <div style={{ marginTop: '25px', display: 'flex', alignItems: 'center', color: '#10b981', fontWeight: 'bold', fontSize: '13px', gap: '5px' }}>
+                            Open Desk <ChevronRight size={16} />
+                        </div>
                     </div>
                 )}
             </div>
+
+            {user?.role === 'ROLE_USER' && (
+                <div style={{ marginTop: '80px' }}>
+                    <div className="page-header">
+                        <h3 className="page-title">Active Service Requests</h3>
+                        <p className="page-subtitle">Real-time status of your reported maintenance tickets.</p>
+                    </div>
+
+                    {myTickets.length === 0 ? (
+                        <div style={{ background: 'var(--surface)', padding: '60px 40px', borderRadius: '32px', border: '1px solid var(--border)', textAlign: 'center' }}>
+                            <div style={{ fontSize: '48px', marginBottom: '20px' }}>✨</div>
+                            <p style={{ color: 'var(--text-muted)', fontSize: '16px', fontWeight: '500' }}>You have no active maintenance requests at the moment.</p>
+                        </div>
+                    ) : (
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '25px' }}>
+                            {myTickets.map(t => (
+                                <div key={t.id} className="premium-card" style={{ padding: '28px' }}>
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '15px', alignItems: 'center' }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                            <AlertCircle size={14} color="#60a5fa" />
+                                            <strong style={{ color: 'var(--text-main)', fontSize: '16px', fontWeight: '700' }}>{t.category}</strong>
+                                        </div>
+                                        <span style={{
+                                            fontSize: '10px', padding: '4px 12px', borderRadius: '20px',
+                                            background: t.status === 'RESOLVED' ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+                                            color: t.status === 'RESOLVED' ? '#10b981' : '#ef4444',
+                                            fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.5px'
+                                        }}>
+                                            {t.status === 'RESOLVED' && <CheckCircle2 size={10} style={{ marginRight: '4px', verticalAlign: 'middle' }} />}
+                                            {t.status}
+                                        </span>
+                                    </div>
+                                    <p style={{ fontSize: '14px', color: 'var(--text-muted)', margin: '0 0 25px 0', lineHeight: '1.6' }}>{t.description.substring(0, 80)}...</p>
+                                    <button onClick={() => navigate(`/ticket/${t.id}`)} style={{ width: '100%', background: 'rgba(255,255,255,0.03)', color: 'var(--primary)', border: '1px solid var(--border)', padding: '12px', borderRadius: '14px', cursor: 'pointer', fontSize: '13px', fontWeight: '800', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', transition: 'all 0.2s' }} onMouseOver={e => { e.target.style.background = 'rgba(255,255,255,0.05)'; e.target.style.transform = 'translateY(-1px)'; }} onMouseOut={e => { e.target.style.background = 'rgba(255,255,255,0.03)'; e.target.style.transform = 'translateY(0)'; }}>
+                                        Details & Timeline <ChevronRight size={14} />
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            )}
         </div>
     );
 };

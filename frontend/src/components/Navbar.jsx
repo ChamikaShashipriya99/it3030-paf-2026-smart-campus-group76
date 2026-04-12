@@ -1,14 +1,24 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import api from '../api/axiosConfig';
+import {
+    LayoutDashboard,
+    BookOpen,
+    ClipboardList,
+    Settings,
+    Bell,
+    LogOut,
+    UserCircle,
+    Building2
+} from 'lucide-react';
 
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const [unreadCount, setUnreadCount] = useState(0);
-    const prevCountRef = React.useRef(0);
+    const prevCountRef = useRef(0);
 
     const playPing = () => {
         try {
@@ -23,126 +33,159 @@ const Navbar = () => {
         const fetchNotifs = () => {
             api.get(`/notifications/user/${user.id}`).then(res => {
                 const unread = res.data.filter(n => !n.read).length;
-
-                // Play sound if count increased (for Staff/Admin)
                 if (unread > prevCountRef.current && (user.role === 'ROLE_ADMIN' || user.role === 'ROLE_TECHNICIAN')) {
                     playPing();
                 }
-
                 setUnreadCount(unread);
                 prevCountRef.current = unread;
             }).catch(() => { });
         };
         fetchNotifs();
-        const intv = setInterval(fetchNotifs, 10000); // Poll every 10s
+        const intv = setInterval(fetchNotifs, 10000);
         return () => clearInterval(intv);
     }, [user, location.pathname]);
 
-    // Do not show the navigation bar on public login pages
     if (!user || location.pathname === '/login' || location.pathname.startsWith('/oauth2')) {
         return null;
     }
 
     const navStyle = {
-        background: 'rgba(15, 23, 42, 0.7)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        padding: '12px 30px',
+        background: 'var(--surface)',
+        borderBottom: '1px solid var(--border)',
+        height: '80px',
         display: 'flex',
-        justifyContent: 'space-between',
         alignItems: 'center',
-        boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
-        border: '1px solid rgba(255, 255, 255, 0.05)',
         position: 'sticky',
-        top: '15px',
-        margin: '0 20px 20px 20px',
-        borderRadius: '24px',
+        top: 0,
         zIndex: 1000,
-        maxWidth: 'calc(100% - 40px)'
+        backdropFilter: 'blur(20px)',
     };
 
     const linkStyle = (path) => {
         const isActive = location.pathname === path;
         return {
+            color: isActive ? 'var(--primary)' : 'var(--text-muted)',
             textDecoration: 'none',
-            color: isActive ? '#60a5fa' : '#94a3b8',
-            fontWeight: '600',
-            marginRight: '25px',
+            marginRight: '20px',
             fontSize: '14px',
-            transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
-            display: 'inline-flex',
+            fontWeight: isActive ? '700' : '600',
+            display: 'flex',
             alignItems: 'center',
-            padding: '8px 12px',
-            borderRadius: '10px',
-            background: isActive ? 'rgba(96, 165, 250, 0.1)' : 'transparent',
-            boxShadow: isActive ? '0 0 0 1px rgba(96, 165, 250, 0.15)' : 'none'
+            gap: '8px',
+            transition: 'all 0.2s',
+            padding: '10px 16px',
+            borderRadius: '12px',
+            background: isActive ? 'rgba(96, 165, 250, 0.1)' : 'transparent'
         };
     };
 
     return (
         <nav style={navStyle}>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-                <div
-                    onClick={() => navigate('/dashboard')}
-                    style={{ margin: 0, marginRight: '30px', color: '#f8fafc', cursor: 'pointer', fontSize: '20px', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '10px', letterSpacing: '-0.5px' }}
-                >
-                    <div style={{ background: 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%)', width: '36px', height: '36px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 12px rgba(59, 130, 246, 0.4)' }}>
-                        <span style={{ fontSize: '20px', color: 'white' }}>🏫</span>
-                    </div>
-                    SmartCampus
-                </div>
-
-                <Link to="/dashboard" style={linkStyle('/dashboard')}>Dashboard</Link>
-                <Link to="/catalogue" style={linkStyle('/catalogue')}>Facilities & Assets</Link>
-                {user.role === 'ROLE_USER' && (
-                    <Link to="/my-bookings" style={linkStyle('/my-bookings')}>My Bookings</Link>
-                )}
-
-                {user.role === 'ROLE_ADMIN' && (
-                    <Link to="/admin/bookings" style={linkStyle('/admin/bookings')}>Manage Bookings</Link>
-                )}
-
-                {(user.role === 'ROLE_TECHNICIAN' || user.role === 'ROLE_ADMIN') && (
-                    <Link to="/technician/desk" style={linkStyle('/technician/desk')}>Service Desk</Link>
-                )}
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-                <Link to="/notifications" style={{ ...linkStyle('/notifications'), position: 'relative', fontSize: '18px', marginRight: '15px', padding: '10px' }}>
-                    <span style={{ filter: unreadCount > 0 ? 'drop-shadow(0 0 5px rgba(239, 68, 68, 0.4))' : 'none' }}>🔔</span>
-                    {unreadCount > 0 && (
-                        <span style={{ position: 'absolute', top: '4px', right: '4px', background: '#ef4444', color: 'white', fontSize: '9px', fontWeight: '900', padding: '1px 5px', borderRadius: '10px', boxShadow: '0 0 0 3px var(--surface)' }}>
-                            {unreadCount}
-                        </span>
-                    )}
-                </Link>
-
-                <div style={{ marginRight: '20px', height: '32px', width: '1px', background: 'var(--border)', marginLeft: '5px' }} />
-
-                <div style={{ marginRight: '15px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <div style={{ textAlign: 'right' }}>
-                        <div style={{ color: '#f8fafc', fontWeight: '700', fontSize: '13px' }}>{user.name}</div>
-                        <div style={{ fontSize: '11px', fontWeight: '600', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                            {user.role.replace('ROLE_', '')}
+            <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <div
+                        onClick={() => navigate('/dashboard')}
+                        style={{
+                            marginRight: '40px',
+                            color: 'white',
+                            cursor: 'pointer',
+                            fontSize: '22px',
+                            fontWeight: '900',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '12px',
+                            letterSpacing: '-1.5px'
+                        }}
+                    >
+                        <div style={{ background: 'var(--primary)', width: '40px', height: '40px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 16px rgba(59, 130, 246, 0.2)' }}>
+                            <Building2 size={22} color="white" />
                         </div>
+                        SmartCampus
                     </div>
-                    <div style={{ width: '36px', height: '36px', borderRadius: '12px', background: 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', color: '#60a5fa', border: '1px solid rgba(255,255,255,0.1)' }}>
-                        {user.name.charAt(0)}
+
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <Link to="/dashboard" style={linkStyle('/dashboard')}>
+                            <LayoutDashboard size={18} />
+                            Dashboard
+                        </Link>
+                        <Link to="/catalogue" style={linkStyle('/catalogue')}>
+                            <BookOpen size={18} />
+                            Assets
+                        </Link>
+                        {user.role === 'ROLE_USER' && (
+                            <Link to="/my-bookings" style={linkStyle('/my-bookings')}>
+                                <ClipboardList size={18} />
+                                My Bookings
+                            </Link>
+                        )}
+                        {user.role === 'ROLE_ADMIN' && (
+                            <Link to="/admin/bookings" style={linkStyle('/admin/bookings')}>
+                                <Settings size={18} />
+                                Manage
+                            </Link>
+                        )}
+                        {(user.role === 'ROLE_TECHNICIAN' || user.role === 'ROLE_ADMIN') && (
+                            <Link to="/technician/desk" style={linkStyle('/technician/desk')}>
+                                <ClipboardList size={18} />
+                                Service Desk
+                            </Link>
+                        )}
                     </div>
                 </div>
 
-                <button
-                    onClick={logout}
-                    style={{
-                        padding: '10px 18px', backgroundColor: 'rgba(239, 68, 68, 0.1)', color: '#ef4444',
-                        border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '12px', cursor: 'pointer',
-                        fontWeight: '700', fontSize: '13px', transition: 'all 0.2s'
-                    }}
-                    onMouseOver={(e) => { e.target.style.backgroundColor = 'rgba(239, 68, 68, 0.2)'; e.target.style.transform = 'translateY(-1px)'; }}
-                    onMouseOut={(e) => { e.target.style.backgroundColor = 'rgba(239, 68, 68, 0.1)'; e.target.style.transform = 'translateY(0)'; }}
-                >
-                    Sign Out
-                </button>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+                    <Link to="/notifications" style={{
+                        ...linkStyle('/notifications'),
+                        position: 'relative',
+                        marginRight: 0,
+                        padding: '10px',
+                        background: 'transparent'
+                    }}>
+                        <Bell size={22} style={{ color: unreadCount > 0 ? 'var(--primary)' : 'var(--text-muted)' }} />
+                        {unreadCount > 0 && (
+                            <span style={{
+                                position: 'absolute', top: '4px', right: '4px',
+                                background: '#ef4444', color: 'white', fontSize: '10px',
+                                padding: '2px 6px', borderRadius: '10px', fontWeight: '900',
+                                border: '2px solid var(--surface)'
+                            }}>
+                                {unreadCount}
+                            </span>
+                        )}
+                    </Link>
+
+                    <div style={{ width: '1px', height: '30px', background: 'var(--border)' }} />
+
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                        <div style={{ textAlign: 'right' }}>
+                            <div style={{ fontSize: '15px', fontWeight: '800', color: 'var(--text-main)', letterSpacing: '-0.3px' }}>{user.name}</div>
+                            <div style={{ fontSize: '11px', color: 'var(--text-muted)', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                                {user.role.replace('ROLE_', '')}
+                            </div>
+                        </div>
+                        <div style={{
+                            width: '44px', height: '44px', borderRadius: '14px', background: 'var(--border)',
+                            display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)',
+                            border: '1px solid var(--glass-border)', boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.1)'
+                        }}>
+                            <UserCircle size={28} />
+                        </div>
+                        <button
+                            onClick={logout}
+                            style={{
+                                background: 'rgba(239, 68, 68, 0.08)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.15)',
+                                padding: '12px 20px', borderRadius: '14px', cursor: 'pointer',
+                                fontSize: '14px', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '8px',
+                                transition: 'all 0.2s'
+                            }}
+                            onMouseOver={e => { e.target.style.background = 'rgba(239, 68, 68, 0.15)'; e.target.style.transform = 'translateY(-1px)'; }}
+                            onMouseOut={e => { e.target.style.background = 'rgba(239, 68, 68, 0.08)'; e.target.style.transform = 'translateY(0)'; }}
+                        >
+                            <LogOut size={16} />
+                            Sign Out
+                        </button>
+                    </div>
+                </div>
             </div>
         </nav>
     );
