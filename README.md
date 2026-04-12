@@ -2,7 +2,7 @@
 
 A premium, state-of-the-art university facility management system built for the **IT3030 PAF Assignment (2026)**. This platform features a high-fidelity **Pristine Tech (Light)** theme, real-time notifications, and advanced resource tracking.
 
-![Dashboard Preview](docs/images/user-dashaboard.png)
+![Landing Page Preview](docs/images/LandingPage.png)
 
 ## 🌟 Key Highlights
 *   **Pristine Tech Aesthetics**: Custom-built with a clean light palette, soft multi-layered shadows, and minimalist geometric typography.
@@ -11,20 +11,21 @@ A premium, state-of-the-art university facility management system built for the 
 *   **Role-Based Access**: specialized dashboards for Students, Admins, and Engineering Technicians.
 
 ---
+![Login Page Preview](docs/images/LoginPage.png)
 
 ## 📸 Visual Tour
 
 ### Enterprise Navigation
 Clean, sticky navigation optimized for high-density campus operations.
 
-| Dashboard | Catalogue | Notifications |
+| User-Dashboard | User-Catalogue | Notifications |
 | :--- | :--- | :--- |
 | ![User Dashboard](docs/images/user-dashaboard.png) | ![User Catalogue](docs/images/user-catalogue-page.png) | ![User Notifications](docs/images/user-notification-page.png) |
 
 ### Administrative Control
 Powerful tools for managing campus resources and maintenance triage.
 
-| Admin Dashboard | Asset Control | Service Desk |
+| Admin-Dashboard | Asset-Control | Service-Desk |
 | :--- | :--- | :--- |
 | ![Admin Dashboard](docs/images/admin-dashboard.png) | ![Admin Catalogue](docs/images/admin-catalogue-page.png) | ![Service Desk](docs/images/admin-serviceDesk-page.png) |
 
