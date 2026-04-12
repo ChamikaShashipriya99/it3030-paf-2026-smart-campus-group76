@@ -37,7 +37,7 @@ const BookResource = () => {
         try {
             await api.post('/bookings', {
                 userId: user.id,
-                resourceId: Number(id),
+                resourceId: id,
                 startTime: formData.startTime,
                 endTime: formData.endTime,
                 purpose: formData.purpose
@@ -57,7 +57,7 @@ const BookResource = () => {
 
     return (
         <div style={{ maxWidth: '800px', margin: '40px auto', padding: '0 20px' }}>
-            <button 
+            <button
                 onClick={() => navigate('/catalogue')}
                 style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontWeight: 'bold', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px' }}
             >
@@ -65,14 +65,25 @@ const BookResource = () => {
             </button>
 
             <div className="premium-card" style={{ padding: '0', overflow: 'hidden' }}>
-                <div style={{ background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)', padding: '40px', color: 'white' }}>
-                    <div style={{ fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '10px', opacity: 0.8 }}>Resource Booking</div>
-                    <h2 style={{ margin: 0, fontSize: '32px', letterSpacing: '-1px' }}>{resource.name}</h2>
-                    <div style={{ display: 'flex', gap: '20px', marginTop: '20px', fontSize: '14px', opacity: 0.9 }}>
-                        <span>📍 {resource.location}</span>
-                        <span>👤 Cap: {resource.capacity}</span>
-                        <span>🏷️ {resource.type.replace('_', ' ')}</span>
+                <div style={{ background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)', padding: '40px', color: 'white', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '20px' }}>
+                    <div style={{ flex: 1 }}>
+                        <div style={{ fontSize: '10px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '10px', opacity: 0.8 }}>Resource Booking</div>
+                        <h2 style={{ margin: 0, fontSize: '36px', letterSpacing: '-1.5px' }}>{resource.name}</h2>
+                        <div style={{ display: 'flex', gap: '20px', marginTop: '20px', fontSize: '14px', opacity: 0.9 }}>
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>📍 {resource.location}</span>
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>👤 {resource.capacity} Pax</span>
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>🏷️ {resource.type.replace('_', ' ')}</span>
+                        </div>
                     </div>
+                    {resource.image && (
+                        <div style={{ width: '140px', height: '140px', borderRadius: '20px', overflow: 'hidden', boxShadow: '0 10px 25px rgba(0,0,0,0.2)', border: '4px solid rgba(255,255,255,0.1)' }}>
+                            <img
+                                src={`data:${resource.imageContentType};base64,${resource.image}`}
+                                alt={resource.name}
+                                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                            />
+                        </div>
+                    )}
                 </div>
 
                 <div style={{ padding: '40px' }}>
@@ -81,47 +92,47 @@ const BookResource = () => {
                             ⚠️ {error}
                         </div>
                     )}
-                    
+
                     <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
                         <div className="form-grid">
                             <div>
                                 <label className="form-label">Start Date & Time</label>
-                                <input type="datetime-local" required value={formData.startTime} 
+                                <input type="datetime-local" required value={formData.startTime}
                                     className="premium-input"
-                                    onChange={e => setFormData({...formData, startTime: e.target.value})} />
+                                    onChange={e => setFormData({ ...formData, startTime: e.target.value })} />
                             </div>
                             <div>
                                 <label className="form-label">End Date & Time</label>
-                                <input type="datetime-local" required value={formData.endTime} 
+                                <input type="datetime-local" required value={formData.endTime}
                                     className="premium-input"
-                                    onChange={e => setFormData({...formData, endTime: e.target.value})} />
+                                    onChange={e => setFormData({ ...formData, endTime: e.target.value })} />
                             </div>
                         </div>
 
                         <div>
                             <label className="form-label">Purpose of Booking</label>
-                            <textarea required rows="4" value={formData.purpose} 
+                            <textarea required rows="4" value={formData.purpose}
                                 className="premium-input"
                                 placeholder="Please describe the nature of your event or meeting..."
-                                onChange={e => setFormData({...formData, purpose: e.target.value})} />
+                                onChange={e => setFormData({ ...formData, purpose: e.target.value })} />
                         </div>
 
                         <div style={{ display: 'flex', gap: '15px', marginTop: '10px' }}>
-                            <button type="submit" style={{ 
-                                flex: 2, padding: '16px', background: 'var(--primary)', color: 'white', 
-                                border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', 
+                            <button type="submit" style={{
+                                flex: 2, padding: '16px', background: 'var(--primary)', color: 'white',
+                                border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '16px',
                                 fontWeight: '700', boxShadow: '0 10px 15px -3px rgba(59, 130, 246, 0.3)',
                                 transition: 'all 0.2s'
                             }}
-                            onMouseOver={e => e.target.style.transform = 'translateY(-2px)'}
-                            onMouseOut={e => e.target.style.transform = 'translateY(0)'}
+                                onMouseOver={e => e.target.style.transform = 'translateY(-2px)'}
+                                onMouseOut={e => e.target.style.transform = 'translateY(0)'}
                             >
                                 Confirm Booking Request
                             </button>
-                            <button type="button" onClick={() => navigate('/catalogue')} style={{ 
-                                flex: 1, padding: '16px', background: 'var(--surface)', color: 'var(--text-muted)', 
-                                border: '1px solid var(--border)', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', 
-                                fontWeight: '700' 
+                            <button type="button" onClick={() => navigate('/catalogue')} style={{
+                                flex: 1, padding: '16px', background: 'var(--surface)', color: 'var(--text-muted)',
+                                border: '1px solid var(--border)', borderRadius: '14px', cursor: 'pointer', fontSize: '16px',
+                                fontWeight: '700'
                             }}>
                                 Cancel
                             </button>
