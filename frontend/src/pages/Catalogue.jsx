@@ -20,11 +20,11 @@ const Catalogue = () => {
             setLoading(true);
             const endpoint = typeFilter ? `/resources?type=${typeFilter}` : '/resources';
             const response = await api.get(endpoint);
-            // Artificial delay to show premium skeleton loaders for 3 seconds
+            // Artificial delay to show premium skeleton loaders for 1 second
             setTimeout(() => {
                 setResources(response.data);
                 setLoading(false);
-            }, 3000);
+            }, 1000);
         } catch (error) {
             console.error("Failed to fetch resources", error);
             setLoading(false);
@@ -64,7 +64,7 @@ const Catalogue = () => {
             setNewRes({ name: '', type: 'LECTURE_HALL', capacity: 0, location: '', status: 'ACTIVE', startTime: '08:00', endTime: '18:00' });
             setResImage(null);
             fetchResources();
-        } catch(err) { alert('Failed to save resource.'); }
+        } catch (err) { alert('Failed to save resource.'); }
     };
 
     const handleEditClick = (res) => {
@@ -76,11 +76,11 @@ const Catalogue = () => {
     };
 
     const handleDeleteClick = async (id) => {
-        if(window.confirm("Are you sure you want to delete this resource?")) {
+        if (window.confirm("Are you sure you want to delete this resource?")) {
             try {
                 await api.delete(`/resources/${id}`);
                 fetchResources();
-            } catch(e) { alert("Failed to delete resource"); }
+            } catch (e) { alert("Failed to delete resource"); }
         }
     };
 
@@ -88,12 +88,12 @@ const Catalogue = () => {
         <div style={{ padding: '40px', maxWidth: '1000px', margin: '0 auto', fontFamily: 'sans-serif' }}>
             <h2 style={{ color: 'var(--text-main)' }}>Facilities & Assets Catalogue</h2>
             <p style={{ color: 'var(--text-muted)' }}>Browse and filter available university resources.</p>
-            
-            <div style={{ 
-                margin: '20px 0', 
-                padding: '20px', 
-                background: 'var(--surface)', 
-                border: '1px solid var(--border)', 
+
+            <div style={{
+                margin: '20px 0',
+                padding: '20px',
+                background: 'var(--surface)',
+                border: '1px solid var(--border)',
                 borderRadius: '24px',
                 display: 'flex',
                 justifyContent: 'space-between',
@@ -104,9 +104,9 @@ const Catalogue = () => {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flex: 1 }}>
                     <div style={{ position: 'relative', flex: 1, maxWidth: '300px' }}>
                         <span style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', opacity: 0.5 }}>🔍</span>
-                        <input 
-                            type="text" 
-                            placeholder="Search resources..." 
+                        <input
+                            type="text"
+                            placeholder="Search resources..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className="premium-input"
@@ -115,8 +115,8 @@ const Catalogue = () => {
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                         <label style={{ fontWeight: '700', color: 'var(--text-main)', fontSize: '14px' }}>Filter:</label>
-                        <select 
-                            value={typeFilter} 
+                        <select
+                            value={typeFilter}
                             onChange={(e) => setTypeFilter(e.target.value)}
                             className="premium-input"
                             style={{ padding: '8px 16px', width: '160px' }}
@@ -131,9 +131,9 @@ const Catalogue = () => {
                 </div>
 
                 <div style={{ display: 'flex', background: 'rgba(255,255,255,0.03)', padding: '4px', borderRadius: '12px', border: '1px solid var(--border)' }}>
-                    <button 
+                    <button
                         onClick={() => setViewMode('list')}
-                        style={{ 
+                        style={{
                             padding: '8px 16px', border: 'none', borderRadius: '8px', cursor: 'pointer', fontSize: '12px', fontWeight: '700',
                             background: viewMode === 'list' ? 'var(--primary)' : 'transparent',
                             color: viewMode === 'list' ? 'white' : 'var(--text-muted)',
@@ -141,9 +141,9 @@ const Catalogue = () => {
                         }}>
                         Horizontal
                     </button>
-                    <button 
+                    <button
                         onClick={() => setViewMode('grid')}
-                        style={{ 
+                        style={{
                             padding: '8px 16px', border: 'none', borderRadius: '8px', cursor: 'pointer', fontSize: '12px', fontWeight: '700',
                             background: viewMode === 'grid' ? 'var(--primary)' : 'transparent',
                             color: viewMode === 'grid' ? 'white' : 'var(--text-muted)',
@@ -156,7 +156,7 @@ const Catalogue = () => {
                 {user?.role === 'ROLE_ADMIN' && (
                     <button onClick={() => {
                         setShowAddForm(!showAddForm);
-                        if(showAddForm) { setIsEditing(false); setEditId(null); setNewRes({ name: '', type: 'LECTURE_HALL', capacity: 0, location: '', status: 'ACTIVE', startTime: '08:00', endTime: '18:00' }); }
+                        if (showAddForm) { setIsEditing(false); setEditId(null); setNewRes({ name: '', type: 'LECTURE_HALL', capacity: 0, location: '', status: 'ACTIVE', startTime: '08:00', endTime: '18:00' }); }
                     }} style={{ padding: '10px 20px', background: 'var(--primary)', color: 'white', border: 'none', borderRadius: '12px', cursor: 'pointer', fontWeight: 'bold', fontSize: '14px', boxShadow: '0 4px 12px rgba(59, 130, 246, 0.2)' }}>
                         {showAddForm ? 'Cancel' : '+ New Facility'}
                     </button>
@@ -176,14 +176,14 @@ const Catalogue = () => {
                         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '20px' }}>
                             <div>
                                 <label className="form-label">Facility Name</label>
-                                <input required placeholder="e.g. Lecture Hall A-101" value={newRes.name} 
+                                <input required placeholder="e.g. Lecture Hall A-101" value={newRes.name}
                                     className="premium-input"
-                                    onChange={e => setNewRes({...newRes, name: e.target.value})} />
+                                    onChange={e => setNewRes({ ...newRes, name: e.target.value })} />
                             </div>
                             <div>
                                 <label className="form-label">Category</label>
                                 <select value={newRes.type} className="premium-input"
-                                        onChange={e => setNewRes({...newRes, type: e.target.value})}>
+                                    onChange={e => setNewRes({ ...newRes, type: e.target.value })}>
                                     <option value="LECTURE_HALL">Lecture Hall</option>
                                     <option value="LAB">Laboratory</option>
                                     <option value="MEETING_ROOM">Meeting Room</option>
@@ -195,20 +195,20 @@ const Catalogue = () => {
                         <div className="form-grid">
                             <div>
                                 <label className="form-label">Location / Building</label>
-                                <input required placeholder="e.g. New Building, 3rd Floor" value={newRes.location} 
+                                <input required placeholder="e.g. New Building, 3rd Floor" value={newRes.location}
                                     className="premium-input"
-                                    onChange={e => setNewRes({...newRes, location: e.target.value})} />
+                                    onChange={e => setNewRes({ ...newRes, location: e.target.value })} />
                             </div>
                             <div>
                                 <label className="form-label">Capacity (Pax)</label>
-                                <input required type="number" value={newRes.capacity} 
+                                <input required type="number" value={newRes.capacity}
                                     className="premium-input"
-                                    onChange={e => setNewRes({...newRes, capacity: parseInt(e.target.value) || 0})} />
+                                    onChange={e => setNewRes({ ...newRes, capacity: parseInt(e.target.value) || 0 })} />
                             </div>
                             <div>
                                 <label className="form-label">Operational Status</label>
                                 <select value={newRes.status} className="premium-input"
-                                        onChange={e => setNewRes({...newRes, status: e.target.value})}>
+                                    onChange={e => setNewRes({ ...newRes, status: e.target.value })}>
                                     <option value="ACTIVE">ACTIVE</option>
                                     <option value="MAINTENANCE">MAINTENANCE</option>
                                     <option value="INACTIVE">INACTIVE</option>
@@ -219,38 +219,38 @@ const Catalogue = () => {
                         <div className="form-grid" style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '24px', borderRadius: '16px', border: '1px solid var(--border)' }}>
                             <div>
                                 <label className="form-label">Daily Available From</label>
-                                <input required type="time" value={newRes.startTime} 
+                                <input required type="time" value={newRes.startTime}
                                     className="premium-input"
-                                    onChange={e => setNewRes({...newRes, startTime: e.target.value})} />
+                                    onChange={e => setNewRes({ ...newRes, startTime: e.target.value })} />
                             </div>
                             <div>
                                 <label className="form-label">Daily Available Until</label>
-                                <input required type="time" value={newRes.endTime} 
+                                <input required type="time" value={newRes.endTime}
                                     className="premium-input"
-                                    onChange={e => setNewRes({...newRes, endTime: e.target.value})} />
+                                    onChange={e => setNewRes({ ...newRes, endTime: e.target.value })} />
                             </div>
                             <div>
                                 <label className="form-label">Featured Image</label>
-                                <input type="file" accept="image/*" 
-                                    onChange={e => setResImage(e.target.files[0])} 
+                                <input type="file" accept="image/*"
+                                    onChange={e => setResImage(e.target.files[0])}
                                     className="premium-input"
                                     style={{ padding: '8px' }} />
                             </div>
                         </div>
 
                         <div style={{ display: 'flex', gap: '15px', marginTop: '10px' }}>
-                            <button type="submit" style={{ 
-                                flex: 2, padding: '16px', background: 'var(--primary)', color: 'white', 
-                                border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', 
+                            <button type="submit" style={{
+                                flex: 2, padding: '16px', background: 'var(--primary)', color: 'white',
+                                border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '16px',
                                 fontWeight: '700', boxShadow: '0 10px 15px -3px rgba(59, 130, 246, 0.3)',
                                 transition: 'all 0.2s'
                             }}>
                                 {isEditing ? 'Update Resource Details' : 'Publish New Resource'}
                             </button>
-                            <button type="button" onClick={() => setShowAddForm(false)} style={{ 
-                                flex: 1, padding: '16px', background: 'rgba(255,255,255,0.05)', color: 'var(--text-muted)', 
-                                border: '1px solid var(--border)', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', 
-                                fontWeight: '700' 
+                            <button type="button" onClick={() => setShowAddForm(false)} style={{
+                                flex: 1, padding: '16px', background: 'rgba(255,255,255,0.05)', color: 'var(--text-muted)',
+                                border: '1px solid var(--border)', borderRadius: '14px', cursor: 'pointer', fontSize: '16px',
+                                fontWeight: '700'
                             }}>
                                 Cancel
                             </button>
@@ -260,18 +260,18 @@ const Catalogue = () => {
             )}
 
             {loading ? (
-                <div style={{ 
-                    display: 'grid', 
-                    gridTemplateColumns: viewMode === 'grid' ? 'repeat(auto-fill, minmax(280px, 1fr))' : '1fr', 
-                    gap: '20px' 
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: viewMode === 'grid' ? 'repeat(auto-fill, minmax(280px, 1fr))' : '1fr',
+                    gap: '20px'
                 }}>
                     {Array.from({ length: 4 }).map((_, i) => (
-                        <div key={i} className="premium-card" style={{ 
-                            display: 'flex', 
-                            flexDirection: viewMode === 'grid' ? 'column' : 'row', 
-                            gap: '20px', 
-                            padding: '16px', 
-                            minHeight: viewMode === 'grid' ? '300px' : '200px' 
+                        <div key={i} className="premium-card" style={{
+                            display: 'flex',
+                            flexDirection: viewMode === 'grid' ? 'column' : 'row',
+                            gap: '20px',
+                            padding: '16px',
+                            minHeight: viewMode === 'grid' ? '300px' : '200px'
                         }}>
                             <div className="skeleton" style={{ flex: viewMode === 'grid' ? '0 0 160px' : '0 0 180px', height: viewMode === 'grid' ? '160px' : '168px', borderRadius: '12px' }}></div>
                             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
@@ -283,16 +283,16 @@ const Catalogue = () => {
                     ))}
                 </div>
             ) : (
-                <div style={{ 
-                    display: 'grid', 
-                    gridTemplateColumns: viewMode === 'grid' ? 'repeat(auto-fill, minmax(280px, 1fr))' : '1fr', 
-                    gap: '24px' 
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: viewMode === 'grid' ? 'repeat(auto-fill, minmax(280px, 1fr))' : '1fr',
+                    gap: '24px'
                 }}>
                     {resources.filter(res => {
                         const matchesType = typeFilter === '' || res.type === typeFilter;
-                        const matchesSearch = res.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                                              res.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                                              res.type.toLowerCase().includes(searchQuery.toLowerCase());
+                        const matchesSearch = res.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                            res.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                            res.type.toLowerCase().includes(searchQuery.toLowerCase());
                         return matchesType && matchesSearch;
                     }).map(res => (
                         <div key={res.id} className="premium-card" style={{
@@ -306,11 +306,11 @@ const Catalogue = () => {
                             position: 'relative'
                         }}>
                             {res.image && (
-                                <div style={{ 
-                                    flex: viewMode === 'grid' ? '0 0 160px' : '0 0 180px', 
-                                    height: viewMode === 'grid' ? '160px' : 'auto', 
-                                    overflow: 'hidden', 
-                                    borderRadius: '12px', 
+                                <div style={{
+                                    flex: viewMode === 'grid' ? '0 0 160px' : '0 0 180px',
+                                    height: viewMode === 'grid' ? '160px' : 'auto',
+                                    overflow: 'hidden',
+                                    borderRadius: '12px',
                                     boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
                                     position: 'relative'
                                 }}>
@@ -328,7 +328,7 @@ const Catalogue = () => {
                                     )}
                                 </div>
                             )}
-                            
+
                             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                                 <div>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
@@ -344,33 +344,33 @@ const Catalogue = () => {
                                             </span>
                                         )}
                                     </div>
-                                    
-                                    <div style={{ 
-                                        display: 'grid', 
-                                        gridTemplateColumns: viewMode === 'grid' ? '1fr' : '1fr 1fr', 
-                                        gap: viewMode === 'grid' ? '6px' : '8px 20px', 
-                                        marginBottom: '15px' 
+
+                                    <div style={{
+                                        display: 'grid',
+                                        gridTemplateColumns: viewMode === 'grid' ? '1fr' : '1fr 1fr',
+                                        gap: viewMode === 'grid' ? '6px' : '8px 20px',
+                                        marginBottom: '15px'
                                     }}>
                                         <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>
-                                            <span style={{opacity: 0.6}}>Type:</span> {res.type.replace('_', ' ')}
+                                            <span style={{ opacity: 0.6 }}>Type:</span> {res.type.replace('_', ' ')}
                                         </div>
                                         <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>
-                                            <span style={{opacity: 0.6}}>Capacity:</span> {res.capacity} pax
+                                            <span style={{ opacity: 0.6 }}>Capacity:</span> {res.capacity} pax
                                         </div>
                                         <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>
-                                            <span style={{opacity: 0.6}}>Location:</span> {res.location}
+                                            <span style={{ opacity: 0.6 }}>Location:</span> {res.location}
                                         </div>
                                         <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>
-                                            <span style={{opacity: 0.6}}>Hours:</span> {res.startTime || '08:00'} - {res.endTime || '18:00'}
+                                            <span style={{ opacity: 0.6 }}>Hours:</span> {res.startTime || '08:00'} - {res.endTime || '18:00'}
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div style={{ display: 'flex', gap: '8px', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '12px' }}>
                                     {user?.role === 'ROLE_USER' && res.status === 'ACTIVE' && (
                                         <>
-                                            <button onClick={() => window.location.href=`/book/${res.id}`} style={{ flex: 1, padding: '10px', background: 'var(--primary)', color: 'white', border: 'none', borderRadius: '10px', cursor: 'pointer', fontWeight: '700', fontSize: '12px' }}>Book Now</button>
-                                            <button onClick={() => window.location.href=`/report/${res.id}`} style={{ padding: '10px', background: 'rgba(239, 68, 68, 0.05)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.1)', borderRadius: '10px', cursor: 'pointer', fontWeight: '700', fontSize: '12px' }}>Report</button>
+                                            <button onClick={() => window.location.href = `/book/${res.id}`} style={{ flex: 1, padding: '10px', background: 'var(--primary)', color: 'white', border: 'none', borderRadius: '10px', cursor: 'pointer', fontWeight: '700', fontSize: '12px' }}>Book Now</button>
+                                            <button onClick={() => window.location.href = `/report/${res.id}`} style={{ padding: '10px', background: 'rgba(239, 68, 68, 0.05)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.1)', borderRadius: '10px', cursor: 'pointer', fontWeight: '700', fontSize: '12px' }}>Report</button>
                                         </>
                                     )}
 

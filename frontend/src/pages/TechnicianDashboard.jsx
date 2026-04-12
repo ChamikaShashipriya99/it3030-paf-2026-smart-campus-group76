@@ -14,11 +14,11 @@ const TechnicianDashboard = () => {
     const fetchTickets = () => {
         setLoading(true);
         api.get('/tickets').then(res => {
-            // Artificial delay to show premium skeleton loaders for 3 seconds
+            // Artificial delay to show premium skeleton loaders for 1 second
             setTimeout(() => {
                 setTickets(res.data);
                 setLoading(false);
-            }, 3000);
+            }, 1000);
         }).catch(err => {
             console.error(err);
             setLoading(false);
@@ -57,7 +57,7 @@ const TechnicianDashboard = () => {
         boxShadow: 'var(--shadow-soft)', border: '1px solid var(--border)', display: 'flex', flexDirection: 'column',
         justifyContent: 'center', transition: 'transform 0.2s', position: 'relative', overflow: 'hidden'
     };
-    
+
     return (
         <div style={{ padding: '40px', maxWidth: '1200px', margin: '0 auto', fontFamily: '"Inter", -apple-system, sans-serif', minHeight: 'calc(100vh - 70px)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
@@ -84,7 +84,7 @@ const TechnicianDashboard = () => {
                     <h3 style={{ fontSize: '36px', fontWeight: '800', margin: '10px 0 0 0', color: 'var(--text-main)' }}>{resolvedCount}</h3>
                 </div>
             </div>
-            
+
             <div style={{ background: 'var(--surface)', borderRadius: '24px', boxShadow: 'var(--shadow-soft)', overflow: 'hidden', border: '1px solid var(--border)' }}>
                 <div style={{ overflowX: 'auto' }}>
                     <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
@@ -131,7 +131,8 @@ const TechnicianDashboard = () => {
                                         </span>
                                     </td>
                                     <td style={{ padding: '20px 24px' }}>
-                                        <span style={{ fontWeight: '700', fontSize: '11px', padding: '6px 12px', borderRadius: '30px', letterSpacing: '0.5px',
+                                        <span style={{
+                                            fontWeight: '700', fontSize: '11px', padding: '6px 12px', borderRadius: '30px', letterSpacing: '0.5px',
                                             backgroundColor: t.status === 'RESOLVED' ? 'rgba(16, 185, 129, 0.1)' : t.status === 'OPEN' ? 'rgba(239, 68, 68, 0.1)' : 'rgba(245, 158, 11, 0.1)',
                                             color: t.status === 'RESOLVED' ? '#10b981' : t.status === 'OPEN' ? '#ef4444' : '#f59e0b',
                                             border: `1px solid ${t.status === 'RESOLVED' ? 'rgba(16, 185, 129, 0.2)' : t.status === 'OPEN' ? 'rgba(239, 68, 68, 0.2)' : 'rgba(245, 158, 11, 0.2)'}`
@@ -140,12 +141,12 @@ const TechnicianDashboard = () => {
                                         </span>
                                     </td>
                                     <td style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '14px' }}>
-                                        {t.technician ? t.technician.email.split('@')[0] : <span style={{color: 'var(--text-muted)', fontStyle: 'italic', opacity: 0.6}}>Unassigned</span>}
+                                        {t.technician ? t.technician.email.split('@')[0] : <span style={{ color: 'var(--text-muted)', fontStyle: 'italic', opacity: 0.6 }}>Unassigned</span>}
                                     </td>
                                     <td style={{ padding: '20px 24px' }}>
                                         <div style={{ display: 'flex', gap: '8px' }}>
-                                            <button onClick={() => navigate(`/ticket/${t.id}`)} style={{ background: 'white', color: '#3b82f6', border: '1px solid #e2e8f0', padding: '6px 12px', borderRadius: '6px', cursor: 'pointer', fontWeight: '600', fontSize: '13px', transition: 'background 0.2s' }} onMouseOver={e=>e.target.style.background='#f1f5f9'} onMouseOut={e=>e.target.style.background='white'}>Details</button>
-                                            
+                                            <button onClick={() => navigate(`/ticket/${t.id}`)} style={{ background: 'white', color: '#3b82f6', border: '1px solid #e2e8f0', padding: '6px 12px', borderRadius: '6px', cursor: 'pointer', fontWeight: '600', fontSize: '13px', transition: 'background 0.2s' }} onMouseOver={e => e.target.style.background = '#f1f5f9'} onMouseOut={e => e.target.style.background = 'white'}>Details</button>
+
                                             {t.status === 'OPEN' && (
                                                 <button onClick={() => assignToMe(t.id)} style={{ background: '#3b82f6', color: 'white', border: 'none', padding: '6px 12px', borderRadius: '6px', cursor: 'pointer', fontWeight: '600', fontSize: '13px', boxShadow: '0 2px 4px rgba(59, 130, 246, 0.3)' }}>Claim</button>
                                             )}
@@ -160,9 +161,9 @@ const TechnicianDashboard = () => {
                     </table>
                 </div>
                 {!loading && tickets.length === 0 && (
-                    <div style={{textAlign: 'center', padding: '60px 20px', color: '#94a3b8'}}>
-                        <div style={{fontSize: '48px', marginBottom: '15px'}}>✨</div>
-                        <p style={{fontSize: '16px', fontWeight: '500'}}>No incidents reported. All good!</p>
+                    <div style={{ textAlign: 'center', padding: '60px 20px', color: '#94a3b8' }}>
+                        <div style={{ fontSize: '48px', marginBottom: '15px' }}>✨</div>
+                        <p style={{ fontSize: '16px', fontWeight: '500' }}>No incidents reported. All good!</p>
                     </div>
                 )}
             </div>

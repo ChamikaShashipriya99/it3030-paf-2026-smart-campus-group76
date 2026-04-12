@@ -6,15 +6,15 @@ const ManageBookings = () => {
     const [bookings, setBookings] = useState([]);
     const [loading, setLoading] = useState(true);
     const { showNotification } = useContext(NotificationContext);
-    
+
     const fetchBookings = () => {
         setLoading(true);
         api.get('/bookings').then(res => {
-            // Artificial delay to show premium skeleton loaders for 3 seconds
+            // Artificial delay to show premium skeleton loaders for 1 second
             setTimeout(() => {
                 setBookings(res.data);
                 setLoading(false);
-            }, 3000);
+            }, 1000);
         }).catch(err => {
             console.error(err);
             setLoading(false);
@@ -44,7 +44,7 @@ const ManageBookings = () => {
         boxShadow: 'var(--shadow-soft)', border: '1px solid var(--border)', display: 'flex', flexDirection: 'column',
         justifyContent: 'center', transition: 'transform 0.2s, box-shadow 0.2s', position: 'relative', overflow: 'hidden'
     };
-    
+
     const metricStyle = { fontSize: '36px', fontWeight: '800', margin: '10px 0 0 0', color: 'var(--text-main)' };
 
     return (
@@ -77,7 +77,7 @@ const ManageBookings = () => {
                     <h3 style={metricStyle}>{rejectedCount}</h3>
                 </div>
             </div>
-            
+
             <div style={{ background: 'var(--surface)', borderRadius: '24px', boxShadow: 'var(--shadow-soft)', overflow: 'hidden', border: '1px solid var(--border)' }}>
                 <div style={{ overflowX: 'auto' }}>
                     <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
@@ -123,13 +123,13 @@ const ManageBookings = () => {
                                     </td>
                                     <td style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '14px' }}>{b.user.email}</td>
                                     <td style={{ padding: '20px 24px', fontSize: '13px', color: 'var(--text-muted)', lineHeight: '1.5' }}>
-                                        <div style={{display:'flex', alignItems:'center', gap:'6px'}}>
-                                            <span style={{display:'inline-block', width:'8px', height:'8px', borderRadius:'50%', background:'#10b981'}}></span>
-                                            {new Date(b.startTime).toLocaleString([], {month:'short', day:'numeric', hour:'2-digit', minute:'2-digit'})}
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                            <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', background: '#10b981' }}></span>
+                                            {new Date(b.startTime).toLocaleString([], { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
                                         </div>
-                                        <div style={{display:'flex', alignItems:'center', gap:'6px', marginTop:'4px'}}>
-                                            <span style={{display:'inline-block', width:'8px', height:'8px', borderRadius:'50%', background:'#ef4444'}}></span>
-                                            {new Date(b.endTime).toLocaleString([], {month:'short', day:'numeric', hour:'2-digit', minute:'2-digit'})}
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '4px' }}>
+                                            <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', background: '#ef4444' }}></span>
+                                            {new Date(b.endTime).toLocaleString([], { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
                                         </div>
                                     </td>
                                     <td style={{ padding: '20px 24px' }}>
@@ -145,15 +145,15 @@ const ManageBookings = () => {
                                     <td style={{ padding: '20px 24px' }}>
                                         {b.status === 'PENDING' ? (
                                             <div style={{ display: 'flex', gap: '8px' }}>
-                                                <button onClick={() => updateStatus(b.id, 'APPROVED')} 
+                                                <button onClick={() => updateStatus(b.id, 'APPROVED')}
                                                     style={{ background: '#3b82f6', color: 'white', padding: '8px 16px', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: '600', fontSize: '13px', boxShadow: '0 2px 4px rgba(59, 130, 246, 0.3)', transition: 'transform 0.1s' }}
                                                     onMouseOver={e => e.target.style.transform = 'scale(1.05)'} onMouseOut={e => e.target.style.transform = 'scale(1)'}>
                                                     Approve
                                                 </button>
                                                 <button onClick={() => {
                                                     const reason = prompt('Provide rejection reason:');
-                                                    if(reason) updateStatus(b.id, 'REJECTED', reason);
-                                                }} 
+                                                    if (reason) updateStatus(b.id, 'REJECTED', reason);
+                                                }}
                                                     style={{ background: 'white', color: '#ef4444', border: '1px solid #ef4444', padding: '8px 16px', borderRadius: '6px', cursor: 'pointer', fontWeight: '600', fontSize: '13px', transition: 'background 0.2s' }}
                                                     onMouseOver={e => { e.target.style.background = '#fef2f2'; }} onMouseOut={e => { e.target.style.background = 'white'; }}>
                                                     Reject
@@ -169,9 +169,9 @@ const ManageBookings = () => {
                     </table>
                 </div>
                 {!loading && bookings.length === 0 && (
-                    <div style={{textAlign: 'center', padding: '60px 20px', color: '#94a3b8'}}>
-                        <div style={{fontSize: '48px', marginBottom: '15px'}}>📋</div>
-                        <p style={{fontSize: '16px', fontWeight: '500'}}>No bookings found in the system yet.</p>
+                    <div style={{ textAlign: 'center', padding: '60px 20px', color: '#94a3b8' }}>
+                        <div style={{ fontSize: '48px', marginBottom: '15px' }}>📋</div>
+                        <p style={{ fontSize: '16px', fontWeight: '500' }}>No bookings found in the system yet.</p>
                     </div>
                 )}
             </div>

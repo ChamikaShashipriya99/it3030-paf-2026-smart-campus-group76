@@ -9286,3 +9286,9 @@ Caused by: com.mongodb.MongoTimeoutException: Timed out while waiting for a serv
 2026-04-12T17:13:08.267+05:30 DEBUG 15044 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69db823493f96eaad5d1aca4
 2026-04-12T17:13:08.269+05:30 DEBUG 15044 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69db823493f96eaad5d1aca4
 2026-04-12T17:13:08.530+05:30 DEBUG 15044 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69db823493f96eaad5d1aca4
+2026-04-12T17:13:19.133+05:30 DEBUG 15044 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69db823493f96eaad5d1aca4
+2026-04-12T17:13:19.141+05:30 DEBUG 15044 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69db823493f96eaad5d1aca4
+2026-04-12T17:13:19.351+05:30 DEBUG 15044 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69db823493f96eaad5d1aca4
+2026-04-12T17:13:29.141+05:30 DEBUG 15044 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69db823493f96eaad5d1aca4
+2026-04-12T17:13:29.148+05:30 DEBUG 15044 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69db823493f96eaad5d1aca4
+2026-04-12T17:13:29.360+05:30 DEBUG 15044 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69db823493f96eaad5d1aca4

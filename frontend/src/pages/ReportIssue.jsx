@@ -31,7 +31,7 @@ const ReportIssue = () => {
 
             const res = await api.post('/tickets', {
                 creatorId: user.id,
-                resourceId: Number(id),
+                resourceId: id,
                 category: formData.category,
                 priority: formData.priority,
                 description: formData.description,
@@ -60,7 +60,7 @@ const ReportIssue = () => {
 
     return (
         <div style={{ maxWidth: '800px', margin: '40px auto', padding: '0 20px' }}>
-            <button 
+            <button
                 onClick={() => navigate('/catalogue')}
                 style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontWeight: 'bold', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px' }}
             >
@@ -68,12 +68,23 @@ const ReportIssue = () => {
             </button>
 
             <div className="premium-card" style={{ padding: '0', overflow: 'hidden' }}>
-                <div style={{ background: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)', padding: '40px', color: 'white' }}>
-                    <div style={{ fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '10px', opacity: 0.8 }}>Incident Reporting</div>
-                    <h2 style={{ margin: 0, fontSize: '32px', letterSpacing: '-1px' }}>{resource.name}</h2>
-                    <p style={{ margin: '15px 0 0 0', opacity: 0.9, fontSize: '14px', lineHeight: '1.5' }}>
-                        Help us keep the campus running smoothly by reporting any damages or issues with this resource.
-                    </p>
+                <div style={{ background: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)', padding: '40px', color: 'white', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '20px' }}>
+                    <div style={{ flex: 1 }}>
+                        <div style={{ fontSize: '10px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '10px', opacity: 0.8 }}>Incident Reporting</div>
+                        <h2 style={{ margin: 0, fontSize: '32px', letterSpacing: '-1px' }}>{resource.name}</h2>
+                        <p style={{ margin: '15px 0 0 0', opacity: 0.9, fontSize: '14px', lineHeight: '1.5' }}>
+                            Help us keep the campus running smoothly by reporting any damages or issues with this resource.
+                        </p>
+                    </div>
+                    {resource.image && (
+                        <div style={{ width: '120px', height: '120px', borderRadius: '20px', overflow: 'hidden', boxShadow: '0 10px 25px rgba(0,0,0,0.2)', border: '4px solid rgba(255,255,255,0.1)' }}>
+                            <img
+                                src={`data:${resource.imageContentType};base64,${resource.image}`}
+                                alt={resource.name}
+                                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                            />
+                        </div>
+                    )}
                 </div>
 
                 <div style={{ padding: '40px' }}>
@@ -81,8 +92,8 @@ const ReportIssue = () => {
                         <div className="form-grid">
                             <div>
                                 <label className="form-label">Issue Category</label>
-                                <select value={formData.category} className="premium-input" 
-                                        onChange={e => setFormData({...formData, category: e.target.value})}>
+                                <select value={formData.category} className="premium-input"
+                                    onChange={e => setFormData({ ...formData, category: e.target.value })}>
                                     <option value="IT_EQUIPMENT">IT / Technology</option>
                                     <option value="FURNITURE">Furniture / Hardware</option>
                                     <option value="PLUMBING">Plumbing / Leaks</option>
@@ -92,7 +103,7 @@ const ReportIssue = () => {
                             <div>
                                 <label className="form-label">Priority Severity</label>
                                 <select value={formData.priority} className="premium-input"
-                                        onChange={e => setFormData({...formData, priority: e.target.value})}>
+                                    onChange={e => setFormData({ ...formData, priority: e.target.value })}>
                                     <option value="LOW">Low (Not urgent)</option>
                                     <option value="MEDIUM">Medium (Affects usage)</option>
                                     <option value="HIGH">High (Critical emergency)</option>
@@ -103,29 +114,29 @@ const ReportIssue = () => {
                         <div>
                             <label className="form-label">Detailed Description</label>
                             <textarea required rows="4" value={formData.description} className="premium-input"
-                                      placeholder="Please describe exactly what is broken or malfunctioning..."
-                                      onChange={e => setFormData({...formData, description: e.target.value})} />
+                                placeholder="Please describe exactly what is broken or malfunctioning..."
+                                onChange={e => setFormData({ ...formData, description: e.target.value })} />
                         </div>
 
                         <div>
                             <label className="form-label">Preferred Contact Details</label>
                             <input required type="text" value={formData.contactDetails} className="premium-input"
-                                   placeholder="e.g. john@university.edu or 0771234567"
-                                   onChange={e => setFormData({...formData, contactDetails: e.target.value})} />
+                                placeholder="e.g. john@university.edu or 0771234567"
+                                onChange={e => setFormData({ ...formData, contactDetails: e.target.value })} />
                         </div>
 
                         <div>
                             <label className="form-label">Evidence Attachments (Optional, max 3)</label>
-                            <div style={{ 
-                                position: 'relative', border: '2px dashed var(--border)', padding: '20px', 
+                            <div style={{
+                                position: 'relative', border: '2px dashed var(--border)', padding: '20px',
                                 borderRadius: '16px', textAlign: 'center', transition: 'all 0.2s',
                                 background: 'rgba(255,255,255,0.02)'
                             }}>
                                 <input type="file" multiple accept="image/*" onChange={e => setFiles(Array.from(e.target.files))}
-                                       style={{ position: 'absolute', inset: 0, opacity: 0, cursor: 'pointer' }} />
+                                    style={{ position: 'absolute', inset: 0, opacity: 0, cursor: 'pointer' }} />
                                 <div style={{ color: 'var(--text-muted)', fontSize: '14px' }}>
                                     {files.length > 0 ? (
-                                        <span style={{color: 'var(--primary)', fontWeight: 'bold'}}>{files.length} file(s) selected</span>
+                                        <span style={{ color: 'var(--primary)', fontWeight: 'bold' }}>{files.length} file(s) selected</span>
                                     ) : (
                                         'Click or drag images here to upload'
                                     )}
@@ -134,21 +145,21 @@ const ReportIssue = () => {
                         </div>
 
                         <div style={{ display: 'flex', gap: '15px' }}>
-                            <button type="submit" style={{ 
-                                flex: 2, padding: '16px', background: '#ef4444', color: 'white', 
-                                border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', 
+                            <button type="submit" style={{
+                                flex: 2, padding: '16px', background: '#ef4444', color: 'white',
+                                border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '16px',
                                 fontWeight: '700', boxShadow: '0 10px 15px -3px rgba(239, 68, 68, 0.3)',
                                 transition: 'all 0.2s'
                             }}
-                            onMouseOver={e => e.target.style.transform = 'translateY(-2px)'}
-                            onMouseOut={e => e.target.style.transform = 'translateY(0)'}
+                                onMouseOver={e => e.target.style.transform = 'translateY(-2px)'}
+                                onMouseOut={e => e.target.style.transform = 'translateY(0)'}
                             >
                                 Submit Incident Ticket
                             </button>
-                            <button type="button" onClick={() => navigate('/catalogue')} style={{ 
-                                flex: 1, padding: '16px', background: 'var(--surface)', color: 'var(--text-muted)', 
-                                border: '1px solid var(--border)', borderRadius: '14px', cursor: 'pointer', fontSize: '16px', 
-                                fontWeight: '700' 
+                            <button type="button" onClick={() => navigate('/catalogue')} style={{
+                                flex: 1, padding: '16px', background: 'var(--surface)', color: 'var(--text-muted)',
+                                border: '1px solid var(--border)', borderRadius: '14px', cursor: 'pointer', fontSize: '16px',
+                                fontWeight: '700'
                             }}>
                                 Cancel
                             </button>
