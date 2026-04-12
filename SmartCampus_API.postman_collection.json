@@ -1,0 +1,285 @@
+{
+	"info": {
+		"_postman_id": "8f3a2b4c-9e1d-4f7a-9c6b-3e5d8a1f2b9c",
+		"name": "Smart Campus Operations Hub API",
+		"description": "Comprehensive API collection for the SmartCampus Unified Operating Hub (PAF IT3030). Includes Facilities, Bookings, and Maintenance workflows.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Get Current Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/auth/profile",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Facilities & Assets",
+			"item": [
+				{
+					"name": "List All Resources",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/resources",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resources"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Resources",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/resources/search?type=LAB",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resources",
+								"search"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "LAB"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Booking Management",
+			"item": [
+				{
+					"name": "Create Booking Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"{{user_id}}\",\n    \"resourceId\": \"{{resource_id}}\",\n    \"startTime\": \"2026-05-01T09:00:00\",\n    \"endTime\": \"2026-05-01T11:00:00\",\n    \"purpose\": \"Project Presentation\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/bookings",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Booking Status (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"APPROVED\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/bookings/{{booking_id}}/status",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"bookings",
+								"{{booking_id}}",
+								"status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Maintenance & Incident",
+			"item": [
+				{
+					"name": "Report New Issue",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"creatorId\": \"{{user_id}}\",\n    \"resourceId\": \"{{resource_id}}\",\n    \"category\": \"ELECTRICAL\",\n    \"description\": \"Power outlet not working in Lab 01\",\n    \"priority\": \"HIGH\",\n    \"contactDetails\": \"0712345678\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/tickets",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tickets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Assign Technician",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tickets/{{ticket_id}}/assign/{{tech_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tickets",
+								"{{ticket_id}}",
+								"assign",
+								"{{tech_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Comment",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"Revised update: Spare parts ordered.\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/tickets/comments/{{comment_id}}/user/{{user_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tickets",
+								"comments",
+								"{{comment_id}}",
+								"user",
+								"{{user_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080/api",
+			"type": "string"
+		},
+		{
+			"key": "jwt_token",
+			"value": "YOUR_TOKEN_HERE",
+			"type": "string"
+		},
+		{
+			"key": "user_id",
+			"value": "65eba2f1...",
+			"type": "string"
+		},
+		{
+			"key": "resource_id",
+			"value": "65eba305...",
+			"type": "string"
+		},
+		{
+			"key": "booking_id",
+			"value": "65eba32a...",
+			"type": "string"
+		},
+		{
+			"key": "ticket_id",
+			"value": "65eba41b...",
+			"type": "string"
+		},
+		{
+			"key": "tech_id",
+			"value": "65eba2f9...",
+			"type": "string"
+		},
+		{
+			"key": "comment_id",
+			"value": "65eba502...",
+			"type": "string"
+		}
+	]
+}
