@@ -30,18 +30,28 @@ public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
         OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
         String email = oAuth2User.getAttribute("email");
         String name = oAuth2User.getAttribute("name");
+        String googleSub = oAuth2User.getAttribute("sub");
+        String imageUrl = oAuth2User.getAttribute("picture");
 
         Optional<User> userOptional = userRepository.findByEmail(email);
         User user;
         if (userOptional.isPresent()) {
             user = userOptional.get();
+            // Update fields if they changed
+            user.setName(name);
+            user.setGoogleSub(googleSub);
+            user.setImageUrl(imageUrl);
         } else {
             user = new User();
             user.setEmail(email);
             user.setName(name);
             user.setRole(Role.ROLE_USER); // Default signup role
-            userRepository.save(user);
+            user.setGoogleSub(googleSub);
+            user.setImageUrl(imageUrl);
+            user.setUsername(email); // Use email as username
+            user.setPassword("OAUTH2_USER_" + googleSub); // Placeholder
         }
+        userRepository.save(user);
 
         String token = jwtUtils.generateJwtToken(user.getEmail(), user.getRole().name());
 
