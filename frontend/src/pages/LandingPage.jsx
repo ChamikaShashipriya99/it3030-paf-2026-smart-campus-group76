@@ -31,10 +31,7 @@ const LandingPage = () => {
             <div style={{ position: 'fixed', top: 0, left: 0, right: 0, height: '90px', background: 'rgba(2, 6, 23, 0.8)', backdropFilter: 'blur(20px)', zIndex: 1000, borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
                 <div className="container" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                        <div style={{ width: '45px', height: '45px', background: 'var(--primary)', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 16px rgba(59, 130, 246, 0.3)' }}>
-                            <GraduationCap size={26} color="white" />
-                        </div>
-                        <span style={{ fontSize: '24px', fontWeight: '900', letterSpacing: '-1.5px' }}>Smart<span style={{ color: 'var(--primary)' }}>Campus</span></span>
+                        <img src="/SmartCampus.png" alt="SmartCampus Logo" style={{ height: '50px', width: 'auto' }} />
                     </div>
                     <div style={{ display: 'flex', gap: '40px', alignItems: 'center' }}>
 
@@ -137,9 +134,8 @@ const LandingPage = () => {
                 <div className="container">
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '40px' }}>
                         <div style={{ flex: '1', minWidth: '250px' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px', color: 'white' }}>
-                                <GraduationCap size={24} />
-                                <span style={{ fontSize: '20px', fontWeight: '900', letterSpacing: '-1px' }}>Smart<span style={{ color: 'var(--primary)' }}>Campus</span></span>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
+                                <img src="/SmartCampus.png" alt="SmartCampus Logo" style={{ height: '40px', width: 'auto' }} />
                             </div>
                             <p style={{ fontSize: '14px', lineHeight: '1.6', maxWidth: '300px' }}>
                                 The unified operating hub for university facilities and resource management. Built for efficiency, designed for scale.

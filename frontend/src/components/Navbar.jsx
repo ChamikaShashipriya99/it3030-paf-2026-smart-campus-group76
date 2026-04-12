@@ -87,20 +87,12 @@ const Navbar = () => {
                         onClick={() => navigate('/dashboard')}
                         style={{
                             marginRight: '40px',
-                            color: 'white',
                             cursor: 'pointer',
-                            fontSize: '22px',
-                            fontWeight: '900',
                             display: 'flex',
-                            alignItems: 'center',
-                            gap: '12px',
-                            letterSpacing: '-1.5px'
+                            alignItems: 'center'
                         }}
                     >
-                        <div style={{ background: 'var(--primary)', width: '40px', height: '40px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 16px rgba(59, 130, 246, 0.2)' }}>
-                            <Building2 size={22} color="white" />
-                        </div>
-                        SmartCampus
+                        <img src="/SmartCampus.png" alt="SmartCampus Logo" style={{ height: '40px', width: 'auto' }} />
                     </div>
 
                     <div style={{ display: 'flex', alignItems: 'center' }}>

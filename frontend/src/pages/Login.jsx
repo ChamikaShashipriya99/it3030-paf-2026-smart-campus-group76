@@ -1,7 +1,9 @@
 import React from 'react';
-import { GraduationCap } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+    const navigate = useNavigate();
     const handleGoogleLogin = () => {
         // Triggers the Google OAuth2 flow via Spring Boot
         window.location.href = 'http://localhost:8080/oauth2/authorization/google';
@@ -22,6 +24,33 @@ const Login = () => {
             zIndex: 2000,
             fontFamily: '"Inter", sans-serif'
         }}>
+            {/* Back Button Outside the Box */}
+            <button
+                onClick={() => navigate('/')}
+                style={{
+                    position: 'fixed',
+                    top: '40px',
+                    left: '40px',
+                    background: 'rgba(255,255,255,0.03)',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    color: '#94a3b8',
+                    padding: '12px 20px',
+                    borderRadius: '16px',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px',
+                    fontSize: '14px',
+                    fontWeight: '700',
+                    transition: 'all 0.2s',
+                    zIndex: 2100,
+                    backdropFilter: 'blur(10px)'
+                }}
+                onMouseOver={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; e.currentTarget.style.color = 'white'; e.currentTarget.style.transform = 'translateX(-5px)'; }}
+                onMouseOut={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; e.currentTarget.style.color = '#94a3b8'; e.currentTarget.style.transform = 'translateX(0)'; }}
+            >
+                <ArrowLeft size={18} /> Back to Home
+            </button>
             {/* Background Decorations */}
             <div style={{ position: 'absolute', top: '10%', left: '10%', width: '300px', height: '300px', background: 'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%)', borderRadius: '50%', zIndex: 0 }} />
             <div style={{ position: 'absolute', bottom: '10%', right: '10%', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%)', borderRadius: '50%', zIndex: 0 }} />
@@ -40,22 +69,11 @@ const Login = () => {
                 position: 'relative',
                 zIndex: 1
             }}>
-                <div style={{
-                    width: '70px',
-                    height: '70px',
-                    background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
-                    borderRadius: '20px',
-                    margin: '0 auto 25px auto',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    boxShadow: '0 10px 20px rgba(59, 130, 246, 0.3)'
-                }}>
-                    <GraduationCap size={32} color="white" />
-                </div>
+
+                <img src="/SmartCampus.png" alt="SmartCampus Logo" style={{ height: '60px', width: 'auto', marginBottom: '30px' }} />
 
                 <h1 style={{ fontSize: '32px', color: '#f8fafc', margin: '0 0 12px 0', letterSpacing: '-1px', fontWeight: '800' }}>
-                    Welcome to <span style={{ color: '#60a5fa' }}>SmartCampus</span>
+                    Welcome to SmartCampus
                 </h1>
                 <p style={{ color: '#94a3b8', fontSize: '16px', margin: '0 0 40px 0', lineHeight: '1.6' }}>
                     The unified operating hub for university facilities, incidents, and resource management.
