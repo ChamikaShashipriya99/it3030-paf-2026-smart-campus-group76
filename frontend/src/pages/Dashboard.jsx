@@ -14,7 +14,8 @@ import {
     TrendingUp,
     Clock,
     Activity,
-    Target
+    Target,
+    Users
 } from 'lucide-react';
 
 const Dashboard = () => {
@@ -174,6 +175,19 @@ const Dashboard = () => {
                     </div>
                 )}
 
+                {user?.role === 'ROLE_ADMIN' && (
+                    <div onClick={() => navigate('/admin/users')} className="premium-card" style={{ padding: '35px', cursor: 'pointer' }}>
+                        <div style={{ width: '60px', height: '60px', borderRadius: '18px', background: 'rgba(59, 130, 246, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '25px', color: '#2563EB' }}>
+                            <Users size={30} />
+                        </div>
+                        <h4 style={{ margin: '0 0 10px 0', color: 'var(--text-main)', fontSize: '20px', fontWeight: '800' }}>Role Management</h4>
+                        <p style={{ margin: 0, fontSize: '14px', color: 'var(--text-muted)', lineHeight: '1.6' }}>Authorize staff members and assign Technician or Admin privileges.</p>
+                        <div style={{ marginTop: '25px', display: 'flex', alignItems: 'center', color: '#2563EB', fontWeight: 'bold', fontSize: '13px', gap: '5px' }}>
+                            User Directory <ChevronRight size={16} />
+                        </div>
+                    </div>
+                )}
+
                 {(user?.role === 'ROLE_TECHNICIAN' || user?.role === 'ROLE_ADMIN') && (
                     <div onClick={() => navigate('/technician/desk')} className="premium-card" style={{ padding: '35px', cursor: 'pointer' }}>
                         <div style={{ width: '60px', height: '60px', borderRadius: '18px', background: 'rgba(16, 185, 129, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '25px', color: '#10b981' }}>
@@ -187,7 +201,7 @@ const Dashboard = () => {
                     </div>
                 )}
             </div>
-
+            
             {/* My Tickets Section */}
             {user?.role === 'ROLE_USER' && (
                 <div style={{ marginTop: '80px' }}>

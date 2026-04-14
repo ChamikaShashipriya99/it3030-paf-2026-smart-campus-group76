@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard';
 import Catalogue from './pages/Catalogue';
 import BookResource from './pages/BookResource';
 import ManageBookings from './pages/ManageBookings';
+import ManageUsers from './pages/ManageUsers';
 import ReportIssue from './pages/ReportIssue';
 import TechnicianDashboard from './pages/TechnicianDashboard';
 import TicketDetails from './pages/TicketDetails';
@@ -54,6 +55,11 @@ function App() {
                             <Route path="/admin/bookings" element={
                                 <PrivateRoute>
                                     <ManageBookings />
+                                </PrivateRoute>
+                            } />
+                            <Route path="/admin/users" element={
+                                <PrivateRoute>
+                                    <ManageUsers />
                                 </PrivateRoute>
                             } />
                             <Route path="/report/:id" element={
