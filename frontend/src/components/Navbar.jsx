@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import { useConfirm } from '../context/ConfirmContext';
 import api from '../api/axiosConfig';
 import {
     LayoutDashboard,
@@ -15,6 +16,7 @@ import {
 
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext);
+    const { ask } = useConfirm();
     const navigate = useNavigate();
     const location = useLocation();
     const [unreadCount, setUnreadCount] = useState(0);
@@ -48,6 +50,14 @@ const Navbar = () => {
     if (!user || location.pathname === '/' || location.pathname === '/login' || location.pathname.startsWith('/oauth2')) {
         return null;
     }
+
+    const handleLogout = async () => {
+        const confirmed = await ask(
+            "You are about to terminate your secure session. Do you wish to proceed with signing out?",
+            "Secure Sign Out"
+        );
+        if (confirmed) logout();
+    };
 
     const navStyle = {
         background: 'var(--surface)',
@@ -163,7 +173,7 @@ const Navbar = () => {
                             <UserCircle size={28} />
                         </div>
                         <button
-                            onClick={logout}
+                            onClick={handleLogout}
                             style={{
                                 background: 'rgba(239, 68, 68, 0.08)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.15)',
                                 padding: '12px 20px', borderRadius: '14px', cursor: 'pointer',

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import api from '../api/axiosConfig';
 import { NotificationContext } from '../context/NotificationContext';
+import { useConfirm } from '../context/ConfirmContext';
 import { 
     Users, 
     Shield, 
@@ -19,6 +20,7 @@ const ManageUsers = () => {
     const [loading, setLoading] = useState(true);
     const [filter, setFilter] = useState('');
     const { showNotification } = useContext(NotificationContext);
+    const { ask } = useConfirm();
 
     const fetchUsers = () => {
         setLoading(true);
@@ -37,6 +39,14 @@ const ManageUsers = () => {
     }, []);
 
     const updateRole = async (userId, newRole) => {
+        const roleLabel = newRole.replace('ROLE_', '');
+        const confirmed = await ask(
+            `You are about to reassign this member to the ${roleLabel} group. Do you wish to proceed with this authority change?`,
+            "Confirm Role Elevation"
+        );
+        
+        if (!confirmed) return;
+
         try {
             await api.put(`/users/${userId}/role`, { role: newRole });
             showNotification('Role updated successfully', 'success');

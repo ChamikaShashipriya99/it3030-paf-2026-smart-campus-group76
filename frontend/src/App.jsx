@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, AuthContext } from './context/AuthContext';
 import { NotificationProvider } from './context/NotificationContext';
+import { ConfirmProvider } from './context/ConfirmContext';
 import Login from './pages/Login';
 import LoginSuccess from './pages/LoginSuccess';
 import Dashboard from './pages/Dashboard';
@@ -29,73 +30,75 @@ function App() {
     return (
         <AuthProvider>
             <NotificationProvider>
-                <Router>
-                    <Navbar />
-                    <div style={{ minHeight: 'calc(100vh - 70px)', paddingBottom: '40px' }}>
-                        <Routes>
-                            <Route path="/login" element={<Login />} />
-                            <Route path="/login/success" element={<LoginSuccess />} />
+                <ConfirmProvider>
+                    <Router>
+                        <Navbar />
+                        <div style={{ minHeight: 'calc(100vh - 70px)', paddingBottom: '40px' }}>
+                            <Routes>
+                                <Route path="/login" element={<Login />} />
+                                <Route path="/login/success" element={<LoginSuccess />} />
 
-                            {/* Secure Route */}
-                            <Route path="/dashboard" element={
-                                <PrivateRoute>
-                                    <Dashboard />
-                                </PrivateRoute>
-                            } />
-                            <Route path="/catalogue" element={
-                                <PrivateRoute>
-                                    <Catalogue />
-                                </PrivateRoute>
-                            } />
-                            <Route path="/book/:id" element={
-                                <PrivateRoute>
-                                    <BookResource />
-                                </PrivateRoute>
-                            } />
-                            <Route path="/admin/bookings" element={
-                                <PrivateRoute>
-                                    <ManageBookings />
-                                </PrivateRoute>
-                            } />
-                            <Route path="/admin/users" element={
-                                <PrivateRoute>
-                                    <ManageUsers />
-                                </PrivateRoute>
-                            } />
-                            <Route path="/report/:id" element={
-                                <PrivateRoute>
-                                    <ReportIssue />
-                                </PrivateRoute>
-                            } />
-                            <Route path="/ticket/:id" element={
-                                <PrivateRoute>
-                                    <TicketDetails />
-                                </PrivateRoute>
-                            } />
-                            <Route path="/technician/desk" element={
-                                <PrivateRoute>
-                                    <TechnicianDashboard />
-                                </PrivateRoute>
-                            } />
-                            <Route path="/notifications" element={
-                                <PrivateRoute>
-                                    <Notifications />
-                                </PrivateRoute>
-                            } />
-                            <Route path="/my-bookings" element={
-                                <PrivateRoute>
-                                    <MyBookings />
-                                </PrivateRoute>
-                            } />
+                                {/* Secure Route */}
+                                <Route path="/dashboard" element={
+                                    <PrivateRoute>
+                                        <Dashboard />
+                                    </PrivateRoute>
+                                } />
+                                <Route path="/catalogue" element={
+                                    <PrivateRoute>
+                                        <Catalogue />
+                                    </PrivateRoute>
+                                } />
+                                <Route path="/book/:id" element={
+                                    <PrivateRoute>
+                                        <BookResource />
+                                    </PrivateRoute>
+                                } />
+                                <Route path="/admin/bookings" element={
+                                    <PrivateRoute>
+                                        <ManageBookings />
+                                    </PrivateRoute>
+                                } />
+                                <Route path="/admin/users" element={
+                                    <PrivateRoute>
+                                        <ManageUsers />
+                                    </PrivateRoute>
+                                } />
+                                <Route path="/report/:id" element={
+                                    <PrivateRoute>
+                                        <ReportIssue />
+                                    </PrivateRoute>
+                                } />
+                                <Route path="/ticket/:id" element={
+                                    <PrivateRoute>
+                                        <TicketDetails />
+                                    </PrivateRoute>
+                                } />
+                                <Route path="/technician/desk" element={
+                                    <PrivateRoute>
+                                        <TechnicianDashboard />
+                                    </PrivateRoute>
+                                } />
+                                <Route path="/notifications" element={
+                                    <PrivateRoute>
+                                        <Notifications />
+                                    </PrivateRoute>
+                                } />
+                                <Route path="/my-bookings" element={
+                                    <PrivateRoute>
+                                        <MyBookings />
+                                    </PrivateRoute>
+                                } />
 
-                            {/* Open Route */}
-                            <Route path="/" element={<LandingPage />} />
+                                {/* Open Route */}
+                                <Route path="/" element={<LandingPage />} />
 
-                            {/* Default Fallback */}
-                            <Route path="*" element={<Navigate to="/" />} />
-                        </Routes>
-                    </div>
-                </Router>
+                                {/* Default Fallback */}
+                                <Route path="*" element={<Navigate to="/" />} />
+                            </Routes>
+                        </div>
+                    </Router>
+                </ConfirmProvider>
             </NotificationProvider>
         </AuthProvider>
     );
