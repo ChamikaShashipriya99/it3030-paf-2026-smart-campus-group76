@@ -5,6 +5,7 @@ import com.smartcampus.backend.model.Role;
 import com.smartcampus.backend.model.User;
 import com.smartcampus.backend.repository.NotificationRepository;
 import com.smartcampus.backend.repository.UserRepository;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,9 @@ public class NotificationService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private SimpMessagingTemplate messagingTemplate;
 
     public void notifyUsersByRole(Role role, String message, String type) {
         List<User> users = userRepository.findByRole(role);
@@ -33,7 +37,12 @@ public class NotificationService {
         notif.setUser(user);
         notif.setMessage(message);
         notif.setType(type);
-        return repository.save(notif);
+        Notification saved = repository.save(notif);
+
+        // Push real-time notification to the user
+        messagingTemplate.convertAndSendToUser(userId, "/queue/notifications", saved);
+        
+        return saved;
     }
 
     public List<Notification> getUserNotifications(String userId) {

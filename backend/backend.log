@@ -13897,3 +13897,8 @@ Caused by: java.net.SocketException: Connection reset
 2026-04-12T22:16:38.337+05:30 DEBUG 19520 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69db81f593f96eaad5d1aca3
 2026-04-12T22:16:38.349+05:30 DEBUG 19520 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69db81f593f96eaad5d1aca3
 2026-04-12T22:16:38.985+05:30 DEBUG 19520 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69db81f593f96eaad5d1aca3
+2026-04-12T22:16:48.350+05:30 DEBUG 19520 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69db81f593f96eaad5d1aca3
+2026-04-12T22:16:48.354+05:30 DEBUG 19520 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69db81f593f96eaad5d1aca3
+2026-04-12T22:16:48.568+05:30 DEBUG 19520 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69db81f593f96eaad5d1aca3
+2026-04-12T22:17:42.497+05:30  INFO 19520 --- [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-12T22:17:42.511+05:30  INFO 19520 --- [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
