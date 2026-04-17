@@ -320,7 +320,13 @@ const Catalogue = () => {
                                         }
                                     }}
                                     onKeyDown={e => {
-                                        if (['-', '+', 'e', 'E', '.', ','].includes(e.key)) {
+                                        if (!/^[0-9]$/.test(e.key) && !['Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'Delete', 'Enter'].includes(e.key) && !e.ctrlKey && !e.metaKey) {
+                                            e.preventDefault();
+                                        }
+                                    }}
+                                    onPaste={e => {
+                                        const paste = e.clipboardData.getData('text');
+                                        if (!/^\d+$/.test(paste)) {
                                             e.preventDefault();
                                         }
                                     }}
