@@ -311,9 +311,19 @@ const Catalogue = () => {
                             </div>
                             <div>
                                 <label className="form-label" style={{ color: '#94a3b8' }}><Users size={14} style={{ marginRight: '6px', verticalAlign: 'text-bottom' }} /> Occupancy Capacity</label>
-                                <input type="number" value={newRes.capacity}
+                                <input type="number" min="1" value={newRes.capacity === 0 ? '' : newRes.capacity}
                                     className={`premium-input ${errors.capacity && touched.capacity ? 'input-error' : ''}`}
-                                    onChange={e => handleChange('capacity', parseInt(e.target.value) || 0)}
+                                    onChange={e => {
+                                        const val = e.target.value;
+                                        if (val === '' || /^\d+$/.test(val)) {
+                                            handleChange('capacity', val === '' ? 0 : parseInt(val, 10));
+                                        }
+                                    }}
+                                    onKeyDown={e => {
+                                        if (['-', '+', 'e', 'E', '.', ','].includes(e.key)) {
+                                            e.preventDefault();
+                                        }
+                                    }}
                                     onBlur={() => handleBlur('capacity')}
                                     style={{ background: 'rgba(255,255,255,0.05)', color: 'white', border: errors.capacity && touched.capacity ? '2px solid #ef4444' : '1px solid rgba(255,255,255,0.1)' }} />
                                 {errors.capacity && touched.capacity && <span style={{ color: '#ef4444', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '8px', fontWeight: '600' }}><AlertCircle size={14} /> {errors.capacity}</span>}
