@@ -33,6 +33,13 @@ const Catalogue = () => {
     const [newRes, setNewRes] = useState({ name: '', type: 'LECTURE_HALL', capacity: 0, location: '', status: 'ACTIVE', startTime: '08:00', endTime: '18:00' });
     const [resImage, setResImage] = useState(null);
     const [errors, setErrors] = useState({});
+    const [touched, setTouched] = useState({});
+    const [toast, setToast] = useState(null);
+
+    const showToast = (message, type = 'success') => {
+        setToast({ message, type });
+        setTimeout(() => setToast(null), 4000);
+    };
 
     const fetchResources = async () => {
         try {
@@ -53,23 +60,52 @@ const Catalogue = () => {
         fetchResources();
     }, [typeFilter]);
 
-    const validate = () => {
-        let newErrors = {};
-        if (!newRes.name || newRes.name.trim().length < 3) newErrors.name = 'Asset Name must be at least 3 characters.';
-        if (!newRes.location || newRes.location.trim().length === 0) newErrors.location = 'Location / Zone is required.';
-        if (!newRes.capacity || newRes.capacity <= 0) newErrors.capacity = 'Capacity must be greater than 0.';
-        if (!newRes.startTime) newErrors.startTime = 'Opening Hours are required.';
-        if (!newRes.endTime) newErrors.endTime = 'Closing Hours are required.';
-        if (newRes.startTime && newRes.endTime && newRes.startTime >= newRes.endTime) {
-            newErrors.endTime = 'Closing time must be after opening time.';
+    const validateField = (field, value, allValues = newRes) => {
+        switch (field) {
+            case 'name': return (!value || value.trim().length < 3) ? 'Asset Name must be at least 3 characters.' : '';
+            case 'location': return (!value || value.trim().length === 0) ? 'Location / Zone is required.' : '';
+            case 'capacity': return (!value || value <= 0) ? 'Capacity must be greater than 0.' : '';
+            case 'startTime': return (!value) ? 'Opening Hours are required.' : '';
+            case 'endTime':
+                if (!value) return 'Closing Hours are required.';
+                if (allValues.startTime && value && allValues.startTime >= value) return 'Closing must be after opening.';
+                return '';
+            default: return '';
         }
-        setErrors(newErrors);
-        return Object.keys(newErrors).length === 0;
+    };
+
+    const handleChange = (field, value) => {
+        const updatedRes = { ...newRes, [field]: value };
+        setNewRes(updatedRes);
+        if (touched[field]) {
+            setErrors(prev => ({ ...prev, [field]: validateField(field, value, updatedRes) }));
+        }
+    };
+
+    const handleBlur = (field) => {
+        setTouched(prev => ({ ...prev, [field]: true }));
+        setErrors(prev => ({ ...prev, [field]: validateField(field, newRes[field]) }));
     };
 
     const handleAdd = async (e) => {
         e.preventDefault();
-        if (!validate()) return;
+        
+        const newErrors = {
+            name: validateField('name', newRes.name),
+            location: validateField('location', newRes.location),
+            capacity: validateField('capacity', newRes.capacity),
+            startTime: validateField('startTime', newRes.startTime),
+            endTime: validateField('endTime', newRes.endTime)
+        };
+        setErrors(newErrors);
+        setTouched({ name: true, location: true, capacity: true, startTime: true, endTime: true });
+
+        if (Object.values(newErrors).some(err => err !== '')) {
+            showToast('Please correct the highlighted errors.', 'error');
+            setTimeout(() => setTouched(prev => ({...prev})), 50);
+            return;
+        }
+
         try {
             const formData = new FormData();
             formData.append('name', newRes.name);
@@ -93,8 +129,10 @@ const Catalogue = () => {
             setNewRes({ name: '', type: 'LECTURE_HALL', capacity: 0, location: '', status: 'ACTIVE', startTime: '08:00', endTime: '18:00' });
             setResImage(null);
             setErrors({});
+            setTouched({});
+            showToast(isEditing ? 'Asset successfully updated!' : 'Asset successfully registered!');
             fetchResources();
-        } catch (err) { alert('Failed to save resource.'); }
+        } catch (err) { showToast('Failed to save resource.', 'error'); }
     };
 
     const handleEditClick = (res) => {
@@ -103,6 +141,7 @@ const Catalogue = () => {
         setNewRes({ name: res.name, type: res.type, capacity: res.capacity, location: res.location, status: res.status, startTime: res.startTime || '08:00', endTime: res.endTime || '18:00' });
         setShowAddForm(true);
         setErrors({});
+        setTouched({});
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
@@ -116,7 +155,19 @@ const Catalogue = () => {
     };
 
     return (
-        <div className="container" style={{ padding: '60px 0' }}>
+        <div className="container" style={{ padding: '60px 0', position: 'relative' }}>
+            {toast && (
+                <div className="toast-notification" style={{
+                    position: 'fixed', bottom: '40px', right: '40px', zIndex: 9999,
+                    background: toast.type === 'error' ? 'rgba(239, 68, 68, 0.95)' : 'rgba(16, 185, 129, 0.95)',
+                    backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.1)', color: 'white', padding: '16px 24px', borderRadius: '16px',
+                    display: 'flex', alignItems: 'center', gap: '12px', boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.2)',
+                    fontWeight: '600', fontSize: '15px'
+                }}>
+                    {toast.type === 'error' ? <AlertCircle size={20} /> : <CheckCircle2 size={20} />}
+                    {toast.message}
+                </div>
+            )}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '40px' }}>
                 <div className="page-header" style={{ marginBottom: 0 }}>
                     <h2 className="page-title">Facilities & Assets</h2>
@@ -125,7 +176,7 @@ const Catalogue = () => {
                 {user?.role === 'ROLE_ADMIN' && (
                     <button onClick={() => {
                         setShowAddForm(!showAddForm);
-                        if (showAddForm) { setIsEditing(false); setEditId(null); setNewRes({ name: '', type: 'LECTURE_HALL', capacity: 0, location: '', status: 'ACTIVE', startTime: '08:00', endTime: '18:00' }); setErrors({}); }
+                        if (showAddForm) { setIsEditing(false); setEditId(null); setNewRes({ name: '', type: 'LECTURE_HALL', capacity: 0, location: '', status: 'ACTIVE', startTime: '08:00', endTime: '18:00' }); setErrors({}); setTouched({}); }
                     }} style={{
                         padding: '12px 24px', background: 'var(--primary)', color: 'white',
                         border: 'none', borderRadius: '14px', cursor: 'pointer', fontWeight: '800',
@@ -228,14 +279,16 @@ const Catalogue = () => {
                             <div>
                                 <label className="form-label" style={{ color: '#94a3b8' }}>Official Asset Name</label>
                                 <input placeholder="e.g. Quantum Computing Lab - Sector 7" value={newRes.name}
-                                    className="premium-input" onChange={e => { setNewRes({ ...newRes, name: e.target.value }); if(errors.name) setErrors({...errors, name: ''}); }} 
-                                    style={{ background: 'rgba(255,255,255,0.05)', color: 'white', border: errors.name ? '2px solid #ef4444' : '1px solid rgba(255,255,255,0.1)' }} />
-                                {errors.name && <span style={{ color: '#ef4444', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '8px', fontWeight: '600' }}><AlertCircle size={14} /> {errors.name}</span>}
+                                    className={`premium-input ${errors.name && touched.name ? 'input-error' : ''}`}
+                                    onChange={e => handleChange('name', e.target.value)}
+                                    onBlur={() => handleBlur('name')}
+                                    style={{ background: 'rgba(255,255,255,0.05)', color: 'white', border: errors.name && touched.name ? '2px solid #ef4444' : '1px solid rgba(255,255,255,0.1)' }} />
+                                {errors.name && touched.name && <span style={{ color: '#ef4444', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '8px', fontWeight: '600' }}><AlertCircle size={14} /> {errors.name}</span>}
                             </div>
                             <div>
                                 <label className="form-label" style={{ color: '#94a3b8' }}>Classification</label>
                                 <div style={{ position: 'relative' }}>
-                                    <select value={newRes.type} className="premium-input" onChange={e => setNewRes({ ...newRes, type: e.target.value })}
+                                    <select value={newRes.type} className="premium-input" onChange={e => handleChange('type', e.target.value)}
                                         style={{ background: 'rgba(255,255,255,0.05)', color: 'white', border: '1px solid rgba(255,255,255,0.1)', appearance: 'none' }}>
                                         <option value="LECTURE_HALL" style={{ color: '#000' }}>Lecture Hall</option>
                                         <option value="LAB" style={{ color: '#000' }}>Laboratory</option>
@@ -250,20 +303,24 @@ const Catalogue = () => {
                             <div>
                                 <label className="form-label" style={{ color: '#94a3b8' }}><MapPin size={14} style={{ marginRight: '6px', verticalAlign: 'text-bottom' }} /> Location / Zone</label>
                                 <input placeholder="e.g. Engineering Block B, Level 4" value={newRes.location}
-                                    className="premium-input" onChange={e => { setNewRes({ ...newRes, location: e.target.value }); if(errors.location) setErrors({...errors, location: ''}); }} 
-                                    style={{ background: 'rgba(255,255,255,0.05)', color: 'white', border: errors.location ? '2px solid #ef4444' : '1px solid rgba(255,255,255,0.1)' }} />
-                                {errors.location && <span style={{ color: '#ef4444', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '8px', fontWeight: '600' }}><AlertCircle size={14} /> {errors.location}</span>}
+                                    className={`premium-input ${errors.location && touched.location ? 'input-error' : ''}`}
+                                    onChange={e => handleChange('location', e.target.value)}
+                                    onBlur={() => handleBlur('location')}
+                                    style={{ background: 'rgba(255,255,255,0.05)', color: 'white', border: errors.location && touched.location ? '2px solid #ef4444' : '1px solid rgba(255,255,255,0.1)' }} />
+                                {errors.location && touched.location && <span style={{ color: '#ef4444', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '8px', fontWeight: '600' }}><AlertCircle size={14} /> {errors.location}</span>}
                             </div>
                             <div>
                                 <label className="form-label" style={{ color: '#94a3b8' }}><Users size={14} style={{ marginRight: '6px', verticalAlign: 'text-bottom' }} /> Occupancy Capacity</label>
                                 <input type="number" value={newRes.capacity}
-                                    className="premium-input" onChange={e => { setNewRes({ ...newRes, capacity: parseInt(e.target.value) || 0 }); if(errors.capacity) setErrors({...errors, capacity: ''}); }} 
-                                    style={{ background: 'rgba(255,255,255,0.05)', color: 'white', border: errors.capacity ? '2px solid #ef4444' : '1px solid rgba(255,255,255,0.1)' }} />
-                                {errors.capacity && <span style={{ color: '#ef4444', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '8px', fontWeight: '600' }}><AlertCircle size={14} /> {errors.capacity}</span>}
+                                    className={`premium-input ${errors.capacity && touched.capacity ? 'input-error' : ''}`}
+                                    onChange={e => handleChange('capacity', parseInt(e.target.value) || 0)}
+                                    onBlur={() => handleBlur('capacity')}
+                                    style={{ background: 'rgba(255,255,255,0.05)', color: 'white', border: errors.capacity && touched.capacity ? '2px solid #ef4444' : '1px solid rgba(255,255,255,0.1)' }} />
+                                {errors.capacity && touched.capacity && <span style={{ color: '#ef4444', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '8px', fontWeight: '600' }}><AlertCircle size={14} /> {errors.capacity}</span>}
                             </div>
                             <div>
                                 <label className="form-label" style={{ color: '#94a3b8' }}><Settings size={14} style={{ marginRight: '6px', verticalAlign: 'text-bottom' }} /> System Status</label>
-                                <select value={newRes.status} className="premium-input" onChange={e => setNewRes({ ...newRes, status: e.target.value })}
+                                <select value={newRes.status} className="premium-input" onChange={e => handleChange('status', e.target.value)}
                                     style={{ background: 'rgba(255,255,255,0.05)', color: 'white', border: '1px solid rgba(255,255,255,0.1)', appearance: 'none' }}>
                                     <option value="ACTIVE" style={{ color: '#000' }}>OPERATIONAL</option>
                                     <option value="MAINTENANCE" style={{ color: '#000' }}>UNDER MAINTENANCE</option>
@@ -275,17 +332,21 @@ const Catalogue = () => {
                         <div className="form-grid" style={{ background: 'rgba(255, 255, 255, 0.03)', padding: '30px', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.05)' }}>
                             <div>
                                 <label className="form-label" style={{ color: '#94a3b8' }}><Clock size={14} style={{ marginRight: '6px', verticalAlign: 'text-bottom' }} /> Opening Hours</label>
-                                <input type="time" value={newRes.startTime} className="premium-input" 
-                                    onChange={e => { setNewRes({ ...newRes, startTime: e.target.value }); if(errors.startTime) setErrors({...errors, startTime: ''}); }} 
-                                    style={{ background: 'rgba(0,0,0,0.2)', color: 'white', border: errors.startTime ? '2px solid #ef4444' : '1px solid rgba(255,255,255,0.1)', colorScheme: 'dark' }} />
-                                {errors.startTime && <span style={{ color: '#ef4444', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '8px', fontWeight: '600' }}><AlertCircle size={14} /> {errors.startTime}</span>}
+                                <input type="time" value={newRes.startTime}
+                                    className={`premium-input ${errors.startTime && touched.startTime ? 'input-error' : ''}`}
+                                    onChange={e => handleChange('startTime', e.target.value)}
+                                    onBlur={() => handleBlur('startTime')}
+                                    style={{ background: 'rgba(0,0,0,0.2)', color: 'white', border: errors.startTime && touched.startTime ? '2px solid #ef4444' : '1px solid rgba(255,255,255,0.1)', colorScheme: 'dark' }} />
+                                {errors.startTime && touched.startTime && <span style={{ color: '#ef4444', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '8px', fontWeight: '600' }}><AlertCircle size={14} /> {errors.startTime}</span>}
                             </div>
                             <div>
                                 <label className="form-label" style={{ color: '#94a3b8' }}><Clock size={14} style={{ marginRight: '6px', verticalAlign: 'text-bottom' }} /> Closing Hours</label>
-                                <input type="time" value={newRes.endTime} className="premium-input" 
-                                    onChange={e => { setNewRes({ ...newRes, endTime: e.target.value }); if(errors.endTime) setErrors({...errors, endTime: ''}); }} 
-                                    style={{ background: 'rgba(0,0,0,0.2)', color: 'white', border: errors.endTime ? '2px solid #ef4444' : '1px solid rgba(255,255,255,0.1)', colorScheme: 'dark' }} />
-                                {errors.endTime && <span style={{ color: '#ef4444', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '8px', fontWeight: '600' }}><AlertCircle size={14} /> {errors.endTime}</span>}
+                                <input type="time" value={newRes.endTime}
+                                    className={`premium-input ${errors.endTime && touched.endTime ? 'input-error' : ''}`}
+                                    onChange={e => handleChange('endTime', e.target.value)}
+                                    onBlur={() => handleBlur('endTime')}
+                                    style={{ background: 'rgba(0,0,0,0.2)', color: 'white', border: errors.endTime && touched.endTime ? '2px solid #ef4444' : '1px solid rgba(255,255,255,0.1)', colorScheme: 'dark' }} />
+                                {errors.endTime && touched.endTime && <span style={{ color: '#ef4444', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '8px', fontWeight: '600' }}><AlertCircle size={14} /> {errors.endTime}</span>}
                             </div>
                             <div>
                                 <label className="form-label" style={{ color: '#94a3b8' }}>Digital Cover Image</label>
@@ -298,7 +359,7 @@ const Catalogue = () => {
                             <button type="submit" style={{ flex: 2, padding: '18px', background: 'var(--primary)', color: 'white', border: 'none', borderRadius: '16px', cursor: 'pointer', fontSize: '16px', fontWeight: '800', boxShadow: '0 12px 24px rgba(37, 99, 235, 0.4)', transition: 'transform 0.2s, box-shadow 0.2s' }} onMouseOver={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 32px rgba(37, 99, 235, 0.5)'; }} onMouseOut={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 12px 24px rgba(37, 99, 235, 0.4)'; }}>
                                 {isEditing ? 'Commit Structural Changes' : 'Initialize Asset Deployment'}
                             </button>
-                            <button type="button" onClick={() => {setShowAddForm(false); setErrors({});}} style={{ flex: 1, padding: '18px', background: 'rgba(255,255,255,0.05)', color: '#e2e8f0', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', cursor: 'pointer', fontSize: '16px', fontWeight: '800', transition: 'all 0.2s' }} onMouseOver={e => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'; e.currentTarget.style.transform = 'translateY(-2px)'; }} onMouseOut={e => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'; e.currentTarget.style.transform = 'translateY(0)'; }}>
+                            <button type="button" onClick={() => {setShowAddForm(false); setErrors({}); setTouched({});}} style={{ flex: 1, padding: '18px', background: 'rgba(255,255,255,0.05)', color: '#e2e8f0', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', cursor: 'pointer', fontSize: '16px', fontWeight: '800', transition: 'all 0.2s' }} onMouseOver={e => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'; e.currentTarget.style.transform = 'translateY(-2px)'; }} onMouseOut={e => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'; e.currentTarget.style.transform = 'translateY(0)'; }}>
                                 Discard
                             </button>
                         </div>
