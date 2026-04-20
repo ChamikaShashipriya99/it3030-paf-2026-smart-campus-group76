@@ -12,7 +12,8 @@ import {
     ChevronRight,
     ArrowLeftRight,
     QrCode,
-    X
+    X,
+    ShieldCheck
 } from 'lucide-react';
 
 const MyBookings = () => {
@@ -122,10 +123,10 @@ const MyBookings = () => {
                                     <td style={{ padding: '25px 24px' }}>
                                         <div style={{ fontWeight: '700', color: 'var(--text-main)', fontSize: '16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
                                             <Calendar size={16} color="var(--primary)" />
-                                            {b.resource.name}
+                                            {b.resource?.name || 'Unknown Resource'}
                                         </div>
                                         <div style={{ color: 'var(--text-muted)', fontSize: '12px', marginTop: '6px', display: 'flex', alignItems: 'center', gap: '5px' }}>
-                                            <MapPin size={10} /> {b.resource.location}
+                                            <MapPin size={10} /> {b.resource?.location || 'No Location'}
                                         </div>
                                     </td>
                                     <td style={{ padding: '25px 24px', color: 'var(--text-muted)', fontSize: '14px', maxWidth: '300px', lineHeight: '1.5' }}>

@@ -149,16 +149,16 @@ const ManageBookings = () => {
                                     <td style={{ padding: '25px 24px', color: 'var(--text-muted)', fontWeight: '800', fontSize: '13px' }}>#{b.id.substring(0, 8)}</td>
                                     <td style={{ padding: '25px 24px' }}>
                                         <div style={{ fontWeight: '700', color: 'var(--text-main)', fontSize: '15px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                            <Calendar size={14} color="var(--primary)" /> {b.resource.name}
+                                            <Calendar size={14} color="var(--primary)" /> {b.resource?.name || 'Unknown Asset'}
                                         </div>
                                         <div style={{ color: 'var(--text-muted)', fontSize: '13px', marginTop: '6px', opacity: 0.8 }}>{b.purpose.substring(0, 40)}...</div>
                                     </td>
                                     <td style={{ padding: '25px 24px' }}>
                                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                                            <div style={{ width: '32px', height: '32px', borderRadius: '10px', background: 'var(--border)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '900', fontSize: '12px' }}>{b.user.name.charAt(0)}</div>
+                                            <div style={{ width: '32px', height: '32px', borderRadius: '10px', background: 'var(--border)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '900', fontSize: '12px' }}>{b.user?.name?.charAt(0) || '?'}</div>
                                             <div>
-                                                <div style={{ fontWeight: '600', color: 'var(--text-main)', fontSize: '14px' }}>{b.user.name}</div>
-                                                <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{b.user.email}</div>
+                                                <div style={{ fontWeight: '600', color: 'var(--text-main)', fontSize: '14px' }}>{b.user?.name || 'Unknown User'}</div>
+                                                <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{b.user?.email || 'No Email'}</div>
                                             </div>
                                         </div>
                                     </td>

@@ -151,7 +151,7 @@ const TechnicianDashboard = () => {
                                 <tr key={t.id} style={{ borderBottom: '1px solid var(--border)', transition: 'background 0.2s' }} onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.01)'} onMouseOut={e => e.currentTarget.style.background = 'transparent'}>
                                     <td style={{ padding: '25px 24px', color: 'var(--text-muted)', fontWeight: '800', fontSize: '13px' }}>#{t.id.substring(0, 8)}</td>
                                     <td style={{ padding: '25px 24px' }}>
-                                        <div style={{ fontWeight: '700', color: 'var(--text-main)', fontSize: '15px' }}>{t.resource.name}</div>
+                                        <div style={{ fontWeight: '700', color: 'var(--text-main)', fontSize: '15px' }}>{t.resource?.name || 'Unknown Resource'}</div>
                                         <div style={{ color: 'var(--text-muted)', fontSize: '13px', marginTop: '6px', opacity: 0.8 }}>{t.category} — {t.description.substring(0, 40)}...</div>
                                     </td>
                                     <td style={{ padding: '25px 24px' }}>
@@ -179,8 +179,8 @@ const TechnicianDashboard = () => {
                                     <td style={{ padding: '25px 24px', color: 'var(--text-main)', fontSize: '14px', fontWeight: '600' }}>
                                         {t.technician ? (
                                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                                <div style={{ width: '24px', height: '24px', borderRadius: '6px', background: 'var(--border)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', fontWeight: '900' }}>{t.technician.name.charAt(0)}</div>
-                                                {t.technician.name}
+                                                <div style={{ width: '24px', height: '24px', borderRadius: '6px', background: 'var(--border)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', fontWeight: '900' }}>{t.technician?.name?.charAt(0)}</div>
+                                                {t.technician?.name}
                                             </div>
                                         ) : (
                                             <span style={{ color: 'var(--text-muted)', fontStyle: 'italic', opacity: 0.5 }}>Unassigned</span>
