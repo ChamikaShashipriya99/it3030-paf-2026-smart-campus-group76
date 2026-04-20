@@ -22,6 +22,8 @@ const TechnicianDashboard = () => {
     const { showNotification } = useContext(NotificationContext);
     const [tickets, setTickets] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [technicians, setTechnicians] = useState([]);
+    const [activeAssignId, setActiveAssignId] = useState(null);
 
     const fetchTickets = () => {
         setLoading(true);
@@ -38,7 +40,21 @@ const TechnicianDashboard = () => {
 
     useEffect(() => {
         fetchTickets();
-    }, []);
+        if (user?.role === 'ROLE_ADMIN') {
+            api.get('/users').then(res => {
+                setTechnicians(res.data.filter(u => u.role === 'ROLE_TECHNICIAN'));
+            }).catch(err => console.error(err));
+        }
+    }, [user]);
+
+    const assignToTech = async (ticketId, techId) => {
+        try {
+            await api.put(`/tickets/${ticketId}/assign/${techId}`);
+            fetchTickets();
+            setActiveAssignId(null);
+            showNotification('Technician assigned successfully.', 'success');
+        } catch (err) { showNotification('Assignment Failed', 'error'); }
+    };
 
     const assignToMe = async (ticketId) => {
         try {
@@ -193,11 +209,35 @@ const TechnicianDashboard = () => {
                                             </button>
 
                                             {t.status === 'OPEN' && (
-                                                <button onClick={() => assignToMe(t.id)} style={{ background: 'var(--primary)', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '12px', cursor: 'pointer', fontWeight: '800', fontSize: '13px', boxShadow: '0 8px 16px rgba(59, 130, 246, 0.2)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                                    <UserPlus size={14} /> Claim
-                                                </button>
+                                                <div style={{ display: 'flex', gap: '10px' }}>
+                                                    <button onClick={() => assignToMe(t.id)} style={{ background: 'var(--primary)', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '12px', cursor: 'pointer', fontWeight: '800', fontSize: '13px', boxShadow: '0 8px 16px rgba(59, 130, 246, 0.2)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                                        <UserPlus size={14} /> Claim
+                                                    </button>
+                                                    
+                                                    {user.role === 'ROLE_ADMIN' && (
+                                                        <div style={{ position: 'relative' }}>
+                                                            {activeAssignId === t.id ? (
+                                                                <select 
+                                                                    autoFocus
+                                                                    onBlur={() => setActiveAssignId(null)}
+                                                                    onChange={(e) => assignToTech(t.id, e.target.value)}
+                                                                    style={{ padding: '10px', borderRadius: '12px', border: '1px solid var(--primary)', fontSize: '12px', fontWeight: '800' }}
+                                                                >
+                                                                    <option value="">Select Tech...</option>
+                                                                    {technicians.map(tech => (
+                                                                        <option key={tech.id} value={tech.id}>{tech.name}</option>
+                                                                    ))}
+                                                                </select>
+                                                            ) : (
+                                                                <button onClick={() => setActiveAssignId(t.id)} style={{ background: 'transparent', color: 'var(--primary)', border: '1px solid var(--primary)', padding: '10px 16px', borderRadius: '12px', cursor: 'pointer', fontWeight: '800', fontSize: '13px' }}>
+                                                                    Assign Tech
+                                                                </button>
+                                                            )}
+                                                        </div>
+                                                    )}
+                                                </div>
                                             )}
-                                            {t.status === 'IN_PROGRESS' && t.technician?.id === user.id && (
+                                            {t.status === 'IN_PROGRESS' && (user.role === 'ROLE_ADMIN' || t.technician?.id === user.id) && (
                                                 <button onClick={() => resolveTicket(t.id)} style={{ background: '#10b981', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '12px', cursor: 'pointer', fontWeight: '800', fontSize: '13px', boxShadow: '0 8px 16px rgba(16, 185, 129, 0.2)', display: 'flex', alignItems: 'center', gap: '8px' }}>
                                                     <CheckCircle2 size={14} /> Finish
                                                 </button>

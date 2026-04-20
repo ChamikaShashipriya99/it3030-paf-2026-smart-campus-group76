@@ -53,7 +53,7 @@ public class SecurityConfig {
                 
                 // Ticket Management
                 .requestMatchers(HttpMethod.GET, "/api/tickets").hasAnyAuthority("ROLE_ADMIN", "ROLE_TECHNICIAN")
-                .requestMatchers(HttpMethod.PUT, "/api/tickets/*/assign/**").hasAuthority("ROLE_ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/api/tickets/*/assign/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_TECHNICIAN")
                 .requestMatchers(HttpMethod.PUT, "/api/tickets/*/status").hasAnyAuthority("ROLE_ADMIN", "ROLE_TECHNICIAN")
                 
                 .anyRequest().authenticated()
