@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import api from '../api/axiosConfig';
 import { AuthContext } from '../context/AuthContext';
 import { NotificationContext } from '../context/NotificationContext';
+import { QRCodeSVG } from 'qrcode.react';
 import {
     Clock,
     CheckCircle2,
@@ -11,7 +12,7 @@ import {
     AlertCircle,
     ChevronRight,
     ArrowLeftRight,
-    QrCode,
+    QrCode as QrIcon,
     X,
     ShieldCheck
 } from 'lucide-react';
@@ -58,8 +59,21 @@ const MyBookings = () => {
                 <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.4)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(8px)' }} onClick={() => setShowQR(null)}>
                     <div style={{ background: 'white', padding: '40px', borderRadius: '32px', boxShadow: '0 20px 50px rgba(0,0,0,0.2)', textAlign: 'center', position: 'relative', maxWidth: '400px', width: '90%' }} onClick={e => e.stopPropagation()}>
                         <button onClick={() => setShowQR(null)} style={{ position: 'absolute', top: '20px', right: '20px', background: '#F3F4F6', border: 'none', borderRadius: '50%', width: '40px', height: '40px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><X size={20} /></button>
-                        <div style={{ padding: '20px', background: '#F9FAFB', borderRadius: '24px', display: 'inline-block', marginBottom: '25px' }}>
-                            <img src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${showQR.id}`} alt="QR Code" style={{ width: '200px', height: '200px', display: 'block' }} />
+                        <div style={{ padding: '25px', background: '#FFFFFF', border: '1px solid #E5E7EB', borderRadius: '32px', display: 'inline-block', marginBottom: '25px', boxShadow: '0 10px 20px rgba(0,0,0,0.05)' }}>
+                            <QRCodeSVG 
+                                value={`SMARTCAMPUS-TOKEN-${showQR.id}-${showQR.user.id}`} 
+                                size={200}
+                                level={"H"}
+                                includeMargin={false}
+                                imageSettings={{
+                                    src: "/SmartCampus.png",
+                                    x: undefined,
+                                    y: undefined,
+                                    height: 40,
+                                    width: 40,
+                                    excavate: true,
+                                }}
+                            />
                         </div>
                         <h3 style={{ margin: '0 0 8px 0', fontSize: '20px', fontWeight: '900' }}>Access Pass</h3>
                         <p style={{ margin: 0, color: '#6B7280', fontSize: '14px', fontWeight: '500' }}>Present this QR at <b>{showQR.resource.name}</b> for immediate entry verification.</p>
@@ -160,7 +174,7 @@ const MyBookings = () => {
                                                     <button
                                                         onClick={() => setShowQR(b)}
                                                         style={{ padding: '6px 10px', background: 'var(--primary)', color: 'white', border: 'none', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px', fontSize: '11px', fontWeight: '900' }}>
-                                                        <QrCode size={12} /> Get Pass
+                                                        <QrIcon size={12} /> Get Pass
                                                     </button>
                                                 )}
                                             </div>
