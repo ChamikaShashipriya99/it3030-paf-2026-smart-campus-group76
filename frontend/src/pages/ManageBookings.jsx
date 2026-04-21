@@ -14,13 +14,16 @@ import {
     FileText,
     QrCode,
     Scan,
-    Users
+    Users,
+    X
 } from 'lucide-react';
+import { Html5QrcodeScanner } from 'html5-qrcode';
 
 const ManageBookings = () => {
     const [bookings, setBookings] = useState([]);
     const [loading, setLoading] = useState(true);
     const [searchQuery, setSearchQuery] = useState('');
+    const [isScannerOpen, setIsScannerOpen] = useState(false);
     const { showNotification } = useContext(NotificationContext);
 
     const fetchBookings = () => {
@@ -50,16 +53,47 @@ const ManageBookings = () => {
         }
     };
 
-    const handleCheckIn = async () => {
-        const bid = prompt("Enter Booking ID to Check-in (Simulation):");
-        if (!bid) return;
-        try {
-            await api.post(`/bookings/${bid}/checkin`);
-            showNotification("Successful QR Check-in", "success");
-            fetchBookings();
-        } catch (e) {
-            showNotification(e.response?.data?.message || "Check-in Failed", "error");
+    useEffect(() => {
+        let scanner;
+        if (isScannerOpen) {
+            scanner = new Html5QrcodeScanner("reader", { 
+                fps: 10, 
+                qrbox: { width: 250, height: 250 },
+                aspectRatio: 1.0
+            }, false);
+
+            scanner.render(async (decodedText) => {
+                scanner.clear();
+                setIsScannerOpen(false);
+                
+                // Extract booking ID if it follows the secure token format
+                let bookingId = decodedText;
+                if (decodedText.startsWith("SMARTCAMPUS-TOKEN-")) {
+                    const parts = decodedText.split("-");
+                    bookingId = parts[2]; // The 3rd part is the ID
+                }
+
+                try {
+                    await api.post(`/bookings/${bookingId}/checkin`);
+                    showNotification("Scanned: Successful QR Check-in", "success");
+                    fetchBookings();
+                } catch (e) {
+                    showNotification(e.response?.data?.message || "Check-in Failed", "error");
+                }
+            }, (error) => {
+                // silently handle failures
+            });
         }
+
+        return () => {
+            if (scanner) {
+                scanner.clear().catch(e => {});
+            }
+        };
+    }, [isScannerOpen]);
+
+    const handleCheckIn = () => {
+        setIsScannerOpen(true);
     };
 
     const pendingCount = bookings.filter(b => b.status === 'PENDING').length;
@@ -242,6 +276,25 @@ const ManageBookings = () => {
                     </div>
                 )}
             </div>
+
+            {/* QR Scanner Modal */}
+            {isScannerOpen && (
+                <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(10px)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
+                    <div style={{ background: 'white', width: '100%', maxWidth: '500px', borderRadius: '32px', padding: '40px', position: 'relative' }}>
+                        <button onClick={() => setIsScannerOpen(false)} style={{ position: 'absolute', top: '20px', right: '20px', background: 'var(--border)', border: 'none', width: '36px', height: '36px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <X size={18} />
+                        </button>
+                        <div style={{ textAlign: 'center', marginBottom: '30px' }}>
+                            <div style={{ width: '64px', height: '64px', background: 'rgba(59, 130, 246, 0.1)', borderRadius: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px auto', color: 'var(--primary)' }}>
+                                <Scan size={32} />
+                            </div>
+                            <h3 style={{ fontSize: '24px', fontWeight: '800', color: 'var(--text-main)', margin: '0 0 10px 0' }}>Security QR Scanner</h3>
+                            <p style={{ fontSize: '15px', color: 'var(--text-muted)', margin: 0 }}>Point the camera at the student's digital pass.</p>
+                        </div>
+                        <div id="reader" style={{ overflow: 'hidden', borderRadius: '20px', border: '1px solid var(--border)' }}></div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
