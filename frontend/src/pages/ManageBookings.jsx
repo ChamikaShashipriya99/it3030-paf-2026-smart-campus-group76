@@ -20,6 +20,7 @@ import {
 const ManageBookings = () => {
     const [bookings, setBookings] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [searchQuery, setSearchQuery] = useState('');
     const { showNotification } = useContext(NotificationContext);
 
     const fetchBookings = () => {
@@ -119,7 +120,7 @@ const ManageBookings = () => {
                 <div style={{ padding: '24px', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div style={{ position: 'relative', width: '350px' }}>
                         <Search size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
-                        <input type="text" placeholder="Search by requester, facility or ID..." className="premium-input" style={{ padding: '10px 12px 10px 40px', fontSize: '14px' }} />
+                        <input type="text" placeholder="Search by requester, facility or ID..." className="premium-input" style={{ padding: '10px 12px 10px 40px', fontSize: '14px' }} value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
                     </div>
                 </div>
 
@@ -147,7 +148,12 @@ const ManageBookings = () => {
                                         <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '120px', height: '40px', borderRadius: '12px' }}></div></td>
                                     </tr>
                                 ))
-                            ) : bookings.map(b => (
+                            ) : bookings.filter(b => {
+                                const query = searchQuery.toLowerCase();
+                                return (b.resource?.name?.toLowerCase().includes(query)) ||
+                                       (b.user?.name?.toLowerCase().includes(query)) ||
+                                       (b.id?.toLowerCase().includes(query));
+                            }).map(b => (
                                 <tr key={b.id} style={{ borderBottom: '1px solid var(--border)', transition: 'background 0.2s' }} onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.01)'} onMouseOut={e => e.currentTarget.style.background = 'transparent'}>
                                     <td style={{ padding: '25px 24px', color: 'var(--text-muted)', fontWeight: '800', fontSize: '13px' }}>#{b.id.substring(0, 8)}</td>
                                     <td style={{ padding: '25px 24px' }}>
@@ -207,6 +213,17 @@ const ManageBookings = () => {
                     <div style={{ textAlign: 'center', padding: '100px 20px', color: 'var(--text-muted)' }}>
                         <FileText size={48} style={{ opacity: 0.2, marginBottom: '20px' }} />
                         <p style={{ fontSize: '16px', fontWeight: '500' }}>The booking registry is currently empty.</p>
+                    </div>
+                )}
+                {!loading && bookings.length > 0 && bookings.filter(b => {
+                    const query = searchQuery.toLowerCase();
+                    return (b.resource?.name?.toLowerCase().includes(query)) ||
+                           (b.user?.name?.toLowerCase().includes(query)) ||
+                           (b.id?.toLowerCase().includes(query));
+                }).length === 0 && (
+                    <div style={{ textAlign: 'center', padding: '100px 20px', color: 'var(--text-muted)' }}>
+                        <Search size={48} style={{ opacity: 0.2, marginBottom: '20px' }} />
+                        <p style={{ fontSize: '16px', fontWeight: '500' }}>No bookings match your search query.</p>
                     </div>
                 )}
             </div>
