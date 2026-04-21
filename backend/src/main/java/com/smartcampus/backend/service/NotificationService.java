@@ -54,4 +54,12 @@ public class NotificationService {
         notif.setRead(true);
         repository.save(notif);
     }
+
+    public void markAllAsRead(String userId) {
+        List<Notification> unread = repository.findByUserIdAndIsReadFalse(userId);
+        for (Notification n : unread) {
+            n.setRead(true);
+        }
+        repository.saveAll(unread);
+    }
 }

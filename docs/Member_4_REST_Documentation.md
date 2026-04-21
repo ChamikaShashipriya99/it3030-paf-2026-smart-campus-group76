@@ -46,7 +46,8 @@ Member 4 has implemented **7 unique endpoints** across 4 different HTTP methods,
 | Method | Endpoint | Description | Auth Requirement |
 |:---|:---|:---|:---|
 | **GET** | `/api/notifications/user/{userId}` | Retrieves all alerts for a specific user. | `Authenticated` |
-| **PUT** | `/api/notifications/{id}/read` | Updates a notification status to "Seen". | `Authenticated` |
+| **PUT** | `/api/notifications/{id}/read` | Updates a single notification status to "Seen". | `Authenticated` |
+| **PUT** | `/api/notifications/user/{userId}/read-all` | Marks all notifications for a user as "Seen" in bulk. | `Authenticated` |
 | **POST** | `/api/notifications/send` | Programmatically triggers a system alert. | `Authenticated` |
 
 ### Module: OAuth & Security Context
