@@ -17,7 +17,12 @@ import {
     Building2,
     Settings,
     CalendarPlus,
-    AlertCircle
+    AlertCircle,
+    Landmark,
+    Tag,
+    ShieldCheck,
+    Image,
+    Rocket
 } from 'lucide-react';
 
 const Catalogue = () => {
@@ -263,11 +268,16 @@ const Catalogue = () => {
             {showAddForm && (
                 <div className="premium-glass-panel form-enter-active" style={{ padding: '50px', marginBottom: '50px' }}>
                     <div className="form-content-relative" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
-                        <div>
-                            <h3 className="navy-text" style={{ margin: 0, fontSize: '28px', letterSpacing: '-1px' }}>
-                                {isEditing ? 'Modify Asset Details' : 'Register New University Asset'}
-                            </h3>
-                            <p className="navy-text-muted" style={{ margin: '8px 0 0 0', fontSize: '15px' }}>Fill out the specification details for campus-wide availability.</p>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                            <div style={{ background: '#f0f9ff', padding: '14px', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid #bae6fd' }}>
+                                <Landmark size={28} color="#2563eb" />
+                            </div>
+                            <div>
+                                <h3 className="navy-text" style={{ margin: 0, fontSize: '28px', letterSpacing: '-1px' }}>
+                                    {isEditing ? 'Modify Asset Details' : 'Register New University Asset'}
+                                </h3>
+                                <p className="navy-text-muted" style={{ margin: '8px 0 0 0', fontSize: '15px' }}>Fill out the specification details for campus-wide availability.</p>
+                            </div>
                         </div>
                         <button type="button" onClick={() => {setShowAddForm(false); setErrors({});}} style={{ background: 'rgba(255, 255, 255, 0.5)', border: '1px solid #e2e8f0', width: '44px', height: '44px', borderRadius: '50%', cursor: 'pointer', color: '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }} onMouseOver={e => {e.currentTarget.style.background = 'rgba(239, 68, 68, 0.1)'; e.currentTarget.style.color = '#ef4444'; e.currentTarget.style.transform = 'rotate(90deg)'; e.currentTarget.style.borderColor = 'rgba(239, 68, 68, 0.2)';}} onMouseOut={e => {e.currentTarget.style.background = 'rgba(255, 255, 255, 0.5)'; e.currentTarget.style.color = '#475569'; e.currentTarget.style.transform = 'rotate(0deg)'; e.currentTarget.style.borderColor = '#e2e8f0';}}>
                             <Plus size={24} style={{ transform: 'rotate(45deg)', transition: 'transform 0.2s' }} />
@@ -277,17 +287,21 @@ const Catalogue = () => {
                     <form className="form-content-relative" onSubmit={handleAdd} style={{ display: 'flex', flexDirection: 'column', gap: '35px' }}>
                         <div className="animate-pop-in delay-100" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '25px' }}>
                             <div>
-                                <label className="form-label-navy">Official Asset Name</label>
-                                <input placeholder="e.g. Quantum Computing Lab - Sector 7" value={newRes.name}
-                                    className={`baby-blue-input ${errors.name && touched.name ? 'input-error' : ''}`}
-                                    onChange={e => handleChange('name', e.target.value)}
-                                    onBlur={() => handleBlur('name')} />
+                                <label className="form-label-navy">Official Asset Name <span style={{color: '#ef4444'}}>*</span></label>
+                                <div style={{ position: 'relative' }}>
+                                    <Tag size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#3b82f6', pointerEvents: 'none' }} />
+                                    <input placeholder="e.g. Quantum Computing Lab - Sector 7" value={newRes.name}
+                                        className={`baby-blue-input with-icon ${errors.name && touched.name ? 'input-error' : ''}`}
+                                        onChange={e => handleChange('name', e.target.value)}
+                                        onBlur={() => handleBlur('name')} />
+                                </div>
                                 {errors.name && touched.name && <span style={{ color: '#ef4444', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '8px', fontWeight: '600' }}><AlertCircle size={14} /> {errors.name}</span>}
                             </div>
                             <div>
-                                <label className="form-label-navy">Classification</label>
+                                <label className="form-label-navy">Classification <span style={{color: '#ef4444'}}>*</span></label>
                                 <div style={{ position: 'relative' }}>
-                                    <select value={newRes.type} className="baby-blue-input" onChange={e => handleChange('type', e.target.value)}
+                                    <Building2 size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#3b82f6', pointerEvents: 'none', zIndex: 1 }} />
+                                    <select value={newRes.type} className="baby-blue-input with-icon" onChange={e => handleChange('type', e.target.value)}
                                         style={{ appearance: 'none' }}>
                                         <option value="LECTURE_HALL">Lecture Hall</option>
                                         <option value="LAB">Laboratory</option>
@@ -300,78 +314,97 @@ const Catalogue = () => {
 
                         <div className="form-grid animate-pop-in delay-200">
                             <div>
-                                <label className="form-label-navy"><MapPin size={14} style={{ marginRight: '6px', verticalAlign: 'text-bottom' }} /> Location / Zone</label>
-                                <input placeholder="e.g. Engineering Block B, Level 4" value={newRes.location}
-                                    className={`baby-blue-input ${errors.location && touched.location ? 'input-error' : ''}`}
-                                    onChange={e => handleChange('location', e.target.value)}
-                                    onBlur={() => handleBlur('location')} />
+                                <label className="form-label-navy">Location / Zone <span style={{color: '#ef4444'}}>*</span></label>
+                                <div style={{ position: 'relative' }}>
+                                    <MapPin size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#3b82f6', pointerEvents: 'none' }} />
+                                    <input placeholder="e.g. Engineering Block B, Level 4" value={newRes.location}
+                                        className={`baby-blue-input with-icon ${errors.location && touched.location ? 'input-error' : ''}`}
+                                        onChange={e => handleChange('location', e.target.value)}
+                                        onBlur={() => handleBlur('location')} />
+                                </div>
                                 {errors.location && touched.location && <span style={{ color: '#ef4444', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '8px', fontWeight: '600' }}><AlertCircle size={14} /> {errors.location}</span>}
                             </div>
                             <div>
-                                <label className="form-label-navy"><Users size={14} style={{ marginRight: '6px', verticalAlign: 'text-bottom' }} /> Occupancy Capacity</label>
-                                <input type="number" min="1" value={newRes.capacity === 0 ? '' : newRes.capacity}
-                                    className={`baby-blue-input ${errors.capacity && touched.capacity ? 'input-error' : ''}`}
-                                    onChange={e => {
-                                        const val = e.target.value;
-                                        if (val === '' || /^\d+$/.test(val)) {
-                                            handleChange('capacity', val === '' ? 0 : parseInt(val, 10));
-                                        }
-                                    }}
-                                    onKeyDown={e => {
-                                        if (!/^[0-9]$/.test(e.key) && !['Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'Delete', 'Enter'].includes(e.key) && !e.ctrlKey && !e.metaKey) {
-                                            e.preventDefault();
-                                        }
-                                    }}
-                                    onPaste={e => {
-                                        const paste = e.clipboardData.getData('text');
-                                        if (!/^\d+$/.test(paste)) {
-                                            e.preventDefault();
-                                        }
-                                    }}
-                                    onBlur={() => handleBlur('capacity')} />
+                                <label className="form-label-navy">Occupancy Capacity <span style={{color: '#ef4444'}}>*</span></label>
+                                <div style={{ position: 'relative' }}>
+                                    <Users size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#3b82f6', pointerEvents: 'none' }} />
+                                    <input type="number" min="1" placeholder="Enter capacity" value={newRes.capacity === 0 ? '' : newRes.capacity}
+                                        className={`baby-blue-input with-icon ${errors.capacity && touched.capacity ? 'input-error' : ''}`}
+                                        onChange={e => {
+                                            const val = e.target.value;
+                                            if (val === '' || /^\d+$/.test(val)) {
+                                                handleChange('capacity', val === '' ? 0 : parseInt(val, 10));
+                                            }
+                                        }}
+                                        onKeyDown={e => {
+                                            if (!/^[0-9]$/.test(e.key) && !['Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'Delete', 'Enter'].includes(e.key) && !e.ctrlKey && !e.metaKey) {
+                                                e.preventDefault();
+                                            }
+                                        }}
+                                        onPaste={e => {
+                                            const paste = e.clipboardData.getData('text');
+                                            if (!/^\d+$/.test(paste)) {
+                                                e.preventDefault();
+                                            }
+                                        }}
+                                        onBlur={() => handleBlur('capacity')} />
+                                </div>
                                 {errors.capacity && touched.capacity && <span style={{ color: '#ef4444', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '8px', fontWeight: '600' }}><AlertCircle size={14} /> {errors.capacity}</span>}
                             </div>
                             <div>
-                                <label className="form-label-navy"><Settings size={14} style={{ marginRight: '6px', verticalAlign: 'text-bottom' }} /> System Status</label>
-                                <select value={newRes.status} className="baby-blue-input" onChange={e => handleChange('status', e.target.value)}
-                                    style={{ appearance: 'none' }}>
-                                    <option value="ACTIVE">OPERATIONAL</option>
-                                    <option value="MAINTENANCE">UNDER MAINTENANCE</option>
-                                    <option value="INACTIVE">DECOMMISSIONED</option>
-                                </select>
+                                <label className="form-label-navy">System Status <span style={{color: '#ef4444'}}>*</span></label>
+                                <div style={{ position: 'relative' }}>
+                                    <ShieldCheck size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#3b82f6', pointerEvents: 'none', zIndex: 1 }} />
+                                    <select value={newRes.status} className="baby-blue-input with-icon" onChange={e => handleChange('status', e.target.value)}
+                                        style={{ appearance: 'none' }}>
+                                        <option value="ACTIVE">OPERATIONAL</option>
+                                        <option value="MAINTENANCE">UNDER MAINTENANCE</option>
+                                        <option value="INACTIVE">DECOMMISSIONED</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
 
                         <div className="form-grid form-section-bg animate-pop-in delay-300">
                             <div>
-                                <label className="form-label-navy"><Clock size={14} style={{ marginRight: '6px', verticalAlign: 'text-bottom' }} /> Opening Hours</label>
-                                <input type="time" value={newRes.startTime}
-                                    className={`baby-blue-input ${errors.startTime && touched.startTime ? 'input-error' : ''}`}
-                                    onChange={e => handleChange('startTime', e.target.value)}
-                                    onBlur={() => handleBlur('startTime')} />
+                                <label className="form-label-navy">Opening Hours <span style={{color: '#ef4444'}}>*</span></label>
+                                <div style={{ position: 'relative' }}>
+                                    <Clock size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#3b82f6', pointerEvents: 'none' }} />
+                                    <input type="time" value={newRes.startTime}
+                                        className={`baby-blue-input with-icon ${errors.startTime && touched.startTime ? 'input-error' : ''}`}
+                                        onChange={e => handleChange('startTime', e.target.value)}
+                                        onBlur={() => handleBlur('startTime')} />
+                                </div>
                                 {errors.startTime && touched.startTime && <span style={{ color: '#ef4444', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '8px', fontWeight: '600' }}><AlertCircle size={14} /> {errors.startTime}</span>}
                             </div>
                             <div>
-                                <label className="form-label-navy"><Clock size={14} style={{ marginRight: '6px', verticalAlign: 'text-bottom' }} /> Closing Hours</label>
-                                <input type="time" value={newRes.endTime}
-                                    className={`baby-blue-input ${errors.endTime && touched.endTime ? 'input-error' : ''}`}
-                                    onChange={e => handleChange('endTime', e.target.value)}
-                                    onBlur={() => handleBlur('endTime')} />
+                                <label className="form-label-navy">Closing Hours <span style={{color: '#ef4444'}}>*</span></label>
+                                <div style={{ position: 'relative' }}>
+                                    <Clock size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#3b82f6', pointerEvents: 'none' }} />
+                                    <input type="time" value={newRes.endTime}
+                                        className={`baby-blue-input with-icon ${errors.endTime && touched.endTime ? 'input-error' : ''}`}
+                                        onChange={e => handleChange('endTime', e.target.value)}
+                                        onBlur={() => handleBlur('endTime')} />
+                                </div>
                                 {errors.endTime && touched.endTime && <span style={{ color: '#ef4444', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '8px', fontWeight: '600' }}><AlertCircle size={14} /> {errors.endTime}</span>}
                             </div>
                             <div>
                                 <label className="form-label-navy">Digital Cover Image</label>
-                                <input type="file" accept="image/*" onChange={e => setResImage(e.target.files[0])}
-                                    className="baby-blue-input" style={{ padding: '13px', background: 'white' }} />
+                                <div style={{ position: 'relative' }}>
+                                    <Image size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#3b82f6', pointerEvents: 'none', zIndex: 1 }} />
+                                    <input type="file" accept="image/*" onChange={e => setResImage(e.target.files[0])}
+                                        className="baby-blue-input with-icon" style={{ padding: '13px 13px 13px 48px', background: 'white' }} />
+                                </div>
+                                <p style={{ fontSize: '12px', color: '#64748b', marginTop: '8px' }}>JPG, PNG or WEBP (Max size 5MB)</p>
                             </div>
                         </div>
 
                         <div className="animate-pop-in delay-400" style={{ display: 'flex', gap: '20px', marginTop: '15px' }}>
-                            <button type="submit" className="btn-primary-glow" style={{ flex: 2, padding: '18px' }}>
-                                {isEditing ? 'Commit Structural Changes' : 'Initialize Asset Deployment'}
+                            <button type="submit" className="btn-primary-glow" style={{ flex: 2, padding: '18px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
+                                <Rocket size={20} /> {isEditing ? 'Commit Structural Changes' : 'Initialize Asset Deployment'}
                             </button>
-                            <button type="button" className="btn-secondary-soft" onClick={() => {setShowAddForm(false); setErrors({}); setTouched({});}} style={{ flex: 1, padding: '18px' }}>
-                                Discard
+                            <button type="button" className="btn-secondary-soft" onClick={() => {setShowAddForm(false); setErrors({}); setTouched({});}} style={{ flex: 1, padding: '18px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
+                                <Trash2 size={20} /> Discard
                             </button>
                         </div>
                     </form>

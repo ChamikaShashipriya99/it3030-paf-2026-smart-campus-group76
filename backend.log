@@ -3363,3 +3363,757 @@ Caused by: java.net.SocketTimeoutException: Read timed out
 2026-04-21T12:35:36.337+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
 2026-04-21T12:35:36.344+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
 2026-04-21T12:35:36.426+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:35:45.678+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:35:45.684+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:35:45.757+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:35:46.471+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:35:46.478+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:35:46.687+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:35:55.937+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:35:55.944+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:35:56.026+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:35:56.705+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:35:56.711+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:35:56.787+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:36:06.058+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:36:06.067+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:36:06.664+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:36:06.789+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:36:06.801+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:36:06.892+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:36:16.305+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:36:16.310+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:36:16.413+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:36:17.005+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:36:17.009+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:36:17.085+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:36:26.471+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:36:26.477+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:36:27.095+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:36:27.101+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:36:30.256+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:36:30.995+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:36:36.672+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:36:36.684+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:36:36.805+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:36:37.258+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:36:37.266+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:36:37.342+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:36:46.811+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:36:46.816+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:36:46.886+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:36:47.502+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:36:47.508+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:36:47.579+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:36:56.983+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:36:56.990+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:36:57.085+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:36:57.745+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:36:57.749+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:36:57.821+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:37:07.250+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:37:07.256+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:37:07.346+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:37:07.876+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:37:07.882+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:37:07.944+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:37:17.415+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:37:17.419+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:37:17.507+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:37:18.011+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:37:18.016+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:37:18.091+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:37:27.564+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:37:27.568+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:37:27.646+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:37:28.185+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:37:28.189+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:37:28.259+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:37:37.695+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:37:37.698+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:37:38.298+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:37:38.321+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:37:47.903+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:37:47.908+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:37:48.456+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:37:48.461+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:37:51.585+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:37:51.628+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:37:55.762+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:37:55.813+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:37:58.103+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:37:58.110+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:37:58.722+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:37:58.741+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:37:59.900+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:38:00.649+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:38:08.213+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:38:08.220+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:38:08.831+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:38:08.835+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:38:13.068+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:38:15.458+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:38:18.426+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:38:18.430+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:38:18.500+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:38:19.298+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:38:19.302+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:38:19.370+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:38:28.570+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:38:28.574+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:38:28.679+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:38:29.582+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:38:29.587+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:38:29.661+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:38:38.800+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:38:38.806+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:38:38.888+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:38:39.696+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:38:39.700+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:38:39.763+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:38:48.910+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:38:48.913+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:38:48.982+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:38:49.856+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:38:49.859+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:38:49.941+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:38:59.072+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:38:59.076+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:38:59.168+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:38:59.948+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:38:59.953+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:39:00.034+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:39:09.341+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:39:09.348+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:39:10.059+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:39:10.061+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:39:19.521+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:39:19.526+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:39:20.163+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:39:20.166+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:39:25.907+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:39:25.918+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:39:28.687+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:39:29.052+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:39:29.623+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:39:29.627+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:39:30.268+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:39:30.272+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:39:35.177+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:39:37.108+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:39:39.867+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:39:39.869+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:39:39.944+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:39:40.455+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:39:40.457+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:39:40.524+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:39:50.120+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:39:50.123+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:39:50.206+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:39:50.587+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:39:50.591+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:39:50.663+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:40:00.292+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:40:00.298+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:40:00.377+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:40:00.705+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:40:00.710+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:40:00.799+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:40:10.440+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:40:10.442+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:40:10.517+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:40:10.836+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:40:10.840+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:40:10.913+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:40:20.614+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:40:20.618+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:40:21.063+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:40:21.070+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:40:24.912+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:40:25.552+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:40:30.781+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:40:30.785+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:40:31.148+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:40:31.152+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:40:33.478+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:40:33.482+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:40:40.916+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:40:40.921+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:40:41.278+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:40:41.289+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:40:44.471+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:40:44.480+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:40:51.076+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:40:51.079+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:40:51.148+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:40:51.475+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:40:51.482+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:40:51.592+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:41:01.320+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:41:01.331+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:41:01.415+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:41:01.563+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:41:01.568+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:41:01.650+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:41:11.460+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:41:11.466+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:41:11.871+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:41:11.876+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:41:21.751+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:41:21.753+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:41:21.948+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:41:21.951+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:41:30.733+05:30  INFO 24300 --- [http-nio-8080-exec-9] org.mongodb.driver.cluster               : Waiting for server to become available for operation find with ID 7179. Remaining time: 29999 ms. Selector: ReadPreferenceServerSelector{readPreference=primary}, topology description: {type=REPLICA_SET, servers=[{address=ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketReadException: Exception receiving message}, caused by {java.net.SocketException: Connection reset}}, {address=ac-vcutkpt-shard-00-02.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, TagSet{[Tag{name='availabilityZone', value='aps1-az2'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, roundTripTime=934.6 ms, state=CONNECTED}, {address=ac-vcutkpt-shard-00-00.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, TagSet{[Tag{name='availabilityZone', value='aps1-az1'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, roundTripTime=933.5 ms, state=CONNECTED}].
+2026-04-21T12:41:31.141+05:30  INFO 24300 --- [http-nio-8080-exec-10] org.mongodb.driver.cluster               : Waiting for server to become available for operation find with ID 7180. Remaining time: 29999 ms. Selector: ReadPreferenceServerSelector{readPreference=primary}, topology description: {type=REPLICA_SET, servers=[{address=ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketReadException: Exception receiving message}, caused by {java.net.SocketException: Connection reset}}, {address=ac-vcutkpt-shard-00-02.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, TagSet{[Tag{name='availabilityZone', value='aps1-az2'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, roundTripTime=934.6 ms, state=CONNECTED}, {address=ac-vcutkpt-shard-00-00.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, TagSet{[Tag{name='availabilityZone', value='aps1-az1'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, roundTripTime=933.5 ms, state=CONNECTED}].
+2026-04-21T12:41:32.029+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:41:32.035+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:41:32.041+05:30  INFO 24300 --- [http-nio-8080-exec-2] org.mongodb.driver.cluster               : Waiting for server to become available for operation find with ID 7193. Remaining time: 29999 ms. Selector: ReadPreferenceServerSelector{readPreference=primary}, topology description: {type=REPLICA_SET, servers=[{address=ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketReadException: Exception receiving message}, caused by {java.net.SocketException: Connection reset}}, {address=ac-vcutkpt-shard-00-02.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, TagSet{[Tag{name='availabilityZone', value='aps1-az2'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, roundTripTime=934.6 ms, state=CONNECTED}, {address=ac-vcutkpt-shard-00-00.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, TagSet{[Tag{name='availabilityZone', value='aps1-az1'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, roundTripTime=933.5 ms, state=CONNECTED}].
+2026-04-21T12:41:32.054+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:41:32.061+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:41:32.069+05:30  INFO 24300 --- [http-nio-8080-exec-5] org.mongodb.driver.cluster               : Waiting for server to become available for operation find with ID 7194. Remaining time: 29999 ms. Selector: ReadPreferenceServerSelector{readPreference=primary}, topology description: {type=REPLICA_SET, servers=[{address=ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketReadException: Exception receiving message}, caused by {java.net.SocketException: Connection reset}}, {address=ac-vcutkpt-shard-00-02.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, TagSet{[Tag{name='availabilityZone', value='aps1-az2'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, roundTripTime=934.6 ms, state=CONNECTED}, {address=ac-vcutkpt-shard-00-00.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, TagSet{[Tag{name='availabilityZone', value='aps1-az1'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, roundTripTime=933.5 ms, state=CONNECTED}].
+2026-04-21T12:41:35.099+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:41:35.102+05:30  INFO 24300 --- [http-nio-8080-exec-7] org.mongodb.driver.cluster               : Waiting for server to become available for operation find with ID 7198. Remaining time: 29999 ms. Selector: ReadPreferenceServerSelector{readPreference=primary}, topology description: {type=REPLICA_SET, servers=[{address=ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketReadException: Exception receiving message}, caused by {java.net.SocketException: Connection reset}}, {address=ac-vcutkpt-shard-00-02.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, TagSet{[Tag{name='availabilityZone', value='aps1-az2'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, roundTripTime=934.6 ms, state=CONNECTED}, {address=ac-vcutkpt-shard-00-00.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, TagSet{[Tag{name='availabilityZone', value='aps1-az1'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, roundTripTime=933.5 ms, state=CONNECTED}].
+2026-04-21T12:41:35.106+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:41:35.106+05:30  INFO 24300 --- [http-nio-8080-exec-1] org.mongodb.driver.cluster               : Waiting for server to become available for operation find with ID 7199. Remaining time: 29999 ms. Selector: ReadPreferenceServerSelector{readPreference=primary}, topology description: {type=REPLICA_SET, servers=[{address=ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketReadException: Exception receiving message}, caused by {java.net.SocketException: Connection reset}}, {address=ac-vcutkpt-shard-00-02.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, TagSet{[Tag{name='availabilityZone', value='aps1-az2'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, roundTripTime=934.6 ms, state=CONNECTED}, {address=ac-vcutkpt-shard-00-00.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, TagSet{[Tag{name='availabilityZone', value='aps1-az1'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, roundTripTime=933.5 ms, state=CONNECTED}].
+2026-04-21T12:41:42.325+05:30  INFO 24300 --- [cluster-ClusterId{value='69e718748bb98f7b937fe93b', description='SmartCampusPAF'}-ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017] org.mongodb.driver.cluster               : Exception in monitor thread while connecting to server ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017
+
+com.mongodb.MongoSocketException: No such host is known (ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net)
+	at com.mongodb.internal.connection.ServerAddressHelper.getSocketAddresses(ServerAddressHelper.java:75) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.SocketStream.initializeSocket(SocketStream.java:100) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.SocketStream.open(SocketStream.java:79) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:233) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitor.setupNewConnectionAndGetInitialDescription(DefaultServerMonitor.java:282) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitor.lookupServerDescription(DefaultServerMonitor.java:253) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitor.run(DefaultServerMonitor.java:203) ~[mongodb-driver-core-5.6.4.jar:na]
+Caused by: java.net.UnknownHostException: No such host is known (ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net)
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[na:na]
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Inet6AddressImpl.java:52) ~[na:na]
+	at java.base/java.net.InetAddress$PlatformResolver.lookupByName(InetAddress.java:1134) ~[na:na]
+	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1712) ~[na:na]
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:1060) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1702) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1582) ~[na:na]
+	at com.mongodb.internal.connection.DefaultInetAddressResolver.lookupByName(DefaultInetAddressResolver.java:34) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.ServerAddressHelper.getSocketAddresses(ServerAddressHelper.java:71) ~[mongodb-driver-core-5.6.4.jar:na]
+	... 6 common frames omitted
+
+2026-04-21T12:41:42.838+05:30  INFO 24300 --- [cluster-ClusterId{value='69e718748bb98f7b937fe93b', description='SmartCampusPAF'}-ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017] org.mongodb.driver.cluster               : Exception in monitor thread while connecting to server ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017
+
+com.mongodb.MongoSocketException: ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net
+	at com.mongodb.internal.connection.ServerAddressHelper.getSocketAddresses(ServerAddressHelper.java:75) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.SocketStream.initializeSocket(SocketStream.java:100) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.SocketStream.open(SocketStream.java:79) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:233) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitor.setupNewConnectionAndGetInitialDescription(DefaultServerMonitor.java:282) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitor.lookupServerDescription(DefaultServerMonitor.java:253) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitor.run(DefaultServerMonitor.java:203) ~[mongodb-driver-core-5.6.4.jar:na]
+Caused by: java.net.UnknownHostException: ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net
+	at java.base/java.net.InetAddress$CachedLookup.get(InetAddress.java:909) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1702) ~[na:na]
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1582) ~[na:na]
+	at com.mongodb.internal.connection.DefaultInetAddressResolver.lookupByName(DefaultInetAddressResolver.java:34) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.ServerAddressHelper.getSocketAddresses(ServerAddressHelper.java:71) ~[mongodb-driver-core-5.6.4.jar:na]
+	... 6 common frames omitted
+
+2026-04-21T12:41:52.764+05:30  INFO 24300 --- [cluster-ClusterId{value='69e718748bb98f7b937fe93b', description='SmartCampusPAF'}-ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017, type=REPLICA_SET_PRIMARY, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=25, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=174442000, minRoundTripTimeNanos=0, setName='atlas-1ck7g4-shard-0', canonicalAddress=ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017, hosts=[ac-vcutkpt-shard-00-00.t6kbznv.mongodb.net:27017, ac-vcutkpt-shard-00-02.t6kbznv.mongodb.net:27017, ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017], passives=[], arbiters=[], primary='ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017', tagSet=TagSet{[Tag{name='availabilityZone', value='aps1-az3'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=7fffffff00000000000000af, setVersion=56, topologyVersion=TopologyVersion{processId=69cec132f191687a6ed8f2f7, counter=7}, lastWriteDate=Tue Apr 21 12:41:53 IST 2026, lastUpdateTimeNanos=144977936846900}
+2026-04-21T12:41:52.765+05:30  INFO 24300 --- [cluster-ClusterId{value='69e718748bb98f7b937fe93b', description='SmartCampusPAF'}-ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017] org.mongodb.driver.cluster               : Discovered replica set primary ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017 with max election id 7fffffff00000000000000af and max set version 56
+2026-04-21T12:41:53.225+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:41:53.270+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:41:53.316+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:41:53.316+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:41:53.320+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:41:53.322+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:41:53.366+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:41:53.393+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:41:53.489+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:41:53.526+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:41:53.636+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:41:53.704+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:41:53.766+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:41:53.840+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:41:53.910+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:41:53.994+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:42:02.571+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:42:02.806+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:42:02.811+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:42:02.819+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:42:02.956+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:42:02.956+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:42:12.551+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:42:12.556+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:42:12.640+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:42:12.705+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:42:12.710+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:42:12.792+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:42:22.754+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:42:22.761+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:42:23.703+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:42:23.711+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:42:32.836+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:42:32.888+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:42:32.908+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:42:32.915+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:42:34.010+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:42:34.018+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:42:38.825+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:42:40.890+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:42:43.071+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:42:43.076+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:42:43.145+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:42:44.164+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:42:44.169+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:42:44.243+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:42:53.340+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:42:53.343+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:42:53.421+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:42:54.354+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:42:54.362+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:42:54.443+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:43:03.357+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:43:03.362+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:43:03.454+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:43:04.588+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:43:04.592+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:43:04.676+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:43:13.542+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:43:13.546+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:43:13.739+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:43:14.670+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:43:14.674+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:43:14.933+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:43:23.716+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:43:23.724+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:43:24.832+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:43:24.835+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:43:28.716+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:43:28.867+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:43:33.756+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:43:33.761+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:43:34.951+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:43:34.956+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:43:35.937+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:43:35.979+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:43:43.759+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:43:43.764+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:43:43.842+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:43:45.086+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:43:45.093+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:43:45.170+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:43:53.771+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:43:53.776+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:43:53.862+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:43:55.207+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:43:55.212+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:43:55.278+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:44:03.782+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:44:03.786+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:44:03.863+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:44:05.382+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:44:05.385+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:44:05.454+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:44:13.801+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:44:13.805+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:44:13.878+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:44:15.537+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:44:15.544+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:44:15.626+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:44:23.811+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:44:23.815+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:44:23.908+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:44:25.658+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:44:25.665+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:44:25.758+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:44:33.850+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:44:33.856+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:44:33.941+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:44:35.758+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:44:35.763+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:44:35.841+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:44:43.891+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:44:43.896+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:44:43.984+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:44:45.913+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:44:45.918+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:44:46.002+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:44:53.902+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:44:53.906+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:44:53.989+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:44:56.545+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:44:56.551+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:45:03.907+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:45:03.911+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:45:06.830+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:45:06.835+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:45:07.515+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:45:13.085+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:45:13.931+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:45:13.937+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:45:15.020+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:45:17.014+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:45:17.021+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:45:21.396+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:45:23.096+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:45:23.946+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:45:23.951+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:45:24.022+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:45:27.178+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:45:27.181+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:45:27.261+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:45:33.965+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:45:33.969+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:45:34.037+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:45:37.284+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:45:37.287+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:45:37.379+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:45:43.976+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:45:43.982+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:45:44.051+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:45:47.408+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:45:47.413+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:45:47.502+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:45:53.980+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:45:53.984+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:45:57.559+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:45:57.580+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:46:03.986+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:46:03.991+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:46:07.700+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:46:07.704+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:46:13.267+05:30  INFO 24300 --- [http-nio-8080-exec-10] org.mongodb.driver.cluster               : Waiting for server to become available for operation find with ID 8001. Remaining time: 29999 ms. Selector: ReadPreferenceServerSelector{readPreference=primary}, topology description: {type=REPLICA_SET, servers=[{address=ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketReadException: Exception receiving message}, caused by {java.net.SocketException: Connection reset}}, {address=ac-vcutkpt-shard-00-02.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, TagSet{[Tag{name='availabilityZone', value='aps1-az2'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, roundTripTime=262.3 ms, state=CONNECTED}, {address=ac-vcutkpt-shard-00-00.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, TagSet{[Tag{name='availabilityZone', value='aps1-az1'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, roundTripTime=265.8 ms, state=CONNECTED}].
+2026-04-21T12:46:13.991+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:46:13.994+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:46:13.999+05:30  INFO 24300 --- [http-nio-8080-exec-4] org.mongodb.driver.cluster               : Waiting for server to become available for operation find with ID 8015. Remaining time: 29999 ms. Selector: ReadPreferenceServerSelector{readPreference=primary}, topology description: {type=REPLICA_SET, servers=[{address=ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketReadException: Exception receiving message}, caused by {java.net.SocketException: Connection reset}}, {address=ac-vcutkpt-shard-00-02.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, TagSet{[Tag{name='availabilityZone', value='aps1-az2'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, roundTripTime=262.3 ms, state=CONNECTED}, {address=ac-vcutkpt-shard-00-00.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, TagSet{[Tag{name='availabilityZone', value='aps1-az1'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, roundTripTime=265.8 ms, state=CONNECTED}].
+2026-04-21T12:46:14.652+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:46:14.652+05:30  INFO 24300 --- [http-nio-8080-exec-5] org.mongodb.driver.cluster               : Waiting for server to become available for operation find with ID 8016. Remaining time: 29999 ms. Selector: ReadPreferenceServerSelector{readPreference=primary}, topology description: {type=REPLICA_SET, servers=[{address=ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketReadException: Exception receiving message}, caused by {java.net.SocketException: Connection reset}}, {address=ac-vcutkpt-shard-00-02.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, TagSet{[Tag{name='availabilityZone', value='aps1-az2'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, roundTripTime=262.3 ms, state=CONNECTED}, {address=ac-vcutkpt-shard-00-00.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, TagSet{[Tag{name='availabilityZone', value='aps1-az1'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, roundTripTime=265.8 ms, state=CONNECTED}].
+2026-04-21T12:46:17.992+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:46:17.994+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:46:17.996+05:30  INFO 24300 --- [http-nio-8080-exec-8] org.mongodb.driver.cluster               : Waiting for server to become available for operation find with ID 8017. Remaining time: 29999 ms. Selector: ReadPreferenceServerSelector{readPreference=primary}, topology description: {type=REPLICA_SET, servers=[{address=ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketReadException: Exception receiving message}, caused by {java.net.SocketException: Connection reset}}, {address=ac-vcutkpt-shard-00-02.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, TagSet{[Tag{name='availabilityZone', value='aps1-az2'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, roundTripTime=262.3 ms, state=CONNECTED}, {address=ac-vcutkpt-shard-00-00.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, TagSet{[Tag{name='availabilityZone', value='aps1-az1'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, roundTripTime=265.8 ms, state=CONNECTED}].
+2026-04-21T12:46:23.192+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:46:23.194+05:30  INFO 24300 --- [http-nio-8080-exec-6] org.mongodb.driver.cluster               : Waiting for server to become available for operation find with ID 8020. Remaining time: 29999 ms. Selector: ReadPreferenceServerSelector{readPreference=primary}, topology description: {type=REPLICA_SET, servers=[{address=ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketReadException: Exception receiving message}, caused by {java.net.SocketException: Connection reset}}, {address=ac-vcutkpt-shard-00-02.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, TagSet{[Tag{name='availabilityZone', value='aps1-az2'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, roundTripTime=262.3 ms, state=CONNECTED}, {address=ac-vcutkpt-shard-00-00.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, TagSet{[Tag{name='availabilityZone', value='aps1-az1'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, roundTripTime=265.8 ms, state=CONNECTED}].
+2026-04-21T12:46:23.241+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:46:23.244+05:30  INFO 24300 --- [http-nio-8080-exec-2] org.mongodb.driver.cluster               : Waiting for server to become available for operation find with ID 8021. Remaining time: 29999 ms. Selector: ReadPreferenceServerSelector{readPreference=primary}, topology description: {type=REPLICA_SET, servers=[{address=ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketReadException: Exception receiving message}, caused by {java.net.SocketException: Connection reset}}, {address=ac-vcutkpt-shard-00-02.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, TagSet{[Tag{name='availabilityZone', value='aps1-az2'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, roundTripTime=262.3 ms, state=CONNECTED}, {address=ac-vcutkpt-shard-00-00.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, TagSet{[Tag{name='availabilityZone', value='aps1-az1'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, roundTripTime=265.8 ms, state=CONNECTED}].
+2026-04-21T12:46:29.885+05:30  INFO 24300 --- [cluster-ClusterId{value='69e718748bb98f7b937fe93b', description='SmartCampusPAF'}-ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017, type=REPLICA_SET_PRIMARY, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=25, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=6468675100, minRoundTripTimeNanos=0, setName='atlas-1ck7g4-shard-0', canonicalAddress=ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017, hosts=[ac-vcutkpt-shard-00-00.t6kbznv.mongodb.net:27017, ac-vcutkpt-shard-00-02.t6kbznv.mongodb.net:27017, ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017], passives=[], arbiters=[], primary='ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017', tagSet=TagSet{[Tag{name='availabilityZone', value='aps1-az3'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=7fffffff00000000000000af, setVersion=56, topologyVersion=TopologyVersion{processId=69cec132f191687a6ed8f2f7, counter=7}, lastWriteDate=Tue Apr 21 12:46:30 IST 2026, lastUpdateTimeNanos=145255058408600}
+2026-04-21T12:46:29.886+05:30  INFO 24300 --- [cluster-ClusterId{value='69e718748bb98f7b937fe93b', description='SmartCampusPAF'}-ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017] org.mongodb.driver.cluster               : Discovered replica set primary ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017 with max election id 7fffffff00000000000000af and max set version 56
+2026-04-21T12:46:30.441+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:46:30.526+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:46:30.540+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:46:30.704+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:46:30.706+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:46:30.718+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:46:30.879+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:46:30.880+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:46:31.028+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:46:34.001+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:46:34.081+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:46:38.224+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:46:38.228+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:46:38.300+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:46:44.058+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:46:44.065+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:46:44.142+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:46:48.431+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:46:48.436+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:46:48.523+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:46:54.021+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:46:54.025+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:46:54.114+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:46:58.655+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:46:58.659+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:46:58.731+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:52:41.047+05:30  INFO 24300 --- [cluster-ClusterId{value='69e718748bb98f7b937fe93b', description='SmartCampusPAF'}-ac-vcutkpt-shard-00-00.t6kbznv.mongodb.net:27017] org.mongodb.driver.cluster               : Exception in monitor thread while connecting to server ac-vcutkpt-shard-00-00.t6kbznv.mongodb.net:27017
+
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.createReadTimeoutException(InternalStreamConnection.java:819) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:807) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:857) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:517) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:469) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitor.doHeartbeat(DefaultServerMonitor.java:311) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitor.lookupServerDescription(DefaultServerMonitor.java:262) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitor.run(DefaultServerMonitor.java:203) ~[mongodb-driver-core-5.6.4.jar:na]
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/sun.nio.ch.NioSocketImpl.timedRead(NioSocketImpl.java:277) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:302) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:354) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:798) ~[na:na]
+	at java.base/java.net.Socket$SocketInputStream.implRead(Socket.java:974) ~[na:na]
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:964) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:489) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:483) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(SSLSocketInputRecord.java:70) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.readApplicationRecord(SSLSocketImpl.java:1461) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:1068) ~[na:na]
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:182) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:824) ~[mongodb-driver-core-5.6.4.jar:na]
+	... 5 common frames omitted
+
+2026-04-21T12:52:41.047+05:30  INFO 24300 --- [cluster-ClusterId{value='69e718748bb98f7b937fe93b', description='SmartCampusPAF'}-ac-vcutkpt-shard-00-02.t6kbznv.mongodb.net:27017] org.mongodb.driver.cluster               : Exception in monitor thread while connecting to server ac-vcutkpt-shard-00-02.t6kbznv.mongodb.net:27017
+
+com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
+	at com.mongodb.internal.connection.InternalStreamConnection.createReadTimeoutException(InternalStreamConnection.java:819) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:807) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:857) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:517) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:469) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitor.doHeartbeat(DefaultServerMonitor.java:311) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitor.lookupServerDescription(DefaultServerMonitor.java:262) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitor.run(DefaultServerMonitor.java:203) ~[mongodb-driver-core-5.6.4.jar:na]
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/sun.nio.ch.NioSocketImpl.timedRead(NioSocketImpl.java:277) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:302) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:354) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:798) ~[na:na]
+	at java.base/java.net.Socket$SocketInputStream.implRead(Socket.java:974) ~[na:na]
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:964) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:489) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:483) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(SSLSocketInputRecord.java:70) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.readApplicationRecord(SSLSocketImpl.java:1461) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:1068) ~[na:na]
+	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:182) ~[mongodb-driver-core-5.6.4.jar:na]
+	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:824) ~[mongodb-driver-core-5.6.4.jar:na]
+	... 5 common frames omitted
+
+2026-04-21T12:52:41.434+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:52:41.446+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:52:41.632+05:30  INFO 24300 --- [http-nio-8080-exec-4] org.mongodb.driver.cluster               : Waiting for server to become available for operation find with ID 8205. Remaining time: 29999 ms. Selector: ReadPreferenceServerSelector{readPreference=primary}, topology description: {type=REPLICA_SET, servers=[{address=ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketReadException: Exception receiving message}, caused by {java.net.SocketException: Connection reset}}, {address=ac-vcutkpt-shard-00-02.t6kbznv.mongodb.net:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message}, caused by {java.net.SocketTimeoutException: Read timed out}}, {address=ac-vcutkpt-shard-00-00.t6kbznv.mongodb.net:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message}, caused by {java.net.SocketTimeoutException: Read timed out}}].
+2026-04-21T12:52:41.975+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:52:41.978+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:52:41.979+05:30  INFO 24300 --- [http-nio-8080-exec-8] org.mongodb.driver.cluster               : Waiting for server to become available for operation find with ID 8206. Remaining time: 29999 ms. Selector: ReadPreferenceServerSelector{readPreference=primary}, topology description: {type=REPLICA_SET, servers=[{address=ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketReadException: Exception receiving message}, caused by {java.net.SocketException: Connection reset}}, {address=ac-vcutkpt-shard-00-02.t6kbznv.mongodb.net:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message}, caused by {java.net.SocketTimeoutException: Read timed out}}, {address=ac-vcutkpt-shard-00-00.t6kbznv.mongodb.net:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message}, caused by {java.net.SocketTimeoutException: Read timed out}}].
+2026-04-21T12:52:42.089+05:30  INFO 24300 --- [cluster-ClusterId{value='69e718748bb98f7b937fe93b', description='SmartCampusPAF'}-ac-vcutkpt-shard-00-00.t6kbznv.mongodb.net:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=ac-vcutkpt-shard-00-00.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=25, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=400842300, minRoundTripTimeNanos=0, setName='atlas-1ck7g4-shard-0', canonicalAddress=ac-vcutkpt-shard-00-00.t6kbznv.mongodb.net:27017, hosts=[ac-vcutkpt-shard-00-00.t6kbznv.mongodb.net:27017, ac-vcutkpt-shard-00-02.t6kbznv.mongodb.net:27017, ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017], passives=[], arbiters=[], primary='ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017', tagSet=TagSet{[Tag{name='availabilityZone', value='aps1-az1'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=null, setVersion=56, topologyVersion=TopologyVersion{processId=69cebeff9d208d7200f61d71, counter=5}, lastWriteDate=Tue Apr 21 12:52:43 IST 2026, lastUpdateTimeNanos=145627262630400}
+2026-04-21T12:52:42.091+05:30  INFO 24300 --- [cluster-ClusterId{value='69e718748bb98f7b937fe93b', description='SmartCampusPAF'}-ac-vcutkpt-shard-00-02.t6kbznv.mongodb.net:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=ac-vcutkpt-shard-00-02.t6kbznv.mongodb.net:27017, type=REPLICA_SET_SECONDARY, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=25, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=383089600, minRoundTripTimeNanos=0, setName='atlas-1ck7g4-shard-0', canonicalAddress=ac-vcutkpt-shard-00-02.t6kbznv.mongodb.net:27017, hosts=[ac-vcutkpt-shard-00-00.t6kbznv.mongodb.net:27017, ac-vcutkpt-shard-00-02.t6kbznv.mongodb.net:27017, ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017], passives=[], arbiters=[], primary='ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017', tagSet=TagSet{[Tag{name='availabilityZone', value='aps1-az2'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=null, setVersion=56, topologyVersion=TopologyVersion{processId=69cec42adcfe9c89fe684ada, counter=4}, lastWriteDate=Tue Apr 21 12:52:43 IST 2026, lastUpdateTimeNanos=145627264667400}
+2026-04-21T12:52:43.066+05:30  INFO 24300 --- [cluster-ClusterId{value='69e718748bb98f7b937fe93b', description='SmartCampusPAF'}-ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017, type=REPLICA_SET_PRIMARY, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=25, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=351925500, minRoundTripTimeNanos=0, setName='atlas-1ck7g4-shard-0', canonicalAddress=ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017, hosts=[ac-vcutkpt-shard-00-00.t6kbznv.mongodb.net:27017, ac-vcutkpt-shard-00-02.t6kbznv.mongodb.net:27017, ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017], passives=[], arbiters=[], primary='ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017', tagSet=TagSet{[Tag{name='availabilityZone', value='aps1-az3'}, Tag{name='cacheState', value='READY'}, Tag{name='diskState', value='READY'}, Tag{name='nodeType', value='ELECTABLE'}, Tag{name='provider', value='AWS'}, Tag{name='region', value='AP_SOUTH_1'}, Tag{name='workloadType', value='OPERATIONAL'}]}, electionId=7fffffff00000000000000af, setVersion=56, topologyVersion=TopologyVersion{processId=69cec132f191687a6ed8f2f7, counter=7}, lastWriteDate=Tue Apr 21 12:52:44 IST 2026, lastUpdateTimeNanos=145628239828000}
+2026-04-21T12:52:43.067+05:30  INFO 24300 --- [cluster-ClusterId{value='69e718748bb98f7b937fe93b', description='SmartCampusPAF'}-ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017] org.mongodb.driver.cluster               : Discovered replica set primary ac-vcutkpt-shard-00-01.t6kbznv.mongodb.net:27017 with max election id 7fffffff00000000000000af and max set version 56
+2026-04-21T12:52:43.879+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:52:43.879+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:52:51.177+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:52:51.190+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:52:51.284+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:52:52.148+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:52:52.156+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:52:52.232+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:53:01.152+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:53:01.156+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:53:01.232+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:53:02.308+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:53:02.316+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:53:02.402+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:53:11.156+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:53:11.167+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:53:11.256+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:53:12.408+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:53:12.414+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:53:12.492+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:53:21.156+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:53:21.167+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:53:21.258+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:53:22.579+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:53:22.583+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:53:22.652+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:53:31.165+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:53:31.169+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:53:31.256+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:53:32.700+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:53:32.703+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:53:32.786+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:53:41.166+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:53:41.422+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:53:41.518+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:53:42.816+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:53:42.821+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:53:42.896+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:53:51.198+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:53:51.208+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:53:51.305+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:53:52.966+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:53:52.969+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:53:53.040+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:54:01.236+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:01.242+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:03.130+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:54:03.134+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:54:05.618+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:06.948+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:54:11.253+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:11.263+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:11.526+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:13.337+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:54:13.340+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:54:13.413+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:54:13.427+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:13.428+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:13.428+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:13.680+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:14.229+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:14.289+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:23.440+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:23.445+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:23.515+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:23.586+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:54:23.590+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:54:23.666+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:54:29.727+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/69e72617dc81dba1dbcd2eec/read
+2026-04-21T12:54:29.730+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing PUT /api/notifications/69e72617dc81dba1dbcd2eec/read
+2026-04-21T12:54:29.855+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured PUT /api/notifications/69e72617dc81dba1dbcd2eec/read
+2026-04-21T12:54:30.154+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:30.158+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:30.226+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:33.482+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:33.566+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:33.716+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:54:33.725+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:54:33.793+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:54:43.517+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:43.525+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:43.617+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:43.894+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:54:43.903+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:54:44.048+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:54:53.894+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:54:53.899+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:54:53.985+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7ced9d071e065c2f27f3
+2026-04-21T12:54:54.507+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:54.512+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:54.594+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:55.509+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/auth/me
+2026-04-21T12:54:55.509+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/auth/me
+2026-04-21T12:54:55.513+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+2026-04-21T12:54:55.513+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/auth/me
+2026-04-21T12:54:55.605+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+2026-04-21T12:54:55.605+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/auth/me
+2026-04-21T12:54:55.698+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:55.700+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources/69e33ea8baedbfc514108d3d
+2026-04-21T12:54:55.701+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources/69e33ea8baedbfc514108d3d
+2026-04-21T12:54:55.709+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/resources/69e33ea8baedbfc514108d3d
+2026-04-21T12:54:55.709+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/resources/69e33ea8baedbfc514108d3d
+2026-04-21T12:54:55.713+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:55.768+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:54:55.780+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/resources/69e33ea8baedbfc514108d3d
+2026-04-21T12:54:55.780+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/resources/69e33ea8baedbfc514108d3d
+2026-04-21T12:54:56.384+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:04.638+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:04.647+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:04.753+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:05.717+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:05.795+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:14.767+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:14.776+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:14.866+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:15.735+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:15.816+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:20.379+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources
+2026-04-21T12:55:20.379+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:20.379+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources
+2026-04-21T12:55:20.385+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:20.385+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/resources
+2026-04-21T12:55:20.385+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/resources
+2026-04-21T12:55:20.469+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/resources
+2026-04-21T12:55:20.473+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/resources
+2026-04-21T12:55:20.476+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:24.948+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:25.038+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:30.382+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:30.387+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:30.480+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:35.161+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:35.250+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:40.576+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:40.582+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:40.683+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:45.292+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:45.376+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:50.416+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:50.426+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:50.516+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:51.565+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:51.571+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources/69e33ea8baedbfc514108d3d
+2026-04-21T12:55:51.571+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources/69e33ea8baedbfc514108d3d
+2026-04-21T12:55:51.576+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/resources/69e33ea8baedbfc514108d3d
+2026-04-21T12:55:51.576+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/resources/69e33ea8baedbfc514108d3d
+2026-04-21T12:55:51.633+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:51.643+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/resources/69e33ea8baedbfc514108d3d
+2026-04-21T12:55:51.648+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/resources/69e33ea8baedbfc514108d3d
+2026-04-21T12:55:55.534+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:55.541+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:55:55.625+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:01.695+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:01.705+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:01.798+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:03.026+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:03.032+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources
+2026-04-21T12:56:03.032+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources
+2026-04-21T12:56:03.039+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/resources
+2026-04-21T12:56:03.039+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/resources
+2026-04-21T12:56:03.126+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:03.157+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/resources
+2026-04-21T12:56:03.157+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/resources
+2026-04-21T12:56:05.761+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:05.842+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:13.146+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:13.150+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:13.246+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:15.869+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:15.939+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:23.142+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:23.146+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:23.240+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:26.032+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:26.116+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:33.165+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:33.171+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:33.256+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:36.171+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:36.246+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:43.162+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:43.167+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:43.275+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:46.383+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:46.455+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:53.180+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:53.185+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:53.276+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:56.534+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:56:56.626+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:03.191+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:03.198+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:03.296+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:06.666+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:06.752+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:13.197+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:13.202+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:13.296+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:16.873+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:16.982+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:19.208+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/tickets
+2026-04-21T12:57:19.208+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/tickets
+2026-04-21T12:57:19.208+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:19.216+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/tickets
+2026-04-21T12:57:19.216+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:19.216+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/tickets
+2026-04-21T12:57:19.306+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/tickets
+2026-04-21T12:57:19.317+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:19.317+05:30 DEBUG 24300 --- [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/tickets
+2026-04-21T12:57:22.153+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:22.165+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources
+2026-04-21T12:57:22.167+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/resources
+2026-04-21T12:57:22.172+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/resources
+2026-04-21T12:57:22.172+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/resources
+2026-04-21T12:57:22.293+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:22.312+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/resources
+2026-04-21T12:57:23.789+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/resources
+2026-04-21T12:57:27.037+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:27.042+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:27.159+05:30 DEBUG 24300 --- [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:32.172+05:30 DEBUG 24300 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:32.176+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:32.266+05:30 DEBUG 24300 --- [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:37.129+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:37.219+05:30 DEBUG 24300 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:42.743+05:30 DEBUG 24300 --- [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:42.746+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:42.819+05:30 DEBUG 24300 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:50.836+05:30 DEBUG 24300 --- [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:50.844+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:50.924+05:30 DEBUG 24300 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:53.066+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69dc7fc29d071e065c2f27f4
+2026-04-21T12:57:53.135+05:30 DEBUG 24300 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69dc7fc29d071e065c2f27f4
