@@ -193,15 +193,30 @@ const ManageBookings = () => {
                                                 }} style={{ background: 'rgba(239, 68, 68, 0.05)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.1)', padding: '10px 20px', borderRadius: '30px', cursor: 'pointer', fontWeight: '800', fontSize: '13px' }}>Reject</button>
                                             </div>
                                         ) : (
-                                            <span style={{
-                                                fontWeight: '800', fontSize: '11px', padding: '6px 14px', borderRadius: '30px', letterSpacing: '0.5px',
-                                                backgroundColor: b.status === 'APPROVED' ? 'rgba(16, 185, 129, 0.1)' : b.status === 'CHECKED_IN' ? 'rgba(37, 99, 235, 0.1)' : 'rgba(239, 68, 68, 0.1)',
-                                                color: b.status === 'APPROVED' ? '#10b981' : b.status === 'CHECKED_IN' ? '#2563EB' : '#ef4444',
-                                                border: `1px solid ${b.status === 'APPROVED' ? 'rgba(16, 185, 129, 0.2)' : b.status === 'CHECKED_IN' ? 'rgba(37,99,235,0.2)' : 'rgba(239, 68, 68, 0.2)'}`,
-                                                textTransform: 'uppercase'
-                                            }}>
-                                                {b.status.replace('_', ' ')}
-                                            </span>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                                <span style={{
+                                                    fontWeight: '800', fontSize: '11px', padding: '6px 14px', borderRadius: '30px', letterSpacing: '0.5px',
+                                                    backgroundColor: b.status === 'APPROVED' ? 'rgba(16, 185, 129, 0.1)' : b.status === 'CHECKED_IN' ? 'rgba(37, 99, 235, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+                                                    color: b.status === 'APPROVED' ? '#10b981' : b.status === 'CHECKED_IN' ? '#2563EB' : '#ef4444',
+                                                    border: `1px solid ${b.status === 'APPROVED' ? 'rgba(16, 185, 129, 0.2)' : b.status === 'CHECKED_IN' ? 'rgba(37,99,235,0.2)' : 'rgba(239, 68, 68, 0.2)'}`,
+                                                    textTransform: 'uppercase'
+                                                }}>
+                                                    {b.status.replace('_', ' ')}
+                                                </span>
+                                                {b.status === 'APPROVED' && (!b.approvedAt || new Date() <= new Date(new Date(b.approvedAt).getTime() + 2 * 24 * 60 * 60 * 1000)) && (
+                                                    <button 
+                                                        onClick={() => {
+                                                            const reason = prompt('Provide cancellation reason:');
+                                                            if (reason) updateStatus(b.id, 'CANCELLED', reason);
+                                                        }}
+                                                        style={{ background: 'white', color: '#ef4444', border: '1px solid #ef4444', padding: '6px 12px', borderRadius: '30px', cursor: 'pointer', fontWeight: '700', fontSize: '11px', transition: 'all 0.2s' }}
+                                                        onMouseOver={e => { e.currentTarget.style.background = '#ef4444'; e.currentTarget.style.color = 'white'; }}
+                                                        onMouseOut={e => { e.currentTarget.style.background = 'white'; e.currentTarget.style.color = '#ef4444'; }}
+                                                    >
+                                                        Cancel
+                                                    </button>
+                                                )}
+                                            </div>
                                         )}
                                     </td>
                                 </tr>

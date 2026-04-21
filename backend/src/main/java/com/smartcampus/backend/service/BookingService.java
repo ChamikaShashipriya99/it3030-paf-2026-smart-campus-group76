@@ -80,18 +80,28 @@ public class BookingService {
             if (!overlapping.isEmpty()) {
                 throw new RuntimeException("Time conflict occurred. Another booking is already approved.");
             }
+            booking.setApprovedAt(LocalDateTime.now());
+        }
+
+        if (status == BookingStatus.CANCELLED) {
+            if (booking.getStatus() != BookingStatus.APPROVED) {
+                throw new RuntimeException("Only approved bookings can be cancelled.");
+            }
+            if (booking.getApprovedAt() != null && LocalDateTime.now().isAfter(booking.getApprovedAt().plusDays(2))) {
+                throw new RuntimeException("Bookings can only be cancelled within 2 days of being approved.");
+            }
         }
 
         booking.setStatus(status);
-        if (status == BookingStatus.REJECTED && reason != null) {
+        if ((status == BookingStatus.REJECTED || status == BookingStatus.CANCELLED) && reason != null) {
             booking.setRejectionReason(reason);
         }
 
         Booking saved = bookingRepository.save(booking);
 
-        if (status == BookingStatus.APPROVED || status == BookingStatus.REJECTED) {
+        if (status == BookingStatus.APPROVED || status == BookingStatus.REJECTED || status == BookingStatus.CANCELLED) {
             String msg = "Your booking for " + booking.getResource().getName() + " was " + status + ".";
-            if (status == BookingStatus.REJECTED && reason != null) {
+            if ((status == BookingStatus.REJECTED || status == BookingStatus.CANCELLED) && reason != null) {
                 msg += " Reason: " + reason;
             }
             notificationService.createNotification(booking.getUser().getId(), msg,

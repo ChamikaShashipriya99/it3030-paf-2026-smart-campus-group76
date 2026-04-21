@@ -37,6 +37,8 @@ public class Booking {
 
     private int expectedAttendees;
 
+    private LocalDateTime approvedAt;
+
     public Booking() {}
 
     public String getId() { return id; }
@@ -57,4 +59,6 @@ public class Booking {
     public void setRejectionReason(String rejectionReason) { this.rejectionReason = rejectionReason; }
     public int getExpectedAttendees() { return expectedAttendees; }
     public void setExpectedAttendees(int expectedAttendees) { this.expectedAttendees = expectedAttendees; }
+    public LocalDateTime getApprovedAt() { return approvedAt; }
+    public void setApprovedAt(LocalDateTime approvedAt) { this.approvedAt = approvedAt; }
 }
