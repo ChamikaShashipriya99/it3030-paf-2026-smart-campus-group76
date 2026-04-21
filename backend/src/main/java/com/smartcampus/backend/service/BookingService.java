@@ -122,4 +122,56 @@ public class BookingService {
                 "Security: Successful QR Check-in for " + booking.getResource().getName(), "SUCCESS");
         return bookingRepository.save(booking);
     }
+
+    @Transactional
+    public Booking updateBookingDetails(String bookingId, LocalDateTime newStart, LocalDateTime newEnd,
+            String newPurpose, int newExpectedAttendees) {
+        Booking booking = bookingRepository.findById(bookingId)
+                .orElseThrow(() -> new RuntimeException("Booking not found"));
+
+        if (booking.getStatus() != BookingStatus.PENDING) {
+            throw new RuntimeException("Only pending bookings can be updated.");
+        }
+
+        if (newEnd.isBefore(newStart) || newEnd.isEqual(newStart)) {
+            throw new RuntimeException("End time must be after start time.");
+        }
+
+        // Check for overlap with approved bookings for the same resource
+        List<Booking> overlapping = bookingRepository
+                .findByResourceIdAndStatusAndStartTimeLessThanAndEndTimeGreaterThan(
+                        booking.getResource().getId(), BookingStatus.APPROVED, newEnd, newStart);
+        if (!overlapping.isEmpty()) {
+            throw new RuntimeException("Resource is already booked for the specified time range.");
+        }
+
+        booking.setStartTime(newStart);
+        booking.setEndTime(newEnd);
+        booking.setPurpose(newPurpose);
+        booking.setExpectedAttendees(newExpectedAttendees);
+
+        Booking saved = bookingRepository.save(booking);
+
+        notificationService.notifyUsersByRole(Role.ROLE_ADMIN,
+                "Booking updated for " + booking.getResource().getName() + " by " + booking.getUser().getId(), "INFO");
+
+        return saved;
+    }
+
+    public void deleteBooking(String bookingId) {
+        Booking booking = bookingRepository.findById(bookingId)
+                .orElseThrow(() -> new RuntimeException("Booking not found"));
+
+        if (booking.getStatus() != BookingStatus.PENDING) {
+            throw new RuntimeException("Only pending bookings can be deleted.");
+        }
+
+        String resourceName = booking.getResource().getName();
+        String userId = booking.getUser().getId();
+
+        bookingRepository.deleteById(bookingId);
+
+        notificationService.notifyUsersByRole(Role.ROLE_ADMIN,
+                "Booking for " + resourceName + " was deleted by " + userId, "WARNING");
+    }
 }

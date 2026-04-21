@@ -73,4 +73,33 @@ public class BookingController {
             return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));
         }
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateBooking(@PathVariable String id, @RequestBody Map<String, Object> payload) {
+        try {
+            LocalDateTime start = LocalDateTime.parse((String) payload.get("startTime"));
+            LocalDateTime end = LocalDateTime.parse((String) payload.get("endTime"));
+            String purpose = (String) payload.get("purpose");
+            int expectedAttendees = payload.get("expectedAttendees") != null ? ((Number) payload.get("expectedAttendees")).intValue() : 0;
+
+            if (purpose == null || purpose.isBlank()) {
+                return ResponseEntity.badRequest().body(Map.of("message", "Purpose is required"));
+            }
+
+            Booking updated = bookingService.updateBookingDetails(id, start, end, purpose, expectedAttendees);
+            return ResponseEntity.ok(updated);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteBooking(@PathVariable String id) {
+        try {
+            bookingService.deleteBooking(id);
+            return ResponseEntity.ok(Map.of("message", "Booking deleted successfully"));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));
+        }
+    }
 }
