@@ -261,39 +261,38 @@ const Catalogue = () => {
             </div>
 
             {showAddForm && (
-                <div className="premium-card" style={{ padding: '50px', marginBottom: '50px', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '24px', background: 'linear-gradient(145deg, #0f172a 0%, #1e293b 100%)', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.4)' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
+                <div className="premium-glass-panel form-enter-active" style={{ padding: '50px', marginBottom: '50px' }}>
+                    <div className="form-content-relative" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
                         <div>
-                            <h3 style={{ margin: 0, fontSize: '28px', color: '#ffffff', letterSpacing: '-1px' }}>
+                            <h3 className="navy-text" style={{ margin: 0, fontSize: '28px', letterSpacing: '-1px' }}>
                                 {isEditing ? 'Modify Asset Details' : 'Register New University Asset'}
                             </h3>
-                            <p style={{ color: '#94a3b8', margin: '8px 0 0 0', fontSize: '15px' }}>Fill out the specification details for campus-wide availability.</p>
+                            <p className="navy-text-muted" style={{ margin: '8px 0 0 0', fontSize: '15px' }}>Fill out the specification details for campus-wide availability.</p>
                         </div>
-                        <button type="button" onClick={() => {setShowAddForm(false); setErrors({});}} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', width: '44px', height: '44px', borderRadius: '50%', cursor: 'pointer', color: '#cbd5e1', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }} onMouseOver={e => {e.currentTarget.style.background = 'rgba(239, 68, 68, 0.2)'; e.currentTarget.style.color = '#ef4444'; e.currentTarget.style.transform = 'rotate(90deg)';}} onMouseOut={e => {e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.color = '#cbd5e1'; e.currentTarget.style.transform = 'rotate(0deg)';}}>
+                        <button type="button" onClick={() => {setShowAddForm(false); setErrors({});}} style={{ background: 'rgba(255, 255, 255, 0.5)', border: '1px solid #e2e8f0', width: '44px', height: '44px', borderRadius: '50%', cursor: 'pointer', color: '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }} onMouseOver={e => {e.currentTarget.style.background = 'rgba(239, 68, 68, 0.1)'; e.currentTarget.style.color = '#ef4444'; e.currentTarget.style.transform = 'rotate(90deg)'; e.currentTarget.style.borderColor = 'rgba(239, 68, 68, 0.2)';}} onMouseOut={e => {e.currentTarget.style.background = 'rgba(255, 255, 255, 0.5)'; e.currentTarget.style.color = '#475569'; e.currentTarget.style.transform = 'rotate(0deg)'; e.currentTarget.style.borderColor = '#e2e8f0';}}>
                             <Plus size={24} style={{ transform: 'rotate(45deg)', transition: 'transform 0.2s' }} />
                         </button>
                     </div>
 
-                    <form onSubmit={handleAdd} style={{ display: 'flex', flexDirection: 'column', gap: '35px' }}>
+                    <form className="form-content-relative" onSubmit={handleAdd} style={{ display: 'flex', flexDirection: 'column', gap: '35px' }}>
                         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '25px' }}>
                             <div>
-                                <label className="form-label" style={{ color: '#94a3b8' }}>Official Asset Name</label>
+                                <label className="form-label-navy">Official Asset Name</label>
                                 <input placeholder="e.g. Quantum Computing Lab - Sector 7" value={newRes.name}
-                                    className={`premium-input ${errors.name && touched.name ? 'input-error' : ''}`}
+                                    className={`baby-blue-input ${errors.name && touched.name ? 'input-error' : ''}`}
                                     onChange={e => handleChange('name', e.target.value)}
-                                    onBlur={() => handleBlur('name')}
-                                    style={{ background: 'rgba(255,255,255,0.05)', color: 'white', border: errors.name && touched.name ? '2px solid #ef4444' : '1px solid rgba(255,255,255,0.1)' }} />
+                                    onBlur={() => handleBlur('name')} />
                                 {errors.name && touched.name && <span style={{ color: '#ef4444', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '8px', fontWeight: '600' }}><AlertCircle size={14} /> {errors.name}</span>}
                             </div>
                             <div>
-                                <label className="form-label" style={{ color: '#94a3b8' }}>Classification</label>
+                                <label className="form-label-navy">Classification</label>
                                 <div style={{ position: 'relative' }}>
-                                    <select value={newRes.type} className="premium-input" onChange={e => handleChange('type', e.target.value)}
-                                        style={{ background: 'rgba(255,255,255,0.05)', color: 'white', border: '1px solid rgba(255,255,255,0.1)', appearance: 'none' }}>
-                                        <option value="LECTURE_HALL" style={{ color: '#000' }}>Lecture Hall</option>
-                                        <option value="LAB" style={{ color: '#000' }}>Laboratory</option>
-                                        <option value="MEETING_ROOM" style={{ color: '#000' }}>Meeting Room</option>
-                                        <option value="EQUIPMENT" style={{ color: '#000' }}>Specialized Equipment</option>
+                                    <select value={newRes.type} className="baby-blue-input" onChange={e => handleChange('type', e.target.value)}
+                                        style={{ appearance: 'none' }}>
+                                        <option value="LECTURE_HALL">Lecture Hall</option>
+                                        <option value="LAB">Laboratory</option>
+                                        <option value="MEETING_ROOM">Meeting Room</option>
+                                        <option value="EQUIPMENT">Specialized Equipment</option>
                                     </select>
                                 </div>
                             </div>
@@ -301,18 +300,17 @@ const Catalogue = () => {
 
                         <div className="form-grid">
                             <div>
-                                <label className="form-label" style={{ color: '#94a3b8' }}><MapPin size={14} style={{ marginRight: '6px', verticalAlign: 'text-bottom' }} /> Location / Zone</label>
+                                <label className="form-label-navy"><MapPin size={14} style={{ marginRight: '6px', verticalAlign: 'text-bottom' }} /> Location / Zone</label>
                                 <input placeholder="e.g. Engineering Block B, Level 4" value={newRes.location}
-                                    className={`premium-input ${errors.location && touched.location ? 'input-error' : ''}`}
+                                    className={`baby-blue-input ${errors.location && touched.location ? 'input-error' : ''}`}
                                     onChange={e => handleChange('location', e.target.value)}
-                                    onBlur={() => handleBlur('location')}
-                                    style={{ background: 'rgba(255,255,255,0.05)', color: 'white', border: errors.location && touched.location ? '2px solid #ef4444' : '1px solid rgba(255,255,255,0.1)' }} />
+                                    onBlur={() => handleBlur('location')} />
                                 {errors.location && touched.location && <span style={{ color: '#ef4444', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '8px', fontWeight: '600' }}><AlertCircle size={14} /> {errors.location}</span>}
                             </div>
                             <div>
-                                <label className="form-label" style={{ color: '#94a3b8' }}><Users size={14} style={{ marginRight: '6px', verticalAlign: 'text-bottom' }} /> Occupancy Capacity</label>
+                                <label className="form-label-navy"><Users size={14} style={{ marginRight: '6px', verticalAlign: 'text-bottom' }} /> Occupancy Capacity</label>
                                 <input type="number" min="1" value={newRes.capacity === 0 ? '' : newRes.capacity}
-                                    className={`premium-input ${errors.capacity && touched.capacity ? 'input-error' : ''}`}
+                                    className={`baby-blue-input ${errors.capacity && touched.capacity ? 'input-error' : ''}`}
                                     onChange={e => {
                                         const val = e.target.value;
                                         if (val === '' || /^\d+$/.test(val)) {
@@ -330,52 +328,49 @@ const Catalogue = () => {
                                             e.preventDefault();
                                         }
                                     }}
-                                    onBlur={() => handleBlur('capacity')}
-                                    style={{ background: 'rgba(255,255,255,0.05)', color: 'white', border: errors.capacity && touched.capacity ? '2px solid #ef4444' : '1px solid rgba(255,255,255,0.1)' }} />
+                                    onBlur={() => handleBlur('capacity')} />
                                 {errors.capacity && touched.capacity && <span style={{ color: '#ef4444', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '8px', fontWeight: '600' }}><AlertCircle size={14} /> {errors.capacity}</span>}
                             </div>
                             <div>
-                                <label className="form-label" style={{ color: '#94a3b8' }}><Settings size={14} style={{ marginRight: '6px', verticalAlign: 'text-bottom' }} /> System Status</label>
-                                <select value={newRes.status} className="premium-input" onChange={e => handleChange('status', e.target.value)}
-                                    style={{ background: 'rgba(255,255,255,0.05)', color: 'white', border: '1px solid rgba(255,255,255,0.1)', appearance: 'none' }}>
-                                    <option value="ACTIVE" style={{ color: '#000' }}>OPERATIONAL</option>
-                                    <option value="MAINTENANCE" style={{ color: '#000' }}>UNDER MAINTENANCE</option>
-                                    <option value="INACTIVE" style={{ color: '#000' }}>DECOMMISSIONED</option>
+                                <label className="form-label-navy"><Settings size={14} style={{ marginRight: '6px', verticalAlign: 'text-bottom' }} /> System Status</label>
+                                <select value={newRes.status} className="baby-blue-input" onChange={e => handleChange('status', e.target.value)}
+                                    style={{ appearance: 'none' }}>
+                                    <option value="ACTIVE">OPERATIONAL</option>
+                                    <option value="MAINTENANCE">UNDER MAINTENANCE</option>
+                                    <option value="INACTIVE">DECOMMISSIONED</option>
                                 </select>
                             </div>
                         </div>
 
-                        <div className="form-grid" style={{ background: 'rgba(255, 255, 255, 0.03)', padding: '30px', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                        <div className="form-grid form-section-bg">
                             <div>
-                                <label className="form-label" style={{ color: '#94a3b8' }}><Clock size={14} style={{ marginRight: '6px', verticalAlign: 'text-bottom' }} /> Opening Hours</label>
+                                <label className="form-label-navy"><Clock size={14} style={{ marginRight: '6px', verticalAlign: 'text-bottom' }} /> Opening Hours</label>
                                 <input type="time" value={newRes.startTime}
-                                    className={`premium-input ${errors.startTime && touched.startTime ? 'input-error' : ''}`}
+                                    className={`baby-blue-input ${errors.startTime && touched.startTime ? 'input-error' : ''}`}
                                     onChange={e => handleChange('startTime', e.target.value)}
-                                    onBlur={() => handleBlur('startTime')}
-                                    style={{ background: 'rgba(0,0,0,0.2)', color: 'white', border: errors.startTime && touched.startTime ? '2px solid #ef4444' : '1px solid rgba(255,255,255,0.1)', colorScheme: 'dark' }} />
+                                    onBlur={() => handleBlur('startTime')} />
                                 {errors.startTime && touched.startTime && <span style={{ color: '#ef4444', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '8px', fontWeight: '600' }}><AlertCircle size={14} /> {errors.startTime}</span>}
                             </div>
                             <div>
-                                <label className="form-label" style={{ color: '#94a3b8' }}><Clock size={14} style={{ marginRight: '6px', verticalAlign: 'text-bottom' }} /> Closing Hours</label>
+                                <label className="form-label-navy"><Clock size={14} style={{ marginRight: '6px', verticalAlign: 'text-bottom' }} /> Closing Hours</label>
                                 <input type="time" value={newRes.endTime}
-                                    className={`premium-input ${errors.endTime && touched.endTime ? 'input-error' : ''}`}
+                                    className={`baby-blue-input ${errors.endTime && touched.endTime ? 'input-error' : ''}`}
                                     onChange={e => handleChange('endTime', e.target.value)}
-                                    onBlur={() => handleBlur('endTime')}
-                                    style={{ background: 'rgba(0,0,0,0.2)', color: 'white', border: errors.endTime && touched.endTime ? '2px solid #ef4444' : '1px solid rgba(255,255,255,0.1)', colorScheme: 'dark' }} />
+                                    onBlur={() => handleBlur('endTime')} />
                                 {errors.endTime && touched.endTime && <span style={{ color: '#ef4444', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '8px', fontWeight: '600' }}><AlertCircle size={14} /> {errors.endTime}</span>}
                             </div>
                             <div>
-                                <label className="form-label" style={{ color: '#94a3b8' }}>Digital Cover Image</label>
+                                <label className="form-label-navy">Digital Cover Image</label>
                                 <input type="file" accept="image/*" onChange={e => setResImage(e.target.files[0])}
-                                    className="premium-input" style={{ padding: '12px', background: 'rgba(0,0,0,0.2)', border: '1px solid rgba(255,255,255,0.1)', color: '#94a3b8' }} />
+                                    className="baby-blue-input" style={{ padding: '13px', background: 'white' }} />
                             </div>
                         </div>
 
                         <div style={{ display: 'flex', gap: '20px', marginTop: '15px' }}>
-                            <button type="submit" style={{ flex: 2, padding: '18px', background: 'var(--primary)', color: 'white', border: 'none', borderRadius: '16px', cursor: 'pointer', fontSize: '16px', fontWeight: '800', boxShadow: '0 12px 24px rgba(37, 99, 235, 0.4)', transition: 'transform 0.2s, box-shadow 0.2s' }} onMouseOver={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 32px rgba(37, 99, 235, 0.5)'; }} onMouseOut={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 12px 24px rgba(37, 99, 235, 0.4)'; }}>
+                            <button type="submit" className="btn-primary-glow" style={{ flex: 2, padding: '18px' }}>
                                 {isEditing ? 'Commit Structural Changes' : 'Initialize Asset Deployment'}
                             </button>
-                            <button type="button" onClick={() => {setShowAddForm(false); setErrors({}); setTouched({});}} style={{ flex: 1, padding: '18px', background: 'rgba(255,255,255,0.05)', color: '#e2e8f0', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', cursor: 'pointer', fontSize: '16px', fontWeight: '800', transition: 'all 0.2s' }} onMouseOver={e => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'; e.currentTarget.style.transform = 'translateY(-2px)'; }} onMouseOut={e => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'; e.currentTarget.style.transform = 'translateY(0)'; }}>
+                            <button type="button" className="btn-secondary-soft" onClick={() => {setShowAddForm(false); setErrors({}); setTouched({});}} style={{ flex: 1, padding: '18px' }}>
                                 Discard
                             </button>
                         </div>
