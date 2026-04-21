@@ -159,9 +159,9 @@ const BookResource = () => {
 
                         <div style={{ display: 'flex', gap: '20px', paddingTop: '10px' }}>
                             <button type="submit" style={{
-                                flex: 1, padding: '20px', background: 'var(--primary)', color: 'white',
+                                flex: 1, padding: '20px', background: 'linear-gradient(135deg, #10B981, #059669)', color: 'white',
                                 border: 'none', borderRadius: '20px', cursor: 'pointer', fontSize: '18px',
-                                fontWeight: '900', boxShadow: '0 15px 30px rgba(37, 99, 235, 0.2)',
+                                fontWeight: '900', boxShadow: '0 15px 30px rgba(16, 185, 129, 0.3)',
                                 transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                                 display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px'
                             }}
