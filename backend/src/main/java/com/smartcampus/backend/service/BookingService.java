@@ -35,7 +35,7 @@ public class BookingService {
 
     @Transactional
     public Booking createBookingRequest(String userId, String resourceId, LocalDateTime start, LocalDateTime end,
-            String purpose) {
+            String purpose, int expectedAttendees) {
         // Validation for overlap against existing APPROVED bookings
         List<Booking> overlapping = bookingRepository
                 .findByResourceIdAndStatusAndStartTimeLessThanAndEndTimeGreaterThan(
@@ -55,6 +55,7 @@ public class BookingService {
         booking.setStartTime(start);
         booking.setEndTime(end);
         booking.setPurpose(purpose);
+        booking.setExpectedAttendees(expectedAttendees);
         booking.setStatus(BookingStatus.PENDING);
 
         Booking saved = bookingRepository.save(booking);

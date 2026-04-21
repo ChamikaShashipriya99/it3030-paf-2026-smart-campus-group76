@@ -35,6 +35,8 @@ public class Booking {
 
     private String rejectionReason;
 
+    private int expectedAttendees;
+
     public Booking() {}
 
     public String getId() { return id; }
@@ -53,4 +55,6 @@ public class Booking {
     public void setStatus(BookingStatus status) { this.status = status; }
     public String getRejectionReason() { return rejectionReason; }
     public void setRejectionReason(String rejectionReason) { this.rejectionReason = rejectionReason; }
+    public int getExpectedAttendees() { return expectedAttendees; }
+    public void setExpectedAttendees(int expectedAttendees) { this.expectedAttendees = expectedAttendees; }
 }
