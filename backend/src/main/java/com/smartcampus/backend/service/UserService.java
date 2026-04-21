@@ -29,4 +29,11 @@ public class UserService {
         user.setRole(newRole);
         return userRepository.save(user);
     }
+
+    public void deleteUser(String userId) {
+        if (!userRepository.existsById(userId)) {
+            throw new RuntimeException("User not found");
+        }
+        userRepository.deleteById(userId);
+    }
 }
