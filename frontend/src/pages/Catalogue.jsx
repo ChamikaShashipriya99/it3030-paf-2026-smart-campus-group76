@@ -22,8 +22,11 @@ import {
     Tag,
     ShieldCheck,
     Image,
-    Rocket
+    Rocket,
+    Download
 } from 'lucide-react';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 const Catalogue = () => {
     const { user } = useContext(AuthContext);
@@ -159,6 +162,46 @@ const Catalogue = () => {
         }
     };
 
+    const handleDownloadPDF = () => {
+        const doc = new jsPDF();
+        doc.setFontSize(22);
+        doc.setTextColor(15, 23, 42); 
+        doc.text("University Facilities & Assets Report", 14, 22);
+        
+        doc.setFontSize(11);
+        doc.setTextColor(100);
+        doc.text(`Generated on: ${new Date().toLocaleString()}`, 14, 32);
+        
+        const tableColumn = ["Asset Name", "Classification", "Location", "Capacity", "Hours", "Status"];
+        const tableRows = [];
+
+        resources.forEach(res => {
+            const rowData = [
+                res.name,
+                res.type.replace('_', ' '),
+                res.location,
+                `${res.capacity} pax`,
+                `${res.startTime} - ${res.endTime}`,
+                res.status
+            ];
+            tableRows.push(rowData);
+        });
+
+        autoTable(doc, {
+            head: [tableColumn],
+            body: tableRows,
+            startY: 42,
+            theme: 'grid',
+            headStyles: { fillColor: [37, 99, 235], textColor: [255, 255, 255], fontStyle: 'bold' },
+            bodyStyles: { textColor: [50, 50, 50] },
+            alternateRowStyles: { fillColor: [240, 249, 255] },
+            styles: { font: 'helvetica', fontSize: 10, cellPadding: 6 },
+        });
+
+        doc.save("Facilities_Assets_Report.pdf");
+        showToast("PDF report generated successfully!");
+    };
+
     return (
         <div className="container" style={{ padding: '60px 0', position: 'relative' }}>
             {toast && (
@@ -178,23 +221,35 @@ const Catalogue = () => {
                     <h2 className="page-title">Facilities & Assets</h2>
                     <p className="page-subtitle">Premium university resources available for booking and research.</p>
                 </div>
-                {user?.role === 'ROLE_ADMIN' && (
-                    <button onClick={() => {
-                        setShowAddForm(!showAddForm);
-                        if (showAddForm) { setIsEditing(false); setEditId(null); setNewRes({ name: '', type: 'LECTURE_HALL', capacity: 0, location: '', status: 'ACTIVE', startTime: '08:00', endTime: '18:00' }); setErrors({}); setTouched({}); }
-                    }} style={{
-                        padding: '12px 24px', background: 'var(--primary)', color: 'white',
-                        border: 'none', borderRadius: '14px', cursor: 'pointer', fontWeight: '800',
-                        fontSize: '14px', display: 'flex', alignItems: 'center', gap: '8px',
-                        boxShadow: '0 8px 20px rgba(59, 130, 246, 0.3)', transition: 'all 0.2s'
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                    <button onClick={handleDownloadPDF} style={{
+                        padding: '12px 24px', background: 'rgba(37, 99, 235, 0.1)', color: 'var(--primary)',
+                        border: '1px solid rgba(37, 99, 235, 0.2)', borderRadius: '14px', cursor: 'pointer', fontWeight: '800',
+                        fontSize: '14px', display: 'flex', alignItems: 'center', gap: '8px', transition: 'all 0.2s'
                     }}
-                        onMouseOver={e => e.target.style.transform = 'translateY(-2px)'}
-                        onMouseOut={e => e.target.style.transform = 'translateY(0)'}
+                        onMouseOver={e => { e.currentTarget.style.background = 'rgba(37, 99, 235, 0.15)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                        onMouseOut={e => { e.currentTarget.style.background = 'rgba(37, 99, 235, 0.1)'; e.currentTarget.style.transform = 'translateY(0)'; }}
                     >
-                        {showAddForm ? <CheckCircle2 size={18} /> : <Plus size={18} />}
-                        {showAddForm ? 'Close Editor' : 'Register New Asset'}
+                        <Download size={18} /> Download PDF
                     </button>
-                )}
+                    {user?.role === 'ROLE_ADMIN' && (
+                        <button onClick={() => {
+                            setShowAddForm(!showAddForm);
+                            if (showAddForm) { setIsEditing(false); setEditId(null); setNewRes({ name: '', type: 'LECTURE_HALL', capacity: 0, location: '', status: 'ACTIVE', startTime: '08:00', endTime: '18:00' }); setErrors({}); setTouched({}); }
+                        }} style={{
+                            padding: '12px 24px', background: 'var(--primary)', color: 'white',
+                            border: 'none', borderRadius: '14px', cursor: 'pointer', fontWeight: '800',
+                            fontSize: '14px', display: 'flex', alignItems: 'center', gap: '8px',
+                            boxShadow: '0 8px 20px rgba(59, 130, 246, 0.3)', transition: 'all 0.2s'
+                        }}
+                            onMouseOver={e => e.target.style.transform = 'translateY(-2px)'}
+                            onMouseOut={e => e.target.style.transform = 'translateY(0)'}
+                        >
+                            {showAddForm ? <CheckCircle2 size={18} /> : <Plus size={18} />}
+                            {showAddForm ? 'Close Editor' : 'Register New Asset'}
+                        </button>
+                    )}
+                </div>
             </div>
 
             <div style={{
