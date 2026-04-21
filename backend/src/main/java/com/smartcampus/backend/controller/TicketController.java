@@ -138,4 +138,9 @@ public class TicketController {
     public ResponseEntity<?> getAttachments(@PathVariable String id) {
         return ResponseEntity.ok(ticketService.getAttachments(id));
     }
+
+    @GetMapping("/analytics")
+    public ResponseEntity<?> getOperationalAnalytics() {
+        return ResponseEntity.ok(ticketService.getOperationalAnalytics());
+    }
 }
