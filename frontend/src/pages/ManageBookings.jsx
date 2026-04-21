@@ -13,7 +13,8 @@ import {
     Filter,
     FileText,
     QrCode,
-    Scan
+    Scan,
+    Users
 } from 'lucide-react';
 
 const ManageBookings = () => {
@@ -129,6 +130,7 @@ const ManageBookings = () => {
                                 <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Log Ref</th>
                                 <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Asset & Purpose</th>
                                 <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Requester</th>
+                                <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Expected Attendees</th>
                                 <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Scheduled Timeline</th>
                                 <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Decision</th>
                             </tr>
@@ -140,6 +142,7 @@ const ManageBookings = () => {
                                         <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '60px', height: '16px' }}></div></td>
                                         <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '200px', height: '18px', marginBottom: '8px' }}></div><div className="skeleton" style={{ width: '140px', height: '12px' }}></div></td>
                                         <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '160px', height: '16px' }}></div></td>
+                                        <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '60px', height: '18px' }}></div></td>
                                         <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '140px', height: '30px' }}></div></td>
                                         <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '120px', height: '40px', borderRadius: '12px' }}></div></td>
                                     </tr>
@@ -162,6 +165,12 @@ const ManageBookings = () => {
                                             </div>
                                         </div>
                                     </td>
+                                    <td style={{ padding: '25px 24px' }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-main)', fontWeight: '700', fontSize: '15px' }}>
+                                            <Users size={14} color="#8B5CF6" />
+                                            {b.expectedAttendees || 0} <span style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: '500' }}>Pax</span>
+                                        </div>
+                                    </td>
                                     <td style={{ padding: '25px 24px', fontSize: '13px' }}>
                                         <div style={{ color: 'var(--text-main)', fontWeight: '600' }}>{new Date(b.startTime).toLocaleDateString([], { month: 'short', day: 'numeric' })}</div>
                                         <div style={{ color: 'var(--text-muted)', marginTop: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -171,11 +180,11 @@ const ManageBookings = () => {
                                     <td style={{ padding: '25px 24px' }}>
                                         {b.status === 'PENDING' ? (
                                             <div style={{ display: 'flex', gap: '10px' }}>
-                                                <button onClick={() => updateStatus(b.id, 'APPROVED')} style={{ background: 'var(--primary)', color: 'white', padding: '10px 16px', border: 'none', borderRadius: '12px', cursor: 'pointer', fontWeight: '800', fontSize: '13px', boxShadow: '0 8px 16px rgba(59, 130, 246, 0.2)', transition: 'all 0.2s' }} onMouseOver={e => e.target.style.transform = 'translateY(-1px)'} onMouseOut={e => e.target.style.transform = 'translateY(0)'}>Approve</button>
+                                                <button onClick={() => updateStatus(b.id, 'APPROVED')} style={{ background: 'var(--primary)', color: 'white', padding: '10px 20px', border: 'none', borderRadius: '30px', cursor: 'pointer', fontWeight: '800', fontSize: '13px', boxShadow: '0 8px 16px rgba(59, 130, 246, 0.2)', transition: 'all 0.2s' }} onMouseOver={e => e.target.style.transform = 'translateY(-1px)'} onMouseOut={e => e.target.style.transform = 'translateY(0)'}>Approve</button>
                                                 <button onClick={() => {
                                                     const reason = prompt('Provide rejection reason:');
                                                     if (reason) updateStatus(b.id, 'REJECTED', reason);
-                                                }} style={{ background: 'rgba(239, 68, 68, 0.05)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.1)', padding: '10px 16px', borderRadius: '12px', cursor: 'pointer', fontWeight: '800', fontSize: '13px' }}>Reject</button>
+                                                }} style={{ background: 'rgba(239, 68, 68, 0.05)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.1)', padding: '10px 20px', borderRadius: '30px', cursor: 'pointer', fontWeight: '800', fontSize: '13px' }}>Reject</button>
                                             </div>
                                         ) : (
                                             <span style={{
