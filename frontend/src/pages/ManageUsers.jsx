@@ -141,7 +141,31 @@ const ManageUsers = () => {
                                     <td style={{ padding: '25px 30px' }}>
                                         <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
                                             <div style={{ position: 'relative' }}>
-                                                <div style={{ width: '45px', height: '45px', borderRadius: '15px', background: 'linear-gradient(135deg, var(--border) 0%, rgba(255,255,255,0) 100%)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '900', fontSize: '16px', border: '1px solid var(--border)' }}>{u.name.charAt(0)}</div>
+                                                <div style={{ 
+                                                    width: '45px', height: '45px', borderRadius: '15px', 
+                                                    background: 'linear-gradient(135deg, var(--border) 0%, rgba(255,255,255,0) 100%)', 
+                                                    color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', 
+                                                    fontWeight: '900', fontSize: '16px', border: '1px solid var(--border)',
+                                                    overflow: 'hidden'
+                                                }}>
+                                                    {u.imageUrl && u.imageUrl.trim() !== '' ? (
+                                                        <img 
+                                                            src={u.imageUrl} 
+                                                            alt={u.name} 
+                                                            style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                                                            onError={(e) => {
+                                                                e.target.style.display = 'none';
+                                                                e.target.nextSibling.style.display = 'flex';
+                                                            }}
+                                                        />
+                                                    ) : null}
+                                                    <div style={{ 
+                                                        display: u.imageUrl && u.imageUrl.trim() !== '' ? 'none' : 'flex',
+                                                        width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center'
+                                                    }}>
+                                                        {u.name.charAt(0)}
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div>
                                                 <div style={{ fontWeight: '800', color: 'var(--text-main)', fontSize: '15px' }}>{u.name}</div>
