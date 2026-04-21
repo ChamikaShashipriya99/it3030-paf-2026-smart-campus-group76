@@ -240,6 +240,27 @@ h4 {
     animation: formSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.95) translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.animate-pop-in {
+    opacity: 0; /* Hidden by default until animation runs */
+    animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+
 .premium-glass-panel {
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(24px);

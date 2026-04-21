@@ -275,7 +275,7 @@ const Catalogue = () => {
                     </div>
 
                     <form className="form-content-relative" onSubmit={handleAdd} style={{ display: 'flex', flexDirection: 'column', gap: '35px' }}>
-                        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '25px' }}>
+                        <div className="animate-pop-in delay-100" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '25px' }}>
                             <div>
                                 <label className="form-label-navy">Official Asset Name</label>
                                 <input placeholder="e.g. Quantum Computing Lab - Sector 7" value={newRes.name}
@@ -298,7 +298,7 @@ const Catalogue = () => {
                             </div>
                         </div>
 
-                        <div className="form-grid">
+                        <div className="form-grid animate-pop-in delay-200">
                             <div>
                                 <label className="form-label-navy"><MapPin size={14} style={{ marginRight: '6px', verticalAlign: 'text-bottom' }} /> Location / Zone</label>
                                 <input placeholder="e.g. Engineering Block B, Level 4" value={newRes.location}
@@ -342,7 +342,7 @@ const Catalogue = () => {
                             </div>
                         </div>
 
-                        <div className="form-grid form-section-bg">
+                        <div className="form-grid form-section-bg animate-pop-in delay-300">
                             <div>
                                 <label className="form-label-navy"><Clock size={14} style={{ marginRight: '6px', verticalAlign: 'text-bottom' }} /> Opening Hours</label>
                                 <input type="time" value={newRes.startTime}
@@ -366,7 +366,7 @@ const Catalogue = () => {
                             </div>
                         </div>
 
-                        <div style={{ display: 'flex', gap: '20px', marginTop: '15px' }}>
+                        <div className="animate-pop-in delay-400" style={{ display: 'flex', gap: '20px', marginTop: '15px' }}>
                             <button type="submit" className="btn-primary-glow" style={{ flex: 2, padding: '18px' }}>
                                 {isEditing ? 'Commit Structural Changes' : 'Initialize Asset Deployment'}
                             </button>
