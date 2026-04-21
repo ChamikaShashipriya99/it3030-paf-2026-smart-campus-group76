@@ -18,7 +18,8 @@ import {
     Users,
     Pencil,
     Save,
-    Loader2
+    Loader2,
+    Trash2
 } from 'lucide-react';
 
 const MyBookings = () => {
@@ -32,6 +33,10 @@ const MyBookings = () => {
     const [editBooking, setEditBooking] = useState(null);
     const [editForm, setEditForm] = useState({ purpose: '', startTime: '', endTime: '', expectedAttendees: 0 });
     const [updating, setUpdating] = useState(false);
+
+    // Delete confirmation state
+    const [deleteConfirm, setDeleteConfirm] = useState(null);
+    const [deleting, setDeleting] = useState(false);
 
     const fetchMyBookings = () => {
         if (!user) return;
@@ -105,6 +110,23 @@ const MyBookings = () => {
             showNotification(msg, 'error');
         } finally {
             setUpdating(false);
+        }
+    };
+
+    // Handle delete
+    const handleDelete = async () => {
+        if (!deleteConfirm) return;
+        setDeleting(true);
+        try {
+            await api.delete(`/bookings/${deleteConfirm.id}`);
+            showNotification('Booking deleted successfully!', 'success');
+            setDeleteConfirm(null);
+            fetchMyBookings();
+        } catch (err) {
+            const msg = err.response?.data?.message || 'Failed to delete booking';
+            showNotification(msg, 'error');
+        } finally {
+            setDeleting(false);
         }
     };
 
@@ -392,21 +414,38 @@ const MyBookings = () => {
                                     </td>
                                     <td style={{ padding: '25px 24px' }}>
                                         {b.status === 'PENDING' && (
-                                            <button
-                                                onClick={() => openEditModal(b)}
-                                                style={{
-                                                    padding: '8px 16px', borderRadius: '10px', border: 'none',
-                                                    background: 'linear-gradient(135deg, #60A5FA, #8B5CF6)', color: 'white',
-                                                    fontSize: '12px', fontWeight: '800', cursor: 'pointer',
-                                                    display: 'flex', alignItems: 'center', gap: '6px',
-                                                    transition: 'all 0.2s', boxShadow: '0 3px 10px rgba(96, 165, 250, 0.3)',
-                                                    whiteSpace: 'nowrap'
-                                                }}
-                                                onMouseOver={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 5px 15px rgba(96, 165, 250, 0.4)'; }}
-                                                onMouseOut={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 3px 10px rgba(96, 165, 250, 0.3)'; }}
-                                            >
-                                                <Pencil size={12} /> Update
-                                            </button>
+                                            <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                                                <button
+                                                    onClick={() => openEditModal(b)}
+                                                    style={{
+                                                        padding: '8px 16px', borderRadius: '10px', border: 'none',
+                                                        background: 'linear-gradient(135deg, #60A5FA, #8B5CF6)', color: 'white',
+                                                        fontSize: '12px', fontWeight: '800', cursor: 'pointer',
+                                                        display: 'flex', alignItems: 'center', gap: '6px',
+                                                        transition: 'all 0.2s', boxShadow: '0 3px 10px rgba(96, 165, 250, 0.3)',
+                                                        whiteSpace: 'nowrap'
+                                                    }}
+                                                    onMouseOver={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 5px 15px rgba(96, 165, 250, 0.4)'; }}
+                                                    onMouseOut={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 3px 10px rgba(96, 165, 250, 0.3)'; }}
+                                                >
+                                                    <Pencil size={12} /> Update
+                                                </button>
+                                                <button
+                                                    onClick={() => setDeleteConfirm(b)}
+                                                    style={{
+                                                        padding: '8px 16px', borderRadius: '10px', border: 'none',
+                                                        background: 'linear-gradient(135deg, #EF4444, #DC2626)', color: 'white',
+                                                        fontSize: '12px', fontWeight: '800', cursor: 'pointer',
+                                                        display: 'flex', alignItems: 'center', gap: '6px',
+                                                        transition: 'all 0.2s', boxShadow: '0 3px 10px rgba(239, 68, 68, 0.3)',
+                                                        whiteSpace: 'nowrap'
+                                                    }}
+                                                    onMouseOver={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 5px 15px rgba(239, 68, 68, 0.4)'; }}
+                                                    onMouseOut={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 3px 10px rgba(239, 68, 68, 0.3)'; }}
+                                                >
+                                                    <Trash2 size={12} /> Delete
+                                                </button>
+                                            </div>
                                         )}
                                     </td>
                                 </tr>
@@ -425,6 +464,66 @@ const MyBookings = () => {
                     </div>
                 )}
             </div>
+
+            {/* Delete Confirmation Modal */}
+            {deleteConfirm && (
+                <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.5)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(10px)' }} onClick={() => !deleting && setDeleteConfirm(null)}>
+                    <div style={{
+                        background: 'var(--surface)', padding: '40px', borderRadius: '28px',
+                        boxShadow: '0 25px 60px rgba(0,0,0,0.3)', position: 'relative', maxWidth: '440px', width: '90%',
+                        border: '1px solid var(--border)', animation: 'fadeIn 0.3s ease', textAlign: 'center'
+                    }} onClick={e => e.stopPropagation()}>
+                        <div style={{
+                            width: '64px', height: '64px', borderRadius: '20px',
+                            background: 'rgba(239, 68, 68, 0.1)', display: 'flex',
+                            alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px'
+                        }}>
+                            <Trash2 size={28} color="#EF4444" />
+                        </div>
+                        <h3 style={{ margin: '0 0 10px 0', fontSize: '22px', fontWeight: '900', color: 'var(--text-main)' }}>Delete Booking?</h3>
+                        <p style={{ margin: '0 0 8px 0', fontSize: '14px', color: 'var(--text-muted)', lineHeight: '1.6' }}>
+                            Are you sure you want to delete your booking for
+                        </p>
+                        <p style={{ margin: '0 0 25px 0', fontSize: '16px', fontWeight: '700', color: 'var(--text-main)' }}>
+                            {deleteConfirm.resource?.name || 'this resource'}?
+                        </p>
+                        <p style={{ margin: '0 0 30px 0', fontSize: '12px', color: '#EF4444', background: 'rgba(239,68,68,0.05)', padding: '10px 16px', borderRadius: '10px', fontWeight: '600' }}>
+                            This action cannot be undone.
+                        </p>
+                        <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+                            <button
+                                onClick={() => !deleting && setDeleteConfirm(null)}
+                                disabled={deleting}
+                                style={{
+                                    padding: '14px 28px', borderRadius: '14px', border: '1px solid var(--border)',
+                                    background: 'transparent', color: 'var(--text-muted)', fontSize: '14px',
+                                    fontWeight: '800', cursor: 'pointer', transition: 'all 0.2s'
+                                }}
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                onClick={handleDelete}
+                                disabled={deleting}
+                                style={{
+                                    padding: '14px 28px', borderRadius: '14px', border: 'none',
+                                    background: deleting ? '#9CA3AF' : 'linear-gradient(135deg, #EF4444, #DC2626)',
+                                    color: 'white', fontSize: '14px', fontWeight: '800',
+                                    cursor: deleting ? 'not-allowed' : 'pointer',
+                                    display: 'flex', alignItems: 'center', gap: '8px', transition: 'all 0.2s',
+                                    boxShadow: deleting ? 'none' : '0 4px 15px rgba(239, 68, 68, 0.4)'
+                                }}
+                            >
+                                {deleting ? (
+                                    <><Loader2 size={16} style={{ animation: 'spin 1s linear infinite' }} /> Deleting...</>
+                                ) : (
+                                    <><Trash2 size={16} /> Delete</>  
+                                )}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             {/* Inline keyframes for spinner animation */}
             <style>{`

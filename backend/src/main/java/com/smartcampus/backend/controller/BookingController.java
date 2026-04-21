@@ -92,4 +92,14 @@ public class BookingController {
             return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));
         }
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteBooking(@PathVariable String id) {
+        try {
+            bookingService.deleteBooking(id);
+            return ResponseEntity.ok(Map.of("message", "Booking deleted successfully"));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));
+        }
+    }
 }

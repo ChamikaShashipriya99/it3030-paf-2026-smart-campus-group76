@@ -157,4 +157,21 @@ public class BookingService {
 
         return saved;
     }
+
+    public void deleteBooking(String bookingId) {
+        Booking booking = bookingRepository.findById(bookingId)
+                .orElseThrow(() -> new RuntimeException("Booking not found"));
+
+        if (booking.getStatus() != BookingStatus.PENDING) {
+            throw new RuntimeException("Only pending bookings can be deleted.");
+        }
+
+        String resourceName = booking.getResource().getName();
+        String userId = booking.getUser().getId();
+
+        bookingRepository.deleteById(bookingId);
+
+        notificationService.notifyUsersByRole(Role.ROLE_ADMIN,
+                "Booking for " + resourceName + " was deleted by " + userId, "WARNING");
+    }
 }
