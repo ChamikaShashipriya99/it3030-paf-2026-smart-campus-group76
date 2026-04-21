@@ -163,13 +163,13 @@ h4 {
 .page-title {
     font-size: 40px;
     font-weight: 900;
-    color: #111827;
+    color: var(--primary);
     margin: 0 0 12px 0;
     letter-spacing: -2px;
 }
 
 .page-subtitle {
-    color: var(--text-muted);
+    color: #60A5FA;
     font-size: 18px;
     margin: 0;
 }

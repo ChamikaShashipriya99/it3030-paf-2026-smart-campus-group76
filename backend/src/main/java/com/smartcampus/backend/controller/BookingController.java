@@ -37,6 +37,7 @@ public class BookingController {
             LocalDateTime start = LocalDateTime.parse((String) payload.get("startTime"));
             LocalDateTime end = LocalDateTime.parse((String) payload.get("endTime"));
             String purpose = (String) payload.get("purpose");
+            int expectedAttendees = payload.get("expectedAttendees") != null ? ((Number) payload.get("expectedAttendees")).intValue() : 0;
 
             if (purpose == null || purpose.isBlank()) {
                 return ResponseEntity.badRequest().body(Map.of("message", "Purpose of booking is required"));
@@ -45,7 +46,7 @@ public class BookingController {
                 return ResponseEntity.badRequest().body(Map.of("message", "End time must be after start time"));
             }
 
-            Booking booking = bookingService.createBookingRequest(userId, resourceId, start, end, purpose);
+            Booking booking = bookingService.createBookingRequest(userId, resourceId, start, end, purpose, expectedAttendees);
             return ResponseEntity.ok(booking);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));

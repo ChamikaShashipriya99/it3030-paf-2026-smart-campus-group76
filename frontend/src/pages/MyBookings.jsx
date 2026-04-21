@@ -14,7 +14,8 @@ import {
     ArrowLeftRight,
     QrCode as QrIcon,
     X,
-    ShieldCheck
+    ShieldCheck,
+    Users
 } from 'lucide-react';
 
 const MyBookings = () => {
@@ -118,6 +119,7 @@ const MyBookings = () => {
                             <tr style={{ background: 'rgba(255,255,255,0.02)', borderBottom: '1px solid var(--border)' }}>
                                 <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Asset Details</th>
                                 <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Purpose / Nature</th>
+                                <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Expected Attendees</th>
                                 <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Scheduled Period</th>
                                 <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Current State</th>
                             </tr>
@@ -128,6 +130,7 @@ const MyBookings = () => {
                                     <tr key={i} style={{ borderBottom: '1px solid var(--border)' }}>
                                         <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '180px', height: '20px' }}></div></td>
                                         <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '220px', height: '18px' }}></div></td>
+                                        <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '60px', height: '18px' }}></div></td>
                                         <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '160px', height: '16px' }}></div></td>
                                         <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '100px', height: '28px', borderRadius: '14px' }}></div></td>
                                     </tr>
@@ -145,6 +148,12 @@ const MyBookings = () => {
                                     </td>
                                     <td style={{ padding: '25px 24px', color: 'var(--text-muted)', fontSize: '14px', maxWidth: '300px', lineHeight: '1.5' }}>
                                         {b.purpose}
+                                    </td>
+                                    <td style={{ padding: '25px 24px' }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-main)', fontWeight: '700', fontSize: '15px' }}>
+                                            <Users size={14} color="#8B5CF6" />
+                                            {b.expectedAttendees || 0} <span style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: '500' }}>Pax</span>
+                                        </div>
                                     </td>
                                     <td style={{ padding: '25px 24px', fontSize: '13px' }}>
                                         <div style={{ color: 'var(--text-main)', fontWeight: '600' }}>

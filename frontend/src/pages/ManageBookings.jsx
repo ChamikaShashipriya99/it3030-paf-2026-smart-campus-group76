@@ -13,12 +13,14 @@ import {
     Filter,
     FileText,
     QrCode,
-    Scan
+    Scan,
+    Users
 } from 'lucide-react';
 
 const ManageBookings = () => {
     const [bookings, setBookings] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [searchQuery, setSearchQuery] = useState('');
     const { showNotification } = useContext(NotificationContext);
 
     const fetchBookings = () => {
@@ -118,7 +120,7 @@ const ManageBookings = () => {
                 <div style={{ padding: '24px', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div style={{ position: 'relative', width: '350px' }}>
                         <Search size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
-                        <input type="text" placeholder="Search by requester, facility or ID..." className="premium-input" style={{ padding: '10px 12px 10px 40px', fontSize: '14px' }} />
+                        <input type="text" placeholder="Search by requester, facility or ID..." className="premium-input" style={{ padding: '10px 12px 10px 40px', fontSize: '14px' }} value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
                     </div>
                 </div>
 
@@ -129,6 +131,7 @@ const ManageBookings = () => {
                                 <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Log Ref</th>
                                 <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Asset & Purpose</th>
                                 <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Requester</th>
+                                <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Expected Attendees</th>
                                 <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Scheduled Timeline</th>
                                 <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Decision</th>
                             </tr>
@@ -140,11 +143,17 @@ const ManageBookings = () => {
                                         <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '60px', height: '16px' }}></div></td>
                                         <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '200px', height: '18px', marginBottom: '8px' }}></div><div className="skeleton" style={{ width: '140px', height: '12px' }}></div></td>
                                         <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '160px', height: '16px' }}></div></td>
+                                        <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '60px', height: '18px' }}></div></td>
                                         <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '140px', height: '30px' }}></div></td>
                                         <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '120px', height: '40px', borderRadius: '12px' }}></div></td>
                                     </tr>
                                 ))
-                            ) : bookings.map(b => (
+                            ) : bookings.filter(b => {
+                                const query = searchQuery.toLowerCase();
+                                return (b.resource?.name?.toLowerCase().includes(query)) ||
+                                       (b.user?.name?.toLowerCase().includes(query)) ||
+                                       (b.id?.toLowerCase().includes(query));
+                            }).map(b => (
                                 <tr key={b.id} style={{ borderBottom: '1px solid var(--border)', transition: 'background 0.2s' }} onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.01)'} onMouseOut={e => e.currentTarget.style.background = 'transparent'}>
                                     <td style={{ padding: '25px 24px', color: 'var(--text-muted)', fontWeight: '800', fontSize: '13px' }}>#{b.id.substring(0, 8)}</td>
                                     <td style={{ padding: '25px 24px' }}>
@@ -162,6 +171,12 @@ const ManageBookings = () => {
                                             </div>
                                         </div>
                                     </td>
+                                    <td style={{ padding: '25px 24px' }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-main)', fontWeight: '700', fontSize: '15px' }}>
+                                            <Users size={14} color="#8B5CF6" />
+                                            {b.expectedAttendees || 0} <span style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: '500' }}>Pax</span>
+                                        </div>
+                                    </td>
                                     <td style={{ padding: '25px 24px', fontSize: '13px' }}>
                                         <div style={{ color: 'var(--text-main)', fontWeight: '600' }}>{new Date(b.startTime).toLocaleDateString([], { month: 'short', day: 'numeric' })}</div>
                                         <div style={{ color: 'var(--text-muted)', marginTop: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -171,22 +186,37 @@ const ManageBookings = () => {
                                     <td style={{ padding: '25px 24px' }}>
                                         {b.status === 'PENDING' ? (
                                             <div style={{ display: 'flex', gap: '10px' }}>
-                                                <button onClick={() => updateStatus(b.id, 'APPROVED')} style={{ background: 'var(--primary)', color: 'white', padding: '10px 16px', border: 'none', borderRadius: '12px', cursor: 'pointer', fontWeight: '800', fontSize: '13px', boxShadow: '0 8px 16px rgba(59, 130, 246, 0.2)', transition: 'all 0.2s' }} onMouseOver={e => e.target.style.transform = 'translateY(-1px)'} onMouseOut={e => e.target.style.transform = 'translateY(0)'}>Approve</button>
+                                                <button onClick={() => updateStatus(b.id, 'APPROVED')} style={{ background: 'var(--primary)', color: 'white', padding: '10px 20px', border: 'none', borderRadius: '30px', cursor: 'pointer', fontWeight: '800', fontSize: '13px', boxShadow: '0 8px 16px rgba(59, 130, 246, 0.2)', transition: 'all 0.2s' }} onMouseOver={e => e.target.style.transform = 'translateY(-1px)'} onMouseOut={e => e.target.style.transform = 'translateY(0)'}>Approve</button>
                                                 <button onClick={() => {
                                                     const reason = prompt('Provide rejection reason:');
                                                     if (reason) updateStatus(b.id, 'REJECTED', reason);
-                                                }} style={{ background: 'rgba(239, 68, 68, 0.05)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.1)', padding: '10px 16px', borderRadius: '12px', cursor: 'pointer', fontWeight: '800', fontSize: '13px' }}>Reject</button>
+                                                }} style={{ background: 'rgba(239, 68, 68, 0.05)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.1)', padding: '10px 20px', borderRadius: '30px', cursor: 'pointer', fontWeight: '800', fontSize: '13px' }}>Reject</button>
                                             </div>
                                         ) : (
-                                            <span style={{
-                                                fontWeight: '800', fontSize: '11px', padding: '6px 14px', borderRadius: '30px', letterSpacing: '0.5px',
-                                                backgroundColor: b.status === 'APPROVED' ? 'rgba(16, 185, 129, 0.1)' : b.status === 'CHECKED_IN' ? 'rgba(37, 99, 235, 0.1)' : 'rgba(239, 68, 68, 0.1)',
-                                                color: b.status === 'APPROVED' ? '#10b981' : b.status === 'CHECKED_IN' ? '#2563EB' : '#ef4444',
-                                                border: `1px solid ${b.status === 'APPROVED' ? 'rgba(16, 185, 129, 0.2)' : b.status === 'CHECKED_IN' ? 'rgba(37,99,235,0.2)' : 'rgba(239, 68, 68, 0.2)'}`,
-                                                textTransform: 'uppercase'
-                                            }}>
-                                                {b.status.replace('_', ' ')}
-                                            </span>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                                <span style={{
+                                                    fontWeight: '800', fontSize: '11px', padding: '6px 14px', borderRadius: '30px', letterSpacing: '0.5px',
+                                                    backgroundColor: b.status === 'APPROVED' ? 'rgba(16, 185, 129, 0.1)' : b.status === 'CHECKED_IN' ? 'rgba(37, 99, 235, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+                                                    color: b.status === 'APPROVED' ? '#10b981' : b.status === 'CHECKED_IN' ? '#2563EB' : '#ef4444',
+                                                    border: `1px solid ${b.status === 'APPROVED' ? 'rgba(16, 185, 129, 0.2)' : b.status === 'CHECKED_IN' ? 'rgba(37,99,235,0.2)' : 'rgba(239, 68, 68, 0.2)'}`,
+                                                    textTransform: 'uppercase'
+                                                }}>
+                                                    {b.status.replace('_', ' ')}
+                                                </span>
+                                                {b.status === 'APPROVED' && (!b.approvedAt || new Date() <= new Date(new Date(b.approvedAt).getTime() + 2 * 24 * 60 * 60 * 1000)) && (
+                                                    <button 
+                                                        onClick={() => {
+                                                            const reason = prompt('Provide cancellation reason:');
+                                                            if (reason) updateStatus(b.id, 'CANCELLED', reason);
+                                                        }}
+                                                        style={{ background: 'white', color: '#ef4444', border: '1px solid #ef4444', padding: '6px 12px', borderRadius: '30px', cursor: 'pointer', fontWeight: '700', fontSize: '11px', transition: 'all 0.2s' }}
+                                                        onMouseOver={e => { e.currentTarget.style.background = '#ef4444'; e.currentTarget.style.color = 'white'; }}
+                                                        onMouseOut={e => { e.currentTarget.style.background = 'white'; e.currentTarget.style.color = '#ef4444'; }}
+                                                    >
+                                                        Cancel
+                                                    </button>
+                                                )}
+                                            </div>
                                         )}
                                     </td>
                                 </tr>
@@ -198,6 +228,17 @@ const ManageBookings = () => {
                     <div style={{ textAlign: 'center', padding: '100px 20px', color: 'var(--text-muted)' }}>
                         <FileText size={48} style={{ opacity: 0.2, marginBottom: '20px' }} />
                         <p style={{ fontSize: '16px', fontWeight: '500' }}>The booking registry is currently empty.</p>
+                    </div>
+                )}
+                {!loading && bookings.length > 0 && bookings.filter(b => {
+                    const query = searchQuery.toLowerCase();
+                    return (b.resource?.name?.toLowerCase().includes(query)) ||
+                           (b.user?.name?.toLowerCase().includes(query)) ||
+                           (b.id?.toLowerCase().includes(query));
+                }).length === 0 && (
+                    <div style={{ textAlign: 'center', padding: '100px 20px', color: 'var(--text-muted)' }}>
+                        <Search size={48} style={{ opacity: 0.2, marginBottom: '20px' }} />
+                        <p style={{ fontSize: '16px', fontWeight: '500' }}>No bookings match your search query.</p>
                     </div>
                 )}
             </div>
