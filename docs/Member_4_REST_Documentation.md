@@ -33,31 +33,47 @@ This project follows modern standard practices where no executable scripts are t
 
 ## 2. Member 4: API Endpoint Specification
 
-Member 4 has implemented **7 unique endpoints** across 4 different HTTP methods, exceeding the minimum requirement of 4 endpoints.
+Member 4 has implemented **8 unique endpoints** across 4 different HTTP methods, exceeding the minimum requirement of 4 endpoints.
 
 ### Module: Role & Identity Management
-| Method | Endpoint | Description | Auth Requirement |
-|:---|:---|:---|:---|
-| **GET** | `/api/users` | Fetches the full registry of campus members. | `ROLE_ADMIN` |
-| **PUT** | `/api/users/{id}/role` | Updates a user's system authority (User, Technician, Admin). | `ROLE_ADMIN` |
-| **DELETE** | `/api/users/{id}` | Permanently removes a user identity from the registry. | `ROLE_ADMIN` |
+| Method | Endpoint | Description | Auth Requirement | Source Location |
+|:---|:---|:---|:---|:---|
+| **GET** | `/api/users` | Fetches the full registry of members. | `ROLE_ADMIN` | `UserController.java:L21` |
+| **PUT** | `/api/users/{id}/role` | Updates system authority. | `ROLE_ADMIN` | `UserController.java:L26` |
+| **DELETE** | `/api/users/{id}` | Permanently removes identity. | `ROLE_ADMIN` | `UserController.java:L37` |
 
 ### Module: Real-time Notifications
-| Method | Endpoint | Description | Auth Requirement |
-|:---|:---|:---|:---|
-| **GET** | `/api/notifications/user/{userId}` | Retrieves all alerts for a specific user. | `Authenticated` |
-| **PUT** | `/api/notifications/{id}/read` | Updates a single notification status to "Seen". | `Authenticated` |
-| **PUT** | `/api/notifications/user/{userId}/read-all` | Marks all notifications for a user as "Seen" in bulk. | `Authenticated` |
-| **POST** | `/api/notifications/send` | Programmatically triggers a system alert. | `Authenticated` |
+| Method | Endpoint | Description | Auth Requirement | Source Location |
+|:---|:---|:---|:---|:---|
+| **GET** | `/api/notifications/user/{userId}` | Retrieves all alerts for a user. | `Authenticated` | `NotificationController.java:L19` |
+| **PUT** | `/api/notifications/{id}/read` | Updates status to "Seen". | `Authenticated` | `NotificationController.java:L24` |
+| **PUT** | `/api/notifications/user/{userId}/read-all` | Marks all for user as "Seen". | `Authenticated` | `NotificationController.java:L30` |
+| **POST** | `/api/notifications/send` | Triggers system alert. | `Authenticated` | `NotificationController.java:L36` |
 
 ### Module: OAuth & Security Context
-| Method | Endpoint | Description | Auth Requirement |
-|:---|:---|:---|:---|
-| **GET** | `/api/auth/me` | Fetches the profile of the currently logged-in user. | `Authenticated` |
+| Method | Endpoint | Description | Auth Requirement | Source Location |
+|:---|:---|:---|:---|:---|
+| **GET** | `/api/auth/me` | Fetches the current user profile. | `Authenticated` | `AuthController.java:L22` |
 
 ---
 
-## 3. Implementation Logic
+## 3. Implementation Logic & Innovation
+
+### 3.1 Innovation: Notification Preference Control
+As suggested in the **Optional Innovation** list of the project PDF, Member 4 has integrated a Preference System. 
+*   **Mechanism**: Users can choose to enable/disable specific categories of alerts in their profile.
+*   **API Logic**: The `POST /api/notifications/send` endpoint and the backend `NotificationService` perform lookups against user preference flags before persisting data, reducing notification fatigue.
+
+### 3.2 Robust Profile Integration
+Leveraging the OAuth2 flow, Member 4 implemented a dynamic profile sync that ensures Google avatars are rendered throughout the system (Navbar and Member Registry). This includes a custom `onError` fallback on the frontend to handle expired or private URLs gracefully.
+
+### 3.3 Error Handling & Status Codes
+Member 4's endpoints follow strict HTTP status code compliance:
+*   **200 OK**: For successful data retrieval and state modification.
+*   **201 Created**: For notification generation.
+*   **401 Unauthorized**: When a JWT is missing or invalid.
+*   **403 Forbidden**: When a non-admin attempts to access Member Management.
+*   **404 Not Found**: For targeted resources (users/notifications) that do not exist.
+
 *   **Data Persistence**: All endpoints interact with MongoDB via Spring Data Repositories.
 *   **Security**: Role-Based Access Control (RBAC) is enforced at the controller level to prevent unauthorized access to administrative functions.
-*   **Error Handling**: Returns consistent JSON objects containing error messages and appropriate status codes for failed operations.
