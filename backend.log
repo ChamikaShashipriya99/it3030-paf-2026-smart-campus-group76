@@ -11168,3 +11168,8 @@ Caused by: java.net.UnknownHostException: ac-vcutkpt-shard-00-02.t6kbznv.mongodb
 2026-04-23T16:41:26.379+05:30 DEBUG 20716 --- [http-nio-8080-exec-11] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69e59f932df3dec001baa51b
 2026-04-23T16:41:27.610+05:30 DEBUG 20716 --- [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69e59c582df3dec001baa518
 2026-04-23T16:41:36.087+05:30 DEBUG 20716 --- [http-nio-8080-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69e59c582df3dec001baa518
+2026-04-23T16:41:42.266+05:30 DEBUG 20716 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69e59c582df3dec001baa518
+2026-04-23T16:41:42.376+05:30 DEBUG 20716 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69e59c582df3dec001baa518
+2026-04-23T16:41:46.083+05:30 DEBUG 20716 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/notifications/user/69e59c582df3dec001baa518
+2026-04-23T16:41:46.271+05:30 DEBUG 20716 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/notifications/user/69e59c582df3dec001baa518
+2026-04-23T16:41:46.365+05:30 DEBUG 20716 --- [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/notifications/user/69e59c582df3dec001baa518
