@@ -23,6 +23,11 @@ public class UserController {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
+    @GetMapping("/technicians")
+    public ResponseEntity<List<User>> getTechnicians() {
+        return ResponseEntity.ok(userService.getTechnicians());
+    }
+
     @PutMapping("/{id}/role")
     public ResponseEntity<?> updateUserRole(@PathVariable String id, @RequestBody Map<String, String> payload) {
         try {

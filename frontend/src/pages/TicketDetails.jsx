@@ -21,7 +21,8 @@ import {
     Save,
     ChevronRight,
     Building2,
-    MoreHorizontal
+    MoreHorizontal,
+    Heart
 } from 'lucide-react';
 
 const TicketDetails = () => {
@@ -34,6 +35,7 @@ const TicketDetails = () => {
     const [comments, setComments] = useState([]);
     const [attachments, setAttachments] = useState([]);
     const [newComment, setNewComment] = useState('');
+    const [isFavorite, setIsFavorite] = useState(false);
 
     // Edit state
     const [editingId, setEditingId] = useState(null);
@@ -47,12 +49,29 @@ const TicketDetails = () => {
             setComments(cRes.data);
             const aRes = await api.get(`/tickets/${id}/attachments`);
             setAttachments(aRes.data);
+            
+            const fRes = await api.get(`/tickets/favorites?userId=${user.id}`);
+            setIsFavorite(fRes.data.some(f => f.id === id));
         } catch (err) {
             showNotification('Error loading ticket details', 'error');
         }
-    }, [id, showNotification]);
+    }, [id, showNotification, user.id]);
 
     useEffect(() => { fetchData(); }, [fetchData]);
+
+    const toggleFavorite = async () => {
+        if (user.role !== 'ROLE_TECHNICIAN') {
+            showNotification('Favorites is only available for Technicians', 'error');
+            return;
+        }
+        try {
+            await api.post(`/tickets/${id}/favorite?userId=${user.id}`);
+            setIsFavorite(!isFavorite);
+            showNotification(!isFavorite ? 'Saved to favorites ❤️' : 'Removed from favorites', 'success');
+        } catch (err) {
+            showNotification('Failed to toggle favorite', 'error');
+        }
+    };
 
     const handleAddComment = async (e) => {
         e.preventDefault();
@@ -117,9 +136,37 @@ const TicketDetails = () => {
                         <ArrowLeft size={18} />
                     </button>
                     <div>
-                        <h2 style={{ fontSize: '28px', fontWeight: '900', margin: 0, color: '#111827', letterSpacing: '-1px' }}>
-                            Ticket #{ticket.id.substring(0, 8)}
-                        </h2>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <h2 style={{ fontSize: '28px', fontWeight: '900', margin: 0, color: '#111827', letterSpacing: '-1px' }}>
+                                Ticket #{ticket.id.substring(0, 8)}
+                            </h2>
+                            {user.role === 'ROLE_TECHNICIAN' && (
+                                <button
+                                    onClick={toggleFavorite}
+                                    title={isFavorite ? "Remove from favorites" : "Add to favorites"}
+                                    style={{
+                                        background: 'none',
+                                        border: 'none',
+                                        cursor: 'pointer',
+                                        padding: '4px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        transition: 'transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+                                    }}
+                                    onMouseDown={(e) => (e.currentTarget.style.transform = 'scale(0.8)')}
+                                    onMouseUp={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
+                                    onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+                                >
+                                    <Heart
+                                        size={24}
+                                        fill={isFavorite ? "#ff4d6d" : "transparent"}
+                                        color={isFavorite ? "#ff4d6d" : "#94a3b8"}
+                                        style={{ transition: 'all 0.3s ease' }}
+                                    />
+                                </button>
+                            )}
+                        </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '4px', fontSize: '13px', color: '#6B7280' }}>
                             <span style={{ fontWeight: '800', color: statusStyle.text }}>{ticket.status.replace('_', ' ')}</span>
                             <span style={{ opacity: 0.3 }}>&bull;</span>

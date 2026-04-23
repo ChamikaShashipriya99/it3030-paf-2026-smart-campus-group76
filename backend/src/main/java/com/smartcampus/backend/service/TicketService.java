@@ -87,14 +87,24 @@ public class TicketService {
         User tech = new User();
         tech.setId(technicianId);
         ticket.setTechnician(tech);
-        ticket.setStatus(TicketStatus.IN_PROGRESS);
+        // ticket.setStatus(TicketStatus.IN_PROGRESS); // Removed status change as per requirements
 
         if (ticket.getCreator() != null) {
             notificationService.createNotification(ticket.getCreator().getId(),
-                    "Your ticket #" + ticket.getId() + " has been picked up by a technician.", "INFO");
+                    "Your ticket #" + ticket.getId() + " has been assigned to a technician.", "INFO");
         }
 
         return ticketRepository.save(ticket);
+    }
+
+    public void deleteTicket(String ticketId) {
+        Ticket ticket = ticketRepository.findById(ticketId).orElseThrow(() -> new RuntimeException("Ticket not found"));
+        
+        // Clean up related data first
+        commentRepository.findByTicketIdOrderByCreatedAtAsc(ticketId).forEach(c -> commentRepository.delete(c));
+        attachmentRepository.findByTicketId(ticketId).forEach(a -> attachmentRepository.delete(a));
+        
+        ticketRepository.delete(ticket);
     }
 
     public Ticket updateTicketStatus(String ticketId, TicketStatus status, String resolutionNotes) {

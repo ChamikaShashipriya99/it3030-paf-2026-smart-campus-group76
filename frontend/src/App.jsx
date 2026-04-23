@@ -11,11 +11,14 @@ import BookResource from './pages/BookResource';
 import ManageBookings from './pages/ManageBookings';
 import ManageUsers from './pages/ManageUsers';
 import ReportIssue from './pages/ReportIssue';
+import ReportIssueStandalone from './pages/ReportIssueStandalone';
 import TechnicianDashboard from './pages/TechnicianDashboard';
+import TechnicianAnalyticsDashboard from './pages/TechnicianAnalyticsDashboard';
 import TicketDetails from './pages/TicketDetails';
 import Notifications from './pages/Notifications';
 import MyBookings from './pages/MyBookings';
 import LandingPage from './pages/LandingPage';
+import MyFavorites from './pages/MyFavorites';
 import Navbar from './components/Navbar';
 
 const PrivateRoute = ({ children }) => {
@@ -69,6 +72,11 @@ function App() {
                                         <ReportIssue />
                                     </PrivateRoute>
                                 } />
+                                <Route path="/report-issue" element={
+                                    <PrivateRoute>
+                                        <ReportIssueStandalone />
+                                    </PrivateRoute>
+                                } />
                                 <Route path="/ticket/:id" element={
                                     <PrivateRoute>
                                         <TicketDetails />
@@ -77,6 +85,16 @@ function App() {
                                 <Route path="/technician/desk" element={
                                     <PrivateRoute>
                                         <TechnicianDashboard />
+                                    </PrivateRoute>
+                                } />
+                                <Route path="/technician/analytics" element={
+                                    <PrivateRoute>
+                                        <TechnicianAnalyticsDashboard />
+                                    </PrivateRoute>
+                                } />
+                                <Route path="/favorites" element={
+                                    <PrivateRoute>
+                                        <MyFavorites />
                                     </PrivateRoute>
                                 } />
                                 <Route path="/notifications" element={

@@ -24,13 +24,38 @@ const ReportIssue = () => {
     const [resource, setResource] = useState(null);
     const [formData, setFormData] = useState({ category: 'IT_EQUIPMENT', priority: 'MEDIUM', description: '', contactDetails: '' });
     const [files, setFiles] = useState([]);
+    const [validationError, setValidationError] = useState('');
 
     useEffect(() => {
         api.get(`/resources/${id}`).then(res => setResource(res.data)).catch(err => console.error(err));
     }, [id]);
 
+    const validateContactDetails = (value) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const phoneRegex = /^07[0-9]{8}$/;
+        
+        if (!value.trim()) {
+            return 'Contact details are required.';
+        }
+        
+        if (emailRegex.test(value) || phoneRegex.test(value)) {
+            return '';
+        }
+        
+        return 'Please enter a valid university email or local phone number (e.g., 07XXXXXXXX).';
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
+        const error = validateContactDetails(formData.contactDetails);
+        if (error) {
+            setValidationError(error);
+            showNotification(error, 'error');
+            return;
+        }
+        setValidationError('');
+
         if (!formData.description.trim() || !formData.contactDetails.trim()) {
             showNotification('Please fill in all required fields properly.', 'error');
             return;
@@ -147,9 +172,26 @@ const ReportIssue = () => {
                             <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#111827' }}>
                                 <Phone size={16} color="#EF4444" /> Requester Correspondence
                             </label>
-                            <input required type="text" value={formData.contactDetails} className="premium-input"
-                                placeholder="University email or internal extension number..."
-                                onChange={e => setFormData({ ...formData, contactDetails: e.target.value })} />
+                            <input 
+                                required 
+                                type="text" 
+                                value={formData.contactDetails} 
+                                className={`premium-input ${validationError ? 'input-error' : ''}`}
+                                placeholder="University email or local phone number..."
+                                style={validationError ? { borderColor: '#EF4444' } : {}}
+                                onChange={e => {
+                                    const value = e.target.value;
+                                    setFormData({ ...formData, contactDetails: value });
+                                    if (validationError) {
+                                        setValidationError(validateContactDetails(value));
+                                    }
+                                }} 
+                            />
+                            {validationError && (
+                                <span style={{ color: '#EF4444', fontSize: '12px', fontWeight: '500' }}>
+                                    {validationError}
+                                </span>
+                            )}
                         </div>
 
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
