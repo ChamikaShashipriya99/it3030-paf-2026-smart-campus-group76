@@ -13,6 +13,7 @@ import ManageUsers from './pages/ManageUsers';
 import ReportIssue from './pages/ReportIssue';
 import ReportIssueStandalone from './pages/ReportIssueStandalone';
 import TechnicianDashboard from './pages/TechnicianDashboard';
+import TechnicianAnalyticsDashboard from './pages/TechnicianAnalyticsDashboard';
 import TicketDetails from './pages/TicketDetails';
 import Notifications from './pages/Notifications';
 import MyBookings from './pages/MyBookings';
@@ -83,6 +84,11 @@ function App() {
                                 <Route path="/technician/desk" element={
                                     <PrivateRoute>
                                         <TechnicianDashboard />
+                                    </PrivateRoute>
+                                } />
+                                <Route path="/technician/analytics" element={
+                                    <PrivateRoute>
+                                        <TechnicianAnalyticsDashboard />
                                     </PrivateRoute>
                                 } />
                                 <Route path="/notifications" element={
