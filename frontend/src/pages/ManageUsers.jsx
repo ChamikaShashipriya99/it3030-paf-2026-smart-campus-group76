@@ -12,13 +12,16 @@ import {
     RefreshCw,
     UserCircle,
     HardHat,
-    Lock
+    Lock,
+    Trash2
 } from 'lucide-react';
+import { AuthContext } from '../context/AuthContext';
 
 const ManageUsers = () => {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [filter, setFilter] = useState('');
+    const { user: currentUser } = useContext(AuthContext);
     const { showNotification } = useContext(NotificationContext);
     const { ask } = useConfirm();
 
@@ -53,6 +56,28 @@ const ManageUsers = () => {
             fetchUsers();
         } catch (err) {
             showNotification('Failed to update role', 'error');
+        }
+    };
+
+    const handleDeleteUser = async (u) => {
+        if (currentUser && currentUser.id === u.id) {
+            showNotification("Operation restricted: You cannot delete your own account.", 'error');
+            return;
+        }
+
+        const confirmed = await ask(
+            `Warning: You are about to permanently delete ${u.name}'s identity. This action is irreversible.`,
+            "Confirm Account Deletion"
+        );
+
+        if (!confirmed) return;
+
+        try {
+            await api.delete(`/users/${u.id}`);
+            showNotification('User deleted successfully', 'success');
+            fetchUsers();
+        } catch (err) {
+            showNotification('Failed to delete user', 'error');
         }
     };
 
@@ -103,6 +128,7 @@ const ManageUsers = () => {
                                 <th style={{ padding: '20px 30px', color: 'var(--text-muted)', fontSize: '11px', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1.5px' }}>Member Profile</th>
                                 <th style={{ padding: '20px 30px', color: 'var(--text-muted)', fontSize: '11px', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1.5px' }}>Current Designation</th>
                                 <th style={{ padding: '20px 30px', color: 'var(--text-muted)', fontSize: '11px', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1.5px' }}>Access Delegation</th>
+                                <th style={{ padding: '20px 30px', color: 'var(--text-muted)', fontSize: '11px', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1.5px', textAlign: 'center' }}>Terminate</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -115,7 +141,31 @@ const ManageUsers = () => {
                                     <td style={{ padding: '25px 30px' }}>
                                         <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
                                             <div style={{ position: 'relative' }}>
-                                                <div style={{ width: '45px', height: '45px', borderRadius: '15px', background: 'linear-gradient(135deg, var(--border) 0%, rgba(255,255,255,0) 100%)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '900', fontSize: '16px', border: '1px solid var(--border)' }}>{u.name.charAt(0)}</div>
+                                                <div style={{ 
+                                                    width: '45px', height: '45px', borderRadius: '15px', 
+                                                    background: 'linear-gradient(135deg, var(--border) 0%, rgba(255,255,255,0) 100%)', 
+                                                    color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', 
+                                                    fontWeight: '900', fontSize: '16px', border: '1px solid var(--border)',
+                                                    overflow: 'hidden'
+                                                }}>
+                                                    {u.imageUrl && u.imageUrl.trim() !== '' ? (
+                                                        <img 
+                                                            src={u.imageUrl} 
+                                                            alt={u.name} 
+                                                            style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                                                            onError={(e) => {
+                                                                e.target.style.display = 'none';
+                                                                e.target.nextSibling.style.display = 'flex';
+                                                            }}
+                                                        />
+                                                    ) : null}
+                                                    <div style={{ 
+                                                        display: u.imageUrl && u.imageUrl.trim() !== '' ? 'none' : 'flex',
+                                                        width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center'
+                                                    }}>
+                                                        {u.name.charAt(0)}
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div>
                                                 <div style={{ fontWeight: '800', color: 'var(--text-main)', fontSize: '15px' }}>{u.name}</div>
@@ -155,6 +205,17 @@ const ManageUsers = () => {
                                                 </button>
                                             ))}
                                         </div>
+                                    </td>
+                                    <td style={{ padding: '25px 30px', textAlign: 'center' }}>
+                                        <button 
+                                            onClick={() => handleDeleteUser(u)}
+                                            style={{ 
+                                                background: 'rgba(239, 68, 68, 0.05)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.1)', width: '40px', height: '40px', borderRadius: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto', transition: 'all 0.2s'
+                                            }}
+                                            onMouseOver={e => { e.currentTarget.style.background = '#ef4444'; e.currentTarget.style.color = 'white'; }}
+                                            onMouseOut={e => { e.currentTarget.style.background = 'rgba(239, 68, 68, 0.05)'; e.currentTarget.style.color = '#ef4444'; }}>
+                                            <Trash2 size={18} />
+                                        </button>
                                     </td>
                                 </tr>
                             ))}

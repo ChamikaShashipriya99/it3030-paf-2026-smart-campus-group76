@@ -38,4 +38,15 @@ public class UserController {
             return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));
         }
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable String id, org.springframework.security.core.Authentication auth) {
+        try {
+            String currentUserId = auth.getName(); // Usually contains the sub or username
+            userService.deleteUser(id, currentUserId);
+            return ResponseEntity.ok(Map.of("message", "User deleted successfully"));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));
+        }
+    }
 }

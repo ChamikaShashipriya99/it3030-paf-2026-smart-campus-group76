@@ -35,7 +35,7 @@ public class BookingService {
 
     @Transactional
     public Booking createBookingRequest(String userId, String resourceId, LocalDateTime start, LocalDateTime end,
-            String purpose) {
+            String purpose, int expectedAttendees) {
         // Validation for overlap against existing APPROVED bookings
         List<Booking> overlapping = bookingRepository
                 .findByResourceIdAndStatusAndStartTimeLessThanAndEndTimeGreaterThan(
@@ -55,6 +55,7 @@ public class BookingService {
         booking.setStartTime(start);
         booking.setEndTime(end);
         booking.setPurpose(purpose);
+        booking.setExpectedAttendees(expectedAttendees);
         booking.setStatus(BookingStatus.PENDING);
 
         Booking saved = bookingRepository.save(booking);
@@ -79,18 +80,28 @@ public class BookingService {
             if (!overlapping.isEmpty()) {
                 throw new RuntimeException("Time conflict occurred. Another booking is already approved.");
             }
+            booking.setApprovedAt(LocalDateTime.now());
+        }
+
+        if (status == BookingStatus.CANCELLED) {
+            if (booking.getStatus() != BookingStatus.APPROVED) {
+                throw new RuntimeException("Only approved bookings can be cancelled.");
+            }
+            if (booking.getApprovedAt() != null && LocalDateTime.now().isAfter(booking.getApprovedAt().plusDays(2))) {
+                throw new RuntimeException("Bookings can only be cancelled within 2 days of being approved.");
+            }
         }
 
         booking.setStatus(status);
-        if (status == BookingStatus.REJECTED && reason != null) {
+        if ((status == BookingStatus.REJECTED || status == BookingStatus.CANCELLED) && reason != null) {
             booking.setRejectionReason(reason);
         }
 
         Booking saved = bookingRepository.save(booking);
 
-        if (status == BookingStatus.APPROVED || status == BookingStatus.REJECTED) {
+        if (status == BookingStatus.APPROVED || status == BookingStatus.REJECTED || status == BookingStatus.CANCELLED) {
             String msg = "Your booking for " + booking.getResource().getName() + " was " + status + ".";
-            if (status == BookingStatus.REJECTED && reason != null) {
+            if ((status == BookingStatus.REJECTED || status == BookingStatus.CANCELLED) && reason != null) {
                 msg += " Reason: " + reason;
             }
             notificationService.createNotification(booking.getUser().getId(), msg,
@@ -110,5 +121,57 @@ public class BookingService {
         notificationService.createNotification(booking.getUser().getId(),
                 "Security: Successful QR Check-in for " + booking.getResource().getName(), "SUCCESS");
         return bookingRepository.save(booking);
+    }
+
+    @Transactional
+    public Booking updateBookingDetails(String bookingId, LocalDateTime newStart, LocalDateTime newEnd,
+            String newPurpose, int newExpectedAttendees) {
+        Booking booking = bookingRepository.findById(bookingId)
+                .orElseThrow(() -> new RuntimeException("Booking not found"));
+
+        if (booking.getStatus() != BookingStatus.PENDING) {
+            throw new RuntimeException("Only pending bookings can be updated.");
+        }
+
+        if (newEnd.isBefore(newStart) || newEnd.isEqual(newStart)) {
+            throw new RuntimeException("End time must be after start time.");
+        }
+
+        // Check for overlap with approved bookings for the same resource
+        List<Booking> overlapping = bookingRepository
+                .findByResourceIdAndStatusAndStartTimeLessThanAndEndTimeGreaterThan(
+                        booking.getResource().getId(), BookingStatus.APPROVED, newEnd, newStart);
+        if (!overlapping.isEmpty()) {
+            throw new RuntimeException("Resource is already booked for the specified time range.");
+        }
+
+        booking.setStartTime(newStart);
+        booking.setEndTime(newEnd);
+        booking.setPurpose(newPurpose);
+        booking.setExpectedAttendees(newExpectedAttendees);
+
+        Booking saved = bookingRepository.save(booking);
+
+        notificationService.notifyUsersByRole(Role.ROLE_ADMIN,
+                "Booking updated for " + booking.getResource().getName() + " by " + booking.getUser().getId(), "INFO");
+
+        return saved;
+    }
+
+    public void deleteBooking(String bookingId) {
+        Booking booking = bookingRepository.findById(bookingId)
+                .orElseThrow(() -> new RuntimeException("Booking not found"));
+
+        if (booking.getStatus() != BookingStatus.PENDING) {
+            throw new RuntimeException("Only pending bookings can be deleted.");
+        }
+
+        String resourceName = booking.getResource().getName();
+        String userId = booking.getUser().getId();
+
+        bookingRepository.deleteById(bookingId);
+
+        notificationService.notifyUsersByRole(Role.ROLE_ADMIN,
+                "Booking for " + resourceName + " was deleted by " + userId, "WARNING");
     }
 }

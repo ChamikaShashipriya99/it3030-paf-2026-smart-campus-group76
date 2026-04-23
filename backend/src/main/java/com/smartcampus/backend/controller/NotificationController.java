@@ -26,6 +26,12 @@ public class NotificationController {
         service.markAsRead(id);
         return ResponseEntity.ok().build();
     }
+
+    @PutMapping("/user/{userId}/read-all")
+    public ResponseEntity<?> markAllAsRead(@PathVariable String userId) {
+        service.markAllAsRead(userId);
+        return ResponseEntity.ok().build();
+    }
     
     @PostMapping("/send")
     public ResponseEntity<?> sendNotification(@RequestParam String userId, @RequestParam String message, @RequestParam String type) {

@@ -25,6 +25,8 @@ const TechnicianDashboard = () => {
     const [technicianList, setTechnicianList] = useState([]);
     const [loading, setLoading] = useState(true);
     const [favoriteIds, setFavoriteIds] = useState([]);
+    const [technicians, setTechnicians] = useState([]);
+    const [activeAssignId, setActiveAssignId] = useState(null);
 
     const fetchTickets = () => {
         setLoading(true);
@@ -67,7 +69,29 @@ const TechnicianDashboard = () => {
         fetchTickets();
         fetchTechnicians();
         fetchFavorites();
-    }, []);
+        if (user?.role === 'ROLE_ADMIN') {
+            api.get('/users').then(res => {
+                setTechnicians(res.data.filter(u => u.role === 'ROLE_TECHNICIAN'));
+            }).catch(err => console.error(err));
+        }
+    }, [user]);
+
+    const assignToMe = async (ticketId) => {
+        try {
+            await api.put(`/tickets/${ticketId}/assign/${user.id}`);
+            fetchTickets();
+            showNotification('Ticket assigned to you.', 'success');
+        } catch (err) { showNotification('Assignment Failed', 'error'); }
+    };
+
+    const assignToTech = async (ticketId, techId) => {
+        try {
+            await api.put(`/tickets/${ticketId}/assign/${techId}`);
+            fetchTickets();
+            setActiveAssignId(null);
+            showNotification('Technician assigned successfully.', 'success');
+        } catch (err) { showNotification('Assignment Failed', 'error'); }
+    };
 
     const handleAssign = async (ticketId, techId) => {
         if (!techId) return;
@@ -249,7 +273,7 @@ const TechnicianDashboard = () => {
                                         </div>
                                     </td>
                                     <td style={{ padding: '25px 24px' }}>
-                                        <div style={{ fontWeight: '700', color: 'var(--text-main)', fontSize: '15px' }}>{t.resource.name}</div>
+                                        <div style={{ fontWeight: '700', color: 'var(--text-main)', fontSize: '15px' }}>{t.resource?.name || 'Unknown Resource'}</div>
                                         <div style={{ color: 'var(--text-muted)', fontSize: '13px', marginTop: '6px', opacity: 0.8 }}>{t.category} — {t.description.substring(0, 40)}...</div>
                                     </td>
                                     <td style={{ padding: '25px 24px' }}>
@@ -277,8 +301,8 @@ const TechnicianDashboard = () => {
                                     <td style={{ padding: '25px 24px', color: 'var(--text-main)', fontSize: '14px', fontWeight: '600' }}>
                                         {t.technician ? (
                                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                                <div style={{ width: '24px', height: '24px', borderRadius: '6px', background: 'var(--border)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', fontWeight: '900' }}>{t.technician.name.charAt(0)}</div>
-                                                {t.technician.name}
+                                                <div style={{ width: '24px', height: '24px', borderRadius: '6px', background: 'var(--border)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', fontWeight: '900' }}>{t.technician?.name?.charAt(0)}</div>
+                                                {t.technician?.name}
                                             </div>
                                         ) : user.role === 'ROLE_ADMIN' ? (
                                             <select 
@@ -302,13 +326,45 @@ const TechnicianDashboard = () => {
                                                 History <ChevronRight size={14} />
                                             </button>
 
-                                            {t.status === 'OPEN' && user.role === 'ROLE_TECHNICIAN' && (
+                                            {t.status === 'OPEN' && (
+                                                <div style={{ display: 'flex', gap: '10px' }}>
+                                                    {user.role === 'ROLE_TECHNICIAN' && (
+                                                        <button onClick={() => assignToMe(t.id)} style={{ background: 'var(--primary)', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '12px', cursor: 'pointer', fontWeight: '800', fontSize: '13px', boxShadow: '0 8px 16px rgba(59, 130, 246, 0.2)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                                            <UserPlus size={14} /> Claim
+                                                        </button>
+                                                    )}
+                                                    
+                                                    {user.role === 'ROLE_ADMIN' && (
+                                                        <div style={{ position: 'relative' }}>
+                                                            {activeAssignId === t.id ? (
+                                                                <select 
+                                                                    autoFocus
+                                                                    onBlur={() => setActiveAssignId(null)}
+                                                                    onChange={(e) => assignToTech(t.id, e.target.value)}
+                                                                    style={{ padding: '10px', borderRadius: '12px', border: '1px solid var(--primary)', fontSize: '12px', fontWeight: '800' }}
+                                                                >
+                                                                    <option value="">Select Tech...</option>
+                                                                    {technicians.map(tech => (
+                                                                        <option key={tech.id} value={tech.id}>{tech.name}</option>
+                                                                    ))}
+                                                                </select>
+                                                            ) : (
+                                                                <button onClick={() => setActiveAssignId(t.id)} style={{ background: 'transparent', color: 'var(--primary)', border: '1px solid var(--primary)', padding: '10px 16px', borderRadius: '12px', cursor: 'pointer', fontWeight: '800', fontSize: '13px' }}>
+                                                                    Assign Tech
+                                                                </button>
+                                                            )}
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            )}
+
+                                            {t.status === 'OPEN' && user.role === 'ROLE_TECHNICIAN' && t.technician?.id === user.id && (
                                                 <button onClick={() => startTicket(t.id)} style={{ background: 'var(--primary)', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '12px', cursor: 'pointer', fontWeight: '800', fontSize: '13px', boxShadow: '0 8px 16px rgba(59, 130, 246, 0.2)', display: 'flex', alignItems: 'center', gap: '8px' }}>
                                                     <Clock size={14} /> Start
                                                 </button>
                                             )}
 
-                                            {t.status === 'IN_PROGRESS' && user.role === 'ROLE_TECHNICIAN' && (
+                                            {t.status === 'IN_PROGRESS' && (user.role === 'ROLE_ADMIN' || t.technician?.id === user.id) && (
                                                 <button onClick={() => resolveTicket(t.id)} style={{ background: '#10b981', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '12px', cursor: 'pointer', fontWeight: '800', fontSize: '13px', boxShadow: '0 8px 16px rgba(16, 185, 129, 0.2)', display: 'flex', alignItems: 'center', gap: '8px' }}>
                                                     <CheckCircle2 size={14} /> Complete
                                                 </button>

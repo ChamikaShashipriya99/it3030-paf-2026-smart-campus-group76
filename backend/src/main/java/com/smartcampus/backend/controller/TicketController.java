@@ -176,5 +176,10 @@ public class TicketController {
             return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));
         }
     }
+
+    @GetMapping("/analytics")
+    public ResponseEntity<?> getOperationalAnalytics() {
+        return ResponseEntity.ok(ticketService.getOperationalAnalytics());
+    }
 }
 

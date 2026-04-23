@@ -27,6 +27,7 @@ const Dashboard = () => {
     const [myTickets, setMyTickets] = useState([]);
     const [allTickets, setAllTickets] = useState([]);
     const [favoriteIds, setFavoriteIds] = useState([]);
+    const [analytics, setAnalytics] = useState({ mttr: "0h", efficiency: "0%", activeIncidents: 0 });
 
     const fetchFavorites = async () => {
         if (!user) return;
@@ -55,27 +56,11 @@ const Dashboard = () => {
             api.get(`/tickets/user/${user.id}`).then(res => setMyTickets(res.data)).catch(err => console.error(err));
         }
         if (user && (user.role === 'ROLE_ADMIN' || user.role === 'ROLE_TECHNICIAN')) {
-            api.get('/tickets').then(res => setAllTickets(res.data)).catch(err => console.error(err));
+            api.get('/tickets/analytics').then(res => setAnalytics(res.data)).catch(err => console.error(err));
         }
         fetchFavorites();
     }, [user]);
 
-    const calculateSLA = () => {
-        const resolved = allTickets.filter(t => t.resolvedAt);
-        if (resolved.length === 0) return { avg: "0h", rate: "0%" };
-
-        let totalHrs = 0;
-        resolved.forEach(t => {
-            const diff = new Date(t.resolvedAt) - new Date(t.createdAt);
-            totalHrs += (diff / (1000 * 60 * 60));
-        });
-
-        const avg = (totalHrs / resolved.length).toFixed(1);
-        const rate = ((resolved.length / allTickets.length) * 100).toFixed(0);
-        return { avg: `${avg}h`, rate: `${rate}%` };
-    };
-
-    const sla = calculateSLA();
 
     const cardStyle = {
         background: 'var(--glass-bg)',
@@ -148,7 +133,7 @@ const Dashboard = () => {
                                 <span style={{ fontSize: '12px', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1px', color: '#64748b' }}>Avg Resolution (MTTR)</span>
                                 <Clock size={20} color="#3b82f6" />
                             </div>
-                            <div style={{ fontSize: '38px', fontWeight: '900', letterSpacing: '-1.5px', color: '#0f172a' }}>{sla.avg}</div>
+                            <div style={{ fontSize: '38px', fontWeight: '900', letterSpacing: '-1.5px', color: '#0f172a' }}>{analytics.mttr}</div>
                             <div style={{ marginTop: '10px', fontSize: '12px', color: '#94a3b8' }}>Historical ticket lifecycle average.</div>
                         </div>
                         <div className="premium-card" style={{ padding: '30px', border: '1px solid #E2E8F0' }}>
@@ -156,7 +141,7 @@ const Dashboard = () => {
                                 <span style={{ fontSize: '12px', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1px', color: '#64748b' }}>Closing efficiency</span>
                                 <Target size={20} color="#10b981" />
                             </div>
-                            <div style={{ fontSize: '38px', fontWeight: '900', letterSpacing: '-1.5px', color: '#0f172a' }}>{sla.rate}</div>
+                            <div style={{ fontSize: '38px', fontWeight: '900', letterSpacing: '-1.5px', color: '#0f172a' }}>{analytics.efficiency}</div>
                             <div style={{ marginTop: '10px', fontSize: '12px', color: '#94a3b8' }}>Processed vs. Active Requests.</div>
                         </div>
                         <div className="premium-card" style={{ padding: '30px', border: '1px solid #E2E8F0' }}>
@@ -164,7 +149,7 @@ const Dashboard = () => {
                                 <span style={{ fontSize: '12px', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1px', color: '#64748b' }}>Active Incidents</span>
                                 <Activity size={20} color="#ef4444" />
                             </div>
-                            <div style={{ fontSize: '38px', fontWeight: '900', letterSpacing: '-1.5px', color: '#0f172a' }}>{allTickets.filter(t => t.status !== 'CLOSED' && t.status !== 'RESOLVED').length}</div>
+                            <div style={{ fontSize: '38px', fontWeight: '900', letterSpacing: '-1.5px', color: '#0f172a' }}>{analytics.activeIncidents}</div>
                             <div style={{ marginTop: '10px', fontSize: '12px', color: '#94a3b8' }}>Live issues requiring triage.</div>
                         </div>
                     </div>

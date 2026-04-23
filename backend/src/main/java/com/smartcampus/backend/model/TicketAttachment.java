@@ -3,7 +3,6 @@ package com.smartcampus.backend.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import lombok.Data;
 
 @Document(collection = "ticket_attachments")
 public class TicketAttachment {
@@ -18,6 +17,8 @@ public class TicketAttachment {
     private String contentType;
 
     private byte[] data;
+
+    public TicketAttachment() {}
 
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }

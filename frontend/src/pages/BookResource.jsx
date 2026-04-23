@@ -25,7 +25,7 @@ const BookResource = () => {
     const { user } = useContext(AuthContext);
     const { showNotification } = useContext(NotificationContext);
     const [resource, setResource] = useState(null);
-    const [formData, setFormData] = useState({ startTime: '', endTime: '', purpose: '' });
+    const [formData, setFormData] = useState({ startTime: '', endTime: '', purpose: '', expectedAttendees: '' });
     const [error, setError] = useState('');
 
     useEffect(() => {
@@ -55,7 +55,8 @@ const BookResource = () => {
                 resourceId: id,
                 startTime: formData.startTime,
                 endTime: formData.endTime,
-                purpose: formData.purpose
+                purpose: formData.purpose,
+                expectedAttendees: parseInt(formData.expectedAttendees) || 0
             });
             showNotification('Booking request submitted successfully! Awaiting Admin approval.', 'success');
             navigate('/dashboard');
@@ -144,24 +145,41 @@ const BookResource = () => {
                             </div>
                         </div>
 
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                            <label className="form-label" style={{ color: '#111827' }}>Context / Intent of Usage</label>
-                            <textarea
-                                required
-                                rows="6"
-                                value={formData.purpose}
-                                className="premium-input"
-                                style={{ lineHeight: '1.7' }}
-                                placeholder="State the objectives or activities planned for this session..."
-                                onChange={e => setFormData({ ...formData, purpose: e.target.value })}
-                            />
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                                <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#111827' }}>
+                                    <Users size={16} color="var(--primary)" /> Expected Attendees
+                                </label>
+                                <input
+                                    type="number"
+                                    min="1"
+                                    required
+                                    value={formData.expectedAttendees}
+                                    className="premium-input"
+                                    placeholder="e.g. 25"
+                                    onChange={e => setFormData({ ...formData, expectedAttendees: e.target.value })}
+                                />
+                            </div>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                                <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#111827' }}>
+                                    <Info size={16} color="var(--primary)" /> Context / Intent of Usage
+                                </label>
+                                <input
+                                    type="text"
+                                    required
+                                    value={formData.purpose}
+                                    className="premium-input"
+                                    placeholder="State the objectives or activities planned..."
+                                    onChange={e => setFormData({ ...formData, purpose: e.target.value })}
+                                />
+                            </div>
                         </div>
 
                         <div style={{ display: 'flex', gap: '20px', paddingTop: '10px' }}>
                             <button type="submit" style={{
-                                flex: 1, padding: '20px', background: 'var(--primary)', color: 'white',
+                                flex: 1, padding: '20px', background: 'linear-gradient(135deg, #10B981, #059669)', color: 'white',
                                 border: 'none', borderRadius: '20px', cursor: 'pointer', fontSize: '18px',
-                                fontWeight: '900', boxShadow: '0 15px 30px rgba(37, 99, 235, 0.2)',
+                                fontWeight: '900', boxShadow: '0 15px 30px rgba(16, 185, 129, 0.3)',
                                 transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                                 display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px'
                             }}

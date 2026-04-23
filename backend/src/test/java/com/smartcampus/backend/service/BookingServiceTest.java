@@ -55,7 +55,7 @@ class BookingServiceTest {
 
         when(bookingRepository.save(any(Booking.class))).thenAnswer(i -> i.getArguments()[0]);
 
-        Booking result = bookingService.createBookingRequest(userId, resourceId, start, end, "Exam");
+        Booking result = bookingService.createBookingRequest(userId, resourceId, start, end, "Exam", 30);
 
         assertNotNull(result);
         assertEquals(BookingStatus.PENDING, result.getStatus());
@@ -70,7 +70,7 @@ class BookingServiceTest {
 
         assertThrows(RuntimeException.class, () -> {
             bookingService.createBookingRequest("u1", "r1", LocalDateTime.now(), LocalDateTime.now().plusHours(1),
-                    "Fail");
+                    "Fail", 10);
         });
     }
 

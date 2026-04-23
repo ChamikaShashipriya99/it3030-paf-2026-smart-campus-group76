@@ -33,6 +33,15 @@ public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
         String googleSub = oAuth2User.getAttribute("sub");
         String imageUrl = oAuth2User.getAttribute("picture");
 
+        // Defensive check: if 'picture' is null, try 'avatar_url' or 'photo' (though 'picture' is standard for Google)
+        if (imageUrl == null) {
+            imageUrl = oAuth2User.getAttribute("avatar_url");
+            if (imageUrl == null) imageUrl = oAuth2User.getAttribute("photo");
+        }
+
+        System.out.println("OAuth2 User Attributes for " + email + ": " + oAuth2User.getAttributes());
+        System.out.println("Retrieved imageUrl: " + imageUrl);
+
         Optional<User> userOptional = userRepository.findByEmail(email);
         User user;
         if (userOptional.isPresent()) {
