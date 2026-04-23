@@ -26,6 +26,8 @@ public class User {
 
     private String imageUrl;
 
+    private java.util.List<String> starredTicketIds = new java.util.ArrayList<>();
+
     public User() {
     }
 
@@ -97,5 +99,13 @@ public class User {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public java.util.List<String> getStarredTicketIds() {
+        return starredTicketIds;
+    }
+
+    public void setStarredTicketIds(java.util.List<String> starredTicketIds) {
+        this.starredTicketIds = starredTicketIds;
     }
 }

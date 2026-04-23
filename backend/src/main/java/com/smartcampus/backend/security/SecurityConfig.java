@@ -57,6 +57,10 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.PUT, "/api/tickets/*/assign/**").hasAuthority("ROLE_ADMIN")
                 .requestMatchers(HttpMethod.PUT, "/api/tickets/*/status").hasAnyAuthority("ROLE_ADMIN", "ROLE_TECHNICIAN")
 
+                // Favorite Tickets logic (Restrict to Technician as per recent requirements)
+                .requestMatchers("/api/tickets/*/favorite").hasAuthority("ROLE_TECHNICIAN")
+                .requestMatchers("/api/tickets/favorites").hasAuthority("ROLE_TECHNICIAN")
+
                 // Analytics
                 .requestMatchers("/api/analytics/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_TECHNICIAN")
                 
