@@ -37,14 +37,19 @@ class NotificationServiceTest {
     }
 
     @Test
-    void createNotification_ShouldSaveAndPushToSocket() {
+    void createNotification_WhenEnabled_ShouldSaveAndPushToSocket() {
         String userId = "user123";
         String message = "Hello";
         String type = "INFO";
 
+        User user = new User();
+        user.setId(userId);
+        user.setNotificationsEnabled(true);
+
         Notification mockNotif = new Notification();
         mockNotif.setId("notif123");
         
+        when(userRepository.findById(userId)).thenReturn(Optional.of(user));
         when(repository.save(any(Notification.class))).thenReturn(mockNotif);
 
         Notification saved = notificationService.createNotification(userId, message, type);
@@ -52,6 +57,23 @@ class NotificationServiceTest {
         assertNotNull(saved);
         verify(repository, times(1)).save(any(Notification.class));
         verify(messagingTemplate, times(1)).convertAndSendToUser(eq(userId), eq("/queue/notifications"), any(Notification.class));
+    }
+
+    @Test
+    void createNotification_WhenDisabled_ShouldNotSave() {
+        String userId = "user123";
+        
+        User user = new User();
+        user.setId(userId);
+        user.setNotificationsEnabled(false);
+
+        when(userRepository.findById(userId)).thenReturn(Optional.of(user));
+
+        Notification saved = notificationService.createNotification(userId, "ignored", "INFO");
+
+        assertNull(saved);
+        verify(repository, never()).save(any(Notification.class));
+        verify(messagingTemplate, never()).convertAndSendToUser(anyString(), anyString(), any());
     }
 
     @Test
