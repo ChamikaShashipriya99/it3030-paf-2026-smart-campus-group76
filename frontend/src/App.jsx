@@ -11,6 +11,7 @@ import BookResource from './pages/BookResource';
 import ManageBookings from './pages/ManageBookings';
 import ManageUsers from './pages/ManageUsers';
 import ReportIssue from './pages/ReportIssue';
+import ReportIssueStandalone from './pages/ReportIssueStandalone';
 import TechnicianDashboard from './pages/TechnicianDashboard';
 import TicketDetails from './pages/TicketDetails';
 import Notifications from './pages/Notifications';
@@ -67,6 +68,11 @@ function App() {
                                 <Route path="/report/:id" element={
                                     <PrivateRoute>
                                         <ReportIssue />
+                                    </PrivateRoute>
+                                } />
+                                <Route path="/report-issue" element={
+                                    <PrivateRoute>
+                                        <ReportIssueStandalone />
                                     </PrivateRoute>
                                 } />
                                 <Route path="/ticket/:id" element={

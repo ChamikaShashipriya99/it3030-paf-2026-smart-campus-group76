@@ -115,6 +115,12 @@ const Navbar = () => {
                             Assets
                         </Link>
                         {user.role === 'ROLE_USER' && (
+                            <Link to="/report-issue" style={linkStyle('/report-issue')}>
+                                <ClipboardList size={18} />
+                                Tickets
+                            </Link>
+                        )}
+                        {user.role === 'ROLE_USER' && (
                             <Link to="/my-bookings" style={linkStyle('/my-bookings')}>
                                 <ClipboardList size={18} />
                                 My Bookings
