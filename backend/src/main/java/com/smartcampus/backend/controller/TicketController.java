@@ -1,5 +1,6 @@
 package com.smartcampus.backend.controller;
 
+//import packages
 import com.smartcampus.backend.model.Ticket;
 import com.smartcampus.backend.model.TicketStatus;
 import com.smartcampus.backend.service.TicketService;
@@ -144,3 +145,4 @@ public class TicketController {
         return ResponseEntity.ok(ticketService.getOperationalAnalytics());
     }
 }
+
