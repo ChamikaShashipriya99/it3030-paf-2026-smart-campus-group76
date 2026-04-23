@@ -25,7 +25,6 @@ const TechnicianDashboard = () => {
     const [technicianList, setTechnicianList] = useState([]);
     const [loading, setLoading] = useState(true);
     const [favoriteIds, setFavoriteIds] = useState([]);
-    const [technicians, setTechnicians] = useState([]);
     const [activeAssignId, setActiveAssignId] = useState(null);
 
     const fetchTickets = () => {
@@ -55,12 +54,10 @@ const TechnicianDashboard = () => {
         if (user.role === 'ROLE_ADMIN') {
             api.get('/users/technicians')
                 .then(res => {
-                    console.log('Technicians loaded:', res.data);
                     setTechnicianList(res.data);
                 })
                 .catch(err => {
                     console.error('Failed to load technicians:', err);
-                    showNotification('Error loading technician list', 'error');
                 });
         }
     };
@@ -69,11 +66,6 @@ const TechnicianDashboard = () => {
         fetchTickets();
         fetchTechnicians();
         fetchFavorites();
-        if (user?.role === 'ROLE_ADMIN') {
-            api.get('/users').then(res => {
-                setTechnicians(res.data.filter(u => u.role === 'ROLE_TECHNICIAN'));
-            }).catch(err => console.error(err));
-        }
     }, [user]);
 
     const assignToMe = async (ticketId) => {
@@ -85,6 +77,7 @@ const TechnicianDashboard = () => {
     };
 
     const assignToTech = async (ticketId, techId) => {
+        if (!techId) return;
         try {
             await api.put(`/tickets/${ticketId}/assign/${techId}`);
             fetchTickets();
@@ -344,7 +337,7 @@ const TechnicianDashboard = () => {
                                                                     style={{ padding: '10px', borderRadius: '12px', border: '1px solid var(--primary)', fontSize: '12px', fontWeight: '800' }}
                                                                 >
                                                                     <option value="">Select Tech...</option>
-                                                                    {technicians.map(tech => (
+                                                                    {technicianList.map(tech => (
                                                                         <option key={tech.id} value={tech.id}>{tech.name}</option>
                                                                     ))}
                                                                 </select>
