@@ -29,4 +29,8 @@ public class UserService {
         user.setRole(newRole);
         return userRepository.save(user);
     }
+
+    public List<User> getTechnicians() {
+        return userRepository.findByRole(Role.ROLE_TECHNICIAN);
+    }
 }

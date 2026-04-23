@@ -226,12 +226,13 @@ const Dashboard = () => {
                                         </div>
                                         <span style={{
                                             fontSize: '10px', padding: '4px 12px', borderRadius: '20px',
-                                            background: t.status === 'RESOLVED' ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)',
-                                            color: t.status === 'RESOLVED' ? '#10b981' : '#ef4444',
-                                            fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.5px'
+                                            background: t.status === 'RESOLVED' ? 'rgba(16, 185, 129, 0.1)' : t.status === 'IN_PROGRESS' ? 'rgba(245, 158, 11, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+                                            color: t.status === 'RESOLVED' ? '#10b981' : t.status === 'IN_PROGRESS' ? '#f59e0b' : '#ef4444',
+                                            fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.5px',
+                                            border: `1px solid ${t.status === 'RESOLVED' ? 'rgba(16, 185, 129, 0.2)' : t.status === 'IN_PROGRESS' ? 'rgba(245, 158, 11, 0.2)' : 'rgba(239, 68, 68, 0.2)'}`
                                         }}>
                                             {t.status === 'RESOLVED' && <CheckCircle2 size={10} style={{ marginRight: '4px', verticalAlign: 'middle' }} />}
-                                            {t.status}
+                                            {t.status.replace('_', ' ')}
                                         </span>
                                     </div>
                                     <p style={{ fontSize: '14px', color: 'var(--text-muted)', margin: '0 0 25px 0', lineHeight: '1.6' }}>{t.description.substring(0, 80)}...</p>

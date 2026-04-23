@@ -21,31 +21,70 @@ const TechnicianDashboard = () => {
     const { user } = useContext(AuthContext);
     const { showNotification } = useContext(NotificationContext);
     const [tickets, setTickets] = useState([]);
+    const [technicianList, setTechnicianList] = useState([]);
     const [loading, setLoading] = useState(true);
 
     const fetchTickets = () => {
         setLoading(true);
-        api.get('/tickets').then(res => {
-            setTimeout(() => {
-                setTickets(res.data);
-                setLoading(false);
-            }, 1000);
+        // If Admin, see all tickets. If Tech, see only assigned.
+        const endpoint = user.role === 'ROLE_ADMIN' ? '/tickets' : `/tickets/technician/${user.id}`;
+        api.get(endpoint).then(res => {
+            setTickets(res.data);
+            setLoading(false);
         }).catch(err => {
             console.error(err);
             setLoading(false);
         });
     };
 
+    const fetchTechnicians = () => {
+        if (user.role === 'ROLE_ADMIN') {
+            api.get('/users/technicians')
+                .then(res => {
+                    console.log('Technicians loaded:', res.data);
+                    setTechnicianList(res.data);
+                })
+                .catch(err => {
+                    console.error('Failed to load technicians:', err);
+                    showNotification('Error loading technician list', 'error');
+                });
+        }
+    };
+
     useEffect(() => {
         fetchTickets();
+        fetchTechnicians();
     }, []);
 
-    const assignToMe = async (ticketId) => {
+    const handleAssign = async (ticketId, techId) => {
+        if (!techId) return;
         try {
-            await api.put(`/tickets/${ticketId}/assign/${user.id}`);
+            await api.put(`/tickets/${ticketId}/assign/${techId}`);
             fetchTickets();
-            showNotification('Ticket successfully claimed for review.', 'success');
-        } catch (err) { showNotification('Assignment Failed', 'error'); }
+            showNotification('Technician assigned successfully', 'success');
+        } catch (err) {
+            showNotification('Assignment Failed', 'error');
+        }
+    };
+
+    const handleDelete = async (ticketId) => {
+        if (window.confirm("Delete this ticket permanently?")) {
+            try {
+                await api.delete(`/tickets/${ticketId}`);
+                setTickets(tickets.filter(t => t.id !== ticketId));
+                showNotification('Ticket deleted', 'success');
+            } catch (err) {
+                showNotification('Failed to delete ticket', 'error');
+            }
+        }
+    };
+
+    const startTicket = async (ticketId) => {
+        try {
+            await api.put(`/tickets/${ticketId}/status`, { status: 'IN_PROGRESS' });
+            fetchTickets();
+            showNotification('Ticket started successfully.', 'success');
+        } catch (err) { showNotification('Failed to start ticket', 'error'); }
     };
 
     const resolveTicket = async (ticketId) => {
@@ -54,8 +93,8 @@ const TechnicianDashboard = () => {
             try {
                 await api.put(`/tickets/${ticketId}/status`, { status: 'RESOLVED', resolutionNotes: notes });
                 fetchTickets();
-                showNotification('Ticket marked as resolved!', 'success');
-            } catch (err) { showNotification('Resolution Update Failed', 'error'); }
+                showNotification('Ticket completed and resolved!', 'success');
+            } catch (err) { showNotification('Completion Update Failed', 'error'); }
         }
     };
 
@@ -74,11 +113,11 @@ const TechnicianDashboard = () => {
             <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                 <div>
                     <h2 className="page-title">Service Desk</h2>
-                    <p className="page-subtitle">Maintenance triage and infrastructure incident management.</p>
+                    <p className="page-subtitle">Personal workbench for assigned maintenance incidents.</p>
                 </div>
                 <div style={{ display: 'flex', gap: '15px' }}>
                     <div style={{ background: 'rgba(239, 68, 68, 0.1)', color: '#ef4444', padding: '10px 20px', borderRadius: '14px', fontSize: '13px', fontWeight: '800', border: '1px solid rgba(239, 68, 68, 0.2)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <Activity size={16} /> Live Feed
+                        <Activity size={16} /> My Workload
                     </div>
                 </div>
             </div>
@@ -87,7 +126,7 @@ const TechnicianDashboard = () => {
                 <div style={statsCardStyle}>
                     <div style={{ position: 'absolute', top: 0, left: 0, width: '4px', height: '100%', background: '#ef4444' }} />
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                        <span style={{ fontSize: '13px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Unassigned</span>
+                        <span style={{ fontSize: '13px', color: 'var(--text-muted)', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Assigned</span>
                         <AlertCircle size={20} color="#ef4444" />
                     </div>
                     <h3 style={{ fontSize: '36px', fontWeight: '900', margin: '15px 0 0 0', color: 'var(--text-main)', letterSpacing: '-1px' }}>{openCount}</h3>
@@ -133,6 +172,9 @@ const TechnicianDashboard = () => {
                                 <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>State</th>
                                 <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Assignee</th>
                                 <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Control</th>
+                                {user.role === 'ROLE_ADMIN' && (
+                                    <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Delete</th>
+                                )}
                             </tr>
                         </thead>
                         <tbody>
@@ -145,6 +187,7 @@ const TechnicianDashboard = () => {
                                         <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '90px', height: '24px', borderRadius: '12px' }}></div></td>
                                         <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '100px', height: '16px' }}></div></td>
                                         <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '100px', height: '36px', borderRadius: '10px' }}></div></td>
+                                        {user.role === 'ROLE_ADMIN' && <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '40px', height: '36px', borderRadius: '10px' }}></div></td>}
                                     </tr>
                                 ))
                             ) : tickets.map(t => (
@@ -182,28 +225,56 @@ const TechnicianDashboard = () => {
                                                 <div style={{ width: '24px', height: '24px', borderRadius: '6px', background: 'var(--border)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', fontWeight: '900' }}>{t.technician.name.charAt(0)}</div>
                                                 {t.technician.name}
                                             </div>
+                                        ) : user.role === 'ROLE_ADMIN' ? (
+                                            <select 
+                                                className="premium-input"
+                                                style={{ padding: '4px 8px', fontSize: '12px', width: '160px' }}
+                                                onChange={(e) => handleAssign(t.id, e.target.value)}
+                                                defaultValue=""
+                                            >
+                                                <option value="" disabled>Assign Technician</option>
+                                                {technicianList.map(tech => (
+                                                    <option key={tech.id} value={tech.id}>{tech.name}</option>
+                                                ))}
+                                            </select>
                                         ) : (
                                             <span style={{ color: 'var(--text-muted)', fontStyle: 'italic', opacity: 0.5 }}>Unassigned</span>
                                         )}
                                     </td>
                                     <td style={{ padding: '25px 24px' }}>
-                                        <div style={{ display: 'flex', gap: '10px' }}>
+                                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '8px' }}>
                                             <button onClick={() => navigate(`/ticket/${t.id}`)} style={{ background: 'var(--border)', color: 'var(--text-main)', border: '1px solid var(--border)', padding: '10px 16px', borderRadius: '12px', cursor: 'pointer', fontWeight: '800', fontSize: '13px', display: 'flex', alignItems: 'center', gap: '6px', transition: 'all 0.2s' }} onMouseOver={e => e.target.style.background = 'rgba(255,255,255,0.05)'} onMouseOut={e => e.target.style.background = 'var(--border)'}>
                                                 History <ChevronRight size={14} />
                                             </button>
 
-                                            {t.status === 'OPEN' && (
-                                                <button onClick={() => assignToMe(t.id)} style={{ background: 'var(--primary)', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '12px', cursor: 'pointer', fontWeight: '800', fontSize: '13px', boxShadow: '0 8px 16px rgba(59, 130, 246, 0.2)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                                    <UserPlus size={14} /> Claim
+                                            {t.status === 'OPEN' && user.role === 'ROLE_TECHNICIAN' && (
+                                                <button onClick={() => startTicket(t.id)} style={{ background: 'var(--primary)', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '12px', cursor: 'pointer', fontWeight: '800', fontSize: '13px', boxShadow: '0 8px 16px rgba(59, 130, 246, 0.2)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                                    <Clock size={14} /> Start
                                                 </button>
                                             )}
-                                            {t.status === 'IN_PROGRESS' && t.technician?.id === user.id && (
+
+                                            {t.status === 'IN_PROGRESS' && user.role === 'ROLE_TECHNICIAN' && (
                                                 <button onClick={() => resolveTicket(t.id)} style={{ background: '#10b981', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '12px', cursor: 'pointer', fontWeight: '800', fontSize: '13px', boxShadow: '0 8px 16px rgba(16, 185, 129, 0.2)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                                    <CheckCircle2 size={14} /> Finish
+                                                    <CheckCircle2 size={14} /> Complete
                                                 </button>
                                             )}
                                         </div>
                                     </td>
+                                    {user.role === 'ROLE_ADMIN' && (
+                                        <td style={{ padding: '25px 24px' }}>
+                                            <button 
+                                                onClick={() => handleDelete(t.id)} 
+                                                style={{ background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.2)', color: '#ef4444', borderRadius: '8px', padding: '8px 12px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+                                            >
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                    <polyline points="3 6 5 6 21 6"/>
+                                                    <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/>
+                                                    <path d="M10 11v6M14 11v6"/>
+                                                    <path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/>
+                                                </svg>
+                                            </button>
+                                        </td>
+                                    )}
                                 </tr>
                             ))}
                         </tbody>

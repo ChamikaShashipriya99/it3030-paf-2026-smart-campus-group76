@@ -88,6 +88,16 @@ public class TicketController {
         }
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteTicket(@PathVariable String id) {
+        try {
+            ticketService.deleteTicket(id);
+            return ResponseEntity.ok(Map.of("message", "Ticket deleted successfully"));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));
+        }
+    }
+
     @PostMapping("/{id}/comments")
     public ResponseEntity<?> addComment(@PathVariable String id, @RequestBody Map<String, Object> payload) {
         try {
