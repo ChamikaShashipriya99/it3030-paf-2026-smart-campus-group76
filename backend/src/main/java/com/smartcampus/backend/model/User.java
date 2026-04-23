@@ -25,6 +25,10 @@ public class User {
     private String googleSub;
 
     private String imageUrl;
+    
+    private boolean notificationsEnabled = true;
+    
+    private boolean ticketUpdatesEnabled = true;
 
     public User() {
     }
@@ -97,5 +101,21 @@ public class User {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public boolean isNotificationsEnabled() {
+        return notificationsEnabled;
+    }
+
+    public void setNotificationsEnabled(boolean notificationsEnabled) {
+        this.notificationsEnabled = notificationsEnabled;
+    }
+
+    public boolean isTicketUpdatesEnabled() {
+        return ticketUpdatesEnabled;
+    }
+
+    public void setTicketUpdatesEnabled(boolean ticketUpdatesEnabled) {
+        this.ticketUpdatesEnabled = ticketUpdatesEnabled;
     }
 }

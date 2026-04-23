@@ -56,18 +56,24 @@ class UserServiceTest {
     }
 
     @Test
-    void deleteUser_WhenExists_ShouldDelete() {
+    void deleteUser_WhenOtherUser_ShouldDelete() {
         when(userRepository.existsById("user123")).thenReturn(true);
 
-        userService.deleteUser("user123");
+        userService.deleteUser("user123", "admin999");
 
         verify(userRepository, times(1)).deleteById("user123");
+    }
+
+    @Test
+    void deleteUser_WhenSelf_ShouldThrowException() {
+        assertThrows(RuntimeException.class, () -> userService.deleteUser("user123", "user123"));
+        verify(userRepository, never()).deleteById(anyString());
     }
 
     @Test
     void deleteUser_WhenNotExists_ShouldThrowException() {
         when(userRepository.existsById("unknown")).thenReturn(false);
 
-        assertThrows(RuntimeException.class, () -> userService.deleteUser("unknown"));
+        assertThrows(RuntimeException.class, () -> userService.deleteUser("unknown", "admin999"));
     }
 }
