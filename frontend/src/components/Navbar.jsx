@@ -138,6 +138,12 @@ const Navbar = () => {
                                 Service Desk
                             </Link>
                         )}
+                        {(user.role === 'ROLE_TECHNICIAN') && (
+                            <Link to="/technician/analytics" style={linkStyle('/technician/analytics')}>
+                                <LayoutDashboard size={18} />
+                                Analytics
+                            </Link>
+                        )}
                     </div>
                 </div>
 
