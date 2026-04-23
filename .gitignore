@@ -1,0 +1,9 @@
+*.log
+*.log.*
+backend/backend.log
+backend/backend.log.*
+frontend/node_modules
+backend/target
+.DS_Store
+.vscode
+.idea

@@ -30,6 +30,30 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public List<User> getTechnicians() {
+        return userRepository.findByRole(Role.ROLE_TECHNICIAN);
+    }
+
+    public void toggleFavorite(String userId, String ticketId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        if (user.getStarredTicketIds() == null) {
+            user.setStarredTicketIds(new java.util.ArrayList<>());
+        }
+        if (user.getStarredTicketIds().contains(ticketId)) {
+            user.getStarredTicketIds().remove(ticketId);
+        } else {
+            user.getStarredTicketIds().add(ticketId);
+        }
+        userRepository.save(user);
+    }
+
+    public List<String> getFavorites(String userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        return user.getStarredTicketIds();
+    }
+
     public void deleteUser(String userId, String currentUserId) {
         if (userId.equals(currentUserId)) {
             throw new RuntimeException("Self-deletion is protected. You cannot delete your own account.");

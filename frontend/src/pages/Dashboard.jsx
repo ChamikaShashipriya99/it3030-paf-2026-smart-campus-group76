@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import { NotificationContext } from '../context/NotificationContext';
 import { useNavigate } from 'react-router-dom';
 import api from '../api/axiosConfig';
 import {
@@ -15,14 +16,40 @@ import {
     Clock,
     Activity,
     Target,
-    Users
+    Users,
+    Heart
 } from 'lucide-react';
 
 const Dashboard = () => {
     const { user } = useContext(AuthContext);
+    const { showNotification } = useContext(NotificationContext);
     const navigate = useNavigate();
     const [myTickets, setMyTickets] = useState([]);
+    const [allTickets, setAllTickets] = useState([]);
+    const [favoriteIds, setFavoriteIds] = useState([]);
     const [analytics, setAnalytics] = useState({ mttr: "0h", efficiency: "0%", activeIncidents: 0 });
+
+    const fetchFavorites = async () => {
+        if (!user) return;
+        try {
+            const res = await api.get(`/tickets/favorites?userId=${user.id}`);
+            setFavoriteIds(res.data.map(t => t.id));
+        } catch (err) {
+            console.error('Failed to fetch favorites', err);
+        }
+    };
+
+    const toggleFavorite = async (ticketId, e) => {
+        if (e) e.stopPropagation();
+        try {
+            await api.post(`/tickets/${ticketId}/favorite?userId=${user.id}`);
+            fetchFavorites();
+            const isFav = !favoriteIds.includes(ticketId);
+            showNotification(isFav ? 'Saved to favorites ❤️' : 'Removed from favorites', 'success');
+        } catch (err) {
+            showNotification('Failed to toggle favorite', 'error');
+        }
+    };
 
     useEffect(() => {
         if (user && user.role === 'ROLE_USER') {
@@ -31,6 +58,7 @@ const Dashboard = () => {
         if (user && (user.role === 'ROLE_ADMIN' || user.role === 'ROLE_TECHNICIAN')) {
             api.get('/tickets/analytics').then(res => setAnalytics(res.data)).catch(err => console.error(err));
         }
+        fetchFavorites();
     }, [user]);
 
 
@@ -202,7 +230,7 @@ const Dashboard = () => {
                     ) : (
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '25px' }}>
                             {myTickets.map(t => (
-                                <div key={t.id} className="premium-card" style={{ padding: '28px' }}>
+                                <div key={t.id} className="premium-card" style={{ padding: '28px', cursor: 'pointer' }} onClick={() => navigate(`/ticket/${t.id}`)}>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '15px', alignItems: 'center' }}>
                                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                                             <AlertCircle size={14} color="#60a5fa" />
@@ -210,16 +238,17 @@ const Dashboard = () => {
                                         </div>
                                         <span style={{
                                             fontSize: '10px', padding: '4px 12px', borderRadius: '20px',
-                                            background: t.status === 'RESOLVED' ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)',
-                                            color: t.status === 'RESOLVED' ? '#10b981' : '#ef4444',
-                                            fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.5px'
+                                            background: t.status === 'RESOLVED' ? 'rgba(16, 185, 129, 0.1)' : t.status === 'IN_PROGRESS' ? 'rgba(245, 158, 11, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+                                            color: t.status === 'RESOLVED' ? '#10b981' : t.status === 'IN_PROGRESS' ? '#f59e0b' : '#ef4444',
+                                            fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.5px',
+                                            border: `1px solid ${t.status === 'RESOLVED' ? 'rgba(16, 185, 129, 0.2)' : t.status === 'IN_PROGRESS' ? 'rgba(245, 158, 11, 0.2)' : 'rgba(239, 68, 68, 0.2)'}`
                                         }}>
                                             {t.status === 'RESOLVED' && <CheckCircle2 size={10} style={{ marginRight: '4px', verticalAlign: 'middle' }} />}
-                                            {t.status}
+                                            {t.status.replace('_', ' ')}
                                         </span>
                                     </div>
                                     <p style={{ fontSize: '14px', color: 'var(--text-muted)', margin: '0 0 25px 0', lineHeight: '1.6' }}>{t.description.substring(0, 80)}...</p>
-                                    <button onClick={() => navigate(`/ticket/${t.id}`)} style={{ width: '100%', background: 'rgba(0,0,0,0.02)', color: 'var(--primary)', border: '1px solid var(--border)', padding: '12px', borderRadius: '14px', cursor: 'pointer', fontSize: '13px', fontWeight: '800', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', transition: 'all 0.2s' }} onMouseOver={e => { e.currentTarget.style.background = 'rgba(0,0,0,0.04)'; e.currentTarget.style.transform = 'translateY(-1px)'; }} onMouseOut={e => { e.currentTarget.style.background = 'rgba(0,0,0,0.02)'; e.currentTarget.style.transform = 'translateY(0)'; }}>
+                                    <button style={{ width: '100%', background: 'rgba(0,0,0,0.02)', color: 'var(--primary)', border: '1px solid var(--border)', padding: '12px', borderRadius: '14px', cursor: 'pointer', fontSize: '13px', fontWeight: '800', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', transition: 'all 0.2s' }} onMouseOver={e => { e.currentTarget.style.background = 'rgba(0,0,0,0.04)'; e.currentTarget.style.transform = 'translateY(-1px)'; }} onMouseOut={e => { e.currentTarget.style.background = 'rgba(0,0,0,0.02)'; e.currentTarget.style.transform = 'translateY(0)'; }}>
                                         Details & Timeline <ChevronRight size={14} />
                                     </button>
                                 </div>
