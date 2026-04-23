@@ -11,7 +11,8 @@ import {
     Bell,
     LogOut,
     UserCircle,
-    Building2
+    Building2,
+    Heart
 } from 'lucide-react';
 
 const Navbar = () => {
@@ -136,6 +137,12 @@ const Navbar = () => {
                             <Link to="/technician/desk" style={linkStyle('/technician/desk')}>
                                 <ClipboardList size={18} />
                                 Service Desk
+                            </Link>
+                        )}
+                        {(user.role === 'ROLE_TECHNICIAN') && (
+                            <Link to="/favorites" style={linkStyle('/favorites')}>
+                                <Heart size={18} />
+                                Favorites
                             </Link>
                         )}
                         {(user.role === 'ROLE_TECHNICIAN') && (
