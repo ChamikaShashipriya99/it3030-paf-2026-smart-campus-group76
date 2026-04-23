@@ -56,6 +56,9 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/api/tickets/technician/*").hasAnyAuthority("ROLE_ADMIN", "ROLE_TECHNICIAN")
                 .requestMatchers(HttpMethod.PUT, "/api/tickets/*/assign/**").hasAuthority("ROLE_ADMIN")
                 .requestMatchers(HttpMethod.PUT, "/api/tickets/*/status").hasAnyAuthority("ROLE_ADMIN", "ROLE_TECHNICIAN")
+
+                // Analytics
+                .requestMatchers("/api/analytics/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_TECHNICIAN")
                 
                 .anyRequest().authenticated()
             )
