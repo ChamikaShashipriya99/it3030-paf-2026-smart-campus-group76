@@ -400,3 +400,15 @@ h4 {
 .form-switch-enter {
     animation: switchFadeIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
+
+/* Equipment Request Modal entrance */
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.94) translateY(16px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Spinner for loading states */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}

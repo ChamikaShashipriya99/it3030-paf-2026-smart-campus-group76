@@ -8,6 +8,9 @@ import java.util.List;
 
 @Repository
 public interface NotificationRepository extends MongoRepository<Notification, String> {
+    @org.springframework.data.mongodb.repository.Query("{ $or: [ { 'user.$id': ?0 }, { 'user.$id': { $oid: ?0 } } ] }")
     List<Notification> findByUserIdOrderByCreatedAtDesc(String userId);
+
+    @org.springframework.data.mongodb.repository.Query(value = "{ $or: [ { 'user.$id': ?0 }, { 'user.$id': { $oid: ?0 } } ], 'isRead': false }", count = true)
     long countByUserIdAndIsReadFalse(String userId);
 }

@@ -26,8 +26,11 @@ public class NotificationService {
     }
 
     public Notification createNotification(String userId, String message, String type) {
-        User user = new User();
-        user.setId(userId);
+        User user = userRepository.findById(userId).orElseGet(() -> {
+            User dummy = new User();
+            dummy.setId(userId);
+            return dummy;
+        });
         
         Notification notif = new Notification();
         notif.setUser(user);
