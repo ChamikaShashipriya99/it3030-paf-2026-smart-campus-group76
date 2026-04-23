@@ -147,6 +147,6 @@ Beyond manual Postman verification, Member 4 has implemented **JUnit 5** integra
 *   **MockMvc Integration**: Controllers are tested using `MockMvc` to verify REST status codes without spinning up a full server.
 
 ### 5.2 Evidence of Success
-![JUnit Test Results](images/JUnit-Teststing.png)
+![JUnit Test Results](images/junit-tests.png)
 *Verification: Shows 100% pass rate for Member 4 backend services.*
 
