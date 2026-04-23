@@ -18,6 +18,7 @@ import TicketDetails from './pages/TicketDetails';
 import Notifications from './pages/Notifications';
 import MyBookings from './pages/MyBookings';
 import LandingPage from './pages/LandingPage';
+import MyFavorites from './pages/MyFavorites';
 import Navbar from './components/Navbar';
 
 const PrivateRoute = ({ children }) => {
@@ -89,6 +90,11 @@ function App() {
                                 <Route path="/technician/analytics" element={
                                     <PrivateRoute>
                                         <TechnicianAnalyticsDashboard />
+                                    </PrivateRoute>
+                                } />
+                                <Route path="/favorites" element={
+                                    <PrivateRoute>
+                                        <MyFavorites />
                                     </PrivateRoute>
                                 } />
                                 <Route path="/notifications" element={

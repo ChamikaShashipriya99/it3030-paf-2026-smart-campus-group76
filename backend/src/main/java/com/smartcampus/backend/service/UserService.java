@@ -33,4 +33,24 @@ public class UserService {
     public List<User> getTechnicians() {
         return userRepository.findByRole(Role.ROLE_TECHNICIAN);
     }
+
+    public void toggleFavorite(String userId, String ticketId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        if (user.getStarredTicketIds() == null) {
+            user.setStarredTicketIds(new java.util.ArrayList<>());
+        }
+        if (user.getStarredTicketIds().contains(ticketId)) {
+            user.getStarredTicketIds().remove(ticketId);
+        } else {
+            user.getStarredTicketIds().add(ticketId);
+        }
+        userRepository.save(user);
+    }
+
+    public List<String> getFavorites(String userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        return user.getStarredTicketIds();
+    }
 }
