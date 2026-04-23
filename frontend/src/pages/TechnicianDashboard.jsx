@@ -13,7 +13,8 @@ import {
     Search,
     Filter,
     ArrowUpRight,
-    Wrench
+    Wrench,
+    Heart
 } from 'lucide-react';
 
 const TechnicianDashboard = () => {
@@ -23,6 +24,7 @@ const TechnicianDashboard = () => {
     const [tickets, setTickets] = useState([]);
     const [technicianList, setTechnicianList] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [favoriteIds, setFavoriteIds] = useState([]);
 
     const fetchTickets = () => {
         setLoading(true);
@@ -35,6 +37,16 @@ const TechnicianDashboard = () => {
             console.error(err);
             setLoading(false);
         });
+    };
+
+    const fetchFavorites = async () => {
+        if (!user) return;
+        try {
+            const res = await api.get(`/tickets/favorites?userId=${user.id}`);
+            setFavoriteIds(res.data.map(t => t.id));
+        } catch (err) {
+            console.error('Failed to fetch favorites', err);
+        }
     };
 
     const fetchTechnicians = () => {
@@ -54,6 +66,7 @@ const TechnicianDashboard = () => {
     useEffect(() => {
         fetchTickets();
         fetchTechnicians();
+        fetchFavorites();
     }, []);
 
     const handleAssign = async (ticketId, techId) => {
@@ -95,6 +108,21 @@ const TechnicianDashboard = () => {
                 fetchTickets();
                 showNotification('Ticket completed and resolved!', 'success');
             } catch (err) { showNotification('Completion Update Failed', 'error'); }
+        }
+    };
+
+    const toggleFavorite = async (ticketId) => {
+        try {
+            await api.post(`/tickets/${ticketId}/favorite?userId=${user.id}`);
+            setFavoriteIds(prev => 
+                prev.includes(ticketId) 
+                ? prev.filter(id => id !== ticketId) 
+                : [...prev, ticketId]
+            );
+            const isFav = !favoriteIds.includes(ticketId);
+            showNotification(isFav ? 'Saved to favorites ❤️' : 'Removed from favorites', 'success');
+        } catch (err) {
+            showNotification('Failed to toggle favorite', 'error');
         }
     };
 
@@ -192,7 +220,34 @@ const TechnicianDashboard = () => {
                                 ))
                             ) : tickets.map(t => (
                                 <tr key={t.id} style={{ borderBottom: '1px solid var(--border)', transition: 'background 0.2s' }} onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.01)'} onMouseOut={e => e.currentTarget.style.background = 'transparent'}>
-                                    <td style={{ padding: '25px 24px', color: 'var(--text-muted)', fontWeight: '800', fontSize: '13px' }}>#{t.id.substring(0, 8)}</td>
+                                    <td style={{ padding: '25px 24px', color: 'var(--text-muted)', fontWeight: '800', fontSize: '13px' }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                            <button 
+                                                onClick={(e) => { e.stopPropagation(); toggleFavorite(t.id); }}
+                                                style={{ 
+                                                    background: 'none', 
+                                                    border: 'none', 
+                                                    cursor: 'pointer', 
+                                                    padding: 0, 
+                                                    display: 'flex', 
+                                                    alignItems: 'center', 
+                                                    justifyContent: 'center',
+                                                    transition: 'transform 0.2s'
+                                                }}
+                                                onMouseOver={e => e.currentTarget.style.transform = 'scale(1.2)'}
+                                                onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
+                                                title={favoriteIds.includes(t.id) ? "Remove from favorites" : "Add to favorites"}
+                                            >
+                                                <Heart 
+                                                    size={18} 
+                                                    fill={favoriteIds.includes(t.id) ? "#ff4d6d" : "none"} 
+                                                    color={favoriteIds.includes(t.id) ? "#ff4d6d" : "var(--text-muted)"}
+                                                    style={{ opacity: favoriteIds.includes(t.id) ? 1 : 0.4 }}
+                                                />
+                                            </button>
+                                            #{t.id.substring(0, 8)}
+                                        </div>
+                                    </td>
                                     <td style={{ padding: '25px 24px' }}>
                                         <div style={{ fontWeight: '700', color: 'var(--text-main)', fontSize: '15px' }}>{t.resource.name}</div>
                                         <div style={{ color: 'var(--text-muted)', fontSize: '13px', marginTop: '6px', opacity: 0.8 }}>{t.category} — {t.description.substring(0, 40)}...</div>
