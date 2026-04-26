@@ -11,5 +11,5 @@ public interface ResourceRepository extends MongoRepository<Resource, String> {
     List<Resource> findByType(String type);
     List<Resource> findByStatus(String status);
     List<Resource> findByTypeIgnoreCase(String type);
-    List<Resource> findByCapacityGreaterThanEqual(int capacity);
+    List<Resource> findByCapacityGreaterThanEqual(Integer capacity);
 }
