@@ -191,7 +191,7 @@ const Catalogue = () => {
             </div>
 
             {showAddForm && (
-                <div className="premium-card" style={{ padding: '50px', marginBottom: '50px', border: '2px solid var(--primary)', background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)' }}>
+                <div className="premium-card" style={{ padding: '50px', marginBottom: '50px', border: '1px solid var(--border)', background: 'var(--surface)', boxShadow: 'var(--shadow-premium)' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '40px' }}>
                         <div>
                             <h3 style={{ margin: 0, fontSize: '28px', color: 'var(--text-main)', letterSpacing: '-1px' }}>
@@ -199,7 +199,10 @@ const Catalogue = () => {
                             </h3>
                             <p style={{ color: 'var(--text-muted)', margin: '5px 0 0 0' }}>Fill out the specification details for campus-wide availability.</p>
                         </div>
-                        <button onClick={() => setShowAddForm(false)} style={{ background: 'rgba(255,255,255,0.05)', border: 'none', width: '40px', height: '40px', borderRadius: '50%', cursor: 'pointer', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <button onClick={() => setShowAddForm(false)} style={{ background: 'var(--border)', border: 'none', width: '40px', height: '40px', borderRadius: '50%', cursor: 'pointer', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }}
+                            onMouseOver={e => e.currentTarget.style.background = '#E5E7EB'}
+                            onMouseOut={e => e.currentTarget.style.background = 'var(--border)'}
+                        >
                             <Plus size={24} style={{ transform: 'rotate(45deg)' }} />
                         </button>
                     </div>
@@ -243,7 +246,7 @@ const Catalogue = () => {
                             </div>
                         </div>
 
-                        <div className="form-grid" style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '30px', borderRadius: '20px', border: '1px solid var(--border)' }}>
+                        <div className="form-grid" style={{ background: 'rgba(0, 0, 0, 0.02)', padding: '30px', borderRadius: '20px', border: '1px solid var(--border)' }}>
                             <div>
                                 <label className="form-label"><Clock size={12} style={{ marginRight: '6px' }} /> Opening Hours</label>
                                 <input required type="time" value={newRes.startTime} className="premium-input" onChange={e => setNewRes({ ...newRes, startTime: e.target.value })} />
