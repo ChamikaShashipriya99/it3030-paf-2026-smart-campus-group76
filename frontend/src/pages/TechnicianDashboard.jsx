@@ -26,6 +26,9 @@ const TechnicianDashboard = () => {
     const [loading, setLoading] = useState(true);
     const [favoriteIds, setFavoriteIds] = useState([]);
     const [activeAssignId, setActiveAssignId] = useState(null);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [statusFilter, setStatusFilter] = useState('ALL');
+    const [showFilterDropdown, setShowFilterDropdown] = useState(false);
 
     const fetchTickets = () => {
         setLoading(true);
@@ -147,6 +150,18 @@ const TechnicianDashboard = () => {
     const progressCount = tickets.filter(t => t.status === 'IN_PROGRESS').length;
     const resolvedCount = tickets.filter(t => t.status === 'RESOLVED').length;
 
+    const filteredTickets = tickets.filter(t => {
+        const matchesSearch = 
+            t.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            t.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            (t.resource?.name || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+            (t.description || '').toLowerCase().includes(searchTerm.toLowerCase());
+        
+        const matchesStatus = statusFilter === 'ALL' || t.status === statusFilter;
+        
+        return matchesSearch && matchesStatus;
+    });
+
     const statsCardStyle = {
         flex: 1, minWidth: '240px', background: 'var(--surface)', padding: '30px', borderRadius: '24px',
         boxShadow: 'var(--shadow-soft)', border: '1px solid var(--border)', display: 'flex', flexDirection: 'column',
@@ -198,12 +213,38 @@ const TechnicianDashboard = () => {
                 <div style={{ padding: '24px', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div style={{ position: 'relative', width: '300px' }}>
                         <Search size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
-                        <input type="text" placeholder="Search incidents..." className="premium-input" style={{ padding: '8px 12px 8px 36px', fontSize: '14px' }} />
+                        <input 
+                            type="text" 
+                            placeholder="Search incidents..." 
+                            className="premium-input" 
+                            style={{ padding: '8px 12px 8px 36px', fontSize: '14px' }} 
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
                     </div>
-                    <div style={{ display: 'flex', gap: '15px' }}>
-                        <button style={{ background: 'transparent', border: '1px solid var(--border)', color: 'var(--text-muted)', padding: '8px 16px', borderRadius: '10px', fontSize: '13px', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                            <Filter size={14} /> Filter Queue
+                    <div style={{ display: 'flex', gap: '15px', position: 'relative' }}>
+                        <button 
+                            onClick={() => setShowFilterDropdown(!showFilterDropdown)}
+                            style={{ background: statusFilter !== 'ALL' ? 'rgba(37, 99, 235, 0.08)' : 'transparent', border: '1px solid var(--border)', color: statusFilter !== 'ALL' ? 'var(--primary)' : 'var(--text-muted)', padding: '8px 16px', borderRadius: '10px', fontSize: '13px', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
+                        >
+                            <Filter size={14} /> {statusFilter === 'ALL' ? 'Filter Queue' : statusFilter.replace('_', ' ')}
                         </button>
+
+                        {showFilterDropdown && (
+                            <div style={{ position: 'absolute', top: '45px', right: 0, background: 'var(--background)', border: '1px solid var(--border)', borderRadius: '12px', boxShadow: 'var(--shadow-premium)', zIndex: 10, width: '180px', overflow: 'hidden' }}>
+                                {['ALL', 'OPEN', 'IN_PROGRESS', 'RESOLVED'].map(status => (
+                                    <div 
+                                        key={status}
+                                        onClick={() => { setStatusFilter(status); setShowFilterDropdown(false); }}
+                                        style={{ padding: '12px 16px', fontSize: '13px', fontWeight: '600', cursor: 'pointer', transition: 'all 0.2s', background: statusFilter === status ? 'rgba(37, 99, 235, 0.05)' : 'transparent', color: statusFilter === status ? 'var(--primary)' : 'var(--text-main)' }}
+                                        onMouseOver={e => e.currentTarget.style.background = 'rgba(0,0,0,0.02)'}
+                                        onMouseOut={e => e.currentTarget.style.background = statusFilter === status ? 'rgba(37, 99, 235, 0.05)' : 'transparent'}
+                                    >
+                                        {status === 'ALL' ? 'All Tickets' : status.replace('_', ' ')}
+                                    </div>
+                                ))}
+                            </div>
+                        )}
                     </div>
                 </div>
 
@@ -217,9 +258,7 @@ const TechnicianDashboard = () => {
                                 <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>State</th>
                                 <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Assignee</th>
                                 <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Control</th>
-                                {user.role === 'ROLE_ADMIN' && (
-                                    <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Delete</th>
-                                )}
+                                {user.role === 'ROLE_ADMIN' && <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Delete</th>}
                             </tr>
                         </thead>
                         <tbody>
@@ -235,7 +274,7 @@ const TechnicianDashboard = () => {
                                         {user.role === 'ROLE_ADMIN' && <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '40px', height: '36px', borderRadius: '10px' }}></div></td>}
                                     </tr>
                                 ))
-                            ) : tickets.map(t => (
+                            ) : filteredTickets.map(t => (
                                 <tr key={t.id} style={{ borderBottom: '1px solid var(--border)', transition: 'background 0.2s' }} onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.01)'} onMouseOut={e => e.currentTarget.style.background = 'transparent'}>
                                     <td style={{ padding: '25px 24px', color: 'var(--text-muted)', fontWeight: '800', fontSize: '13px' }}>
                                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -384,7 +423,7 @@ const TechnicianDashboard = () => {
                         </tbody>
                     </table>
                 </div>
-                {!loading && tickets.length === 0 && (
+                {!loading && filteredTickets.length === 0 && (
                     <div style={{ textAlign: 'center', padding: '100px 20px', color: 'var(--text-muted)' }}>
                         <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'rgba(16, 185, 129, 0.1)', color: '#10b981', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 25px auto' }}>
                             <Wrench size={40} />

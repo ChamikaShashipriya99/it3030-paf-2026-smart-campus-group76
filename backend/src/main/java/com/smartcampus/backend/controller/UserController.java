@@ -49,4 +49,14 @@ public class UserController {
             return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));
         }
     }
+
+    @PutMapping("/{id}/preferences")
+    public ResponseEntity<?> updatePreferences(@PathVariable String id, @RequestBody java.util.Map<String, Boolean> preferences) {
+        try {
+            User updated = userService.updatePreferences(id, preferences);
+            return ResponseEntity.ok(updated);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(java.util.Map.of("message", e.getMessage()));
+        }
+    }
 }

@@ -34,10 +34,15 @@ public class NotificationService {
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         
-        // Innovation: Filter based on user preference flags
+        // Innovation: Filter based on granular user preference flags
         if (!user.isNotificationsEnabled()) {
-            return null; // Skip if disabled
+            return null; // Skip if master toggle is off
         }
+
+        // Check category-specific toggles
+        if ("SUCCESS".equalsIgnoreCase(type) && !user.isSuccessEnabled()) return null;
+        if ("WARNING".equalsIgnoreCase(type) && !user.isWarningEnabled()) return null;
+        if ("INFO".equalsIgnoreCase(type) && !user.isInfoEnabled()) return null;
 
         Notification notif = new Notification();
         notif.setUser(user);

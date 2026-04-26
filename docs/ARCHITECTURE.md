@@ -123,6 +123,6 @@ graph TD
 ## 4. Key Performance & Security Decisions
 *   **JWT Authentication**: Stateless authentication using secure local storage tokens for API authorization.
 *   **OAuth2 Profile Synchronization**: A custom implementation in `OAuth2LoginSuccessHandler` that extracts `picture` attributes from Google and persists them to the MongoDB user store, ensuring a personalized UI.
-*   **Notification Preferences (Innovation)**: Implemented a category-based notification system that allows users to toggle visibility for different types of alerts (Info, Success, Warning), fulfilling the innovation requirement in the project rubric.
+*   **Notification Preferences (Innovation)**: Implemented a highly granular, category-based notification system. Users can toggle visibility for specific alert types (**Info, Success, Warning**) via a premium settings panel, with backend filtering logic ensuring low-latency delivery of only relevant data.
 *   **NoSQL Flexibility**: MongoDB was chosen to handle the semi-structured nature of "Incident Reports" and "Resource Metadata".
 *   **Pristine Tech Design System**: Custom Vanilla CSS tokens used instead of bloated frameworks to ensure sub-second rendering and a premium, geometric aesthetic.

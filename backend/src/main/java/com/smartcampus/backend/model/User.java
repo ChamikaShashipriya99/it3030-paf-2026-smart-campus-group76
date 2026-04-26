@@ -30,6 +30,12 @@ public class User {
     
     private boolean ticketUpdatesEnabled = true;
 
+    private boolean successEnabled = true;
+    
+    private boolean warningEnabled = true;
+    
+    private boolean infoEnabled = true;
+
     private java.util.List<String> starredTicketIds = new java.util.ArrayList<>();
 
     public User() {
@@ -127,5 +133,29 @@ public class User {
 
     public void setTicketUpdatesEnabled(boolean ticketUpdatesEnabled) {
         this.ticketUpdatesEnabled = ticketUpdatesEnabled;
+    }
+
+    public boolean isSuccessEnabled() {
+        return successEnabled;
+    }
+
+    public void setSuccessEnabled(boolean successEnabled) {
+        this.successEnabled = successEnabled;
+    }
+
+    public boolean isWarningEnabled() {
+        return warningEnabled;
+    }
+
+    public void setWarningEnabled(boolean warningEnabled) {
+        this.warningEnabled = warningEnabled;
+    }
+
+    public boolean isInfoEnabled() {
+        return infoEnabled;
+    }
+
+    public void setInfoEnabled(boolean infoEnabled) {
+        this.infoEnabled = infoEnabled;
     }
 }

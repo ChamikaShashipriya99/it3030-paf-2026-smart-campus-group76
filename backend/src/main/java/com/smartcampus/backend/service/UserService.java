@@ -55,12 +55,22 @@ public class UserService {
     }
 
     public void deleteUser(String userId, String currentUserId) {
-        if (userId.equals(currentUserId)) {
-            throw new RuntimeException("Self-deletion is protected. You cannot delete your own account.");
-        }
         if (!userRepository.existsById(userId)) {
             throw new RuntimeException("User not found");
         }
         userRepository.deleteById(userId);
+    }
+
+    public User updatePreferences(String userId, java.util.Map<String, Boolean> preferences) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        
+        if (preferences.containsKey("notificationsEnabled")) user.setNotificationsEnabled(preferences.get("notificationsEnabled"));
+        if (preferences.containsKey("ticketUpdatesEnabled")) user.setTicketUpdatesEnabled(preferences.get("ticketUpdatesEnabled"));
+        if (preferences.containsKey("successEnabled")) user.setSuccessEnabled(preferences.get("successEnabled"));
+        if (preferences.containsKey("warningEnabled")) user.setWarningEnabled(preferences.get("warningEnabled"));
+        if (preferences.containsKey("infoEnabled")) user.setInfoEnabled(preferences.get("infoEnabled"));
+        
+        return userRepository.save(user);
     }
 }

@@ -17,12 +17,15 @@ import {
     Activity,
     Target,
     Users,
-    Heart
+    Heart,
+    Trash2
 } from 'lucide-react';
+import { useConfirm } from '../context/ConfirmContext';
 
 const Dashboard = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
     const { showNotification } = useContext(NotificationContext);
+    const { ask } = useConfirm();
     const navigate = useNavigate();
     const [myTickets, setMyTickets] = useState([]);
     const [allTickets, setAllTickets] = useState([]);
@@ -48,6 +51,24 @@ const Dashboard = () => {
             showNotification(isFav ? 'Saved to favorites ❤️' : 'Removed from favorites', 'success');
         } catch (err) {
             showNotification('Failed to toggle favorite', 'error');
+        }
+    };
+
+    const handleDeleteAccount = async () => {
+        const confirmed = await ask(
+            "Are you absolutely sure? This will permanently delete your identity and all associated data from the SmartCampus ecosystem. This action cannot be undone.",
+            "Terminate Your Account"
+        );
+
+        if (!confirmed) return;
+
+        try {
+            await api.delete(`/users/${user.id}`);
+            showNotification('Your account has been deleted. Goodbye!', 'success');
+            logout();
+            navigate('/login');
+        } catch (err) {
+            showNotification('Failed to delete account. Please try again.', 'error');
         }
     };
 
@@ -90,6 +111,13 @@ const Dashboard = () => {
                                 Oversee and interact with your campus services efficiently.
                             </p>
                         </div>
+                        <button 
+                            onClick={handleDeleteAccount}
+                            style={{ background: 'rgba(239, 68, 68, 0.05)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.1)', padding: '12px 24px', borderRadius: '14px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', fontWeight: '800', transition: 'all 0.2s', marginTop: '10px' }}
+                            onMouseOver={e => { e.currentTarget.style.background = '#ef4444'; e.currentTarget.style.color = 'white'; }}
+                            onMouseOut={e => { e.currentTarget.style.background = 'rgba(239, 68, 68, 0.05)'; e.currentTarget.style.color = '#ef4444'; }}>
+                            <Trash2 size={16} /> Delete Profile
+                        </button>
                     </div>
 
                     <div style={{ display: 'flex', gap: '40px', alignItems: 'center' }}>
