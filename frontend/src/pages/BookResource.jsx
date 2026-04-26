@@ -27,7 +27,7 @@ const BookResource = () => {
     const { user } = useContext(AuthContext);
     const { showNotification } = useContext(NotificationContext);
     const [resource, setResource] = useState(null);
-    const [formData, setFormData] = useState({ startTime: '', endTime: '', purpose: '' });
+    const [formData, setFormData] = useState({ startTime: '', endTime: '', purpose: '', expectedAttendees: '' });
     const [error, setError] = useState('');
     const [submitting, setSubmitting] = useState(false);
 
@@ -65,6 +65,8 @@ const BookResource = () => {
                 startTime:  formData.startTime,
                 endTime:    formData.endTime,
                 purpose:    formData.purpose,
+                expectedAttendees: parseInt(formData.expectedAttendees) || 0
+
             });
             showNotification(
                 isEquipment ? 'Equipment booked successfully!' : 'Booking request submitted successfully! Awaiting Admin approval.',
@@ -173,22 +175,36 @@ const BookResource = () => {
                             </div>
                         </div>
 
-                        {/* Purpose — identical to existing form */}
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                            <label className="form-label" style={{ color: '#111827' }}>
-                                {isEquipment ? 'Purpose / Reason for Request' : 'Context / Intent of Usage'}
-                            </label>
-                            <textarea
-                                required
-                                rows="6"
-                                value={formData.purpose}
-                                className="premium-input"
-                                style={{ lineHeight: '1.7' }}
-                                placeholder={isEquipment
-                                    ? 'Describe why you need this equipment and how you plan to use it...'
-                                    : 'State the objectives or activities planned for this session...'}
-                                onChange={e => setFormData({ ...formData, purpose: e.target.value })}
-                            />
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                                <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#111827' }}>
+                                    <Users size={16} color={accentColor} /> Expected Attendees
+                                </label>
+                                <input
+                                    type="number"
+                                    min="1"
+                                    required
+                                    value={formData.expectedAttendees}
+                                    className="premium-input"
+                                    placeholder="e.g. 25"
+                                    onChange={e => setFormData({ ...formData, expectedAttendees: e.target.value })}
+                                />
+                            </div>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                                <label className="form-label" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#111827' }}>
+                                    <Info size={16} color={accentColor} /> {isEquipment ? 'Purpose / Reason' : 'Context / Intent'}
+                                </label>
+                                <input
+                                    type="text"
+                                    required
+                                    value={formData.purpose}
+                                    className="premium-input"
+                                    placeholder={isEquipment
+                                        ? 'Describe why you need this...'
+                                        : 'State the objectives...'}
+                                    onChange={e => setFormData({ ...formData, purpose: e.target.value })}
+                                />
+                            </div>
                         </div>
 
                         {/* Equipment-specific info banner */}
@@ -224,6 +240,7 @@ const BookResource = () => {
                                 }} 
                                 onMouseOver={e => { if (!submitting) e.currentTarget.style.transform = 'translateY(-2px)'; }} 
                                 onMouseOut={e => { if (!submitting) e.currentTarget.style.transform = 'translateY(0)'; }}
+
                             >
                                 {submitting ? 'Please wait...' : <><CalendarPlus size={18} /> {submitLabel}</>}
                             </button>

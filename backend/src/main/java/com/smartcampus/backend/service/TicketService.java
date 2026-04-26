@@ -14,7 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.Duration;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Arrays;
 
 @Service
 public class TicketService {
@@ -83,14 +87,24 @@ public class TicketService {
         User tech = new User();
         tech.setId(technicianId);
         ticket.setTechnician(tech);
-        ticket.setStatus(TicketStatus.IN_PROGRESS);
+        // ticket.setStatus(TicketStatus.IN_PROGRESS); // Removed status change as per requirements
 
         if (ticket.getCreator() != null) {
             notificationService.createNotification(ticket.getCreator().getId(),
-                    "Your ticket #" + ticket.getId() + " has been picked up by a technician.", "INFO");
+                    "Your ticket #" + ticket.getId() + " has been assigned to a technician.", "INFO");
         }
 
         return ticketRepository.save(ticket);
+    }
+
+    public void deleteTicket(String ticketId) {
+        Ticket ticket = ticketRepository.findById(ticketId).orElseThrow(() -> new RuntimeException("Ticket not found"));
+        
+        // Clean up related data first
+        commentRepository.findByTicketIdOrderByCreatedAtAsc(ticketId).forEach(c -> commentRepository.delete(c));
+        attachmentRepository.findByTicketId(ticketId).forEach(a -> attachmentRepository.delete(a));
+        
+        ticketRepository.delete(ticket);
     }
 
     public Ticket updateTicketStatus(String ticketId, TicketStatus status, String resolutionNotes) {
@@ -179,5 +193,41 @@ public class TicketService {
 
     public List<TicketAttachment> getAttachments(String ticketId) {
         return attachmentRepository.findByTicketId(ticketId);
+    }
+
+    public Map<String, Object> getOperationalAnalytics() {
+        long totalTickets = ticketRepository.count();
+        long resolvedCount = ticketRepository.countByStatusIn(Arrays.asList(TicketStatus.RESOLVED, TicketStatus.CLOSED));
+        long activeCount = ticketRepository.countByStatusNotIn(Arrays.asList(TicketStatus.RESOLVED, TicketStatus.CLOSED));
+
+        // Calculate MTTR (Mean Time to Resolution)
+        List<Ticket> resolvedTickets = ticketRepository.findByStatus(TicketStatus.RESOLVED);
+        // Also include CLOSED? Usually MTTR is for resolved.
+        
+        double avgHrs = 0;
+        if (!resolvedTickets.isEmpty()) {
+            double totalHrs = 0;
+            int count = 0;
+            for (Ticket t : resolvedTickets) {
+                if (t.getResolvedAt() != null && t.getCreatedAt() != null) {
+                    Duration duration = Duration.between(t.getCreatedAt(), t.getResolvedAt());
+                    totalHrs += duration.toMinutes() / 60.0;
+                    count++;
+                }
+            }
+            if (count > 0) {
+                avgHrs = totalHrs / count;
+            }
+        }
+
+        double efficiency = totalTickets > 0 ? (double) resolvedCount / totalTickets * 100 : 0;
+
+        Map<String, Object> stats = new HashMap<>();
+        stats.put("mttr", String.format("%.1fh", avgHrs));
+        stats.put("efficiency", String.format("%.0f%%", efficiency));
+        stats.put("activeIncidents", activeCount);
+        stats.put("totalIncidents", totalTickets);
+        
+        return stats;
     }
 }

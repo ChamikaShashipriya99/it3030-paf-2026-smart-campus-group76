@@ -3,6 +3,7 @@ package com.smartcampus.backend.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -33,6 +34,36 @@ public class SecurityConfig {
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/", "/error", "/login/**", "/oauth2/**").permitAll()
+                
+                // Member 4: Role-Based Access Control (RBAC) Rules
+                
+                // User Management (Admin only)
+                .requestMatchers("/api/users", "/api/users/**").hasAuthority("ROLE_ADMIN")
+                
+                // Resource Management
+                .requestMatchers(HttpMethod.GET, "/api/resources/**").authenticated()
+                .requestMatchers(HttpMethod.POST, "/api/resources/**").hasAuthority("ROLE_ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/api/resources/**").hasAuthority("ROLE_ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/api/resources/**").hasAuthority("ROLE_ADMIN")
+                
+                // Booking Management
+                .requestMatchers(HttpMethod.GET, "/api/bookings").hasAuthority("ROLE_ADMIN") // Global view
+                .requestMatchers(HttpMethod.GET, "/api/bookings/user/**").authenticated() // Own bookings
+                .requestMatchers(HttpMethod.PUT, "/api/bookings/*/status").hasAuthority("ROLE_ADMIN")
+                
+                // Ticket Management
+                .requestMatchers(HttpMethod.GET, "/api/tickets").hasAnyAuthority("ROLE_ADMIN", "ROLE_TECHNICIAN")
+                .requestMatchers(HttpMethod.GET, "/api/tickets/technician/*").hasAnyAuthority("ROLE_ADMIN", "ROLE_TECHNICIAN")
+                .requestMatchers(HttpMethod.PUT, "/api/tickets/*/assign/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_TECHNICIAN")
+                .requestMatchers(HttpMethod.PUT, "/api/tickets/*/status").hasAnyAuthority("ROLE_ADMIN", "ROLE_TECHNICIAN")
+
+                // Favorite Tickets logic (Restrict to Technician as per recent requirements)
+                .requestMatchers("/api/tickets/*/favorite").hasAuthority("ROLE_TECHNICIAN")
+                .requestMatchers("/api/tickets/favorites").hasAuthority("ROLE_TECHNICIAN")
+
+                // Analytics
+                .requestMatchers("/api/analytics/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_TECHNICIAN")
+                
                 .anyRequest().authenticated()
             )
             .oauth2Login(oauth2 -> oauth2

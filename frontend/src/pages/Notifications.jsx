@@ -29,6 +29,21 @@ const Notifications = () => {
         } catch (e) { }
     };
 
+    const markAllRead = async () => {
+        if (!user || notifications.filter(n => !n.read && !n.isRead).length === 0) return;
+        
+        // Optimistic UI Update
+        const updatedNotifs = notifications.map(n => ({ ...n, read: true, isRead: true }));
+        setNotifications(updatedNotifs);
+
+        try {
+            await api.put(`/notifications/user/${user.id}/read-all`);
+            fetchNotifs();
+        } catch (e) {
+            fetchNotifs(); // Rollback/Refetch on error
+        }
+    };
+
     const getIcon = (type) => {
         switch (type) {
             case 'SUCCESS': return <CheckCircle size={18} color="#10b981" />;
@@ -44,8 +59,22 @@ const Notifications = () => {
                     <h2 className="page-title">Personal Inbox</h2>
                     <p className="page-subtitle">Historical alerts and service-level notifications processed for you.</p>
                 </div>
-                <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border)', padding: '12px 24px', borderRadius: '16px', color: 'var(--text-muted)', fontSize: '14px', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <Inbox size={18} /> {notifications.filter(n => !n.read).length} Unread
+                <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
+                    <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border)', padding: '12px 24px', borderRadius: '16px', color: 'var(--text-muted)', fontSize: '14px', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <Inbox size={18} /> {notifications.filter(n => !n.read && !n.isRead).length} Unread
+                    </div>
+                    {notifications.filter(n => !n.read && !n.isRead).length > 0 && (
+                        <button 
+                            onClick={markAllRead}
+                            style={{ 
+                                background: 'var(--surface)', color: 'var(--text-main)', border: '1px solid var(--border)', padding: '12px 24px', borderRadius: '16px', cursor: 'pointer', fontSize: '13px', fontWeight: '900', transition: 'all 0.2s' 
+                            }}
+                            onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}
+                            onMouseOut={e => e.currentTarget.style.background = 'var(--surface)'}
+                        >
+                            Mark All as Read
+                        </button>
+                    )}
                 </div>
             </div>
 
@@ -61,10 +90,10 @@ const Notifications = () => {
                 ) : notifications.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map(n => (
                     <div key={n.id} className="premium-card" style={{
                         padding: '28px 32px',
-                        background: n.read ? 'rgba(255,255,255,0.01)' : 'var(--surface)',
+                        background: (n.read || n.isRead) ? 'rgba(255,255,255,0.01)' : 'var(--surface)',
                         borderLeft: `6px solid ${n.type === 'SUCCESS' ? '#10b981' : n.type === 'WARNING' ? '#f59e0b' : '#3b82f6'}`,
                         transition: 'all 0.2s',
-                        opacity: n.read ? 0.6 : 1,
+                        opacity: (n.read || n.isRead) ? 0.6 : 1,
                         position: 'relative'
                     }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '15px' }}>
@@ -91,10 +120,10 @@ const Notifications = () => {
                                 {new Date(n.createdAt).toLocaleDateString([], { month: 'short', day: 'numeric' })} — {new Date(n.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                             </div>
                         </div>
-                        <p style={{ margin: '0 0 25px 0', fontSize: '16px', color: 'var(--text-main)', lineHeight: '1.6', fontWeight: n.read ? '500' : '700' }}>
+                        <p style={{ margin: '0 0 25px 0', fontSize: '16px', color: 'var(--text-main)', lineHeight: '1.6', fontWeight: (n.read || n.isRead) ? '500' : '700' }}>
                             {n.message}
                         </p>
-                        {!n.read && (
+                        {(!n.read && !n.isRead) && (
                             <button
                                 onClick={() => markRead(n.id)}
                                 style={{

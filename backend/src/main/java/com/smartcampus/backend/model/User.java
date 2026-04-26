@@ -25,6 +25,12 @@ public class User {
     private String googleSub;
 
     private String imageUrl;
+    
+    private boolean notificationsEnabled = true;
+    
+    private boolean ticketUpdatesEnabled = true;
+
+    private java.util.List<String> starredTicketIds = new java.util.ArrayList<>();
 
     public User() {
     }
@@ -97,5 +103,29 @@ public class User {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public java.util.List<String> getStarredTicketIds() {
+        return starredTicketIds;
+    }
+
+    public void setStarredTicketIds(java.util.List<String> starredTicketIds) {
+        this.starredTicketIds = starredTicketIds;
+    }
+
+    public boolean isNotificationsEnabled() {
+        return notificationsEnabled;
+    }
+
+    public void setNotificationsEnabled(boolean notificationsEnabled) {
+        this.notificationsEnabled = notificationsEnabled;
+    }
+
+    public boolean isTicketUpdatesEnabled() {
+        return ticketUpdatesEnabled;
+    }
+
+    public void setTicketUpdatesEnabled(boolean ticketUpdatesEnabled) {
+        this.ticketUpdatesEnabled = ticketUpdatesEnabled;
     }
 }

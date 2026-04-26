@@ -14,8 +14,12 @@ import {
     Scan,
     Cpu,
     User,
-    Filter
+    Filter,
+    Users,
+    X
+
 } from 'lucide-react';
+import { Html5QrcodeScanner } from 'html5-qrcode';
 
 const ManageBookings = () => {
     const [bookings, setBookings] = useState([]);
@@ -26,6 +30,8 @@ const ManageBookings = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [eqSearchQuery, setEqSearchQuery] = useState('');
     const [eqStatusFilter, setEqStatusFilter] = useState('ALL');
+    const [isScannerOpen, setIsScannerOpen] = useState(false);
+
     const { showNotification } = useContext(NotificationContext);
 
     const fetchBookings = () => {
@@ -70,16 +76,47 @@ const ManageBookings = () => {
         }
     };
 
-    const handleCheckIn = async () => {
-        const bid = prompt("Enter Booking ID to Check-in (Simulation):");
-        if (!bid) return;
-        try {
-            await api.post(`/bookings/${bid}/checkin`);
-            showNotification("Successful QR Check-in", "success");
-            fetchBookings();
-        } catch (e) {
-            showNotification(e.response?.data?.message || "Check-in Failed", "error");
+    useEffect(() => {
+        let scanner;
+        if (isScannerOpen) {
+            scanner = new Html5QrcodeScanner("reader", { 
+                fps: 10, 
+                qrbox: { width: 250, height: 250 },
+                aspectRatio: 1.0
+            }, false);
+
+            scanner.render(async (decodedText) => {
+                scanner.clear();
+                setIsScannerOpen(false);
+                
+                // Extract booking ID if it follows the secure token format
+                let bookingId = decodedText;
+                if (decodedText.startsWith("SMARTCAMPUS-TOKEN-")) {
+                    const parts = decodedText.split("-");
+                    bookingId = parts[2]; // The 3rd part is the ID
+                }
+
+                try {
+                    await api.post(`/bookings/${bookingId}/checkin`);
+                    showNotification("Scanned: Successful QR Check-in", "success");
+                    fetchBookings();
+                } catch (e) {
+                    showNotification(e.response?.data?.message || "Check-in Failed", "error");
+                }
+            }, (error) => {
+                // silently handle failures
+            });
         }
+
+        return () => {
+            if (scanner) {
+                scanner.clear().catch(e => {});
+            }
+        };
+    }, [isScannerOpen]);
+
+    const handleCheckIn = () => {
+        setIsScannerOpen(true);
     };
 
     /* ── Equipment Request Actions ────────────────────────────────────────── */
@@ -221,6 +258,7 @@ const ManageBookings = () => {
                 </div>
             </div>
 
+<<<<<<< HEAD
             {/* Tabs */}
             <div style={{ display: 'flex', gap: '8px', marginBottom: '28px', background: 'var(--surface)', padding: '8px', borderRadius: '18px', border: '1px solid var(--border)', width: 'fit-content' }}>
                 <button style={tabBtnStyle('bookings')} onClick={() => setActiveTab('bookings')}>
@@ -255,8 +293,88 @@ const ManageBookings = () => {
                                     <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Log Ref</th>
                                     <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Asset & Purpose</th>
                                     <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Requester</th>
+                                    <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Expected Attendees</th>
                                     <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Timeline</th>
                                     <th style={{ padding: '20px 24px', color: 'var(--text-muted)', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>Decision</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {loading ? (
+                                    Array.from({ length: 5 }).map((_, i) => (
+                                        <tr key={i} style={{ borderBottom: '1px solid var(--border)' }}>
+                                            <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '60px', height: '16px' }}></div></td>
+                                            <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '200px', height: '18px', marginBottom: '8px' }}></div><div className="skeleton" style={{ width: '140px', height: '12px' }}></div></td>
+                                            <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '160px', height: '16px' }}></div></td>
+                                            <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '60px', height: '18px' }}></div></td>
+                                            <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '140px', height: '30px' }}></div></td>
+                                            <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '120px', height: '40px', borderRadius: '12px' }}></div></td>
+                                        </tr>
+                                    ))
+                                ) : filteredBookings.map(b => (
+                                    <tr key={b.id} style={{ borderBottom: '1px solid var(--border)', transition: 'background 0.2s' }} onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.01)'} onMouseOut={e => e.currentTarget.style.background = 'transparent'}>
+                                        <td style={{ padding: '25px 24px', color: 'var(--text-muted)', fontWeight: '800', fontSize: '13px' }}>#{b.id.substring(0, 8)}</td>
+                                        <td style={{ padding: '25px 24px' }}>
+                                            <div style={{ fontWeight: '700', color: 'var(--text-main)', fontSize: '15px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                                <Calendar size={14} color="var(--primary)" /> {b.resource?.name || 'Deleted Asset'}
+                                            </div>
+                                            <div style={{ color: 'var(--text-muted)', fontSize: '13px', marginTop: '6px', opacity: 0.8 }}>{(b.purpose || '').substring(0, 40)}{b.purpose?.length > 40 ? '...' : ''}</div>
+                                        </td>
+                                        <td style={{ padding: '25px 24px' }}>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                                <div style={{ width: '32px', height: '32px', borderRadius: '10px', background: 'var(--border)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '900', fontSize: '12px' }}>{(b.user?.name || '?').charAt(0).toUpperCase()}</div>
+                                                <div>
+                                                    <div style={{ fontWeight: '600', color: 'var(--text-main)', fontSize: '14px' }}>{b.user?.name || 'Unknown User'}</div>
+                                                    <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{b.user?.email || 'N/A'}</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style={{ padding: '25px 24px' }}>
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-main)', fontWeight: '700', fontSize: '15px' }}>
+                                                <Users size={14} color="#8B5CF6" />
+                                                {b.expectedAttendees || 0} <span style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: '500' }}>Pax</span>
+                                            </div>
+                                        </td>
+                                        <td style={{ padding: '25px 24px', fontSize: '13px' }}>
+                                            <div style={{ color: 'var(--text-main)', fontWeight: '600' }}>{new Date(b.startTime).toLocaleDateString([], { month: 'short', day: 'numeric' })}</div>
+                                            <div style={{ color: 'var(--text-muted)', marginTop: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                                {new Date(b.startTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} <ArrowRight size={10} /> {new Date(b.endTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                            </div>
+                                        </td>
+                                        <td style={{ padding: '25px 24px' }}>
+                                            {b.status === 'PENDING' ? (
+                                                <div style={{ display: 'flex', gap: '10px' }}>
+                                                    <button onClick={() => updateStatus(b.id, 'APPROVED')} style={{ background: 'var(--primary)', color: 'white', padding: '10px 16px', border: 'none', borderRadius: '12px', cursor: 'pointer', fontWeight: '800', fontSize: '13px', boxShadow: '0 8px 16px rgba(59,130,246,0.2)', transition: 'all 0.2s' }}>Approve</button>
+                                                    <button onClick={() => { const reason = prompt('Provide rejection reason:'); if (reason) updateStatus(b.id, 'REJECTED', reason); }} style={{ background: 'rgba(239,68,68,0.05)', color: '#ef4444', border: '1px solid rgba(239,68,68,0.1)', padding: '10px 16px', borderRadius: '12px', cursor: 'pointer', fontWeight: '800', fontSize: '13px' }}>Reject</button>
+                                                </div>
+                                            ) : (
+                                                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                                    <span style={statusBadgeStyle(b.status)}>{b.status.replace('_', ' ')}</span>
+                                                    {b.status === 'APPROVED' && (!b.approvedAt || new Date() <= new Date(new Date(b.approvedAt).getTime() + 2 * 24 * 60 * 60 * 1000)) && (
+                                                        <button 
+                                                            onClick={() => {
+                                                                const reason = prompt('Provide cancellation reason:');
+                                                                if (reason) updateStatus(b.id, 'CANCELLED', reason);
+                                                            }}
+                                                            style={{ background: 'white', color: '#ef4444', border: '1px solid #ef4444', padding: '6px 12px', borderRadius: '30px', cursor: 'pointer', fontWeight: '700', fontSize: '11px', transition: 'all 0.2s' }}
+                                                            onMouseOver={e => { e.currentTarget.style.background = '#ef4444'; e.currentTarget.style.color = 'white'; }}
+                                                            onMouseOut={e => { e.currentTarget.style.background = 'white'; e.currentTarget.style.color = '#ef4444'; }}
+                                                        >
+                                                            Cancel
+                                                        </button>
+                                                    )}
+                                                </div>
+                                            )}
+                                        </td>
+et.style.color = '#ef4444'; }}
+                                                    >
+                                                        Cancel
+                                                    </button>
+                                                )}
+                                            </div>
+                                        )}
+                                    </td>
+>>>>>>> dev
                                 </tr>
                             </thead>
                             <tbody>
@@ -309,6 +427,7 @@ const ManageBookings = () => {
                             </tbody>
                         </table>
                     </div>
+<<<<<<< HEAD
                     {!loading && filteredBookings.length === 0 && (
                         <div style={{ textAlign: 'center', padding: '100px 20px', color: 'var(--text-muted)' }}>
                             <FileText size={48} style={{ opacity: 0.2, marginBottom: '20px' }} />
@@ -418,6 +537,25 @@ const ManageBookings = () => {
                             <p style={{ fontSize: '16px', fontWeight: '500' }}>No equipment requests found.</p>
                         </div>
                     )}
+                </div>
+            )}
+
+            {/* QR Scanner Modal */}
+            {isScannerOpen && (
+                <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.8)', backdropFilter: 'blur(10px)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
+                    <div style={{ background: 'white', width: '100%', maxWidth: '500px', borderRadius: '32px', padding: '40px', position: 'relative' }}>
+                        <button onClick={() => setIsScannerOpen(false)} style={{ position: 'absolute', top: '20px', right: '20px', background: 'var(--border)', border: 'none', width: '36px', height: '36px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <X size={18} />
+                        </button>
+                        <div style={{ textAlign: 'center', marginBottom: '30px' }}>
+                            <div style={{ width: '64px', height: '64px', background: 'rgba(59, 130, 246, 0.1)', borderRadius: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px auto', color: 'var(--primary)' }}>
+                                <Scan size={32} />
+                            </div>
+                            <h3 style={{ fontSize: '24px', fontWeight: '800', color: 'var(--text-main)', margin: '0 0 10px 0' }}>Security QR Scanner</h3>
+                            <p style={{ fontSize: '15px', color: 'var(--text-muted)', margin: 0 }}>Point the camera at the student's digital pass.</p>
+                        </div>
+                        <div id="reader" style={{ overflow: 'hidden', borderRadius: '20px', border: '1px solid var(--border)' }}></div>
+                    </div>
                 </div>
             )}
         </div>

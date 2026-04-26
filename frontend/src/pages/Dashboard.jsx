@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import { NotificationContext } from '../context/NotificationContext';
 import { useNavigate } from 'react-router-dom';
 import api from '../api/axiosConfig';
 import {
@@ -14,40 +15,52 @@ import {
     TrendingUp,
     Clock,
     Activity,
-    Target
+    Target,
+    Users,
+    Heart
 } from 'lucide-react';
 
 const Dashboard = () => {
     const { user } = useContext(AuthContext);
+    const { showNotification } = useContext(NotificationContext);
     const navigate = useNavigate();
     const [myTickets, setMyTickets] = useState([]);
     const [allTickets, setAllTickets] = useState([]);
+    const [favoriteIds, setFavoriteIds] = useState([]);
+    const [analytics, setAnalytics] = useState({ mttr: "0h", efficiency: "0%", activeIncidents: 0 });
+
+    const fetchFavorites = async () => {
+        if (!user) return;
+        try {
+            const res = await api.get(`/tickets/favorites?userId=${user.id}`);
+            setFavoriteIds(res.data.map(t => t.id));
+        } catch (err) {
+            console.error('Failed to fetch favorites', err);
+        }
+    };
+
+    const toggleFavorite = async (ticketId, e) => {
+        if (e) e.stopPropagation();
+        try {
+            await api.post(`/tickets/${ticketId}/favorite?userId=${user.id}`);
+            fetchFavorites();
+            const isFav = !favoriteIds.includes(ticketId);
+            showNotification(isFav ? 'Saved to favorites ❤️' : 'Removed from favorites', 'success');
+        } catch (err) {
+            showNotification('Failed to toggle favorite', 'error');
+        }
+    };
 
     useEffect(() => {
         if (user && user.role === 'ROLE_USER') {
             api.get(`/tickets/user/${user.id}`).then(res => setMyTickets(res.data)).catch(err => console.error(err));
         }
         if (user && (user.role === 'ROLE_ADMIN' || user.role === 'ROLE_TECHNICIAN')) {
-            api.get('/tickets').then(res => setAllTickets(res.data)).catch(err => console.error(err));
+            api.get('/tickets/analytics').then(res => setAnalytics(res.data)).catch(err => console.error(err));
         }
+        fetchFavorites();
     }, [user]);
 
-    const calculateSLA = () => {
-        const resolved = allTickets.filter(t => t.resolvedAt);
-        if (resolved.length === 0) return { avg: "0h", rate: "0%" };
-
-        let totalHrs = 0;
-        resolved.forEach(t => {
-            const diff = new Date(t.resolvedAt) - new Date(t.createdAt);
-            totalHrs += (diff / (1000 * 60 * 60));
-        });
-
-        const avg = (totalHrs / resolved.length).toFixed(1);
-        const rate = ((resolved.length / allTickets.length) * 100).toFixed(0);
-        return { avg: `${avg}h`, rate: `${rate}%` };
-    };
-
-    const sla = calculateSLA();
 
     const cardStyle = {
         background: 'var(--glass-bg)',
@@ -120,7 +133,7 @@ const Dashboard = () => {
                                 <span style={{ fontSize: '12px', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1px', color: '#64748b' }}>Avg Resolution (MTTR)</span>
                                 <Clock size={20} color="#3b82f6" />
                             </div>
-                            <div style={{ fontSize: '38px', fontWeight: '900', letterSpacing: '-1.5px', color: '#0f172a' }}>{sla.avg}</div>
+                            <div style={{ fontSize: '38px', fontWeight: '900', letterSpacing: '-1.5px', color: '#0f172a' }}>{analytics.mttr}</div>
                             <div style={{ marginTop: '10px', fontSize: '12px', color: '#94a3b8' }}>Historical ticket lifecycle average.</div>
                         </div>
                         <div className="premium-card" style={{ padding: '30px', border: '1px solid #E2E8F0' }}>
@@ -128,7 +141,7 @@ const Dashboard = () => {
                                 <span style={{ fontSize: '12px', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1px', color: '#64748b' }}>Closing efficiency</span>
                                 <Target size={20} color="#10b981" />
                             </div>
-                            <div style={{ fontSize: '38px', fontWeight: '900', letterSpacing: '-1.5px', color: '#0f172a' }}>{sla.rate}</div>
+                            <div style={{ fontSize: '38px', fontWeight: '900', letterSpacing: '-1.5px', color: '#0f172a' }}>{analytics.efficiency}</div>
                             <div style={{ marginTop: '10px', fontSize: '12px', color: '#94a3b8' }}>Processed vs. Active Requests.</div>
                         </div>
                         <div className="premium-card" style={{ padding: '30px', border: '1px solid #E2E8F0' }}>
@@ -136,7 +149,7 @@ const Dashboard = () => {
                                 <span style={{ fontSize: '12px', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '1px', color: '#64748b' }}>Active Incidents</span>
                                 <Activity size={20} color="#ef4444" />
                             </div>
-                            <div style={{ fontSize: '38px', fontWeight: '900', letterSpacing: '-1.5px', color: '#0f172a' }}>{allTickets.filter(t => t.status !== 'CLOSED' && t.status !== 'RESOLVED').length}</div>
+                            <div style={{ fontSize: '38px', fontWeight: '900', letterSpacing: '-1.5px', color: '#0f172a' }}>{analytics.activeIncidents}</div>
                             <div style={{ marginTop: '10px', fontSize: '12px', color: '#94a3b8' }}>Live issues requiring triage.</div>
                         </div>
                     </div>
@@ -174,6 +187,19 @@ const Dashboard = () => {
                     </div>
                 )}
 
+                {user?.role === 'ROLE_ADMIN' && (
+                    <div onClick={() => navigate('/admin/users')} className="premium-card" style={{ padding: '35px', cursor: 'pointer' }}>
+                        <div style={{ width: '60px', height: '60px', borderRadius: '18px', background: 'rgba(59, 130, 246, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '25px', color: '#2563EB' }}>
+                            <Users size={30} />
+                        </div>
+                        <h4 style={{ margin: '0 0 10px 0', color: 'var(--text-main)', fontSize: '20px', fontWeight: '800' }}>Role Management</h4>
+                        <p style={{ margin: 0, fontSize: '14px', color: 'var(--text-muted)', lineHeight: '1.6' }}>Authorize staff members and assign Technician or Admin privileges.</p>
+                        <div style={{ marginTop: '25px', display: 'flex', alignItems: 'center', color: '#2563EB', fontWeight: 'bold', fontSize: '13px', gap: '5px' }}>
+                            User Directory <ChevronRight size={16} />
+                        </div>
+                    </div>
+                )}
+
                 {(user?.role === 'ROLE_TECHNICIAN' || user?.role === 'ROLE_ADMIN') && (
                     <div onClick={() => navigate('/technician/desk')} className="premium-card" style={{ padding: '35px', cursor: 'pointer' }}>
                         <div style={{ width: '60px', height: '60px', borderRadius: '18px', background: 'rgba(16, 185, 129, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '25px', color: '#10b981' }}>
@@ -187,7 +213,7 @@ const Dashboard = () => {
                     </div>
                 )}
             </div>
-
+            
             {/* My Tickets Section */}
             {user?.role === 'ROLE_USER' && (
                 <div style={{ marginTop: '80px' }}>
@@ -204,7 +230,7 @@ const Dashboard = () => {
                     ) : (
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '25px' }}>
                             {myTickets.map(t => (
-                                <div key={t.id} className="premium-card" style={{ padding: '28px' }}>
+                                <div key={t.id} className="premium-card" style={{ padding: '28px', cursor: 'pointer' }} onClick={() => navigate(`/ticket/${t.id}`)}>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '15px', alignItems: 'center' }}>
                                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                                             <AlertCircle size={14} color="#60a5fa" />
@@ -212,16 +238,17 @@ const Dashboard = () => {
                                         </div>
                                         <span style={{
                                             fontSize: '10px', padding: '4px 12px', borderRadius: '20px',
-                                            background: t.status === 'RESOLVED' ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)',
-                                            color: t.status === 'RESOLVED' ? '#10b981' : '#ef4444',
-                                            fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.5px'
+                                            background: t.status === 'RESOLVED' ? 'rgba(16, 185, 129, 0.1)' : t.status === 'IN_PROGRESS' ? 'rgba(245, 158, 11, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+                                            color: t.status === 'RESOLVED' ? '#10b981' : t.status === 'IN_PROGRESS' ? '#f59e0b' : '#ef4444',
+                                            fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.5px',
+                                            border: `1px solid ${t.status === 'RESOLVED' ? 'rgba(16, 185, 129, 0.2)' : t.status === 'IN_PROGRESS' ? 'rgba(245, 158, 11, 0.2)' : 'rgba(239, 68, 68, 0.2)'}`
                                         }}>
                                             {t.status === 'RESOLVED' && <CheckCircle2 size={10} style={{ marginRight: '4px', verticalAlign: 'middle' }} />}
-                                            {t.status}
+                                            {t.status.replace('_', ' ')}
                                         </span>
                                     </div>
                                     <p style={{ fontSize: '14px', color: 'var(--text-muted)', margin: '0 0 25px 0', lineHeight: '1.6' }}>{t.description.substring(0, 80)}...</p>
-                                    <button onClick={() => navigate(`/ticket/${t.id}`)} style={{ width: '100%', background: 'rgba(0,0,0,0.02)', color: 'var(--primary)', border: '1px solid var(--border)', padding: '12px', borderRadius: '14px', cursor: 'pointer', fontSize: '13px', fontWeight: '800', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', transition: 'all 0.2s' }} onMouseOver={e => { e.currentTarget.style.background = 'rgba(0,0,0,0.04)'; e.currentTarget.style.transform = 'translateY(-1px)'; }} onMouseOut={e => { e.currentTarget.style.background = 'rgba(0,0,0,0.02)'; e.currentTarget.style.transform = 'translateY(0)'; }}>
+                                    <button style={{ width: '100%', background: 'rgba(0,0,0,0.02)', color: 'var(--primary)', border: '1px solid var(--border)', padding: '12px', borderRadius: '14px', cursor: 'pointer', fontSize: '13px', fontWeight: '800', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', transition: 'all 0.2s' }} onMouseOver={e => { e.currentTarget.style.background = 'rgba(0,0,0,0.04)'; e.currentTarget.style.transform = 'translateY(-1px)'; }} onMouseOut={e => { e.currentTarget.style.background = 'rgba(0,0,0,0.02)'; e.currentTarget.style.transform = 'translateY(0)'; }}>
                                         Details & Timeline <ChevronRight size={14} />
                                     </button>
                                 </div>

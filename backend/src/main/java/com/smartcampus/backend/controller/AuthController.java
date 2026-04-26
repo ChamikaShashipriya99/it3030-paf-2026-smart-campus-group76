@@ -35,6 +35,7 @@ public class AuthController {
             response.put("email", user.getEmail());
             response.put("name", user.getName());
             response.put("role", user.getRole().name());
+            response.put("imageUrl", user.getImageUrl());
             return ResponseEntity.ok(response);
         }
         

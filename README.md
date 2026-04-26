@@ -92,5 +92,25 @@ Powerful tools for managing campus resources and maintenance triage.
 
 ---
 
+## 👥 Member Contributions
+
+Below is the mapping of technical responsibilities as required for individual assessment:
+
+| Member | Technical Focus | Key Deliverables |
+| :--- | :--- | :--- |
+| **Member 1** | Facilities Catalogue | Resource Metadata, Search Engine, Catalogue UI |
+| **Member 2** | Booking Workflow | Conflict Prevention Logic, Approval System |
+| **Member 3** | Maintenance & SLA | Image Attachments, Comment Ownership, MTTR Analytics |
+| **Member 4** | **Security & Identity** | **Google OAuth 2.0, Granular RBAC, Notification Engine** |
+
+### Member 4 Spotlight: 🏗️ Security & Identity
+**Responsibility**: Notifications + Role Management + OAuth Integration Improvements.
+*   Implemented **Stateless JWT Security** flow bridged with Google OAuth 2.0.
+*   Engineered a **Granular RBAC System** (Role-Based Access Control) on the REST API.
+*   Developed the **Identity Registry** (Admin User Management) and **Custom Confirmation System**.
+*   Built the **Real-time Notification Engine** with persistent unread tracking and UI panels.
+
+---
+
 **Student Name**: Kumarathunga R C S  
 **IT Number**: IT23257054  

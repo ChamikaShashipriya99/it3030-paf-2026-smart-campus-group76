@@ -1,8 +1,10 @@
 package com.smartcampus.backend.controller;
 
+//import packages
 import com.smartcampus.backend.model.Ticket;
 import com.smartcampus.backend.model.TicketStatus;
 import com.smartcampus.backend.service.TicketService;
+import com.smartcampus.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,9 @@ public class TicketController {
 
     @Autowired
     private TicketService ticketService;
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping
     public ResponseEntity<List<Ticket>> getAllTickets() {
@@ -87,6 +92,16 @@ public class TicketController {
         }
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteTicket(@PathVariable String id) {
+        try {
+            ticketService.deleteTicket(id);
+            return ResponseEntity.ok(Map.of("message", "Ticket deleted successfully"));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));
+        }
+    }
+
     @PostMapping("/{id}/comments")
     public ResponseEntity<?> addComment(@PathVariable String id, @RequestBody Map<String, Object> payload) {
         try {
@@ -138,4 +153,33 @@ public class TicketController {
     public ResponseEntity<?> getAttachments(@PathVariable String id) {
         return ResponseEntity.ok(ticketService.getAttachments(id));
     }
+
+    @PostMapping("/{id}/favorite")
+    public ResponseEntity<?> toggleFavorite(@PathVariable String id, @RequestParam String userId) {
+        try {
+            userService.toggleFavorite(userId, id);
+            return ResponseEntity.ok(Map.of("message", "Favorite toggled"));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));
+        }
+    }
+
+    @GetMapping("/favorites")
+    public ResponseEntity<?> getFavorites(@RequestParam String userId) {
+        try {
+            List<String> favIds = userService.getFavorites(userId);
+            List<Ticket> favTickets = ticketService.getAllTickets().stream()
+                    .filter(t -> favIds.contains(t.getId()))
+                    .collect(java.util.stream.Collectors.toList());
+            return ResponseEntity.ok(favTickets);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("message", e.getMessage()));
+        }
+    }
+
+    @GetMapping("/analytics")
+    public ResponseEntity<?> getOperationalAnalytics() {
+        return ResponseEntity.ok(ticketService.getOperationalAnalytics());
+    }
 }
+

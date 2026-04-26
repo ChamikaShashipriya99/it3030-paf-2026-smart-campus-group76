@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import { useConfirm } from '../context/ConfirmContext';
 import api from '../api/axiosConfig';
 import {
     LayoutDashboard,
@@ -10,11 +11,13 @@ import {
     Bell,
     LogOut,
     UserCircle,
-    Building2
+    Building2,
+    Heart
 } from 'lucide-react';
 
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext);
+    const { ask } = useConfirm();
     const navigate = useNavigate();
     const location = useLocation();
     const [unreadCount, setUnreadCount] = useState(0);
@@ -48,6 +51,14 @@ const Navbar = () => {
     if (!user || location.pathname === '/' || location.pathname === '/login' || location.pathname.startsWith('/oauth2')) {
         return null;
     }
+
+    const handleLogout = async () => {
+        const confirmed = await ask(
+            "You are about to terminate your secure session. Do you wish to proceed with signing out?",
+            "Secure Sign Out"
+        );
+        if (confirmed) logout();
+    };
 
     const navStyle = {
         background: 'var(--surface)',
@@ -105,6 +116,12 @@ const Navbar = () => {
                             Assets
                         </Link>
                         {user.role === 'ROLE_USER' && (
+                            <Link to="/report-issue" style={linkStyle('/report-issue')}>
+                                <ClipboardList size={18} />
+                                Tickets
+                            </Link>
+                        )}
+                        {user.role === 'ROLE_USER' && (
                             <Link to="/my-bookings" style={linkStyle('/my-bookings')}>
                                 <ClipboardList size={18} />
                                 My Bookings
@@ -120,6 +137,18 @@ const Navbar = () => {
                             <Link to="/technician/desk" style={linkStyle('/technician/desk')}>
                                 <ClipboardList size={18} />
                                 Service Desk
+                            </Link>
+                        )}
+                        {(user.role === 'ROLE_TECHNICIAN') && (
+                            <Link to="/favorites" style={linkStyle('/favorites')}>
+                                <Heart size={18} />
+                                Favorites
+                            </Link>
+                        )}
+                        {(user.role === 'ROLE_TECHNICIAN') && (
+                            <Link to="/technician/analytics" style={linkStyle('/technician/analytics')}>
+                                <LayoutDashboard size={18} />
+                                Analytics
                             </Link>
                         )}
                     </div>
@@ -158,12 +187,24 @@ const Navbar = () => {
                         <div style={{
                             width: '44px', height: '44px', borderRadius: '14px', background: 'var(--border)',
                             display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)',
-                            border: '1px solid var(--glass-border)', boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.1)'
+                            border: '1px solid var(--glass-border)', boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.1)',
+                            overflow: 'hidden'
                         }}>
-                            <UserCircle size={28} />
+                            {user.imageUrl && user.imageUrl.trim() !== '' ? (
+                                <img 
+                                    src={user.imageUrl} 
+                                    alt={user.name} 
+                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                                    onError={(e) => {
+                                        e.target.style.display = 'none';
+                                        e.target.nextSibling.style.display = 'block';
+                                    }}
+                                />
+                            ) : null}
+                            <UserCircle size={28} style={{ display: user.imageUrl && user.imageUrl.trim() !== '' ? 'none' : 'block' }} />
                         </div>
                         <button
-                            onClick={logout}
+                            onClick={handleLogout}
                             style={{
                                 background: 'rgba(239, 68, 68, 0.08)', color: '#ef4444', border: '1px solid rgba(239, 68, 68, 0.15)',
                                 padding: '12px 20px', borderRadius: '14px', cursor: 'pointer',
