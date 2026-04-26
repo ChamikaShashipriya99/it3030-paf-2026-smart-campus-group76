@@ -55,9 +55,6 @@ public class UserService {
     }
 
     public void deleteUser(String userId, String currentUserId) {
-        if (userId.equals(currentUserId)) {
-            throw new RuntimeException("Self-deletion is protected. You cannot delete your own account.");
-        }
         if (!userRepository.existsById(userId)) {
             throw new RuntimeException("User not found");
         }
