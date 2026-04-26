@@ -47,6 +47,14 @@ public class BookingService {
 
         Resource resource = resourceService.getResourceById(resourceId);
 
+        // Guard: only FACILITY assets are bookable through the booking system.
+        // EQUIPMENT resources must be requested through a different workflow.
+        if ("EQUIPMENT".equalsIgnoreCase(resource.getAssetCategory())) {
+            throw new RuntimeException(
+                    "Special equipment cannot be booked through the facility booking system. " +
+                    "Please contact the asset administrator.");
+        }
+
         Booking booking = new Booking();
         User user = new User();
         user.setId(userId);

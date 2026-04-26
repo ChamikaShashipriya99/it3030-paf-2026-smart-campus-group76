@@ -32,6 +32,7 @@ public class NotificationService {
     public Notification createNotification(String userId, String message, String type) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
+
         
         // Innovation: Filter based on user preference flags
         if (!user.isNotificationsEnabled()) {
