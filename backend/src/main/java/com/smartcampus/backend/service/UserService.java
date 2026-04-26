@@ -63,4 +63,17 @@ public class UserService {
         }
         userRepository.deleteById(userId);
     }
+
+    public User updatePreferences(String userId, java.util.Map<String, Boolean> preferences) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        
+        if (preferences.containsKey("notificationsEnabled")) user.setNotificationsEnabled(preferences.get("notificationsEnabled"));
+        if (preferences.containsKey("ticketUpdatesEnabled")) user.setTicketUpdatesEnabled(preferences.get("ticketUpdatesEnabled"));
+        if (preferences.containsKey("successEnabled")) user.setSuccessEnabled(preferences.get("successEnabled"));
+        if (preferences.containsKey("warningEnabled")) user.setWarningEnabled(preferences.get("warningEnabled"));
+        if (preferences.containsKey("infoEnabled")) user.setInfoEnabled(preferences.get("infoEnabled"));
+        
+        return userRepository.save(user);
+    }
 }

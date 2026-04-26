@@ -8,19 +8,52 @@ import {
     AlertTriangle,
     Info,
     Clock,
-    Check
+    Check,
+    Settings
 } from 'lucide-react';
 
 const Notifications = () => {
-    const { user } = useContext(AuthContext);
+    const { user, refreshUser } = useContext(AuthContext);
     const [notifications, setNotifications] = useState([]);
+    const [showSettings, setShowSettings] = useState(false);
+    const [prefs, setPrefs] = useState({
+        notificationsEnabled: true,
+        successEnabled: true,
+        warningEnabled: true,
+        infoEnabled: true
+    });
 
     const fetchNotifs = () => {
         if (!user) return;
         api.get(`/notifications/user/${user.id}`).then(res => setNotifications(res.data)).catch(console.error);
     };
 
-    useEffect(() => { fetchNotifs(); }, [user]);
+    useEffect(() => { 
+        fetchNotifs(); 
+        if (user) {
+            setPrefs({
+                notificationsEnabled: user.notificationsEnabled ?? true,
+                successEnabled: user.successEnabled ?? true,
+                warningEnabled: user.warningEnabled ?? true,
+                infoEnabled: user.infoEnabled ?? true
+            });
+        }
+    }, [user]);
+
+    const savePrefs = async (newPrefs) => {
+        try {
+            await api.put(`/users/${user.id}/preferences`, newPrefs);
+            refreshUser();
+        } catch (err) {
+            console.error("Failed to save preferences", err);
+        }
+    };
+
+    const togglePref = (key) => {
+        const updated = { ...prefs, [key]: !prefs[key] };
+        setPrefs(updated);
+        savePrefs(updated);
+    };
 
     const markRead = async (id) => {
         try {
@@ -75,8 +108,77 @@ const Notifications = () => {
                             Mark All as Read
                         </button>
                     )}
+                    <button 
+                        onClick={() => setShowSettings(!showSettings)}
+                        style={{ 
+                            background: showSettings ? 'var(--primary)' : 'var(--surface)', 
+                            color: showSettings ? 'white' : 'var(--text-main)', 
+                            border: '1px solid var(--border)', 
+                            padding: '12px', 
+                            borderRadius: '16px', 
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            transition: 'all 0.2s'
+                        }}
+                    >
+                        <Settings size={20} />
+                    </button>
                 </div>
             </div>
+
+            {/* Innovation: Preference Settings Panel */}
+            {showSettings && (
+                <div className="premium-card" style={{ 
+                    marginBottom: '40px', 
+                    padding: '30px', 
+                    background: 'var(--surface)',
+                    border: '1px solid var(--border)',
+                    animation: 'slideDown 0.3s ease-out'
+                }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '25px' }}>
+                        <div>
+                            <h4 style={{ margin: 0, fontSize: '18px', fontWeight: '800' }}>Notification Preferences</h4>
+                            <p style={{ margin: '5px 0 0 0', fontSize: '13px', color: 'var(--text-muted)' }}>Customize which categories of alerts you wish to receive.</p>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', background: 'rgba(255,255,255,0.03)', padding: '8px 16px', borderRadius: '12px', border: '1px solid var(--border)' }}>
+                            <span style={{ fontSize: '12px', fontWeight: '800', color: prefs.notificationsEnabled ? 'var(--primary)' : 'var(--text-muted)' }}>
+                                {prefs.notificationsEnabled ? 'SYSTEM ALERTS ACTIVE' : 'SYSTEM ALERTS MUTED'}
+                            </span>
+                            <div 
+                                onClick={() => togglePref('notificationsEnabled')}
+                                style={{ width: '40px', height: '22px', background: prefs.notificationsEnabled ? 'var(--primary)' : '#475569', borderRadius: '11px', position: 'relative', cursor: 'pointer', transition: 'all 0.3s' }}
+                            >
+                                <div style={{ width: '16px', height: '16px', background: 'white', borderRadius: '50%', position: 'absolute', top: '3px', left: prefs.notificationsEnabled ? '21px' : '3px', transition: 'all 0.3s' }} />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '15px', opacity: prefs.notificationsEnabled ? 1 : 0.5, pointerEvents: prefs.notificationsEnabled ? 'all' : 'none' }}>
+                        {[
+                            { key: 'infoEnabled', label: 'Info Alerts', icon: <Info size={16} color="#3b82f6" />, bg: 'rgba(59,130,246,0.1)' },
+                            { key: 'successEnabled', label: 'Success Alerts', icon: <CheckCircle size={16} color="#10b981" />, bg: 'rgba(16,185,129,0.1)' },
+                            { key: 'warningEnabled', label: 'Warning Alerts', icon: <AlertTriangle size={16} color="#f59e0b" />, bg: 'rgba(245,158,11,0.1)' }
+                        ].map(item => (
+                            <div key={item.key} style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid var(--border)', padding: '16px', borderRadius: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                                    <div style={{ width: '32px', height: '32px', borderRadius: '10px', background: item.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                        {item.icon}
+                                    </div>
+                                    <span style={{ fontSize: '14px', fontWeight: '700' }}>{item.label}</span>
+                                </div>
+                                <div 
+                                    onClick={() => togglePref(item.key)}
+                                    style={{ width: '34px', height: '18px', background: prefs[item.key] ? 'var(--primary)' : '#475569', borderRadius: '9px', position: 'relative', cursor: 'pointer', transition: 'all 0.3s' }}
+                                >
+                                    <div style={{ width: '12px', height: '12px', background: 'white', borderRadius: '50%', position: 'absolute', top: '3px', left: prefs[item.key] ? '19px' : '3px', transition: 'all 0.3s' }} />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', maxWidth: '1000px', margin: '0 auto' }}>
                 {notifications.length === 0 ? (

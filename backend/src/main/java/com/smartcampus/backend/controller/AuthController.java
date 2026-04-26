@@ -36,6 +36,11 @@ public class AuthController {
             response.put("name", user.getName());
             response.put("role", user.getRole().name());
             response.put("imageUrl", user.getImageUrl());
+            response.put("notificationsEnabled", user.isNotificationsEnabled());
+            response.put("successEnabled", user.isSuccessEnabled());
+            response.put("warningEnabled", user.isWarningEnabled());
+            response.put("infoEnabled", user.isInfoEnabled());
+            response.put("ticketUpdatesEnabled", user.isTicketUpdatesEnabled());
             return ResponseEntity.ok(response);
         }
         
