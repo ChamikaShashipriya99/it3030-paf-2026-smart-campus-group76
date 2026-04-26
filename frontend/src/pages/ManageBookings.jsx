@@ -17,7 +17,6 @@ import {
     Filter,
     Users,
     X
-
 } from 'lucide-react';
 import { Html5QrcodeScanner } from 'html5-qrcode';
 
@@ -258,7 +257,6 @@ const ManageBookings = () => {
                 </div>
             </div>
 
-<<<<<<< HEAD
             {/* Tabs */}
             <div style={{ display: 'flex', gap: '8px', marginBottom: '28px', background: 'var(--surface)', padding: '8px', borderRadius: '18px', border: '1px solid var(--border)', width: 'fit-content' }}>
                 <button style={tabBtnStyle('bookings')} onClick={() => setActiveTab('bookings')}>
@@ -299,7 +297,6 @@ const ManageBookings = () => {
                                 </tr>
                             </thead>
                             <tbody>
-
                                 {loading ? (
                                     Array.from({ length: 5 }).map((_, i) => (
                                         <tr key={i} style={{ borderBottom: '1px solid var(--border)' }}>
@@ -366,68 +363,11 @@ const ManageBookings = () => {
                                                 </div>
                                             )}
                                         </td>
-et.style.color = '#ef4444'; }}
-                                                    >
-                                                        Cancel
-                                                    </button>
-                                                )}
-                                            </div>
-                                        )}
-                                    </td>
->>>>>>> dev
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {loading ? (
-                                    Array.from({ length: 5 }).map((_, i) => (
-                                        <tr key={i} style={{ borderBottom: '1px solid var(--border)' }}>
-                                            <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '60px', height: '16px' }}></div></td>
-                                            <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '200px', height: '18px', marginBottom: '8px' }}></div><div className="skeleton" style={{ width: '140px', height: '12px' }}></div></td>
-                                            <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '160px', height: '16px' }}></div></td>
-                                            <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '140px', height: '30px' }}></div></td>
-                                            <td style={{ padding: '25px 24px' }}><div className="skeleton" style={{ width: '120px', height: '40px', borderRadius: '12px' }}></div></td>
-                                        </tr>
-                                    ))
-                                ) : filteredBookings.map(b => (
-                                    <tr key={b.id} style={{ borderBottom: '1px solid var(--border)', transition: 'background 0.2s' }} onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.01)'} onMouseOut={e => e.currentTarget.style.background = 'transparent'}>
-                                        <td style={{ padding: '25px 24px', color: 'var(--text-muted)', fontWeight: '800', fontSize: '13px' }}>#{b.id.substring(0, 8)}</td>
-                                        <td style={{ padding: '25px 24px' }}>
-                                            <div style={{ fontWeight: '700', color: 'var(--text-main)', fontSize: '15px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                                <Calendar size={14} color="var(--primary)" /> {b.resource?.name || 'Deleted Asset'}
-                                            </div>
-                                            <div style={{ color: 'var(--text-muted)', fontSize: '13px', marginTop: '6px', opacity: 0.8 }}>{(b.purpose || '').substring(0, 40)}{b.purpose?.length > 40 ? '...' : ''}</div>
-                                        </td>
-                                        <td style={{ padding: '25px 24px' }}>
-                                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                                                <div style={{ width: '32px', height: '32px', borderRadius: '10px', background: 'var(--border)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '900', fontSize: '12px' }}>{(b.user?.name || '?').charAt(0).toUpperCase()}</div>
-                                                <div>
-                                                    <div style={{ fontWeight: '600', color: 'var(--text-main)', fontSize: '14px' }}>{b.user?.name || 'Unknown User'}</div>
-                                                    <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>{b.user?.email || 'N/A'}</div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td style={{ padding: '25px 24px', fontSize: '13px' }}>
-                                            <div style={{ color: 'var(--text-main)', fontWeight: '600' }}>{new Date(b.startTime).toLocaleDateString([], { month: 'short', day: 'numeric' })}</div>
-                                            <div style={{ color: 'var(--text-muted)', marginTop: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                                                {new Date(b.startTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} <ArrowRight size={10} /> {new Date(b.endTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                                            </div>
-                                        </td>
-                                        <td style={{ padding: '25px 24px' }}>
-                                            {b.status === 'PENDING' ? (
-                                                <div style={{ display: 'flex', gap: '10px' }}>
-                                                    <button onClick={() => updateStatus(b.id, 'APPROVED')} style={{ background: 'var(--primary)', color: 'white', padding: '10px 16px', border: 'none', borderRadius: '12px', cursor: 'pointer', fontWeight: '800', fontSize: '13px', boxShadow: '0 8px 16px rgba(59,130,246,0.2)', transition: 'all 0.2s' }}>Approve</button>
-                                                    <button onClick={() => { const reason = prompt('Provide rejection reason:'); if (reason) updateStatus(b.id, 'REJECTED', reason); }} style={{ background: 'rgba(239,68,68,0.05)', color: '#ef4444', border: '1px solid rgba(239,68,68,0.1)', padding: '10px 16px', borderRadius: '12px', cursor: 'pointer', fontWeight: '800', fontSize: '13px' }}>Reject</button>
-                                                </div>
-                                            ) : (
-                                                <span style={statusBadgeStyle(b.status)}>{b.status.replace('_', ' ')}</span>
-                                            )}
-                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
                     </div>
-<<<<<<< HEAD
                     {!loading && filteredBookings.length === 0 && (
                         <div style={{ textAlign: 'center', padding: '100px 20px', color: 'var(--text-muted)' }}>
                             <FileText size={48} style={{ opacity: 0.2, marginBottom: '20px' }} />

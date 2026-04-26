@@ -398,7 +398,6 @@ const MyBookings = () => {
                 </div>
             </div>
 
-<<<<<<< HEAD
             {/* Tabs */}
             <div style={{ display: 'flex', gap: '8px', marginBottom: '28px', background: 'var(--surface)', padding: '8px', borderRadius: '18px', border: '1px solid var(--border)', width: 'fit-content' }}>
                 <button style={tabBtnStyle('bookings')} onClick={() => setActiveTab('bookings')}>
@@ -694,7 +693,6 @@ const MyBookings = () => {
                     to { opacity: 1; transform: scale(1); }
                 }
             `}</style>
->>>>>>> dev
         </div>
     );
 };
