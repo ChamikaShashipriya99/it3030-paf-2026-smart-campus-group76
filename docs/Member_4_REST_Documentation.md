@@ -33,13 +33,14 @@ This project follows modern standard practices where no executable scripts are t
 
 ## 2. Member 4: API Endpoint Specification
 
-Member 4 has implemented **8 unique endpoints** across 4 different HTTP methods, exceeding the minimum requirement of 4 endpoints.
+Member 4 has implemented **9 unique endpoints** across 4 different HTTP methods, significantly exceeding the minimum requirement of 4 endpoints.
 
 ### Module: Role & Identity Management
 | Method | Endpoint | Description | Auth Requirement | Source Location |
 |:---|:---|:---|:---|:---|
 | **GET** | `/api/users` | Fetches the full registry of members. | `ROLE_ADMIN` | `UserController.java:L21` |
 | **PUT** | `/api/users/{id}/role` | Updates system authority. | `ROLE_ADMIN` | `UserController.java:L26` |
+| **PUT** | `/api/users/{id}/preferences` | Updates notification toggles. | `Authenticated` | `UserController.java:L53` |
 | **DELETE** | `/api/users/{id}` | Permanently removes identity. | `ROLE_ADMIN` | `UserController.java:L37` |
 
 ### Module: Real-time Notifications
@@ -59,10 +60,10 @@ Member 4 has implemented **8 unique endpoints** across 4 different HTTP methods,
 
 ## 3. Implementation Logic & Innovation
 
-### 3.1 Innovation: Notification Preference Control
-As suggested in the **Optional Innovation** list of the project PDF, Member 4 has integrated a Preference System. 
-*   **Mechanism**: Users can choose to enable/disable specific categories of alerts in their profile.
-*   **API Logic**: The `POST /api/notifications/send` endpoint and the backend `NotificationService` perform lookups against user preference flags before persisting data, reducing notification fatigue.
+### 3.1 Innovation: Granular Notification Preference Control
+As suggested in the **Optional Innovation** list of the project PDF, Member 4 has integrated a highly granular Preference System. 
+*   **Mechanism**: Users can choose to enable/disable specific categories of alerts (**Info, Success, Warning**) and toggle a master system-wide notification flag in their profile.
+*   **API Logic**: The `PUT /api/users/{id}/preferences` endpoint allows the frontend to persist these flags. The backend `NotificationService` performs multi-tier lookups against these preference flags before persisting or pushing data via WebSockets, drastically reducing notification fatigue.
 
 ### 3.2 Robust Profile Integration
 Leveraging the OAuth2 flow, Member 4 implemented a dynamic profile sync that ensures Google avatars are rendered throughout the system (Navbar and Member Registry). This includes a custom `onError` fallback on the frontend to handle expired or private URLs gracefully.
@@ -90,6 +91,7 @@ To achieve the **"Excellent"** bracket, the following 8 endpoints have been veri
 |:---|:---|:---|:---|:---|
 | **TEST-01** | `/api/users` | `GET` | `200 OK` | Retrieves all registered campus members. |
 | **TEST-02** | `/api/users/{id}/role` | `PUT` | `200 OK` | Elevates a user to `ROLE_ADMIN` or `ROLE_TECHNICIAN`. |
+| **TEST-02B**| `/api/users/{id}/preferences` | `PUT` | `200 OK` | Updates granular alert toggles (Innovation). |
 | **TEST-03** | `/api/users/{id}` | `DELETE` | `200 OK` | Removes a user from the Identity Registry. |
 
 ![TEST-01](images/TEST-01%20List%20All%20Members.png)
